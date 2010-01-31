@@ -1,0 +1,18 @@
+[color]
+diff   = auto
+status = auto
+branch = auto
+
+[core]
+excludefile = ~/.gitignore
+
+[alias]
+co   = commit -a -m
+a    = add
+di   = diff
+dic  = diff --cached
+pl   = pull
+ps   = push
+plre = pull --rebase
+st   = status
+out  = log origin..HEAD
