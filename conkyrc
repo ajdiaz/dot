@@ -1,0 +1,77 @@
+# conkyrc
+# (c) 2009 Andres J. Diaz <ajdiaz@connectica.com>
+
+# I likes to start my conky manually
+background no
+
+use_xft yes
+#font 8x13
+xftfont monospace-8
+#xftfont ProggySquareSZ:size=12
+#xftfont ProggyTinyTT:size=10
+#xftalpha 1.0
+xftalpha 0.8
+
+out_to_console no
+
+# in seconds
+update_interval 2
+
+total_run_times 0
+
+# This makes it transparent in Gnome.
+# You MUST set your background using feh or another program 
+# which operates on the root window.
+own_window yes
+own_window_type dock
+own_window_transparent yes
+own_window_hints undecorated,below,sticky,skip_taskbar,skip_pager
+double_buffer yes
+
+minimum_size 100 400
+
+draw_shades no
+draw_outline no
+draw_borders no
+draw_graph_borders no
+
+default_color black
+default_shade_color white
+default_outline_color white
+
+alignment top_right
+gap_x 26
+gap_y 35
+
+no_buffers yes
+uppercase no
+
+cpu_avg_samples 2
+net_avg_samples 2
+override_utf8_locale no
+
+use_spacer none
+pad_percents 3
+
+
+TEXT
+cpu0 ${cpu cpu0}% ${cpubar cpu0}
+${cpugraph cpu0}
+cpu1 ${cpu cpu1}% ${cpubar cpu1}
+${cpugraph cpu1}
+mem     $mem / $memmax $alignr $memperc%
+$membar
+$memgraph
+swap    $swap / $swapmax $alignr $swapperc%
+$swapbar
+wlan0 down ${downspeed wlan0} k/s 
+${downspeedgraph eth0}
+wlan0 up ${upspeed wlan0} k/s
+${upspeedgraph eth0}
+i/o read  $color ${diskio_read /dev/sda3}
+${diskiograph_read /dev/sda3}
+i/o write $color ${diskio_write /dev/sda3}
+${diskiograph_write /dev/sda3}
+/ ${fs_used /} / ${fs_size /}$alignr${fs_free_perc /}%
+${fs_bar /}
+
