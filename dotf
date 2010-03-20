@@ -1,0 +1,13 @@
+#! /bin/bash
+# An utility to keep home dot files up-to-date.
+# Copyright (C) 2008-2010 Andres J. Diaz <ajdiaz@connectical.com>
+# Distributed under GPLv2 License.
+
+DOTF_REPO="${DOTF_REPO:-$PWD}"
+
+for h in ${DOTF_REPO}/*; do
+	[ "$h" = "${DOTF_REPO}/*" ] && continue
+	[ -L "${HOME}/.$h" ] && rm -f "${HOME}/.$h"
+	ln -s "$h" "${HOME}/.$h"
+done
+
