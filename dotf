@@ -7,7 +7,7 @@ DOTF_REPO="${DOTF_REPO:-$PWD}"
 
 for h in ${DOTF_REPO}/*; do
 	[ "$h" = "${DOTF_REPO}/*" ] && continue
-	[ -L "${HOME}/.$h" ] && rm -f "${HOME}/.$h"
-	ln -s "$h" "${HOME}/.$h"
+	[ -L "${HOME}/.$(basename $h)" ] && rm -f "${HOME}/.$(basename $h)"
+	ln -s "$h" "${HOME}/.$(basename $h)"
 done
 

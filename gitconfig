@@ -16,3 +16,8 @@ ps   = push
 plre = pull --rebase
 st   = status
 out  = log origin..HEAD
+
+[user]
+name = Andres J. Diaz
+email = ajdiaz@connectical.com
+
