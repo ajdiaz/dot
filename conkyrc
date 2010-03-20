@@ -64,9 +64,9 @@ swap $swapperc% $swapbar
 root ${fs_free_perc /}% ${fs_bar /}
 
 wlan0 down ${downspeed wlan0} k/s 
-${downspeedgraph eth0}
+${downspeedgraph wlan0}
 wlan0 up   ${upspeed wlan0} k/s
-${upspeedgraph eth0}
+${upspeedgraph wlan0}
 
 i/o read ${diskio_read /dev/sda}
 ${diskiograph_read /dev/sda}
