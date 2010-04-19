@@ -1,11 +1,9 @@
 hardstatus alwayslastline "%{db}%-w%50>%{bw}[%t]%{db}%+w %{wb}%<%>%=%C:%s %d/%m/%Y"
 
-bindkey "^[Oc" next
-bindkey "^[Od" prev
-bindkey "^[[C" next
-bindkey "^[[D" prev
-bindkey "^[[1;5C" next
-bindkey "^[[1;5D" prev
+bindkey "^T" windows
+bindkey "^N" screen
+bindkey "^F" next
+
 defutf8 on
 ignorecase on
 
@@ -13,9 +11,5 @@ activity "%c activity -> %n%f %t"
 vbell_msg " *beep* "
 
 startup_message off
-
 defscrollback 500
 
-multiuser off
-# Always start screen with utf8 enabled. (screen -U)
-defutf8 on
