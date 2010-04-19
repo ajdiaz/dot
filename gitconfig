@@ -1,23 +1,22 @@
 [color]
-diff   = auto
-status = auto
-branch = auto
+	diff   = auto
+	status = auto
+	branch = auto
 
 [core]
-excludefile = ~/.gitignore
+	excludefile = ~/.gitignore
 
 [alias]
-co   = commit -a -m
-a    = add
-di   = diff
-dic  = diff --cached
-pl   = pull
-ps   = push
-plre = pull --rebase
-st   = status
-out  = log origin..HEAD
+	co   = commit -a -m
+	a    = add
+	di   = diff
+	dic  = diff --cached
+	pl   = pull
+	ps   = push
+	plre = pull --rebase
+	st   = status
+	out  = log origin..HEAD
 
 [user]
-name = Andres J. Diaz
-email = ajdiaz@connectical.com
-
+	name = Andres J. Diaz
+	email = ajdiaz@connectical.com
