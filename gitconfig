@@ -5,7 +5,6 @@
 
 [core]
 	excludefile = ~/.gitignore
-	include = ~/.gitmail
 
 [alias]
 	co   = commit -a
@@ -21,3 +20,10 @@
 [user]
 	name = Andres J. Diaz
 	email = ajdiaz@connectical.com
+
+[sendemail]
+    smtpencryption = tls
+    smtpserver = smtp.gmail.com
+    smtpuser = ajdiaz@connectical.com
+    smtpserverport = 587
+	chainreplyto = false
