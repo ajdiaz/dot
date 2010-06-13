@@ -5,6 +5,7 @@
 
 [core]
 	excludefile = ~/.gitignore
+	include = ~/.gitmail
 
 [alias]
 	co   = commit -a
