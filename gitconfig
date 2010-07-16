@@ -16,6 +16,7 @@
 	plre = pull --rebase
 	st   = status
 	out  = log origin..HEAD
+	rlog = reflog
 
 [user]
 	name = Andres J. Diaz
