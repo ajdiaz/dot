@@ -27,5 +27,5 @@
     smtpserver = smtp.gmail.com
     smtpuser = ajdiaz@connectical.com
     smtpserverport = 587
-	chainreplyto = false
+    chainreplyto = false
 
