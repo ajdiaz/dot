@@ -44,7 +44,7 @@ FROM="${SSH_CLIENT%% *}"
 
 shopt -s extglob
 
-# Thae ``for`` is muted (redirected to ``/dev/null``) to prevent
+# The ``for`` is muted (redirected to ``/dev/null``) to prevent
 # unusefull errors if directory does not exists. I consider ugly
 # practice to save this messages.
 for in_script in $(find "$auto_dir/" -iname "*.bash")

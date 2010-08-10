@@ -6,7 +6,7 @@
 
 if [ -d ~/.bash_completion.d/ ]; then
 	for mod in $(ls -c1 ~/.bash_completion.d/) ; do
-		. ~/.bash_completion/$mod
+		. ~/.bash_completion.d/$mod
 	done
 fi
 
