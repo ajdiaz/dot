@@ -1,2 +1,7 @@
+# Ignore single file backups
+*~
+
+# GnuPG stuff
 gnupg/*.gpg
+gnupg/.\#*
 
