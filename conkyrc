@@ -1,16 +1,12 @@
 # conkyrc
 # (c) 2009 Andres J. Diaz <ajdiaz@connectica.com>
+#
 
 # I likes to start my conky manually
 background no
 
 use_xft yes
-#font 8x13
-#xftfont monospace-8
-xftfont Bitstream Vera Sans Mono:size=8
-#xftfont ProggySquareSZ:size=12
-#xftfont ProggyTinyTT:size=10
-#xftalpha 1.0
+xftfont monospace-8
 xftalpha 0.8
 
 out_to_console no
@@ -20,18 +16,17 @@ update_interval 2
 
 total_run_times 0
 
-# This makes it transparent in Gnome.
-# You MUST set your background using feh or another program 
-# which operates on the root window.
 own_window yes
-own_window_type dock
+own_window_type normal
 own_window_transparent yes
 own_window_hints undecorated,below,sticky,skip_taskbar,skip_pager
 double_buffer yes
+border_width 0
 
-minimum_size 200 400
+minimum_size 100 600
 
 draw_shades no
+
 draw_outline no
 draw_borders no
 draw_graph_borders no
@@ -41,7 +36,7 @@ default_shade_color white
 default_outline_color white
 
 alignment top_right
-gap_x 26
+gap_x 24
 gap_y 35
 
 no_buffers yes
@@ -56,20 +51,32 @@ pad_percents 3
 
 
 TEXT
+    ${time %H:%M:%S %a %b %d %Y}
+
 cpu0 ${cpu cpu0}% ${cpubar cpu0}
+${cpugraph cpu0}
 cpu1 ${cpu cpu1}% ${cpubar cpu1}
-mem  $memperc% $membar
-bat  ${battery_percent BAT1}% ${battery_bar BAT1}
-swap $swapperc% $swapbar
-root ${fs_free_perc /}% ${fs_bar /}
+${cpugraph cpu1}
 
-wlan0 down ${downspeed wlan0} k/s 
-${downspeedgraph wlan0}
-wlan0 up   ${upspeed wlan0} k/s
-${upspeedgraph wlan0}
+mem     $mem / $memmax $alignr $memperc%
+$membar
+$memgraph
 
-i/o read ${diskio_read /dev/sda}
-${diskiograph_read /dev/sda}
-i/o write ${diskio_write /dev/sda}
-${diskiograph_write /dev/sda}
+swap    $swap / $swapmax $alignr $swapperc%
+$swapbar
+
+eth0 down ${downspeed eth0} k/s 
+${downspeedgraph eth0}
+
+eth0 up ${upspeed eth0} k/s
+${upspeedgraph eth0}
+
+I/O Read  $color ${diskio_read /dev/sda2}
+${diskiograph_read /dev/sda2}
+
+I/O Write $color ${diskio_write /dev/sda2}
+${diskiograph_write /dev/sda2}
+
+/ ${fs_used /} / ${fs_size /}$alignr${fs_free_perc /}%
+${fs_bar /}
 
