@@ -63,9 +63,11 @@ do
 	if [[ "$in_script" == */prompt.bash ]]
 	then
 		PS1="$prompt"
-		PROMPT_COMMAND="[ -r $auto_dir/*/prompt ] \
-			&& source $auto_dir/*/prompt \
-			&& PS1=\"\$prompt\""
+#		PROMPT_COMMAND="[ -r $auto_dir/*/prompt.bash ] \
+#			&& source $auto_dir/*/prompt.bash \
+#			&& PS1=\"\$prompt\""
+		PS1="$prompt"
+		PROMPT_COMMAND="prompt_build && PS1=\"\$prompt\""
 	fi
 
 

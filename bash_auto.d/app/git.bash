@@ -13,8 +13,12 @@ git_get_branch_name ()
   [ "$branch" ] && echo "$branch "
 }
 
-if [[ -x /usr/bin/git ]] ; then
-[[ $PS1 = *git_get_branch_name* ]] \
-  || export PS1="\[\e[0;36m\]\$(git_get_branch_name)\[\e[0;0m\]$PS1"
-fi
+git_set_branch_in_prompt ()
+{
+	if [[ -x /usr/bin/git ]] ; then
+	[[ $prompt = *git_get_branch_name* ]] \
+  	|| export prompt="\[\e[0;36m\]\$(git_get_branch_name)\[\e[0;0m\]$prompt"
+	fi
+}
+prompt_hook_git=git_set_branch_in_prompt
 
