@@ -38,8 +38,8 @@ prompt=
 # exported.
 OS="$( uname )"
 LINUX="$(  cat /etc/*-release 2>/dev/null )"
-HOST="$( hostname    2>/dev/null )"
-USER="$( id -un )"
+HOST="${HOSTNAME}"
+USER="${LOGNAME}"
 FROM="${SSH_CLIENT%% *}"
 
 shopt -s extglob
