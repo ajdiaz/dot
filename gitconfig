@@ -32,6 +32,7 @@
 	out  = log origin..HEAD
 	rlog = reflog
 	lola = log --graph --decorate --pretty=oneline --abbrev-commit --all
+	redo = commit --amend
 
 [user]
 	name = Andres J. Diaz
