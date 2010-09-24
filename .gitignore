@@ -5,3 +5,5 @@
 gnupg/*.gpg
 gnupg/.\#*
 
+# Vim stuff
+vim/.netrwhist
