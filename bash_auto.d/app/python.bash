@@ -10,3 +10,10 @@ if [[ -r ~/pythonrc.py ]] ; then
 	export PYTHONSTARTUP=~/pythonrc.py
 fi
 
+python_set_venv_in_prompt ()
+{
+	[ "$VIRTUAL_ENV" ] && \
+  	export prompt="\[\e[1;35m\]${VIRTUAL_ENV##*/}\[\e[0;0m\] $prompt"
+}
+prompt_hook_python=python_set_venv_in_prompt
+
