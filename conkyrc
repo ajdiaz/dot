@@ -12,7 +12,7 @@ xftalpha 0.8
 out_to_console no
 
 # in seconds
-update_interval 2
+update_interval 5
 
 total_run_times 0
 
@@ -65,18 +65,9 @@ $memgraph
 swap    $swap / $swapmax $alignr $swapperc%
 $swapbar
 
-eth0 down ${downspeed eth0} k/s 
-${downspeedgraph eth0}
+I/O Read  $color ${diskio_read /dev/sda1}
+${diskiograph_read /dev/sda1}
 
-eth0 up ${upspeed eth0} k/s
-${upspeedgraph eth0}
-
-I/O Read  $color ${diskio_read /dev/sda2}
-${diskiograph_read /dev/sda2}
-
-I/O Write $color ${diskio_write /dev/sda2}
-${diskiograph_write /dev/sda2}
-
-/ ${fs_used /} / ${fs_size /}$alignr${fs_free_perc /}%
-${fs_bar /}
+I/O Write $color ${diskio_write /dev/sda1}
+${diskiograph_write /dev/sda1}
 
