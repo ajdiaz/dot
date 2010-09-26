@@ -78,8 +78,12 @@ prompt_hook_norw=prompt_hook_norw
 # Put an admiration sign if current load of the machine is upper to
 # one unit.
 prompt_hook_loadavg () {
-[ -r /proc/loadavg -a "$(cut -d'.' -f1 /proc/loadavg)" -ge 1 ] && \
+if [ -r /proc/loadavg -a -d /sys/devices/system/cpu/ ] ; then
+	local cur_avg="$(cut -d'.' -f1 /proc/loadavg)"
+	local max_avg="$(find /sys/devices/system/cpu/ -name "cpu[0-9]*" | wc -l)"
+	[ ${cur_avg:-0} -ge ${max_avg:-0} ] && \
 	prompt="\[\e[31;1m\]<\u@\h> [\w]\\$\[\e[0m\] "
+fi
 }
 prompt_hook_loadavg=prompt_hook_loadavg
 
