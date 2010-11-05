@@ -6,8 +6,8 @@ if ! installed python; then
 	return 0
 fi
 
-if [[ -r ~/pythonrc.py ]] ; then
-	export PYTHONSTARTUP=~/pythonrc.py
+if [[ -r ~/.pythonrc.py ]] ; then
+	export PYTHONSTARTUP=~/.pythonrc.py
 fi
 
 python_set_venv_in_prompt ()
