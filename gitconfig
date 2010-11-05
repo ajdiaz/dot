@@ -39,11 +39,11 @@
 	email = ajdiaz@connectical.com
 
 [sendemail]
-    smtpencryption = tls
-    smtpserver = smtp.gmail.com
-    smtpuser = ajdiaz@connectical.com
-    smtpserverport = 587
-    chainreplyto = false
+	smtpencryption = tls
+	smtpserver = smtp.gmail.com
+	smtpuser = ajdiaz@connectical.com
+	smtpserverport = 587
+	chainreplyto = false
 
 [merge]
 	tool = vimdiff
