@@ -6,7 +6,6 @@
 eval `cat $HOME/.fehbg` &
 dmon -1 ${HOME}/dev/ggtraybar/ggt 2>&1 >/dev/null
 dmon -1 gnome-settings-daemon 2>&1 >/dev/null
-dmon -1 gnome-keyring-daemon -f -s 2>&1 >/dev/null
 dmon -1 gnome-screensaver 2>&1 >/dev/null
 dmon -1 gnome-power-manager 2>&1 >/dev/null
 dmon -1 bluetooth-applet 2>&1 >/dev/null
