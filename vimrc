@@ -55,6 +55,7 @@ set grepprg=grep\ -nH\ $*       " Make grep always print the file name.
 let g:username = "Andrés J. Díaz"
 let g:author   = "Andrés J. Díaz"
 let g:email    = "ajdiaz@connectical.com"
+let g:template_dir = "~/.vim/templates"
 
 if has("spell")
     set spellfile+=~/.vim/spell/cs.utf-8.add " Computer Science words.
