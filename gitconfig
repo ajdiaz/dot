@@ -33,6 +33,8 @@
 	rlog = reflog
 	lola = log --graph --decorate --pretty=oneline --abbrev-commit --all
 	redo = commit --amend
+	br   = branch
+	sub  = submodule
 
 [user]
 	name = Andres J. Diaz
@@ -47,3 +49,8 @@
 
 [merge]
 	tool = vimdiff
+
+[giggle]
+	main-window-maximized = true
+	main-window-geometry = 0x0+0+0
+	file-view-vpane-position = 313
