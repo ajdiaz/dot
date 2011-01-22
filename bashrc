@@ -88,4 +88,6 @@ do
 done
 unset in_var
 
+[ "${HOME}" ] && cd "${HOME}"
+
 # -- end --
