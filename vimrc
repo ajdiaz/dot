@@ -110,6 +110,7 @@ endif
 
 " Filetyping and autocommands  }}}1{{{1
 " -------------------------------------
+filetype off
 call pathogen#runtime_append_all_bundles()
 filetype indent plugin on
 
