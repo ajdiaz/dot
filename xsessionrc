@@ -20,5 +20,6 @@ dmon -1 gnome-power-manager 2>&1 >/dev/null
 dmon -1 bluetooth-applet 2>&1 >/dev/null
 dmon -i 10 -1 conky 2>&1 >/dev/null
 dmon -1 nm-applet 2>&1 >/dev/null
+dropbox start 2>&1 >/dev/null
 exec /usr/bin/openbox --replace 2>&1 >/dev/null
 

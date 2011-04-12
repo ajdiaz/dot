@@ -4,6 +4,7 @@
 # GnuPG stuff
 gnupg/*.gpg
 gnupg/.\#*
+gnupg/random_seed
 
 # Vim stuff
 vim/.netrwhist
