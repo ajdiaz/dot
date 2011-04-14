@@ -33,8 +33,9 @@
 	rlog = reflog
 	lola = log --graph --decorate --pretty=oneline --abbrev-commit --all
 	redo = commit --amend
-	br   = branch
+	br   = branch -a
 	sub  = submodule
+	on   = checkout
 
 [user]
 	name = Andres J. Diaz
