@@ -5,4 +5,8 @@ if ! installed transmission-remote; then
 	return 0
 fi
 
+btrm () { transmission-remote -t "$1" --remove; }
+btinfo () { transmission-remote -t "$1" --info; }
+
 alias btlist="transmission-remote -l"
+
