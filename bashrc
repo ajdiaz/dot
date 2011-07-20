@@ -62,7 +62,7 @@ do
 	# ``PROMPT_COMMAND`` to reset value
 	if [[ "$in_script" == */prompt.bash ]]
 	then
-		PS1="$prompt"
+#		PS1="$prompt"
 #		PROMPT_COMMAND="[ -r $auto_dir/*/prompt.bash ] \
 #			&& source $auto_dir/*/prompt.bash \
 #			&& PS1=\"\$prompt\""
