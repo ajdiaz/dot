@@ -7,6 +7,8 @@ fi
 
 btrm () { transmission-remote -t "$1" --remove; }
 btinfo () { transmission-remote -t "$1" --info; }
+btstart () { transmission-remote -t "$1" -s; }
+btstop () { transmission-remote -t "$1" -S; }
 
 alias btlist="transmission-remote -l"
 
