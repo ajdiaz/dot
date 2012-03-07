@@ -11,4 +11,5 @@ btstart () { transmission-remote -t "$1" -s; }
 btstop () { transmission-remote -t "$1" -S; }
 
 alias btlist="transmission-remote -l"
+alias btadd="transmission-remote -a"
 
