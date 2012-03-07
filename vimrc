@@ -108,10 +108,20 @@ if has("syntax") || has("gui_running")
     colorscheme elflord
 endif
 
-" Filetyping and autocommands  }}}1{{{1
-" -------------------------------------
+" Pathogen Infection }}}1{{{1
+" ---------------------------
 filetype off
 call pathogen#runtime_append_all_bundles()
+
+" Bundle configuration }}}1{{{1
+" -----------------------------
+set rtp+=~/.vim/bundle/vundle/
+call vundle#rc()
+Bundle 'gmarik/vundle'
+Bundle 'errormarker.vim'
+
+" Filetyping and autocommands  }}}1{{{1
+" -------------------------------------
 filetype indent plugin on
 
 if has("autocmd")

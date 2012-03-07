@@ -11,3 +11,5 @@ vim/.netrwhist
 vim/bundle/*
 !vim/bundle/vim-pathogen
 !vim/bundle/vundle
+vim/bundle/vim-pathogen/*
+vim/bundle/vundle/*
