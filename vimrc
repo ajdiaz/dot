@@ -120,6 +120,7 @@ call vundle#rc()
 Bundle 'gmarik/vundle'
 Bundle 'errormarker.vim'
 Bundle 'vim-coffee-script'
+Bundle 'aperezdc/vim-template'
 
 " Filetyping and autocommands  }}}1{{{1
 " -------------------------------------
