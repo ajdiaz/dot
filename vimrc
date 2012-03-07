@@ -119,6 +119,7 @@ set rtp+=~/.vim/bundle/vundle/
 call vundle#rc()
 Bundle 'gmarik/vundle'
 Bundle 'errormarker.vim'
+Bundle 'vim-coffee-script'
 
 " Filetyping and autocommands  }}}1{{{1
 " -------------------------------------
