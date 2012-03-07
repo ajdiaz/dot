@@ -8,3 +8,6 @@ gnupg/random_seed
 
 # Vim stuff
 vim/.netrwhist
+vim/bundle/*
+!vim/bundle/vim-pathogen
+!vim/bundle/vundle
