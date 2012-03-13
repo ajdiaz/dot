@@ -1,16 +1,35 @@
+# The screen magic spell
+
+# No audible bell, but visible
+vbell on
+vbell_msg " *beep* "
+vbellwait 0
+
+# The activity report message
+activity "%c activity -> %n%f %t"
+
+# Deatach on hangup
+autodetach on
+
+# Scrollback buffer
+defscrollback 1000
+
+# The status line... no need explanation.
 hardstatus alwayslastline "%{db}%-w%50>%{bw}[%t]%{db}%+w %{wb}%<%>%=%C:%s %d/%m/%Y"
 
-bindkey "^T" windows
-bindkey "^N" screen
-bindkey "^F" next
+# fix delayed vi/vim startup in screen
+altscreen on
 
+
+# Use UTF-8 as default encoding
 defutf8 on
-ignorecase on
 
-activity "%c activity -> %n%f %t"
-vbell_msg " *beep* "
-
+# No display startup message
 startup_message off
 
-defscrollback 500
+# The usual bindings
+bindkey "^N" screen  # create new windown with ctrl-n
+bindkey "^[[1;5D" prev  # change window with ctrl-left
+bindkey "^[[1;5C" next  # change window with ctrl-right
+
 
