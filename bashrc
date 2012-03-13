@@ -37,7 +37,7 @@ prompt=
 # Set special variables to autoload plugins. This variables must not be
 # exported.
 OS="$( uname )"
-LINUX="$(  cat /etc/*-release 2>/dev/null )"
+LINUX="$(  cat /etc/*-{release,version} 2>/dev/null )"
 HOST="${HOSTNAME}"
 USER="${LOGNAME}"
 FROM="${SSH_CLIENT%% *}"
@@ -47,32 +47,12 @@ shopt -s extglob
 # The ``for`` is muted (redirected to ``/dev/null``) to prevent
 # unusefull errors if directory does not exists. I consider ugly
 # practice to save this messages.
-for in_script in $(find "$auto_dir/" -iname "*.bash")
-do
-
-	# Mute verbose output in no-interactive shells
-	if ${interactive:-false}
-	then
-		source $in_script
-	else
-		source $in_script 2>&1 >/dev/null
-	fi
-
-	# If exist prompt file, then set according value in PS1 and using
-	# ``PROMPT_COMMAND`` to reset value
-	if [[ "$in_script" == */prompt.bash ]]
-	then
-#		PS1="$prompt"
-#		PROMPT_COMMAND="[ -r $auto_dir/*/prompt.bash ] \
-#			&& source $auto_dir/*/prompt.bash \
-#			&& PS1=\"\$prompt\""
-		PS1="$prompt"
-		PROMPT_COMMAND="prompt_build && PS1=\"\$prompt\""
-	fi
-
-
-done
-
+#for in_script in $(find "$auto_dir/" -iname "*.bash")
+if ${interactive:-false}; then
+	for src in ${auto_dir}/**/*.bash; do source $src; done
+else
+	for src in ${auto_dir}/**/*.bash; do mute source $src; done
+fi
 
 # We also export ``PS1`` and ``PROMPT_COMMAND`` variables to environment.
 # It's very usefull when run a subshell interactively.
@@ -81,13 +61,11 @@ export PROMPT_COMMAND
 
 # Free all *in*ternal variables at this moment. It's postcondition. At
 # this point none variable must be used by bash_auto
-unset prompt
-for in_var in ${!in_*} ${!options_*}
-do
-	unset $in_var
-done
-unset in_var
-
-[ "${HOME}" ] && cd "${HOME}"
+unset prompt src
+#for in_var in ${!in_*} ${!options_*}
+#do
+#	unset $in_var
+#done
+#unset in_var
 
 # -- end --
