@@ -66,7 +66,8 @@
 # }
 # prompt_hook_git=git_set_branch_in_prompt
 
-prompt="\[\e[32;1m\]<\u@\h> \[\e[34;1m\][\w]\\$\[\e[0m\] "
+window="${WINDOW:+:\[\e[37;1m\]${WINDOW}\[\e[32;1m\]}"
+prompt="\[\e[32;1m\]<\u@\h${window}> \[\e[34;1m\][\w]\\$\[\e[0m\] "
 
 # Prompt showed in directories which they are not writeable by current user
 # (the working dir must be displayed in lighting red)
@@ -108,7 +109,8 @@ prompt_hook_titlebar=prompt_hook_titlebar
 prompt_build ()
 {
 	# Handle hooks if present.
-	prompt="\[\e[32;1m\]<\u@\h> \[\e[34;1m\][\w]\\$\[\e[0m\] "
+	window="${WINDOW:+:\[\e[37;1m\]${WINDOW}\[\e[32;1m\]}"
+	prompt="\[\e[32;1m\]<\u@\h${window}> \[\e[34;1m\][\w]\\$\[\e[0m\] "
 	for hook in ${!prompt_hook*}; do
 		${!hook} 2>/dev/null >/dev/null
 	done; true
