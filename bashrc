@@ -56,16 +56,11 @@ fi
 
 # We also export ``PS1`` and ``PROMPT_COMMAND`` variables to environment.
 # It's very usefull when run a subshell interactively.
-export PS1="${PS1:-\$}"
-export PROMPT_COMMAND
+export PS1="$prompt"
+export PROMPT_COMMAND="prompt_build"
 
 # Free all *in*ternal variables at this moment. It's postcondition. At
 # this point none variable must be used by bash_auto
-unset prompt src
-#for in_var in ${!in_*} ${!options_*}
-#do
-#	unset $in_var
-#done
-#unset in_var
+unset prompt src ${!in_*} ${!options_*}
 
 # -- end --
