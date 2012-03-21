@@ -3,6 +3,8 @@
 # Custom xsession for laptop, load openbox with a number of gnome applets
 # and also a ggtraybar using dmon...
 
+cd $HOME
+
 export GNOME_KEYRING_CONTROL
 export GNOME_KEYRING_PID
 export SSH_AUTH_SOCK

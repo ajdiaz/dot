@@ -36,8 +36,8 @@ prompt=
 
 # Set special variables to autoload plugins. This variables must not be
 # exported.
-OS="$( uname )"
-LINUX="$(  cat /etc/*-{release,version} 2>/dev/null )"
+OS="$(uname)"
+LINUX="$(cat /etc/*-{release,version} 2>/dev/null)"
 HOST="${HOSTNAME}"
 USER="${LOGNAME}"
 FROM="${SSH_CLIENT%% *}"
@@ -47,20 +47,14 @@ shopt -s extglob
 # The ``for`` is muted (redirected to ``/dev/null``) to prevent
 # unusefull errors if directory does not exists. I consider ugly
 # practice to save this messages.
-#for in_script in $(find "$auto_dir/" -iname "*.bash")
-if ${interactive:-false}; then
-	for src in ${auto_dir}/**/*.bash; do source $src; done
-else
-	for src in ${auto_dir}/**/*.bash; do mute source $src; done
-fi
+for src in ${auto_dir}/**/*.bash; do echo $src; time mute source $src; done
 
 # We also export ``PS1`` and ``PROMPT_COMMAND`` variables to environment.
 # It's very usefull when run a subshell interactively.
-export PS1="$prompt"
-export PROMPT_COMMAND="prompt_build"
+export PS1="[no prompt]$ "
 
 # Free all *in*ternal variables at this moment. It's postcondition. At
 # this point none variable must be used by bash_auto
-unset prompt src ${!in_*} ${!options_*}
+unset OS LINUX HOST USER FROM src ${!in_*} ${!options_*}
 
 # -- end --
