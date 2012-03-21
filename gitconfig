@@ -36,6 +36,7 @@
 	br   = branch -a
 	sub  = submodule
 	on   = checkout
+	files = ls-files
 
 [user]
 	name = Andres J. Diaz
