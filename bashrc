@@ -47,7 +47,7 @@ shopt -s extglob
 # The ``for`` is muted (redirected to ``/dev/null``) to prevent
 # unusefull errors if directory does not exists. I consider ugly
 # practice to save this messages.
-for src in ${auto_dir}/**/*.bash; do echo $src; time mute source $src; done
+for src in ${auto_dir}/**/*.bash; do mute source $src; done
 
 # We also export ``PS1`` and ``PROMPT_COMMAND`` variables to environment.
 # It's very usefull when run a subshell interactively.
