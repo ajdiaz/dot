@@ -117,4 +117,6 @@ prompt_build ()
 	export PS1="$prompt"; unset prompt window
 }
 
+PROMPT_COMMAND="prompt_build"
+
 # vim:ft=sh:
