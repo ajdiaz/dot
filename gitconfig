@@ -22,18 +22,14 @@
 
 [alias]
 	co   = commit -a
-	a    = add
-	di   = diff
-	dic  = diff --cached
-	pl   = pull
-	ps   = push
 	plre = pull --rebase
 	st   = status
 	out  = log origin..HEAD
 	rlog = reflog
 	lola = log --graph --decorate --pretty=oneline --abbrev-commit --all
 	redo = commit --amend
-	br   = branch -a
+	br   = branch -a -v
+	re   = remote -v
 	sub  = submodule
 	on   = checkout
 	files = ls-files
