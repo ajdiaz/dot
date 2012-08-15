@@ -352,6 +352,7 @@ map <C-Right> <End>
 imap <C-BS> <Del>
 imap <C-Left> <Home>
 imap <C-Right> <End>
+imap <C-B> •
 
 "if has("loaded_less")
 "    map q ZZ
