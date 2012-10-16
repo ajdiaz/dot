@@ -158,6 +158,11 @@ function profile {
 	source "${HOME}/.zsh/profiles/$1"
 }
 
+# Load some local files
+for local in "${HOME}/.zsh/local/"*; do
+	[ "$local" != "${HOME}/.zsh/local/*" ] && source "$local"
+done
+
 # Mark exports
 export PATH
 
