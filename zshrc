@@ -153,10 +153,10 @@ if [ -x /usr/bin/vim ] ; then
 	export EDITOR='/usr/bin/vim'
 fi
 
-# Environment variables
-if [ -r "${HOME}/.env" ] ; then
-	source "${HOME}/.env"
-fi
+# Load profile (environments) easy
+function profile {
+	source "${HOME}/.zsh/profiles/$1"
+}
 
 # Mark exports
 export PATH
