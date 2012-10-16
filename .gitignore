@@ -13,3 +13,6 @@ vim/bundle/*
 
 # Environ stuff
 env
+
+# Local files
+zsh/local/*
