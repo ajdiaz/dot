@@ -166,3 +166,9 @@ if [ -r "${HOME}/.pythonrc.py" ] ; then
 	export PYTHONSTARTUP="${HOME}/.pythonrc.py"
 fi
 
+# Some virtualenvwrapper magic
+export WORKON_HOME="${HOME}/env"
+if [ -r /etc/bash_completion.d/virtualenvwrapper ]; then
+	source /etc/bash_completion.d/virtualenvwrapper
+fi
+
