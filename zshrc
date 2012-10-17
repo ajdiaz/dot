@@ -137,11 +137,12 @@ unset FMT_BRANCH FMT_ACTION
 # Aliases
 alias -- 'pd'=pushd
 alias -- '..'='cd ..'
-alias ls='ls --color=auto'
-alias grep='grep --color=auto'
-alias sudo='sudo -s'
-alias ll='ls --color=auto -l'
-alias ps='ps axf'
+alias -- ls='ls --color=auto'
+alias -- grep='grep --color=auto'
+alias -- sudo='sudo -s'
+alias -- ll='ls --color=auto -l'
+alias -- ps='ps axf'
+alias -- '-'='cd -'
 
 # Local binaries directory
 if [ -d "${HOME}/.local/bin" ] ; then
