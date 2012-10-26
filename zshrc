@@ -59,6 +59,10 @@ zstyle ':completion:*' cache-path ~/.zsh/cache
 zstyle ':completion:*:descriptions' format '%U%B%d%b%u'
 zstyle ':completion:*:warnings' format '%BNo matching %b%d'
 
+# Avoid annoying username completion
+zstyle ':completion:*:complete:(cd|pushd|pd):*' tag-order \
+	   'local-directories path-directories directory-stack' '*'
+
 # Prevent CVS files from being matched
 zstyle ':completion:*:(all-|)files' ignored-patterns '(|*/)CVS'
 zstyle ':completion:*:cd:*' ignored-patterns '(*/)#CVS'

@@ -1,9 +1,11 @@
 [color]
 	ui     = auto
+
 [color "branch"]
 	current = yellow reverse
 	local = yellow
 	remote = green
+
 [color "diff"]
 	meta = yellow bold
 	frag = magenta bold
@@ -33,10 +35,7 @@
 	sub  = submodule
 	on   = checkout
 	files = ls-files
-
-[user]
-	name = Andres J. Diaz
-	email = ajdiaz@connectical.com
+	p    = pull
 
 [sendemail]
 	smtpencryption = tls
