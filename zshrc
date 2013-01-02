@@ -182,3 +182,5 @@ if [ -r /etc/bash_completion.d/virtualenvwrapper ]; then
 	source /etc/bash_completion.d/virtualenvwrapper
 fi
 
+
+PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting

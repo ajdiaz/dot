@@ -59,3 +59,8 @@ for src in ${auto_dir}/**/*.bash; do mute source $src; done
 unset OS LINUX HOST USER FROM src ${!in_*} ${!options_*}
 
 # -- end --
+export GEM_HOME=/home/ajdiaz/gems
+export GEM_PATH=/home/ajdiaz/gems:/usr/local/lib/ruby/gems/1.8/
+export PATH=/usr/lib/lightdm/lightdm:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/home/ajdiaz/.local/bin:/home/ajdiaz/gems/bin
+
+PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
