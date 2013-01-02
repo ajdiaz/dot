@@ -341,6 +341,8 @@ map <C-m>  :wall!<CR>:make<CR>
 map <C-e>  :cl!<cr>
 map <C-e>n :cn!<cr>
 map <C-e>p :cp!<cr>
+map <C-B>  :Gblame<cr>
+map <C-C>  :close<cr>
 
 " Multiple flie manage mappings
 map <C-Up>  :prev!<CR>
@@ -352,7 +354,6 @@ map <C-Right> <End>
 imap <C-BS> <Del>
 imap <C-Left> <Home>
 imap <C-Right> <End>
-imap <C-B> •
 
 "if has("loaded_less")
 "    map q ZZ
