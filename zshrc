@@ -117,7 +117,7 @@ case ${TERM} in
 		function precmd {
 			vcs_info 'prompt'
 			print -Pn "\e]0;%n@%m: %~\a"
-			[[ ${TERM} = screen* ]] && echo -ne "\ekzsh\e\\"
+			[[ ${TERM} = screen* ]] && echo -ne "\ek$(hostname):${PWD##*/}\e\\"
 		}
 	;;
 	*)
@@ -182,5 +182,3 @@ if [ -r /etc/bash_completion.d/virtualenvwrapper ]; then
 	source /etc/bash_completion.d/virtualenvwrapper
 fi
 
-
-PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
