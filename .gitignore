@@ -9,6 +9,7 @@ gnupg/random_seed
 # Vim stuff
 vim/.netrwhist
 vim/bundle/*
+vim/bundle/vundle/*
 !vim/bundle/vim-pathogen
 
 # Environ stuff
@@ -16,3 +17,6 @@ env
 
 # Local files
 zsh/local/*
+
+# Cache files
+zsh/cache*
