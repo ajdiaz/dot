@@ -25,6 +25,7 @@
 [alias]
 	br = branch
 	ci = commit
+	ca = commit -a
 	cia = commit --amend
 	co = checkout
 	df = diff
@@ -34,6 +35,7 @@
 	hist = log --pretty=format:"%h %ad | %s%d [%an]" --graph --date=short
 	pr = pull --rebase
 	st = status
+	sm = submodule
 	undo = reset -hard HEAD -
 
 [sendemail]
