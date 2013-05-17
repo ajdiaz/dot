@@ -54,3 +54,5 @@
 	file-view-vpane-position = 313
 [push]
 	default = simple
+[branch]
+	autosetuprebase = always
