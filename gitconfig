@@ -21,6 +21,7 @@
 [core]
 	excludefile = ~/.gitignore
 	whitespace = fix, -indent-with-non-tab,trailing-space,cr-at-eol
+	autocrlf = input
 
 [alias]
 	br = branch
@@ -39,6 +40,12 @@
 	undo = reset --soft HEAD^
 	export = !"git archive --prefix=$(basename $PWD)/ --format="tar.gz" $(git symbolic-ref --short HEAD) -o"
 
+	# apple-pick taken from http://joeshaw.org/2010/06/22/667
+	apple-pick = !sh -c 'git rev-list --reverse "$@" | xargs -n1 git cherry-pick' -
+
+	format-patch = -M -C
+	todo = grep -E '(FIXME|TODO) '
+
 [sendemail]
 	smtpencryption = tls
 	smtpserver = smtp.gmail.com
@@ -46,8 +53,15 @@
 	smtpserverport = 587
 	chainreplyto = false
 
+[format]
+	numbered = auto
+
 [merge]
+	stat = true
 	tool = vimdiff
+
+[pack]
+	threads = 0
 
 [giggle]
 	main-window-maximized = true
@@ -57,5 +71,12 @@
 [push]
 	default = simple
 
+[rebase]
+	autosquash = true
+	stat = true
+
 [branch]
 	autosetuprebase = always
+
+[diff]
+	algorithm = patience
