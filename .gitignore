@@ -20,3 +20,13 @@ zsh/local/*
 
 # Cache files
 zsh/cache*
+
+# SSH stuff
+ssh/authorized_keys*
+ssh/id_rsa*
+ssh/id_dsa*
+ssh/identity*
+ssh/id_*
+ssh/known_hosts*
+ssh/master-*
+
