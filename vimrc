@@ -355,6 +355,11 @@ imap <C-BS> <Del>
 imap <C-Left> <Home>
 imap <C-Right> <End>
 
+" Comment with one key (requires EnhCommentify bundle)
+vmap cc :call EnhancedCommentify('','guess')<CR>
+vmap ci :call EnhancedCommentify('','comment')<CR>
+vmap co :call EnhancedCommentify('','decomment')<CR>
+
 "if has("loaded_less")
 "    map q ZZ
 "endif
