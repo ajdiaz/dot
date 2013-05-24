@@ -44,7 +44,7 @@
 	apple-pick = !sh -c 'git rev-list --reverse "$@" | xargs -n1 git cherry-pick' -
 
 	format-patch = -M -C
-	todo = grep -E '(FIXME|TODO) '
+	todo = grep -E '(FIXME|TODO)[:]? '
 
 [sendemail]
 	smtpencryption = tls
