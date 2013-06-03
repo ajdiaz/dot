@@ -37,6 +37,7 @@
 	pr = pull --rebase
 	st = status
 	sm = submodule
+	rename = branch -m
 	undo = reset --soft HEAD^
 	export = !"git archive --prefix=$(basename $PWD)/ --format="tar.gz" $(git symbolic-ref --short HEAD) -o"
 
