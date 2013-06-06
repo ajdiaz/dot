@@ -30,3 +30,6 @@ ssh/id_*
 ssh/known_hosts*
 ssh/master-*
 
+# todo.txt
+todo/*.txt
+
