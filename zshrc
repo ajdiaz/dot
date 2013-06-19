@@ -147,11 +147,17 @@ alias -- sudo='sudo -s'
 alias -- ll='ls --color=auto -l'
 alias -- ps='ps axf'
 alias -- '-'='cd -'
+alias -- pager='pager -R'
 
 # Local binaries directory
 if [ -d "${HOME}/.local/bin" ] ; then
 	PATH="${PATH}:${HOME}/.local/bin"
 fi
+
+# Optional binaries in PATH (prepend)
+for _path in /opt/*/sbin /opt/*/bin /opt/*/usr/bin /opt/*/usr/sbin /opt/*/usr/local/bin /opt/*/usr/local/sbin; do
+	[ "${_path//\*/}" == "${_path}" ] && PATH="${_path}:${PATH}"
+done
 
 # Some EDITOR preferences
 if [ -x /usr/bin/vim ] ; then
