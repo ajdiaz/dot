@@ -29,6 +29,7 @@
 	ca = commit -a
 	cia = commit --amend
 	co = checkout
+	cp = cherry-pick
 	df = diff
 	dfs = diff --staged
 	h = log --graph --date=iso --pretty=format:'%Cgreen%h%Creset %Cblue%ad%Creset | %s%Cgreen%d%Creset %C(yellow)[%an]%Creset'
