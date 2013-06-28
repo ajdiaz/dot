@@ -40,6 +40,7 @@
 	sm = submodule
 	rename = branch -m
 	undo = reset --soft HEAD^
+	untrack = update-index --assume-unchanged
 	export = !"git archive --prefix=$(basename $PWD)/ --format="tar.gz" $(git symbolic-ref --short HEAD) -o"
 
 	# apple-pick taken from http://joeshaw.org/2010/06/22/667
