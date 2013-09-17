@@ -7,3 +7,4 @@ ass=1
 ao=pulse,alsa
 vo=xv,vaapi,gl_nosw,x11
 lavdopts=threads=4
+subfont-text-scale=7
