@@ -188,4 +188,8 @@ if [ -r /etc/bash_completion.d/virtualenvwrapper ]; then
 	source /etc/bash_completion.d/virtualenvwrapper
 fi
 
+if [ -r /usr/bin/virtualenvwrapper.sh ]; then
+	source /usr/bin/virtualenvwrapper.sh
+fi
+
 alias ifconfig.me='curl -q http://ifconfig.me'
