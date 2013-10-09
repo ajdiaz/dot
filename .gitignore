@@ -13,6 +13,7 @@ vim/.netrwhist
 vim/bundle/*
 vim/bundle/vundle/*
 !vim/bundle/vim-pathogen
+!vim/bundle/vim-puppet
 
 # Environ stuff
 env
