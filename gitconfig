@@ -42,6 +42,8 @@
 	undo = reset --soft HEAD^
 	untrack = update-index --assume-unchanged
 	export = !"git archive --prefix=$(basename $PWD)/ --format="tar.gz" $(git symbolic-ref --short HEAD) -o"
+	save = stash save
+	load = !"f() { git stash apply stash^{/$*}; }; f"
 
 	# apple-pick taken from http://joeshaw.org/2010/06/22/667
 	apple-pick = !sh -c 'git rev-list --reverse "$@" | xargs -n1 git cherry-pick' -
