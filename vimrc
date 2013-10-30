@@ -35,6 +35,7 @@ set incsearch                   " Use incremental search
 set nohlsearch                  " Disable search highlighting
 set ruler                       " Show line number & column
 set laststatus=2                " Always show a status line
+set expandtab                   " Always use spaces instead of tabs
 set sidescrolloff=2             " Keep some context when scrolling
 set scrolloff=6                 " The same in vertical :)
 set viminfo+=n~/.viminfo        " Name of the viminfo file
