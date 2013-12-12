@@ -119,6 +119,9 @@ case ${TERM} in
 			print -Pn "\e]0;%n@%m: %~\a"
 			[[ ${TERM} = screen* ]] && echo -ne "\ek$(hostname):${PWD##*/}\e\\"
 		}
+        function preexec () {
+            print -Pn "\e]0;$1\a"
+        }
 	;;
 	*)
 		function precmd {
