@@ -108,12 +108,14 @@ if has("syntax") || has("gui_running")
     syntax on
     colorscheme elflord
 endif
+" Set Color Column to mark end of line }}}1{{{1
+set colorcolumn=+2
+highlight ColorColumn ctermbg=232 guibg=232
 
 " Pathogen Infection }}}1{{{1
 " ---------------------------
 filetype off
 call pathogen#runtime_append_all_bundles()
-
 " Bundle configuration }}}1{{{1
 " -----------------------------
 set rtp+=~/.vim/bundle/vundle/
@@ -229,7 +231,6 @@ if has("autocmd")
     " System headers usually are designed to be viewed with 8-space tabs
     autocmd BufReadPost /usr/include/sys/*.h    setlocal ts=8 sw=8
     autocmd BufReadPost /usr/include/mach*/*.h     setlocal ts=8 sw=8
-
 endif
 
 " Change colors of completion popup for Vim 7.
@@ -366,7 +367,6 @@ vmap co :call EnhancedCommentify('','decomment')<CR>
 "endif
 
 " }}}1
-
 
 let &errorformat="%f:%l:%c: %t%*[^:]:%m,%f:%l: %t%*[^:]:%m," . &errorformat 
 " vim:ft=vim foldmethod=marker tw=78
