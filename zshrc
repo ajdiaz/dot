@@ -18,6 +18,11 @@ bindkey -e
 autoload -U colors
 colors
 
+if [ -e /usr/share/terminfo/x/xterm-256color ]; then
+    export TERM='xterm-256color'
+else
+    export TERM='xterm-color'
+fi
 
 # Bind Ctrl-Left and Ctrl-Right key sequences, and AvPag/RePag for history
 bindkey "^[[1;5C" forward-word
