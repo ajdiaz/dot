@@ -47,7 +47,7 @@ set showfulltag                 " Show full prototype of tags on completion
 set showcmd                     " Show commands as they are typed
 set formatoptions+=cqron1       " Some useful formatting options
 set showmatch                   " Show matching parens
-set textwidth=76                " Text is 76 columns wide
+set textwidth=78                " Text is 78 columns wide
 set backspace=2                 " Backspace always useable in insert mode
 set fileformats=unix,mac,dos    " Allows automatic line-end detection.
 set grepprg=grep\ -nH\ $*       " Make grep always print the file name.
