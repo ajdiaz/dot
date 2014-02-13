@@ -38,6 +38,7 @@
 	pr = pull --rebase
 	st = status
 	sm = submodule
+	smu = submodule update --remote
 	rename = branch -m
 	undo = reset --soft HEAD^
 	untrack = update-index --assume-unchanged

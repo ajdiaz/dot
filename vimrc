@@ -115,15 +115,12 @@ highlight ColorColumn ctermbg=232 guibg=232
 " Pathogen Infection }}}1{{{1
 " ---------------------------
 filetype off
-call pathogen#runtime_append_all_bundles()
+call pathogen#incubate()
 " Bundle configuration }}}1{{{1
 " -----------------------------
 set rtp+=~/.vim/bundle/vundle/
 call vundle#rc()
 Bundle 'gmarik/vundle'
-Bundle 'errormarker.vim'
-Bundle 'vim-coffee-script'
-Bundle 'aperezdc/vim-template'
 
 " Filetyping and autocommands  }}}1{{{1
 " -------------------------------------
