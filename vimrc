@@ -348,12 +348,13 @@ map <C-S-C> :SyntasticCheck<cr>
 map <C-Up>  :prev!<CR>
 map <C-Down> :next!<CR>
 
-" Some usefull kay bindings
+" Some useful key bindings
 map <C-Left> <Home>
 map <C-Right> <End>
 imap <C-BS> <Del>
 imap <C-Left> <Home>
 imap <C-Right> <End>
+map <C-n> :NERDTreeToggle<cr>
 
 vmap cc \c<space>
 vmap ci \cc
