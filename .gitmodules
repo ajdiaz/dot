@@ -7,3 +7,6 @@
 [submodule "vim/bundle/vim-puppet"]
 	path = vim/bundle/vim-puppet
 	url = git://github.com/rodjek/vim-puppet.git
+[submodule "vim/bundle/vim-template"]
+	path = vim/bundle/vim-template
+	url = git://github.com/aperezdc/vim-template.git
