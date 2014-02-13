@@ -336,12 +336,13 @@ endfunction
 " }}}1 Key Mappings {{{1
 
 " Developing mapings
-map <C-m>  :wall!<CR>:make<CR>
+map <C-S-M>  :wall!<CR>:make<CR>
 map <C-e>  :cl!<cr>
 map <C-e>n :cn!<cr>
 map <C-e>p :cp!<cr>
 map <C-B>  :Gblame<cr>
 map <C-C>  :close<cr>
+map <C-S-C> :SyntasticCheck<cr>
 
 " Multiple flie manage mappings
 map <C-Up>  :prev!<CR>
