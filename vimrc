@@ -319,7 +319,7 @@ function InsertTabWrapper()
         return "\<c-p>"
     endif
 endfunction
-
+let g:neocomplcache_enable_at_startup = 1
 inoremap <Tab> <C-R>=InsertTabWrapper()<CR>
 
 " }}}1 Python documentation {{{1
