@@ -41,6 +41,7 @@ set scrolloff=6                 " The same in vertical :)
 set viminfo+=n~/.viminfo        " Name of the viminfo file
 set whichwrap+=[,],<,>          " Allow arrow keys to wrap lines
 set nowrap                      " Don't wrap long lines
+set mouse=a                     " Use mouse where available.
 set showmode                    " Print the current mode in the last line
 set nottyfast                   " Lots of console stuff that may slow down Vim
 set showfulltag                 " Show full prototype of tags on completion
