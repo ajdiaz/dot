@@ -356,6 +356,7 @@ imap <C-BS> <Del>
 imap <C-Left> <Home>
 imap <C-Right> <End>
 map <C-n> :NERDTreeToggle<cr>
+map bb :bNext<cr>
 
 vmap cc \c<space>
 vmap ci \cc
