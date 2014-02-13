@@ -10,6 +10,7 @@ gnupg/*private*
 
 # Vim stuff
 vim/.netrwhist
+vim/bundle/.vundle
 
 # Environ stuff
 env
