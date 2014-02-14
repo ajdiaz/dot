@@ -23,6 +23,7 @@
 " SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 " ---------------------------------------------------------------------
 
+
 " Set options {{{1
 " ----------------
 
@@ -264,6 +265,36 @@ if has("multi_byte")
     endif
 endif
 
+" Modern status line }}}1{{{1
+set statusline=
+set statusline+=%1*\ %<%F\                                "File+path
+set statusline+=%2*\ %y\                                  "FileType
+set statusline+=%3*\ %{''.(&fenc!=''?&fenc:&enc).''}      "Encoding
+set statusline+=%3*\ %{(&bomb?\",BOM\":\"\")}\            "Encoding2
+set statusline+=%4*\ %{&ff}\                              "FileFormat (dos/unix..)
+set statusline+=%5*\ %{&spelllang}\%{HighlightSearch()}\  "Spellanguage & Highlight on?
+set statusline+=%8*\ %=\ row:%l/%L\ (%03p%%)\             "Rownumber/total (%)
+set statusline+=%9*\ col:%03c\                            "Colnr
+set statusline+=%0*\ \ %m%r%w\ %P\ \                      "Modified? Readonly? Top/bot.
+
+function! HighlightSearch()
+    if &hls
+        return 'H'
+    else
+        return ''
+    endif
+endfunction
+
+hi User1 ctermfg=15  ctermbg=21
+hi User2 ctermfg=89  ctermbg=15 cterm=bold
+hi User3 ctermfg=0  ctermbg=15
+hi User4 ctermfg=0  ctermbg=15
+hi User5 ctermfg=0  ctermbg=15
+hi User7 ctermfg=0  ctermbg=15 cterm=bold
+hi User8 ctermfg=0  ctermbg=15
+hi User9 ctermfg=0  ctermbg=15
+hi User0 ctermfg=0  ctermbg=15
+
 
 " Functions and Commands   }}}1{{{1
 " Autocorrect some usually-mispelled commands
@@ -373,3 +404,5 @@ let &errorformat="%f:%l:%c: %t%*[^:]:%m,%f:%l: %t%*[^:]:%m," . &errorformat
 " vim:ft=vim foldmethod=marker tw=78
 " vim:ts=4:sw=4:foldmethod=marker:foldenable:foldminlines=1:fenc=utf-8
 " ---------------------------------------------------------------------
+
+
