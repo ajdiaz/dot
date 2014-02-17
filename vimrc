@@ -58,7 +58,7 @@ set grepprg=grep\ -nH\ $*       " Make grep always print the file name.
 let g:username = "Andrés J. Díaz"
 let g:author   = "Andrés J. Díaz"
 let g:email    = "ajdiaz@connectical.com"
-let g:template_dir = "~/.vim/templates"
+let g:license  = "GPLv2"
 
 if has("spell")
     set spellfile+=~/.vim/spell/cs.utf-8.add " Computer Science words.
@@ -368,13 +368,13 @@ endfunction
 " }}}1 Key Mappings {{{1
 
 " Developing mapings
-map <C-S-M>  :wall!<CR>:make<CR>
+map <C-M>  :wall!<CR>:make<CR>
 map <C-e>  :cl!<cr>
 map <C-e>n :cn!<cr>
 map <C-e>p :cp!<cr>
 map <C-B>  :Gblame<cr>
 map <C-C>  :close<cr>
-map <C-S-C> :SyntasticCheck<cr>
+map <C-V> :SyntasticCheck<cr>
 
 " Multiple flie manage mappings
 map <C-Up>  :prev!<CR>
