@@ -157,6 +157,16 @@ alias -- ps='ps axf'
 alias -- '-'='cd -'
 alias -- pager='pager -R'
 
+wgetm () {
+    wget --recursive --no-clobber --page-requisites \
+                     --html-extension --convert-links \
+                     --restrict-file-names=windows \
+                     --user-agent='MSIE/5.0' \
+                     --referer="$1" \
+                     --random-wait \
+                     --no-parent "$@"
+}
+
 # Local binaries directory
 if [ -d "${HOME}/.local/bin" ] ; then
 	PATH="${PATH}:${HOME}/.local/bin"
