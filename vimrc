@@ -42,6 +42,7 @@ set scrolloff=6                 " The same in vertical :)
 set viminfo+=n~/.viminfo        " Name of the viminfo file
 set whichwrap+=[,],<,>          " Allow arrow keys to wrap lines
 set nowrap                      " Don't wrap long lines
+set clipboard=unnamedplus       " Use global clipboard.
 set mouse=a                     " Use mouse where available.
 set showmode                    " Print the current mode in the last line
 set nottyfast                   " Lots of console stuff that may slow down Vim
@@ -375,10 +376,7 @@ map <C-e>p :cp!<cr>
 map <C-B>  :Gblame<cr>
 map <C-C>  :close<cr>
 map <C-V> :SyntasticCheck<cr>
-
-" Multiple flie manage mappings
-map <C-Up>  :prev!<CR>
-map <C-Down> :next!<CR>
+map <C-W> :%s/\s\+$//<cr>
 
 " Some useful key bindings
 map <C-Left> <Home>
@@ -387,7 +385,8 @@ imap <C-BS> <Del>
 imap <C-Left> <Home>
 imap <C-Right> <End>
 map <C-n> :NERDTreeToggle<cr>
-map bb :bNext<cr>
+map <C-Up> :bNext<cr>
+map <C-Down> :bPrev<cr>
 
 vmap cc \c<space>
 vmap ci \cc
@@ -404,5 +403,3 @@ let &errorformat="%f:%l:%c: %t%*[^:]:%m,%f:%l: %t%*[^:]:%m," . &errorformat
 " vim:ft=vim foldmethod=marker tw=78
 " vim:ts=4:sw=4:foldmethod=marker:foldenable:foldminlines=1:fenc=utf-8
 " ---------------------------------------------------------------------
-
-
