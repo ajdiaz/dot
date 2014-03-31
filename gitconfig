@@ -88,4 +88,7 @@
 	algorithm = patience
 
 [rerere]
-	enabled = true
+    enabled = true
+
+[credential]
+	helper = cache
