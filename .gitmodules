@@ -34,3 +34,6 @@
 [submodule "vim/bundle/salt-vim"]
 	path = vim/bundle/salt-vim
 	url = git://github.com/saltstack/salt-vim.git
+[submodule "vim/bundle/dockerfile"]
+	path = vim/bundle/dockerfile
+	url = git://github.com/ekalinin/Dockerfile.vim.git
