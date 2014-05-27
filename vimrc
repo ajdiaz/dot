@@ -61,6 +61,8 @@ let g:author   = "Andrés J. Díaz"
 let g:email    = "ajdiaz@connectical.com"
 let g:license  = "GPLv2"
 
+let g:vim_json_syntax_conceal = 0
+
 if has("spell")
     set spellfile+=~/.vim/spell/cs.utf-8.add " Computer Science words.
 endif
