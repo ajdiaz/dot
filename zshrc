@@ -173,6 +173,10 @@ if [ -d "${HOME}/.local/bin" ] ; then
 fi
 
 # Optional binaries in PATH (prepend)
+for _path in ${HOME}/.gem/ruby/*/bin; do
+    [ "${_path//\*/}" = "${_path}" ] && PATH="${_path}:${PATH}"
+done
+
 for _path in /opt/*/sbin /opt/*/bin /opt/*/usr/bin /opt/*/usr/sbin /opt/*/usr/local/bin /opt/*/usr/local/sbin; do
 	[ "${_path//\*/}" == "${_path}" ] && PATH="${_path}:${PATH}"
 done
