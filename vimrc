@@ -50,7 +50,7 @@ set showfulltag                 " Show full prototype of tags on completion
 set showcmd                     " Show commands as they are typed
 set formatoptions+=cqron1       " Some useful formatting options
 set showmatch                   " Show matching parens
-set textwidth=78                " Text is 78 columns wide
+"set textwidth=78                " Text is 78 columns wide
 set backspace=2                 " Backspace always useable in insert mode
 set fileformats=unix,mac,dos    " Allows automatic line-end detection.
 set grepprg=grep\ -nH\ $*       " Make grep always print the file name.
@@ -60,8 +60,6 @@ let g:username = "Andrés J. Díaz"
 let g:author   = "Andrés J. Díaz"
 let g:email    = "ajdiaz@connectical.com"
 let g:license  = "GPLv2"
-
-let g:vim_json_syntax_conceal = 0
 
 if has("spell")
     set spellfile+=~/.vim/spell/cs.utf-8.add " Computer Science words.
@@ -126,6 +124,14 @@ call pathogen#incubate()
 set rtp+=~/.vim/bundle/vundle/
 call vundle#rc()
 Bundle 'gmarik/vundle'
+
+" vim-json configuration }}}1{{{1
+" -------------------------------
+autocmd FileType json map zr :syn sync fromstart<CR>
+autocmd FileType json set foldmethod=syntax
+autocmd FileType json set foldlevel=100
+let g:vim_json_syntax_conceal = 0
+
 
 " Filetyping and autocommands  }}}1{{{1
 " -------------------------------------
