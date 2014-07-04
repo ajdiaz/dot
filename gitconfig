@@ -24,7 +24,7 @@
 	autocrlf = input
 
 [alias]
-	br = branch
+	br = branch -vvv
 	ci = commit
 	ca = commit -a
 	cia = commit --amend
@@ -91,4 +91,4 @@
     enabled = true
 
 [credential]
-	helper = cache
+    helper = cache
