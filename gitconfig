@@ -24,6 +24,7 @@
 	autocrlf = input
 
 [alias]
+	f = fetch --all -v
 	br = branch -vvv
 	ci = commit
 	ca = commit -a
