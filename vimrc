@@ -118,7 +118,7 @@ highlight ColorColumn ctermbg=232 guibg=232
 " Pathogen Infection }}}1{{{1
 " ---------------------------
 filetype off
-call pathogen#incubate()
+call  pathogen#infect('bundle/{}')
 " Bundle configuration }}}1{{{1
 " -----------------------------
 set rtp+=~/.vim/bundle/vundle/
