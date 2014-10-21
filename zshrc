@@ -156,6 +156,7 @@ alias -- ll='ls --color=auto -l'
 alias -- ps='ps axf'
 alias -- '-'='cd -'
 alias -- pager='pager -R'
+alias -- sprunge="curl -F 'sprunge=<-' http://sprunge.us"
 
 wgetm () {
     wget --recursive --no-clobber --page-requisites \
