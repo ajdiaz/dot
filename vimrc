@@ -23,7 +23,6 @@
 " SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 " ---------------------------------------------------------------------
 
-
 " Set options {{{1
 " ----------------
 
@@ -55,16 +54,18 @@ set backspace=2                 " Backspace always useable in insert mode
 set fileformats=unix,mac,dos    " Allows automatic line-end detection.
 set grepprg=grep\ -nH\ $*       " Make grep always print the file name.
 "set keywordprg='pinfo'          " Use pinfo instead of man
+set completeopt-=preview        " Avoid to open scratch window
 
 let g:username = "Andrés J. Díaz"
 let g:author   = "Andrés J. Díaz"
 let g:email    = "ajdiaz@connectical.com"
 let g:license  = "GPLv2"
+let g:syntastic_check_on_open=1
+let g:syntastic_enable_signs=1
 
 if has("spell")
     set spellfile+=~/.vim/spell/cs.utf-8.add " Computer Science words.
 endif
-
 
 if has("linebreak")
     set linebreak             " Break on `breakat' chars when linewrapping is on.
@@ -406,6 +407,7 @@ vmap cs \cs
 "endif
 
 " }}}1
+
 
 let &errorformat="%f:%l:%c: %t%*[^:]:%m,%f:%l: %t%*[^:]:%m," . &errorformat 
 " vim:ft=vim foldmethod=marker tw=78

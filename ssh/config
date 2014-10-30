@@ -65,8 +65,14 @@ Host *
     ControlMaster auto
 
 
+Host heroku.com
+    IdentityFile ~/.ssh/id_rsa.bitbucket
+
 Host bitbucket.org
     IdentityFile ~/.ssh/id_rsa.bitbucket
+
+#Host github.com
+    #IdentityFile ~/.ssh/id_rsa.bitbucket
 
 Host *+*
     ProxyCommand ssh $(echo %h | sed 's/+[^+]*$//;s/\([^+%%]*\)%%\([^+]*\)$/\2 -l \1/;s/:/ -p /') nc -w1 $(echo %h | sed 's/^.*+//;/:/!s/$/ %p/;s/:/ /')
