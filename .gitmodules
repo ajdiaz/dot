@@ -1,49 +1,78 @@
-[submodule "vim/bundle/vim-pathogen"]
-	path = vim/bundle/vim-pathogen
-	url = https://github.com/tpope/vim-pathogen.git
-[submodule "vim/bundle/vundle"]
-	path = vim/bundle/vundle
-	url = git://github.com/gmarik/vundle.git
-[submodule "vim/bundle/vim-puppet"]
-	path = vim/bundle/vim-puppet
-	url = git://github.com/rodjek/vim-puppet.git
-[submodule "vim/bundle/vim-template"]
-	path = vim/bundle/vim-template
-    url = git://github.com/aperezdc/vim-template.git
-    ignore = dirty
-[submodule "vim/bundle/vim-coffee-script"]
-	path = vim/bundle/vim-coffee-script
-	url = git://github.com/kchmck/vim-coffee-script.git
-[submodule "vim/bundle/nerdcommenter"]
-	path = vim/bundle/nerdcommenter
-	url = git://github.com/scrooloose/nerdcommenter.git
+[submodule "vim/bundle/neobundle.vim"]
+	path = vim/bundle/neobundle.vim
+	url = git://github.com/Shougo/neobundle.vim
+[submodule "vim/bundle/YouCompleteMe"]
+	path = vim/bundle/YouCompleteMe
+	url = git://github.com/Valloric/YouCompleteMe
+[submodule "vim/bundle/gocode"]
+	path = vim/bundle/gocode
+	url = git://github.com/nsf/gocode
+[submodule "vim/bundle/vim-gnupg"]
+	path = vim/bundle/vim-gnupg
+	url = git://github.com/jamessan/vim-gnupg
 [submodule "vim/bundle/syntastic"]
 	path = vim/bundle/syntastic
-	url = git://github.com/scrooloose/syntastic.git
-[submodule "vim/bundle/nerdtree"]
-	path = vim/bundle/nerdtree
-	url = git://github.com/scrooloose/nerdtree.git
+	url = git://github.com/scrooloose/syntastic
+[submodule "vim/bundle/vim-airline"]
+	path = vim/bundle/vim-airline
+	url = git://github.com/bling/vim-airline
 [submodule "vim/bundle/vim-fugitive"]
 	path = vim/bundle/vim-fugitive
-	url = git://github.com/tpope/vim-fugitive.git
-[submodule "vim/bundle/neocomplcache"]
-	path = vim/bundle/neocomplcache
-	url = git://github.com/Shougo/neocomplcache.vim.git
-[submodule "vim/bundle/vim-plugin-minibufexpl"]
-	path = vim/bundle/vim-plugin-minibufexpl
-	url = git://github.com/techlivezheng/vim-plugin-minibufexpl.git
-[submodule "vim/bundle/salt-vim"]
-	path = vim/bundle/salt-vim
-	url = git://github.com/saltstack/salt-vim.git
-[submodule "vim/bundle/dockerfile"]
-	path = vim/bundle/dockerfile
-	url = git://github.com/ekalinin/Dockerfile.vim.git
-[submodule "vim/bundle/tabular"]
-	path = vim/bundle/tabular
-	url = https://github.com/godlygeek/tabular
+	url = git://github.com/tpope/vim-fugitive
+[submodule "vim/bundle/vim-gitgutter"]
+	path = vim/bundle/vim-gitgutter
+	url = git://github.com/airblade/vim-gitgutter
+[submodule "vim/bundle/wildfire.vim"]
+	path = vim/bundle/wildfire.vim
+	url = git://github.com/gcmt/wildfire.vim
+[submodule "vim/bundle/vimproc.vim"]
+	path = vim/bundle/vimproc.vim
+	url = git://github.com/Shougo/vimproc.vim
+[submodule "vim/bundle/unite.vim"]
+	path = vim/bundle/unite.vim
+	url = git://github.com/Shougo/unite.vim
+[submodule "vim/bundle/unite-outline"]
+	path = vim/bundle/unite-outline
+	url = git://github.com/Shougo/unite-outline
+[submodule "vim/bundle/unite-quickfix"]
+	path = vim/bundle/unite-quickfix
+	url = git://github.com/osyo-manga/unite-quickfix
+[submodule "vim/bundle/neomru.vim"]
+	path = vim/bundle/neomru.vim
+	url = git://github.com/Shougo/neomru.vim
+[submodule "vim/bundle/CamelCaseMotion"]
+	path = vim/bundle/CamelCaseMotion
+	url = git://github.com/bkad/CamelCaseMotion
+[submodule "vim/bundle/vim-multiple-cursors"]
+	path = vim/bundle/vim-multiple-cursors
+	url = git://github.com/terryma/vim-multiple-cursors
+[submodule "vim/bundle/xml.vim"]
+	path = vim/bundle/xml.vim
+	url = git://github.com/othree/xml.vim
+[submodule "vim/bundle/gundo.vim"]
+	path = vim/bundle/gundo.vim
+	url = git://github.com/sjl/gundo.vim
+[submodule "vim/bundle/vim-lambdify"]
+	path = vim/bundle/vim-lambdify
+	url = git://github.com/calebsmith/vim-lambdify
+[submodule "vim/bundle/incsearch.vim"]
+	path = vim/bundle/incsearch.vim
+	url = git://github.com/haya14busa/incsearch.vim
+[submodule "vim/bundle/Dockerfile.vim"]
+	path = vim/bundle/Dockerfile.vim
+	url = git://github.com/ekalinin/Dockerfile.vim
 [submodule "vim/bundle/vim-json"]
 	path = vim/bundle/vim-json
-	url = https://github.com/elzr/vim-json.git
-[submodule "vim/bundle/vim-nginx"]
-	path = vim/bundle/vim-nginx
-	url = https://github.com/evanmiller/nginx-vim-syntax.git
+	url = git://github.com/elzr/vim-json
+[submodule "vim/bundle/vim-puppet"]
+	path = vim/bundle/vim-puppet
+	url = git://github.com/rodjek/vim-puppet
+[submodule "vim/bundle/vim-template"]
+	path = vim/bundle/vim-template
+	url = git://github.com/ajdiaz/vim-template.git
+[submodule "vim/bundle/nerdcommenter"]
+	path = vim/bundle/nerdcommenter
+	url = https://github.com/scrooloose/nerdcommenter
+[submodule "vim/bundle/neocomplete.vim"]
+	path = vim/bundle/neocomplete.vim
+	url = git@github.com:Shougo/neocomplete.vim.git
