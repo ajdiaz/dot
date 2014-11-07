@@ -46,9 +46,6 @@
 [submodule "vim/bundle/vim-multiple-cursors"]
 	path = vim/bundle/vim-multiple-cursors
 	url = git://github.com/terryma/vim-multiple-cursors
-[submodule "vim/bundle/xml.vim"]
-	path = vim/bundle/xml.vim
-	url = git://github.com/othree/xml.vim
 [submodule "vim/bundle/gundo.vim"]
 	path = vim/bundle/gundo.vim
 	url = git://github.com/sjl/gundo.vim
@@ -76,3 +73,6 @@
 [submodule "vim/bundle/neocomplete.vim"]
 	path = vim/bundle/neocomplete.vim
 	url = git@github.com:Shougo/neocomplete.vim.git
+[submodule "vim/bundle/vim-wcfg"]
+	path = vim/bundle/vim-wcfg
+	url = https://github.com/aperezdc/vim-wcfg.git

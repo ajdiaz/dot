@@ -43,6 +43,7 @@ NeoBundle 'ekalinin/Dockerfile.vim'
 NeoBundle 'elzr/vim-json'
 NeoBundle 'rodjek/vim-puppet'
 NeoBundle 'scrooloose/nerdcommenter'
+NeoBundle 'aperezdc/vim-wcfg'
 
 call neobundle#end()
 
