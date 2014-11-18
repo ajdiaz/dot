@@ -44,6 +44,7 @@ NeoBundle 'elzr/vim-json'
 NeoBundle 'rodjek/vim-puppet'
 NeoBundle 'scrooloose/nerdcommenter'
 NeoBundle 'aperezdc/vim-wcfg'
+NeoBundle 'godlygeek/tabular'
 
 call neobundle#end()
 

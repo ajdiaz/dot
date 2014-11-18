@@ -79,3 +79,6 @@
 [submodule "vim/bundle/xml.vim"]
 	path = vim/bundle/xml.vim
 	url = git://github.com/othree/xml.vim
+[submodule "vim/bundle/tabular"]
+	path = vim/bundle/tabular
+	url = https://github.com/godlygeek/tabular
