@@ -1,4 +1,5 @@
 # vim:ft=python
+# -*- coding: utf-8 -*-
 
 import os
 import sys
@@ -15,8 +16,8 @@ color = {
     "white": base % "38;5;15",
 }
 
-sys.ps1 = '%s>>> %s' % (color["blue"], color["reset"])
-sys.ps2 = '%s... %s' % (color["white"], color["reset"])
+sys.ps1 = '%s▸▸▸ %s' % (color["blue"], color["reset"])
+sys.ps2 = '%s  ⤷ %s' % (color["white"], color["reset"])
 
 
 # Fancy display variables
@@ -76,6 +77,9 @@ except:
 # Fancy inline editor
 EDITOR = os.environ.get('EDITOR', 'vi')
 EDIT_CMD = '\e'
+RAW_CMD = '!'
+DIR_CMD = '@'
+HELP_CMD = '?'
 
 
 class EditableBufferInteractiveConsole(InteractiveConsole):
@@ -89,6 +93,8 @@ class EditableBufferInteractiveConsole(InteractiveConsole):
 
     def raw_input(self, *args):
         line = InteractiveConsole.raw_input(self, *args)
+        if len(line) < 1:
+            return line
         if line == EDIT_CMD:
             fd, tmpfl = mkstemp('.py')
             os.write(fd, b'\n'.join(self.last_buffer))
@@ -101,6 +107,15 @@ class EditableBufferInteractiveConsole(InteractiveConsole):
             for i in range(len(lines) - 1):
                 self.push(lines[i])
             line = lines[-1]
+        elif line[0] == RAW_CMD:
+            os.system(line[1:])
+            return ""
+        elif line[0] == DIR_CMD:
+            return str(dir(eval(line[1:])))
+        elif line[0] == HELP_CMD:
+            help(eval(line[1:]))
+            return ""
+
         return line
 
 c = EditableBufferInteractiveConsole(locals=locals())
