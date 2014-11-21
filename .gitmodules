@@ -83,3 +83,6 @@
 [submodule "vim/bundle/tabular"]
 	path = vim/bundle/tabular
 	url = https://github.com/godlygeek/tabular
+[submodule "vim/bundle/vim-lift"]
+	path = vim/bundle/vim-lift
+	url = https://github.com/aperezdc/vim-lift
