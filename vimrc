@@ -45,7 +45,6 @@ NeoBundle 'rodjek/vim-puppet'
 NeoBundle 'scrooloose/nerdcommenter'
 NeoBundle 'aperezdc/vim-wcfg'
 NeoBundle 'godlygeek/tabular'
-NeoBundle 'aperezdc/vim-lift'
 
 call neobundle#end()
 
