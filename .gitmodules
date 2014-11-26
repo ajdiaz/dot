@@ -67,9 +67,6 @@
 [submodule "vim/bundle/nerdcommenter"]
 	path = vim/bundle/nerdcommenter
 	url = https://github.com/scrooloose/nerdcommenter
-[submodule "vim/bundle/neocomplete.vim"]
-	path = vim/bundle/neocomplete.vim
-	url = git@github.com:Shougo/neocomplete.vim.git
 [submodule "vim/bundle/vim-wcfg"]
 	path = vim/bundle/vim-wcfg
 	url = https://github.com/aperezdc/vim-wcfg.git

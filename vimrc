@@ -15,38 +15,8 @@ map <S-W> <Plug>CamelCaseMotion_w
 map <S-B> <Plug>CamelCaseMotion_b
 map <S-E> <Plug>CamelCaseMotion_e
 
-
-"call neobundle#begin(expand('~/.vim/bundle/'))
-"NeoBundleFetch 'Shougo/neobundle.vim'
-"NeoBundle 'Shougo/neocomplete.vim'
+let mapleader=','
 let g:using_neocomplete = 1
-"NeoBundle 'nsf/gocode', {'rtp': 'vim/'}
-"NeoBundle 'ajdiaz/vim-template'
-"NeoBundle 'jamessan/vim-gnupg'
-"NeoBundle 'scrooloose/syntastic'
-"NeoBundle 'bling/vim-airline'
-"NeoBundle 'tpope/vim-fugitive'
-"NeoBundle 'airblade/vim-gitgutter'
-"NeoBundle 'gcmt/wildfire.vim'
-"NeoBundle 'Shougo/vimproc.vim', {'build': {'unix': 'make'}}
-"NeoBundle 'Shougo/unite.vim'
-"NeoBundle 'Shougo/unite-outline'
-"NeoBundle 'osyo-manga/unite-quickfix'
-"NeoBundle 'Shougo/neomru.vim'
-"NeoBundle 'bkad/CamelCaseMotion'
-"NeoBundle 'terryma/vim-multiple-cursors'
-"NeoBundle 'othree/xml.vim'
-"NeoBundle 'sjl/gundo.vim'
-"NeoBundle 'calebsmith/vim-lambdify'
-"NeoBundle 'haya14busa/incsearch.vim'
-"NeoBundle 'ekalinin/Dockerfile.vim'
-"NeoBundle 'elzr/vim-json'
-"NeoBundle 'scrooloose/nerdcommenter'
-"NeoBundle 'aperezdc/vim-wcfg'
-"NeoBundle 'godlygeek/tabular'
-"NeoBundle 'rodjek/vim-puppet'
-"call neobundle#end()
-
 execute pathogen#infect()
 
 set tabstop=2				 " Set tabstops to 2 spaces
@@ -472,6 +442,5 @@ map <C-K> :pyf /usr/share/clang/clang-format.py<CR>
 imap <C-K> <ESC>:pyf /usr/share/clang/clang-format.py<CR>i
 
 runtime! macros/matchit.vim
-"NeoBundleCheck
 
 " vim:ts=4:sw=4:fenc=utf-8
