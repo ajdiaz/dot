@@ -80,3 +80,6 @@
 [submodule "vim/bundle/vim-pathogen"]
 	path = vim/bundle/vim-pathogen
 	url = git@github.com:tpope/vim-pathogen.git
+[submodule "vim/bundle/neocmplete.vim"]
+	path = vim/bundle/neocmplete.vim
+	url = https://github.com/Shougo/neocomplete.vim.git
