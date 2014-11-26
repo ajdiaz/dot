@@ -157,7 +157,7 @@ alias -- ps='ps axf'
 alias -- '-'='cd -'
 alias -- pager='pager -R'
 alias -- sprunge="curl -F 'sprunge=<-' http://sprunge.us"
-alias -- packer="packer --noedit"
+alias -- packer="packer --noedit --noconfirm"
 
 randpw () {
 	</dev/urandom tr -dc A-Za-z0-9'!@#$%'|head -c${1:-8};echo

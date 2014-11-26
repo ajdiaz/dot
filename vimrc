@@ -41,11 +41,10 @@ NeoBundle 'calebsmith/vim-lambdify'
 NeoBundle 'haya14busa/incsearch.vim'
 NeoBundle 'ekalinin/Dockerfile.vim'
 NeoBundle 'elzr/vim-json'
-NeoBundle 'rodjek/vim-puppet'
 NeoBundle 'scrooloose/nerdcommenter'
 NeoBundle 'aperezdc/vim-wcfg'
 NeoBundle 'godlygeek/tabular'
-
+NeoBundle 'rodjek/vim-puppet'
 call neobundle#end()
 
 set tabstop=2				 " Set tabstops to 2 spaces
