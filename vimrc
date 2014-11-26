@@ -16,7 +16,7 @@ map <S-B> <Plug>CamelCaseMotion_b
 map <S-E> <Plug>CamelCaseMotion_e
 
 let mapleader=','
-let g:using_neocomplete = 1
+let g:using_neocomplete = 0
 execute pathogen#infect()
 
 set tabstop=2				 " Set tabstops to 2 spaces
