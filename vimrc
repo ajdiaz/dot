@@ -5,7 +5,7 @@
 
 if has("vim_starting")
 	set nocompatible
-	set runtimepath+=~/.vim/bundle/neobundle.vim
+	set runtimepath+=~/.vim/bundle/vim-pathogen
 endif
 filetype indent plugin on
 
@@ -16,36 +16,38 @@ map <S-B> <Plug>CamelCaseMotion_b
 map <S-E> <Plug>CamelCaseMotion_e
 
 
-call neobundle#begin(expand('~/.vim/bundle/'))
-NeoBundleFetch 'Shougo/neobundle.vim'
-NeoBundle 'Shougo/neocomplete.vim'
+"call neobundle#begin(expand('~/.vim/bundle/'))
+"NeoBundleFetch 'Shougo/neobundle.vim'
+"NeoBundle 'Shougo/neocomplete.vim'
 let g:using_neocomplete = 1
-NeoBundle 'nsf/gocode', {'rtp': 'vim/'}
-NeoBundle 'ajdiaz/vim-template'
-NeoBundle 'jamessan/vim-gnupg'
-NeoBundle 'scrooloose/syntastic'
-NeoBundle 'bling/vim-airline'
-NeoBundle 'tpope/vim-fugitive'
-NeoBundle 'airblade/vim-gitgutter'
-NeoBundle 'gcmt/wildfire.vim'
-NeoBundle 'Shougo/vimproc.vim', {'build': {'unix': 'make'}}
-NeoBundle 'Shougo/unite.vim'
-NeoBundle 'Shougo/unite-outline'
-NeoBundle 'osyo-manga/unite-quickfix'
-NeoBundle 'Shougo/neomru.vim'
-NeoBundle 'bkad/CamelCaseMotion'
-NeoBundle 'terryma/vim-multiple-cursors'
-NeoBundle 'othree/xml.vim'
-NeoBundle 'sjl/gundo.vim'
-NeoBundle 'calebsmith/vim-lambdify'
-NeoBundle 'haya14busa/incsearch.vim'
-NeoBundle 'ekalinin/Dockerfile.vim'
-NeoBundle 'elzr/vim-json'
-NeoBundle 'scrooloose/nerdcommenter'
-NeoBundle 'aperezdc/vim-wcfg'
-NeoBundle 'godlygeek/tabular'
-NeoBundle 'rodjek/vim-puppet'
-call neobundle#end()
+"NeoBundle 'nsf/gocode', {'rtp': 'vim/'}
+"NeoBundle 'ajdiaz/vim-template'
+"NeoBundle 'jamessan/vim-gnupg'
+"NeoBundle 'scrooloose/syntastic'
+"NeoBundle 'bling/vim-airline'
+"NeoBundle 'tpope/vim-fugitive'
+"NeoBundle 'airblade/vim-gitgutter'
+"NeoBundle 'gcmt/wildfire.vim'
+"NeoBundle 'Shougo/vimproc.vim', {'build': {'unix': 'make'}}
+"NeoBundle 'Shougo/unite.vim'
+"NeoBundle 'Shougo/unite-outline'
+"NeoBundle 'osyo-manga/unite-quickfix'
+"NeoBundle 'Shougo/neomru.vim'
+"NeoBundle 'bkad/CamelCaseMotion'
+"NeoBundle 'terryma/vim-multiple-cursors'
+"NeoBundle 'othree/xml.vim'
+"NeoBundle 'sjl/gundo.vim'
+"NeoBundle 'calebsmith/vim-lambdify'
+"NeoBundle 'haya14busa/incsearch.vim'
+"NeoBundle 'ekalinin/Dockerfile.vim'
+"NeoBundle 'elzr/vim-json'
+"NeoBundle 'scrooloose/nerdcommenter'
+"NeoBundle 'aperezdc/vim-wcfg'
+"NeoBundle 'godlygeek/tabular'
+"NeoBundle 'rodjek/vim-puppet'
+"call neobundle#end()
+
+execute pathogen#infect()
 
 set tabstop=2				 " Set tabstops to 2 spaces
 set smarttab                 " Use smart tabs... we are not as dumb!
@@ -470,6 +472,6 @@ map <C-K> :pyf /usr/share/clang/clang-format.py<CR>
 imap <C-K> <ESC>:pyf /usr/share/clang/clang-format.py<CR>i
 
 runtime! macros/matchit.vim
-NeoBundleCheck
+"NeoBundleCheck
 
 " vim:ts=4:sw=4:fenc=utf-8
