@@ -63,7 +63,7 @@ Host *
     # connection
     ControlPath ~/.ssh/master-%r@%h:%p
     ControlMaster auto
-
+    StrictHostKeyChecking no
 
 Host heroku.com
     IdentityFile ~/.ssh/id_rsa.bitbucket
