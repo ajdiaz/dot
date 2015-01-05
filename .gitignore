@@ -8,6 +8,7 @@ gnupg/random_seed
 gnupg/*.kbx
 gnupg/*private*
 gnupg/.gpg-*-migrated
+gnupg/crls.d
 
 # Vim stuff
 vim/.netrwhist
