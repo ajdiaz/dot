@@ -410,8 +410,8 @@ vnoremap J :m '>+1<CR>gv=gv
 vnoremap K :m '<-2<CR>gv=gv
 
 " Move to the previous/mext buffer
-nnoremap H :bprevious<CR>
-nnoremap L :bnext<CR>
+nnoremap P :bprevious<CR>
+nnoremap N :bnext<CR>
 
 " Exit swiftly
 map __ ZZ
