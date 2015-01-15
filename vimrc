@@ -405,6 +405,11 @@ command -nargs=0 EolMac2Unix    call ExecuteInPlace("%s/\\r/\\n/g")
 command -nargs=0 EolUnix2Mac    call ExecuteInPlace("%s/$/\\r/g")
 command -nargs=0 EolUnix2DOS    call ExecuteInPlace("%s/$/\\r\\n/g")
 
+" Configure explorer
+let g:netrw_liststyle=3
+map <leader>e :Lexplore<cr>
+
+
 " Move visual block
 vnoremap J :m '>+1<CR>gv=gv
 vnoremap K :m '<-2<CR>gv=gv
