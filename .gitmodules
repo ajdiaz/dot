@@ -83,3 +83,6 @@
 [submodule "vim/bundle/neocmplete.vim"]
 	path = vim/bundle/neocmplete.vim
 	url = https://github.com/Shougo/neocomplete.vim.git
+[submodule "vim/bundle/vim-scala"]
+	path = vim/bundle/vim-scala
+	url = git@github.com:derekwyatt/vim-scala.git
