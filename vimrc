@@ -63,6 +63,7 @@ set undofile                " Save undo's after file closes
 set undodir=$HOME/.vim/undo " where to save undo histories
 set undolevels=1000         " How many undos
 set undoreload=10000        " number of lines to save for undo
+set colorcolumn=80          " Put color column in column 80
 
 
 if has("mouse")
@@ -349,6 +350,7 @@ if has("syntax") || has("gui_running")
 		highlight CursorLineNr ctermbg=235 ctermfg=246
 		highlight LineNr       ctermbg=234 ctermfg=238
 		highlight SignColumn   ctermbg=234
+		highlight ColorColumn  ctermbg=234
 	endif
 
 	" Match whitespace at end of lines (which is usually a mistake),
