@@ -142,7 +142,7 @@ if [[ ${TERM} = screen* ]] ; then
 	}
 fi
 
-PROMPT=$'%B%{%(!.$fg[red].$fg[green])%}%m %b${vcs_info_msg_0_}%{$fg[blue]%}%B%1~ %{$fg[default]%}%{%(?.$fg[blue].%B$fg[red])%}%# %{$fg[default]%}%b'
+PROMPT=$'%F{180}${VIRTUAL_ENV:+${VIRTUAL_ENV##*/} }%f%B%{%(!.$fg[red].$fg[green])%}%m %b${vcs_info_msg_0_}%{$fg[blue]%}%B%1~ %{$fg[default]%}%{%(?.$fg[blue].%B$fg[red])%}%# %{$fg[default]%}%b'
 
 unset FMT_BRANCH FMT_ACTION
 
@@ -158,20 +158,7 @@ alias -- '-'='cd -'
 alias -- pager='pager -R'
 alias -- sprunge="curl -F 'sprunge=<-' http://sprunge.us"
 alias -- packer="packer --noedit --noconfirm"
-
-randpw () {
-	</dev/urandom tr -dc A-Za-z0-9'!@#$%'|head -c${1:-8};echo
-}
-
-wgetm () {
-    wget --recursive --no-clobber --page-requisites \
-                     --html-extension --convert-links \
-                     --restrict-file-names=windows \
-                     --user-agent='MSIE/5.0' \
-                     --referer="$1" \
-                     --random-wait \
-                     --no-parent "$@"
-}
+alias -- ipecho='curl ipecho.net/plain; echo'
 
 # Local binaries directory
 if [ -d "${HOME}/.local/bin" ] ; then
@@ -219,5 +206,5 @@ fi
 if [ -r /usr/bin/virtualenvwrapper.sh ]; then
 	source /usr/bin/virtualenvwrapper.sh
 fi
+export VIRTUAL_ENV_DISABLE_PROMPT=false
 
-alias ifconfig.me='curl -q http://ifconfig.me'
