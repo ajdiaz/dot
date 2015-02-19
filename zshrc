@@ -154,6 +154,7 @@ alias -- grep='grep --color=auto'
 alias -- sudo='sudo -s'
 alias -- ll='ls --color=auto -l'
 alias -- ps='ps axf'
+alias -- ag='ack'
 alias -- '-'='cd -'
 alias -- pager='pager -R'
 alias -- sprunge="curl -F 'sprunge=<-' http://sprunge.us"
