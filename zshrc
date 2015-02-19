@@ -208,3 +208,19 @@ if [ -r /usr/bin/virtualenvwrapper.sh ]; then
 fi
 export VIRTUAL_ENV_DISABLE_PROMPT=false
 
+# TERMCAP codes
+# vb      flash     emit visual bell
+# mb      blink     start blink
+# md      bold      start bold
+# me      sgr0      turn off bold, blink and underline
+# so      smso      start standout (reverse video)
+# se      rmso      stop standout
+# us      smul      start underline
+# ue      rmul      stop underline
+export LESS_TERMCAP_mb=$'\e[48;5;196m\e[38;5;190m'
+export LESS_TERMCAP_md=$'\e[1m\e[38;5;75m'
+export LESS_TERMCAP_me=$'\e[0;0m'
+export LESS_TERMCAP_so=$'\e[48;5;235m\e[38;5;242m'
+export LESS_TERMCAP_se=$'\e[0;0m'
+export LESS_TERMCAP_us=$'\e[38;5;71m'
+export LESS_TERMCAP_ue=$'\e[0;0m'
