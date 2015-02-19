@@ -237,7 +237,7 @@ let g:airline_mode_map = {
 			\ '' : 'S',
 			\ }
 let g:airline_theme = 'bubblegum'
-let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#enabled = 0
 let g:airline#extensions#tabline#fnamemod = ':t'
 let g:airline#extensions#tabline#buffer_min_count = 2
 
