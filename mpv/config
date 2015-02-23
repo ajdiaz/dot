@@ -1,0 +1,14 @@
+# vim: filetype=dosini
+[default]
+msg-color=yes
+msg-module=yes
+framedrop=vo
+use-filedir-conf=yes
+embeddedfonts=yes
+sub-ass=yes
+osd-font="Open Sans"
+sub-text-font="Open Sans"
+ass-hinting=native
+screenshot-format=png
+vo=vaapi,opengl,xv,wayland,sdl,x11
+hwdec=auto
