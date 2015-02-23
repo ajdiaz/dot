@@ -156,6 +156,7 @@ alias -- ll='ls --color=auto -l'
 alias -- ps='ps axf'
 alias -- ag='ack'
 alias -- '-'='cd -'
+alias -- gdb='gdb -q'
 alias -- pager='pager -R'
 alias -- sprunge="curl -F 'sprunge=<-' http://sprunge.us"
 alias -- packer="packer --noedit --noconfirm"
