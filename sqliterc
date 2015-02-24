@@ -1,0 +1,11 @@
+-- config file for sqlite3
+.headers on
+.stats off
+.bail on
+.echo off
+.timer on
+.mode column
+.nullvalue 'NULL'
+.separator '|'
+.prompt "▸▸▸ " "  ⤷ "
+.width 5 10 4 5 7 24 6 6 6 6 6 6 6 6 16 10 40 5 7 10 25 covered_calls
