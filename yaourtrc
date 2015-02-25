@@ -39,9 +39,9 @@
 #EXPORTDIR=""       # If empty, use makepkg's connfiguration (see makepkg.conf)
 
 # Prompt
-NOCONFIRM=0
+#NOCONFIRM=0
 #UP_NOCONFIRM=0     # No prompt while build upgrades (including -Sbu)
-#BUILD_NOCONFIRM=0  # Only prompt for editing files
+BUILD_NOCONFIRM=1   # Only prompt for editing files
 #PU_NOCONFIRM=0     # Add --noconfirm to $PACMAN -U
 EDITFILES=0
 #NOENTER=1
