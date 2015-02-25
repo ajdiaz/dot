@@ -159,7 +159,7 @@ alias -- '-'='cd -'
 alias -- gdb='gdb -q'
 alias -- pager='pager -R'
 alias -- sprunge="curl -F 'sprunge=<-' http://sprunge.us"
-alias -- packer="packer --noedit --noconfirm"
+alias -- packer="packer --devel --noedit --noconfirm"
 alias -- ipecho='curl ipecho.net/plain; echo'
 
 # Local binaries directory
