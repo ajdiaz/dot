@@ -9,6 +9,7 @@ gnupg/*.kbx
 gnupg/*private*
 gnupg/.gpg-*-migrated
 gnupg/crls.d
+gnupg/openpgp-revocs.d
 
 # Vim stuff
 vim/.netrwhist
