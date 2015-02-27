@@ -90,6 +90,9 @@ if has("wildmenu")
 	set wildignore=*.o,*.cm[ioax],*.ppu,*.core,*~,core,#*#
 endif
 
+" Plugin: JSON
+let g:vim_json_syntax_conceal = 0
+
 " Plugin: XML
 let g:xml_syntax_folding = 1
 
