@@ -20,6 +20,7 @@ let g:using_neocomplete = 1
 execute pathogen#infect()
 
 set tabstop=2				 " Set tabstops to 2 spaces
+set expandtab                " Use spaces instead of tabs by default
 set smarttab                 " Use smart tabs... we are not as dumb!
 set shiftwidth=2			 " Set indentation shift-width to 2 spaces
 set autoindent				 " Enable automatic indentation
