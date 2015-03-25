@@ -10,6 +10,8 @@ gnupg/*private*
 gnupg/.gpg-*-migrated
 gnupg/crls.d
 gnupg/openpgp-revocs.d
+# I do not use ssh protocol for GPG right now.
+gnupg/sshcontrol
 
 # Vim stuff
 vim/.netrwhist
