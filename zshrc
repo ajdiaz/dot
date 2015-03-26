@@ -151,7 +151,6 @@ alias -- 'pd'=pushd
 alias -- '..'='cd ..'
 alias -- ls='ls --color=auto'
 alias -- grep='grep --color=auto'
-alias -- sudo='sudo -s'
 alias -- ll='ls --color=auto -l'
 alias -- ps='ps axf'
 alias -- ag='ack'
