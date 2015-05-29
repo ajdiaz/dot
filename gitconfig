@@ -65,10 +65,14 @@
 
 [merge]
 	stat = true
-	tool = vimdiff
+  tool = vimdiff
+  conflictstyle = diff3
+
+[mergetool]
+  prompt = false
 
 [pack]
-	threads = 0
+	threads = 1
 
 [giggle]
 	main-window-maximized = true
