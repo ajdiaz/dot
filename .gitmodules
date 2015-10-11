@@ -86,3 +86,6 @@
 [submodule "vim/bundle/vim-scala"]
 	path = vim/bundle/vim-scala
 	url = git@github.com:derekwyatt/vim-scala.git
+[submodule "vim/bundle/hipack-vim"]
+	path = vim/bundle/hipack-vim
+	url = git://github.com/aperezdc/hipack-vim
