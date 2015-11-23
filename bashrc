@@ -1,3 +1,4 @@
+#! /bin/bash
 # bash_auto
 # ---------
 # (c) 2006-2008  Connectical Labs.
@@ -64,9 +65,3 @@ export GEM_PATH=/home/ajdiaz/gems:/usr/local/lib/ruby/gems/1.8/
 export PATH=/usr/lib/lightdm/lightdm:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/home/ajdiaz/.local/bin:/home/ajdiaz/gems/bin
 
 PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
-
-# The next line updates PATH for the Google Cloud SDK.
-source '/home/ajdiaz/google-cloud-sdk/path.bash.inc'
-
-# The next line enables bash completion for gcloud.
-source '/home/ajdiaz/google-cloud-sdk/completion.bash.inc'
