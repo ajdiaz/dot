@@ -24,6 +24,10 @@ else
     export TERM='xterm-color'
 fi
 
+if [ "$DESKTOP_SESSION" = "i3" ]; then
+  export $(gnome-keyring-daemon -s)
+fi
+
 # Bind Ctrl-Left and Ctrl-Right key sequences, and AvPag/RePag for history
 bindkey "^[[1;5C" forward-word
 bindkey "^[[1;5D" backward-word
@@ -142,7 +146,11 @@ if [[ ${TERM} = screen* ]] ; then
 	}
 fi
 
-PROMPT=$'%F{180}${VIRTUAL_ENV:+${VIRTUAL_ENV##*/} }%f%B%{%(!.$fg[red].$fg[green])%}%m %b${vcs_info_msg_0_}%{$fg[blue]%}%B%1~ %{$fg[default]%}%{%(?.$fg[blue].%B$fg[red])%}%# %{$fg[default]%}%b'
+PROMPT=$'%{%F{180}%}${VIRTUAL_ENV:+${VIRTUAL_ENV##*/} }%{%b%f%}'
+PROMPT+=$'%B%{%(!.$fg[red].$fg[green])%}%m%b%f '
+PROMPT+=$'${vcs_info_msg_0_}'
+PROMPT+=$'%{%F{39}%}%B%1~ %b%f'
+PROMPT+=$'%(?.%{%F{39}%}.%B%{$fg[red]%})%# %b%f'
 
 unset FMT_BRANCH FMT_ACTION
 
@@ -158,8 +166,13 @@ alias -- '-'='cd -'
 alias -- gdb='gdb -q'
 alias -- pager='pager -R'
 alias -- sprunge="curl -F 'sprunge=<-' http://sprunge.us"
-alias -- packer="packer --devel --noedit --noconfirm"
 alias -- ipecho='curl ipecho.net/plain; echo'
+alias -- list="sudo systemctl list-units"
+alias -- status="sudo systemctl status"
+alias -- start="sudo systemctl start"
+alias -- stop="sudo systemctl stop"
+alias -- restart="sudo systemctl restart"
+alias -- reload="sudo systemctl reload"
 
 # Local binaries directory
 if [ -d "${HOME}/.local/bin" ] ; then
