@@ -7,13 +7,12 @@
 
 update_links () {
   for dot in $1/*; do
-    if [ "${dot##*/}" == "pre-commit-hook" ]; then
-      continue
-    fi
-    if [ "${dot##*/}" == "config" ]; then
-      update_links "$1/config" "config/"
-      continue
-    fi
+    case "${dot##*/}" in
+      pre-commit-hook|README) continue;;
+      config)
+        update_links "$1/config" "config/"
+        continue;;
+    esac
     home_dot="$HOME/.${2}${dot##*/}"
 
     if [ -L "${home_dot}" ]; then
