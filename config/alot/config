@@ -1,0 +1,83 @@
+# vim: ft=cfg
+theme = ajdiaz
+auto_remove_unread = True
+honor_followup_to = True
+body_mimetype = text/plain
+folowup_to = True
+terminal_cmd = termite -e
+editor_cmd = vim
+initial_command = search tag:inbox AND NOT tag:killed AND NOT tag:deleted
+ask_subject = True
+editor_spawn = False
+editor_in_thread = False
+prefer_plaintext = True
+search_threads_sort_order = newest_first
+complete_matching_abook_only = False
+tabwidth = 4
+ansi_background = False
+show_count_in_tag_list = messages
+edit_headers_whitelist = Attach,From,To,Subject
+edit_headers_blacklist = ' '
+displayed_headers = To,Cc,Bcc,Subject,Tags,Date,Message-Id
+notify_timeout = 4
+prompt_suffix = "> "
+reply_force_address = True
+forward_force_address = True
+bounce_force_address = True
+thread_subjecat = oldest
+auto_replyto_mailinglist = True
+
+[accounts]
+    [[ajdiaz@inactive.io]]
+        realname  = Andrés J. Díaz
+        address   = ajdiaz@inactive.io
+        sent_box  = maildir:///home/ajdiaz/.mail/inactive.io/INBOX
+        draft_box = maildir:///home/ajdiaz/.mail/inactive.io/Draft
+        sent_tags = inbox,
+        sendmail_command = msmtp --account=inactive.io -t
+		    signature_filename = file:///home/ajdiaz/.signature
+		    gpg_key = 4EB7AC4B 
+		    sign_by_default = True
+
+        [[[abook]]]
+          type = shellcommand
+          regexp = '^(?P<email>[^@]+@[^\t]+)\t+(?P<name>[^\t]+)'
+          command = notmuch-addrlookup --mutt
+          ignorecase = True
+
+[bindings]
+Q = exit
+q = bclose
+r = refresh
+n = compose
+  [[search]]
+    d = toggletags deleted
+    J = toggletags spam
+  [[thread]]
+    s = toggletags unread
+
+[tags]
+  [[flagged]]
+	translated = ⚑
+	normal = '','','light red','','light red',''
+	focus = '','','light red','','light red',''
+  [[replied]]
+	translated = ↩
+  [[sent]]
+	translated = 🡕
+  [[encrypted]]
+	translated = 🔒
+  [[inbox]]
+	translated = ' '
+  [[signed]]
+	translated = 🖋
+  [[fyi]]
+	translated = ℹ
+  [[unread]]
+	translated = 🗲
+  [[deleted]]
+    translated = ♻
+  [[attachment]]
+    translated = 📎
+
+
