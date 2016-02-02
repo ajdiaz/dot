@@ -1,0 +1,39 @@
+#! /bin/bash
+# (c) 2010 Andres J. Diaz <ajdiaz@connectical.com>
+# A hook to git-commit(1) to update the home dot files link using this
+# repository as based.
+#
+# To enable this hook, rename this file to "pre-commit".
+
+update_links () {
+  for dot in $1/*; do
+    if [ "${dot##*/}" == "pre-commit-hook" ]; then
+      continue
+    fi
+    if [ "${dot##*/}" == "config" ]; then
+      update_links "$1/config" "config/"
+      continue
+    fi
+    home_dot="$HOME/.${2}${dot##*/}"
+
+    if [ -L "${home_dot}" ]; then
+        if [ "${home_dot}" -ef "$dot" ]; then
+            echo "[skip] ${home_dot}: is already updated"
+        else
+            rm -f "${home_dot}" && \
+            ln -s "$dot" "${home_dot}" && \
+            echo "[done] updated link: ${home_dot}"
+        fi
+    else
+        if [ -r "${home_dot}" ]; then
+            echo "[keep] ${home_dot}: is regular file"
+    	else
+            ln -s "$dot" "${home_dot}" && \
+            echo "[done] updated link: ${home_dot}"
+        fi		
+    fi
+  done
+}
+
+update_links $PWD
+true
