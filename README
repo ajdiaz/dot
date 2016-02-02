@@ -1,0 +1,16 @@
+Dotfiles repository
+===================
+
+To create dot files, just run
+
+  ./pre-commit-hook
+
+If you wanto to run the script on every commit into the repo, then copy the
+hook to the git hook's directory:
+
+  cp pre-commit-hook .git/hooks/pre-commit
+
+The `config' directory has special treatment, and is never copied to home
+directory or linked, instead the inside directories are linked into
+~/.config directory, which must be exists before.
+
