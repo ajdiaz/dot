@@ -52,6 +52,7 @@ set showmatch				 " Show matching parens
 set textwidth=76             " Text is 76 columns wide
 set backspace=2              " Backspace always useable in insert mode
 set fileformats=unix,mac,dos " Allows automatic line-end detection.
+set conceallevel=0           " Show some hidden elements, like quotes in json
 set completeopt-=preview
 set ignorecase
 set infercase
