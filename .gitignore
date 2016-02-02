@@ -6,6 +6,9 @@
 *.pyo
 __pycache__
 
+# systemd stuff
+config/systemd/user/default.target.wants
+
 # GnuPG stuff
 gnupg/*.gpg
 gnupg/.\#*
