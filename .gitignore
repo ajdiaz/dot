@@ -17,6 +17,8 @@ gnupg/sshcontrol
 
 # Vim stuff
 vim/.netrwhist
+vim/bundle/.neobundle
+vim/bundle/NeoBundle.lock
 
 # Environ stuff
 env
@@ -40,5 +42,8 @@ ssh/master-*
 # todo.txt
 todo/*.txt
 
-vim/bundle/.neobundle
-vim/bundle/NeoBundle.lock
+# ranger stuff
+config/ranger/bookmarks
+config/ranger/tagged
+config/ranger/history
+
