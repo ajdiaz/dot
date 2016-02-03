@@ -43,7 +43,7 @@ bindsym $mod+d exec dmenu_run
 # bindsym $mod+d exec --no-startup-id i3-dmenu-desktop
 
 # suspend
-bindsym $mod+Shift+period exec systemctl suspend
+bindsym $mod+Shift+period exec i3lock -c 000000 -f && systemctl suspend
 
 # change focus
 bindsym $mod+j focus left
@@ -181,6 +181,6 @@ exec --no-startup-id xrdb -merge /home/ajdiaz/.Xresources
 exec --no-startup-id xrandr --dpi 192
 exec --no-startup-id srandrd /home/ajdiaz/.config/i3/detect_displays.sh
 exec --no-startup-id xsetroot -solid black
-exec-always --no-startup-id feh --bg-scale ~/img/bg/montains-bw.png
+exec --no-startip-id feh --bg-scale ~/img/bg/montains-bw.png
 exec --no-startup-id dunst
 exec --no-startup-id /usr/lib/gnome-settings-daemon/gnome-settings-daemon
