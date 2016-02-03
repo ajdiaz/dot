@@ -9,6 +9,10 @@ __pycache__
 # systemd stuff
 config/systemd/user/default.target.wants
 
+# weechat stuff
+weechat/sec.conf
+weechat/logs
+
 # GnuPG stuff
 gnupg/*.gpg
 gnupg/.\#*
