@@ -12,6 +12,8 @@ config/systemd/user/default.target.wants
 # weechat stuff
 weechat/sec.conf
 weechat/logs
+weechat/*.log
+weechat/xfer
 
 # GnuPG stuff
 gnupg/*.gpg
