@@ -193,11 +193,6 @@ if [ -x /usr/bin/vim ] ; then
 	export EDITOR='/usr/bin/vim'
 fi
 
-# Load profile (environments) easy
-function profile {
-	source "${HOME}/.zsh/profiles/$1"
-}
-
 # Load some local files
 for local in "${HOME}/.zsh/local/"*; do
 	[ "$local" != "${HOME}/.zsh/local/*" ] && source "$local"

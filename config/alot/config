@@ -20,7 +20,7 @@ edit_headers_whitelist = Attach,From,To,Subject
 edit_headers_blacklist = ' '
 displayed_headers = To,Cc,Bcc,Subject,Tags,Date,Message-Id
 notify_timeout = 4
-prompt_suffix = "> "
+prompt_suffix = "▶ "
 reply_force_address = True
 forward_force_address = True
 bounce_force_address = True
@@ -49,6 +49,11 @@ auto_replyto_mailinglist = True
 Q = exit
 q = bclose
 r = refresh
+/ = prompt 'search '
+'#' = taglist
+'meta left' = bprevious
+'meta right' = bnext
+
 n = compose
   [[search]]
     d = toggletags deleted
