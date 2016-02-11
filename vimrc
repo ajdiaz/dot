@@ -462,6 +462,13 @@ map  <F8>   :cn!<CR>
 map <C-K> :pyf /usr/share/clang/clang-format.py<CR>
 imap <C-K> <ESC>:pyf /usr/share/clang/clang-format.py<CR>i
 
+" tabs configuration
+execute "set <M-t>=\et"
+
+nmap <M-t> :tabnew<CR>
+nmap <M-Left> :tabprevious<CR>
+nmap <M-Right> :tabnext<CR>
+
 runtime! macros/matchit.vim
 
 " vim:ts=4:sw=4:fenc=utf-8
