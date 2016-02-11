@@ -1,0 +1,8 @@
+# offlineimap.service
+
+[Unit]
+Description=Battery Notifier
+
+[Service]
+Type=oneshot
+ExecStart=/home/ajdiaz/.local/bin/batt_notify

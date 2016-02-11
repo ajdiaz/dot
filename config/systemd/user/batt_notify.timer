@@ -1,0 +1,11 @@
+# offlineimap.timer
+
+[Unit]
+Description=Battery Notifier Timer
+
+[Timer]
+OnCalendar=*:0/2
+Unit=batt_notify.service
+
+[Install]
+WantedBy=default.target
