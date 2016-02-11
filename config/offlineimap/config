@@ -1,21 +1,21 @@
 [general]
-accounts = inactive.io
+accounts = ajdiaz.me
 pythonfile = ~/.config/offlineimap/gnome-keyring_helper.py
 
-[Account inactive.io]
-localrepository  = inactive.io-local
-remoterepository = inactive.io-remote
-postsynchook     = ~/.config/offlineimap/hooks/postsync_inactiveio
+[Account ajdiaz.me]
+localrepository  = ajdiaz.me-local
+remoterepository = ajdiaz.me-remote
+postsynchook     = ~/.config/offlineimap/hooks/postsync_ajdiazme
 
-[Repository inactive.io-local]
+[Repository ajdiaz.me-local]
 type = Maildir
-localfolders = ~/.mail/inactive.io
+localfolders = ~/.mail/ajdiaz.me
 
-[Repository inactive.io-remote]
+[Repository ajdiaz.me-remote]
 type = IMAP
 ssl  = yes
 sslcacertfile  = ~/.config/offlineimap/certs/mail.gandi.net.chain.crt
 remotehost     = mail.gandi.net
 remoteport     = 993
-remoteusereval = get_username("inactive.io-remote")
-remotepasseval = get_password("inactive.io-remote")
+remoteusereval = get_username("ajdiaz.me")
+remotepasseval = get_password("ajdiaz.me")

@@ -4,6 +4,8 @@
 notmuch new
 
 # Tagging
-notmuch tag -inbox +archive folder:Archive
-notmuch tag -inbox +draft   folder:Draft
-notmuch tag -inbox +trash   folder:Trash
+#notmuch tag -inbox +archive folder:Archive
+#notmuch tag -inbox +draft   folder:Draft
+#notmuch tag -inbox +trash   folder:Trash
+
+afew --tag --new
