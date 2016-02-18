@@ -1,15 +1,17 @@
 [general]
 accounts = ajdiaz.me
-pythonfile = ~/.config/offlineimap/gnome-keyring_helper.py
+pythonfile = ~/.config/offlineimap/pass_helper.py
 
 [Account ajdiaz.me]
 localrepository  = ajdiaz.me-local
 remoterepository = ajdiaz.me-remote
-postsynchook     = ~/.config/offlineimap/hooks/postsync_ajdiazme
+postsynchook     = notmuch new && afew --tag --new
+presynchook      = notmuch search --format=text0 --output=files tag:deleted | xargs -0r rm && afew --move-mails
 
 [Repository ajdiaz.me-local]
 type = Maildir
 localfolders = ~/.mail/ajdiaz.me
+sep = /
 
 [Repository ajdiaz.me-remote]
 type = IMAP
@@ -17,5 +19,6 @@ ssl  = yes
 sslcacertfile  = ~/.config/offlineimap/certs/mail.gandi.net.chain.crt
 remotehost     = mail.gandi.net
 remoteport     = 993
-remoteusereval = get_username("ajdiaz.me")
-remotepasseval = get_password("ajdiaz.me")
+remoteusereval = get_username("mail.gandi.net")
+remotepasseval = get_password("mail.gandi.net")
+#createfolders  = True
