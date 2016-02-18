@@ -13,6 +13,10 @@ tags = +unread;+inbox
 
 [MailMover]
 folders = INBOX Spam Spam/Undecided
-INBOX = 'tag:spam':Spam/ReSpam 'tag:ham':Spam/ReHam 'NOT ( tag:inbox OR tag:unread OR tag:flagged ) AND date:..30days':Archives
+INBOX = 'tag:sent':Sent tag:cron':Cron 'tag:spam':Spam/ReSpam 'tag:ham':Spam/ReHam 'NOT ( tag:inbox OR tag:unread OR tag:flagged ) AND date:..30days':Archive
 Spam = 'tag:spam':Spam/ReSpam 'tag:ham':Spam/ReHam
 Spam/Undecided = 'tag:spam':Spam/ReSpam 'tag:ham':Spam/ReHam
+
+[Filter.1]
+query = from:*+cron@ajdiaz.me
+tags = +cron

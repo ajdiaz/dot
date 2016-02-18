@@ -26,17 +26,20 @@ forward_force_address = True
 bounce_force_address = True
 thread_subjecat = oldest
 auto_replyto_mailinglist = True
+quit_on_last_bclose = True
+thread_authors_replace_me = False
+timestamp_format = %Y-%m-%d %H:%M
 
 [accounts]
-    [[ajdiaz@inactive.io]]
+    [[ajdiaz@ajdiaz.me]]
         realname  = Andrés J. Díaz
-        address   = ajdiaz@inactive.io
-        sent_box  = maildir:///home/ajdiaz/.mail/inactive.io/INBOX
-        draft_box = maildir:///home/ajdiaz/.mail/inactive.io/Draft
-        sent_tags = inbox,
-        sendmail_command = msmtp --account=inactive.io -t
-		    signature_filename = file:///home/ajdiaz/.signature
-		    gpg_key = 4EB7AC4B 
+        address   = ajdiaz@ajdiaz.me
+        sent_box  = maildir:///home/ajdiaz/.mail/ajdiaz.me/INBOX
+        draft_box = maildir:///home/ajdiaz/.mail/ajdiaz.me/Draft
+        sent_tags = sent,
+        sendmail_command = msmtp --account=ajdiaz.me -t
+		    signature = ~/.signature
+		    gpg_key = 5369AA4171B5139C
 		    sign_by_default = True
 
         [[[abook]]]
@@ -50,16 +53,23 @@ Q = exit
 q = bclose
 r = refresh
 / = prompt 'search '
+m = compose
 '#' = taglist
 'meta left' = bprevious
 'meta right' = bnext
 
-n = compose
   [[search]]
+    I = search tag:inbox AND NOT tag:killed AND NOT tag:deleted
+    S = search tag:sent
     d = toggletags deleted
     J = toggletags spam
+    a = toggletags archive
+    f = toggletags flagged
   [[thread]]
-    s = toggletags unread
+    ' ' = toggletags unread
+
+  [[envelope]]
+    E = toggleencrypt
 
 [tags]
   [[flagged]]
@@ -73,7 +83,7 @@ n = compose
   [[encrypted]]
 	translated = 🔒
   [[inbox]]
-	translated = ' '
+	translated = ''
   [[signed]]
 	translated = 🖋
   [[fyi]]
@@ -84,5 +94,9 @@ n = compose
     translated = ♻
   [[attachment]]
     translated = 📎
-
-
+  [[lists]]
+    translated =
+  [[lists/e2e180baf855ac797ef407fc7]]
+    translated = lists/python
+  [[cron]]
+    translated = 🕑
