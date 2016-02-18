@@ -10,6 +10,7 @@ update_links () {
     case "${dot##*/}" in
       pre-commit-hook|README) continue;;
       config)
+        mkdir -p ~/.config
         update_links "$1/config" "config/"
         continue;;
     esac
