@@ -198,6 +198,8 @@ for local in "${HOME}/.zsh/local/"*; do
 	[ "$local" != "${HOME}/.zsh/local/*" ] && source "$local"
 done
 
+# Unset some vars
+unset _path local
 # Mark exports
 export PATH
 
@@ -205,17 +207,6 @@ export PATH
 if [ -r "${HOME}/.pythonrc.py" ] ; then
 	export PYTHONSTARTUP="${HOME}/.pythonrc.py"
 fi
-
-# Some virtualenvwrapper magic
-export WORKON_HOME="${HOME}/env"
-if [ -r /etc/bash_completion.d/virtualenvwrapper ]; then
-	source /etc/bash_completion.d/virtualenvwrapper
-fi
-
-if [ -r /usr/bin/virtualenvwrapper.sh ]; then
-	source /usr/bin/virtualenvwrapper.sh
-fi
-export VIRTUAL_ENV_DISABLE_PROMPT=false
 
 # TERMCAP codes
 # vb      flash     emit visual bell

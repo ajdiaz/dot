@@ -37,9 +37,6 @@ vim/bundle/NeoBundle.lock
 # Environ stuff
 env
 
-# Local files
-zsh/local/*
-
 # Cache files
 zsh/cache*
 
