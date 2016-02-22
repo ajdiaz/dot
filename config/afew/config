@@ -8,6 +8,10 @@
 [ArchiveSentMailsFilter]
 sent_tag = sent
 
+[Filter.1]
+query = from:cron AND from:@ajdiaz.me
+tags = +cron
+
 [InboxFilter]
 tags = +unread;+inbox
 
@@ -17,6 +21,3 @@ INBOX = 'tag:sent':Sent tag:cron':Cron 'tag:spam':Spam/ReSpam 'tag:ham':Spam/ReH
 Spam = 'tag:spam':Spam/ReSpam 'tag:ham':Spam/ReHam
 Spam/Undecided = 'tag:spam':Spam/ReSpam 'tag:ham':Spam/ReHam
 
-[Filter.1]
-query = from:*+cron@ajdiaz.me
-tags = +cron

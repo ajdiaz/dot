@@ -224,3 +224,6 @@ export LESS_TERMCAP_so=$'\e[48;5;235m\e[38;5;242m'
 export LESS_TERMCAP_se=$'\e[0;0m'
 export LESS_TERMCAP_us=$'\e[38;5;71m'
 export LESS_TERMCAP_ue=$'\e[0;0m'
+
+# pass configuration
+export PASSWORD_STORE_DIR=~/sys/pass

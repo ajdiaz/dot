@@ -42,7 +42,7 @@ _virtualz-activate () {
 
 	# If a virtualenv is in use, deactivate it first
 	if [[ ${VIRTUAL_ENV:+set} = set ]] ; then
-		virtualz-deactivate
+		_virtualz-deactivate
 	fi
 
 	VIRTUAL_ENV_NAME=$1
@@ -98,7 +98,7 @@ _virtualz-new () {
 	local venv_status=$?
 
 	if [[ ${venv_status} -eq 0 && -d ${venv_path} ]] ; then
-		virtualz-activate "${venv_name}"
+		_virtualz-activate "${venv_name}"
 	else
 		echo "virtualenv returned status ${venv_status}" 1>&2
 		return ${venv_status}
