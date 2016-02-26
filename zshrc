@@ -157,10 +157,14 @@ unset FMT_BRANCH FMT_ACTION
 # Aliases
 alias -- 'pd'=pushd
 alias -- '..'='cd ..'
-alias -- ls='ls --color=auto'
-alias -- grep='grep --color=auto'
-alias -- ll='ls --color=auto -l'
-alias -- ps='ps axf'
+
+case "$(uname)" in
+  Linux)
+    alias -- ls='ls --color=auto'
+    alias -- ll='ls --color=auto -l'
+    alias -- ps='ps axf' ;;
+esac
+
 alias -- ag='ack'
 alias -- '-'='cd -'
 alias -- gdb='gdb -q'
