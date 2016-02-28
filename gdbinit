@@ -8,7 +8,14 @@ set print object on
 set print frame-arguments all
 set print static-members off
 set print elements 4096
+set disassembly-flavor intel
 set prompt [38;5;226m▸▸▸[0;0m 
+
+catch syscall ptrace
+  commands 1
+  set ($eax) = 0
+  continue
+end
 
 define dis
   disassemble $rip-16,+48
