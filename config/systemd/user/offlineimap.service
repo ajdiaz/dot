@@ -6,5 +6,6 @@ After=network.target
 
 [Service]
 Type=oneshot
+Environment=PASSWORD_STORE_DIR=/home/ajdiaz/sys/pass
 ExecStart=/usr/bin/offlineimap -o -q -u quiet
 TimeoutStartSec=1min30s

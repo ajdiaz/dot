@@ -5,7 +5,7 @@ pythonfile = ~/.config/offlineimap/pass_helper.py
 [Account ajdiaz.me]
 localrepository  = ajdiaz.me-local
 remoterepository = ajdiaz.me-remote
-postsynchook     = notmuch new && afew --tag --new
+postsynchook     = notmuch new && afew --tag --new && ~/.config/offlineimap/notify.sh
 presynchook      = notmuch search --format=text0 --output=files tag:deleted | xargs -0r rm && afew --move-mails
 
 [Repository ajdiaz.me-local]
