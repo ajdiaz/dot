@@ -100,6 +100,10 @@ if has("wildmenu")
 	set wildignore=*.o,*.cm[ioax],*.ppu,*.core,*~,core,#*#
 endif
 
+" Plugin: templates
+let g:email = "ajdiaz@ajdiaz.me"
+let g:user = "Andres J. Diaz"
+
 " Plugin: JSON
 let g:vim_json_syntax_conceal = 0
 
@@ -461,6 +465,9 @@ map  <F8>   :cn!<CR>
 " clang-format, see http://clang.llvm.org/docs/ClangFormat.html
 map <C-K> :pyf /usr/share/clang/clang-format.py<CR>
 imap <C-K> <ESC>:pyf /usr/share/clang/clang-format.py<CR>i
+
+" remove xml/sgml tags
+map <leader>rtag yitvatp<CR>
 
 " tabs configuration
 execute "set <M-t>=\et"
