@@ -22,6 +22,10 @@ if [ "$DESKTOP_SESSION" = "i3" ]; then
   export $(gnome-keyring-daemon -s)
 fi
 
+if [ ! -f /usr/share/terminfo/${TERM:0:1}/${TERM} ]; then
+  export TERM="xterm-256color"
+fi
+
 # Bind Ctrl-Left and Ctrl-Right key sequences, and AvPag/RePag for history
 bindkey "^[[1;5C" forward-word
 bindkey "^[[1;5D" backward-word
