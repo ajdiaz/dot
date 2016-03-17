@@ -6,7 +6,10 @@
 # This is a modification of Roman Zimbelmann's default colorscheme.
 
 from ranger.gui.colorscheme import ColorScheme
-from ranger.gui.color import *
+from ranger.gui.color import reverse, normal, \
+                            default_colors, bold, default, \
+                            red, magenta, white, cyan
+
 
 class Solarized(ColorScheme):
     progress_bar_color = 33
