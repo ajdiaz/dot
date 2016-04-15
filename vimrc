@@ -19,13 +19,13 @@ let mapleader=','
 let g:using_neocomplete = 1
 execute pathogen#infect()
 
-	let g:notmuch_folders = [
-		\ [ 'new', 'tag:inbox and tag:unread' ],
-		\ [ 'inbox', 'tag:inbox' ],
-		\ [ 'unread', 'tag:unread' ],
-		\ [ 'to-do', 'tag:to-do' ],
-		\ [ 'to-me', 'to:john.doe and tag:new' ],
-		\ ]
+let g:notmuch_folders = [
+    \ [ 'new', 'tag:inbox and tag:unread' ],
+    \ [ 'inbox', 'tag:inbox' ],
+    \ [ 'unread', 'tag:unread' ],
+    \ [ 'to-do', 'tag:to-do' ],
+    \ [ 'to-me', 'to:john.doe and tag:new' ],
+    \ ]
 
 set tabstop=2				 " Set tabstops to 2 spaces
 set expandtab                " Use spaces instead of tabs by default
