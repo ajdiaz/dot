@@ -229,3 +229,7 @@ export LESS_TERMCAP_ue=$'\e[0;0m'
 
 # pass configuration
 export PASSWORD_STORE_DIR=~/sys/pass
+
+# pidstat colors
+export S_COLORS=auto
+export S_COLORS_SGR="H=31;1:I=0;37:M=1;35:N=0;1:Z=37;0"
