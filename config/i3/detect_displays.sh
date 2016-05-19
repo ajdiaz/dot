@@ -19,13 +19,14 @@ xrandr_params_for() {
   if [ "${2}" == 'connected' ]
   then
     if [ "${1:0:4}" == 'HDMI' ]; then
-      local scale="--scale 2x2"
-    else
-      local scale="--scale 1x1"
+      eval $(find_mode ${1})  #sets ${WIDTH} and ${HEIGHT}
+      MODE="${WIDTH}x${HEIGHT}"
+      local scale="--scale 2x2 --mode ${MODE}"
+    elif [ "${1:0:3}" == "eDP" ]; then
+      local scale="--scale 1x1 --auto"
+      WIDTH="3840"
     fi
-    eval $(find_mode ${1})  #sets ${WIDTH} and ${HEIGHT}
-    MODE="${WIDTH}x${HEIGHT}"
-    CMD="${CMD} --output ${1} --mode ${MODE} --pos ${POS[X]}x${POS[Y]} ${scale}"
+    CMD="${CMD} --output ${1}  ${scale} --pos ${POS[X]}x${POS[Y]}"
     POS[X]=$((${POS[X]}+${WIDTH}))
     return 0
   else
@@ -37,8 +38,6 @@ xrandr_params_for() {
 for VOUT in ${!VOUTS[*]}
 do
   xrandr_params_for ${VOUT} ${VOUTS[${VOUT}]}
-  feh --bg-scale /home/ajdiaz/img/bg/montains-bw.png
 done
-set -x
+
 ${CMD}
-set +x

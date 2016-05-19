@@ -181,9 +181,9 @@ for_window [class="VirtualBox"] floating enable
 for_window [class="mpv"] floating enable
 
 exec --no-startup-id xrdb -merge /home/ajdiaz/.Xresources
-exec --no-startup-id xrandr --dpi 192
-exec --no-startup-id feh --bg-scale /home/ajdiaz/img/bg/montains-bw.png
-exec --no-startup-id srandrd /home/ajdiaz/.config/i3/detect_displays.sh
 exec --no-startup-id xsetroot -solid black
+exec --no-startup-id xrandr --dpi 192
+exec --no-startup-id srandrd /home/ajdiaz/.config/i3/detect_displays.sh
 exec --no-startup-id dunst
 exec --no-startup-id /usr/lib/gnome-settings-daemon/gnome-settings-daemon
+exec --no-startup-id feh --bg-scale /home/ajdiaz/img/bg/montains-bw.png

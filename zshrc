@@ -144,7 +144,8 @@ if [[ ${TERM} = screen* ]] ; then
 	}
 fi
 
-PROMPT=$'%{%F{180}%}${VIRTUAL_ENV:+${VIRTUAL_ENV##*/} }%{%b%f%}'
+PROMPT=$'%{%F{200}%}${LOADENV_ENV_NAME:+$LOADENV_ENV_NAME }%{%b%f%}'
+PROMPT+=$'%{%F{180}%}${VIRTUAL_ENV:+${VIRTUAL_ENV##*/} }%{%b%f%}'
 PROMPT+=$'%B%{%(!.$fg[red].$fg[green])%}%m%b%f '
 PROMPT+=$'${vcs_info_msg_0_}'
 PROMPT+=$'%{%F{39}%}%B%1~ %b%f'
