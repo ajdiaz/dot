@@ -19,7 +19,7 @@ autoload -U colors
 colors
 
 if [ "$DESKTOP_SESSION" = "i3" ]; then
-  export $(gnome-keyring-daemon -s)
+  export $(gnome-keyring-daemon -s 2>/dev/null)
 fi
 
 if [ ! -f /usr/share/terminfo/${TERM:0:1}/${TERM} ]; then

@@ -186,4 +186,5 @@ exec --no-startup-id xrandr --dpi 192
 exec --no-startup-id srandrd /home/ajdiaz/.config/i3/detect_displays.sh
 exec --no-startup-id dunst
 exec --no-startup-id /usr/lib/gnome-settings-daemon/gnome-settings-daemon
+exec --no-startup-id gpg-agent --homedir /home/ajdiaz/.gnupg --use-standard-socket --daemon
 exec --no-startup-id feh --bg-scale /home/ajdiaz/img/bg/montains-bw.png
