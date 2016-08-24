@@ -90,7 +90,7 @@ endif
 
 if has("folding")
 	set foldminlines=5 		 " Don't fold stuff with less lines
-	set foldmethod=syntax 	 " Use syntax-aware folding
+	"set foldmethod=syntax 	 " Use syntax-aware folding
 	set nofoldenable 		 " Don't enable folding by default
 endif
 
