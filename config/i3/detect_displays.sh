@@ -38,6 +38,7 @@ xrandr_params_for() {
 for VOUT in ${!VOUTS[*]}
 do
   xrandr_params_for ${VOUT} ${VOUTS[${VOUT}]}
+  feh --bg-scale /home/ajdiaz/img/bg/montains-bw.png
 done
 
 ${CMD}
