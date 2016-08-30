@@ -177,6 +177,7 @@ alias -- stop="sudo systemctl stop"
 alias -- restart="sudo systemctl restart"
 alias -- reload="sudo systemctl reload"
 alias -- dot-upgrade="cd ~/sys/dot && git pr && cd -"
+alias -- history="history -i"
 
 # Local binaries directory
 if [ -d "${HOME}/.local/bin" ] ; then
