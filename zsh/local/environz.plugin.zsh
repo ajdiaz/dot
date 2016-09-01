@@ -5,7 +5,7 @@
 
 typeset -gA _loadenv_cmd
 
-le () {
+ez () {
 	if [[ $# -eq 0 || $1 = --help || $1 == -h ]] ; then
 		vz help
 		return

@@ -1,4 +1,4 @@
-_le () {
+_ez () {
   local -a loadenv_commands
   for cmd in ${(k)_loadenv_cmd[@]} ; do
     loadenv_commands=( "${loadenv_commands[@]}" "${cmd}:${_loadenv_cmd[${cmd}]}" )
@@ -13,7 +13,7 @@ _le () {
 
   case ${words[1]} in
     activate | rm)
-      local -a loadenv_virtualenvs=( $(loadenv ls) )
+      local -a loadenv_virtualenvs=( $(ez ls) )
       _arguments "1: :{_describe 'virtualenv' loadenv_virtualenvs}"
       ;;
     new)
@@ -30,4 +30,4 @@ _le () {
   esac
 }
 
-compdef _le le
+compdef _ez ez
