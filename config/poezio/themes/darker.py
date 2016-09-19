@@ -63,9 +63,9 @@ class DarkerTheme(theming.Theme):
 
     # User list color
     COLOR_USER_VISITOR = (239, -1)
-    COLOR_USER_PARTICIPANT = (39, -1)
-    COLOR_USER_NONE = (0, -1)
-    COLOR_USER_MODERATOR = (1, -1)
+    COLOR_USER_PARTICIPANT = (167, -1)
+    COLOR_USER_NONE = (240, -1)
+    COLOR_USER_MODERATOR = (39, -1)
 
     # nickname colors
     COLOR_REMOTE_USER = (39, -1)
@@ -94,6 +94,19 @@ class DarkerTheme(theming.Theme):
     CHAR_ROSTER_TO = '→'
     CHAR_ROSTER_NONE = '⇹'
 
+    CHAR_AFFILIATION_OWNER = '#'
+    CHAR_AFFILIATION_ADMIN = '@'
+    CHAR_AFFILIATION_MEMBER = '+'
+    CHAR_AFFILIATION_NONE = ' '
+
+    CHAR_CHATSTATE_ACTIVE = '●'
+    CHAR_CHATSTATE_COMPOSING = '…'
+    CHAR_CHATSTATE_PAUSED = '✖'
+
+    COLOR_JOIN_CHAR = (41, -1)
+    COLOR_QUIT_CHAR = (236, -1)
+    COLOR_KICK_CHAR = (196, -1)
+
     # Info messages color (the part before the ">")
     INFO_COLORS = {
             'info': (39, -1),
@@ -109,4 +122,4 @@ class DarkerTheme(theming.Theme):
             'default': (7, -1),
     }
 
-theme = DarkerTheme()
+theme = theming.theme = DarkerTheme()
