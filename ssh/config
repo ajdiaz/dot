@@ -55,7 +55,7 @@ Host *
     # Keep the connection alive for finnecky servers, and kill it when the
     # connection has died
     KeepAlive yes
-    ServerAliveInterval 15
+    ServerAliveInterval 300
     ServerAliveCountMax 3
     # Allow local and proxy commands
     PermitLocalCommand yes
