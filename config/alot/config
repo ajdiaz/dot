@@ -6,31 +6,50 @@ body_mimetype = text/plain
 folowup_to = True
 terminal_cmd = termite -e
 editor_cmd = vim
-initial_command = search tag:inbox AND NOT tag:killed AND NOT tag:deleted
+initial_command = search tag:inbox AND NOT tag:deleted AND NOT tag:spam
 ask_subject = True
 editor_spawn = False
 editor_in_thread = False
 prefer_plaintext = True
 search_threads_sort_order = newest_first
+search_statusbar = [{buffer_no} search] {querystring}, {input_queue} {result_count}/{total_messages}
 complete_matching_abook_only = False
 tabwidth = 4
 ansi_background = False
 show_count_in_tag_list = messages
 edit_headers_whitelist = Attach,From,To,Subject
 edit_headers_blacklist = ' '
-displayed_headers = To,Cc,Bcc,Subject,Tags,Date,Message-Id
+displayed_headers = From,To,Cc,Bcc,Subject,Tags,Date,Message-Id,List-Unsubscribe
 notify_timeout = 4
-prompt_suffix = "▶ "
+prompt_suffix = ": "
 reply_force_address = True
 forward_force_address = True
 bounce_force_address = True
 thread_subjecat = oldest
+#thread_statusbar = [{buffer_no} thread] {subject} {input_queue} {total_messages}
 auto_replyto_mailinglist = True
 quit_on_last_bclose = True
-thread_authors_replace_me = False
+thread_authors_replace_me = True
 timestamp_format = %Y-%m-%d %H:%M
 
 [accounts]
+    [[ajdiaz@connectical.com]]
+        realname  = Andrés J. Díaz
+        address   = ajdiaz@connectical.com
+        sent_box  = maildir:///home/ajdiaz/.mail/connectical.com/INBOX
+        draft_box = maildir:///home/ajdiaz/.mail/connectical.com/Draft
+        sent_tags = sent,
+        sendmail_command = msmtp --account=connectical.com -t
+		    signature = ~/.signature
+		    gpg_key = 77619F2382A850A8
+		    sign_by_default = True
+
+        [[[abook]]]
+          type = shellcommand
+          regexp = '^(?P<email>[^@]+@[^\t]+)\t+(?P<name>[^\t]+)'
+          command = notmuch-addrlookup --mutt
+          ignorecase = True
+
     [[ajdiaz@ajdiaz.me]]
         realname  = Andrés J. Díaz
         address   = ajdiaz@ajdiaz.me
@@ -59,48 +78,83 @@ m = compose
 'meta right' = bnext
 
   [[search]]
-    I = search tag:inbox AND NOT tag:killed AND NOT tag:deleted
+    I = search tag:inbox AND NOT tag:deleted AND NOT tag:spam
     S = search tag:sent
+    D = search tag:deleted
+    F = search tag:flagged
     d = toggletags deleted
     J = toggletags spam
     a = toggletags archive
     f = toggletags flagged
   [[thread]]
-    ' ' = toggletags unread
+    s = toggletags unread
+    f = fold *
 
   [[envelope]]
     E = toggleencrypt
 
 [tags]
   [[flagged]]
-	translated = ⚑
-	normal = '','','light red','','light red',''
-	focus = '','','light red','','light red',''
+	  translated = '⚑'
+  	normal = '','','light red','','light red',''
+	  focus = '','','light red','','light red',''
   [[replied]]
-	translated = ↩
+	  translated = '↩'
+  	normal = '','','white','','white',''
+	  focus = '','','white','','white',''
   [[sent]]
-	translated = 🡕
+  	translated = '➚'
+  	normal = '','','white','','white',''
+	  focus = '','','white','','white',''
   [[encrypted]]
-	translated = 🔒
+  	translated = '✓'
+	  normal = '','','light blue','','h69',''
+	  focus = '','','light blue','','h69',''
   [[inbox]]
-	translated = ''
+	  translated =
   [[signed]]
-	translated = 🖋
+	  translated = '✓'
+	  normal = '','','light green','','light green',''
+	  focus = '','','light green','','light green',''
   [[fyi]]
-	translated = ℹ
+	  translated = 'i'
+	  normal = '','','light blue','','h69',''
+	  focus = '','','light blue','','h69',''
   [[unread]]
-	translated = 🗲
+	  translated = '●'
+	  normal = '','','light blue','','h69',''
+	  focus = '','','white','','white',''
   [[deleted]]
-    translated = ♻
+    translated = '♻'
+  	normal = '','','white','','white',''
+	  focus = '','','white','','white',''
   [[attachment]]
-    translated = 📎
+    translated = '+'
+  	normal = '','','white','','white',''
+	  focus = '','','white','','white',''
+	[[spam]]
+  	normal = '','','light red','','h196',''
+	  focus = '','','light red','','h196',''
   [[lists]]
     translated =
+  	normal = '','','white','','h145',''
+	  focus = '','','white','','h145',''
   [[lists/e2e180baf855ac797ef407fc7]]
     translated = lists/python
   [[lists/9735795484d2e4c204da82a29]]
     translated = lists/python
   [[lists/b6635e37e35fa5eff0c2a947a]]
     translated = lists/devops
+  [[lists/9d976d2d2f980dfd645881aea]]
+    translated = list/redis
   [[cron]]
-    translated = 🕑
+    translated = '⏲'
+  	normal = '','','white','','white',''
+	  focus = '','','white','','white',''
+  [[events]]
+    translated = '⏲'
+  	normal = '','','white','','white',''
+	  focus = '','','white','','white',''
+	[[archive]]
+  	normal = '','','white','','white',''
+	  focus = '','','white','','white',''

@@ -1,7 +1,7 @@
 #! /bin/sh
 
-maildirnew="$HOME/.mail/*/*/new/"
-new="$(find $maildirnew -type f | wc -l)"
+query="tag:unread"
+new="$(notmuch search --output=files $query | wc -l)"
 
-[ $new -gt 0 ] && notify-send  -t 5000 'Email' "Received $new new emails"
+[ $new -gt 0 ] && notify-send -u low -t 10 "Received: $new emails"
 true

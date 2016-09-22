@@ -1,7 +1,18 @@
 # vim:ft=cfg
 
 [SpamFilter]
-[ClassifyingFilter]
+spam_tag = spam
+
+[InboxFilter]
+tags = +unread;+inbox
+
+[MailMover]
+folders = ajdiaz.me/INBOX ajdiaz.me/Spam ajdiaz.me/Spam/Undecided connectical.com/INBOX
+ajdiaz.me/INBOX = 'tag:sent':ajdiaz.me/Sent tag:cron':ajdiaz.me/Cron 'tag:spam':ajdiaz.me/Spam/ReSpam 'tag:ham':ajdiaz.me/Spam/ReHam 'NOT ( tag:inbox OR tag:unread OR tag:flagged ) AND date:..30days':ajdiaz.me/Archive
+ajdiaz.me/Spam = 'tag:spam':ajdiaz.me/Spam/ReSpam 'tag:ham':ajdiaz.me/Spam/ReHam
+ajdiaz.me/Spam/Undecided = 'tag:spam':ajdiaz.me/Spam/ReSpam 'tag:ham':ajdiaz.me/Spam/ReHam
+connectical.com/INBOX = 'tag:deleted':connectical.com/Trash 'tag:spam':connectical.com/Spam 'tag:flagged':connectical.com/Starred
+
 [KillThreadsFilter]
 [ListMailsFilter]
 
@@ -12,12 +23,22 @@ sent_tag = sent
 query = from:cron AND from:@ajdiaz.me
 tags = +cron
 
-[InboxFilter]
-tags = +unread;+inbox
+[Filter.2]
+query = folder:connectical.com/Spam
+tags = +spam;-inbox;-new
 
-[MailMover]
-folders = INBOX Spam Spam/Undecided
-INBOX = 'tag:sent':Sent tag:cron':Cron 'tag:spam':Spam/ReSpam 'tag:ham':Spam/ReHam 'NOT ( tag:inbox OR tag:unread OR tag:flagged ) AND date:..30days':Archive
-Spam = 'tag:spam':Spam/ReSpam 'tag:ham':Spam/ReHam
-Spam/Undecided = 'tag:spam':Spam/ReSpam 'tag:ham':Spam/ReHam
+[Filter.3]
+query = folder:connectical.com/Trash
+tags = +deleted;-inbox;-unread;-new
 
+[Filter.4]
+query = folder:connectical.com/Starred
+tags = +flagged
+
+[Filter.5]
+query = folder:connectical.com/Sent
+tags = +sent;-unread;-inbox;-new
+
+[Filter.6]
+query = from:@pythonweekly.com
+tag = +list/python
