@@ -95,50 +95,50 @@ m = compose
 
 [tags]
   [[flagged]]
-	  translated = '⚑'
-  	normal = '','','light red','','light red',''
-	  focus = '','','light red','','light red',''
+    translated = '⚑'
+    normal = '','','light red','','light red',''
+    focus = '','','light red','','light red',''
   [[replied]]
-	  translated = '↩'
-  	normal = '','','white','','white',''
-	  focus = '','','white','','white',''
+    translated = '↩'
+    normal = '','','white','','white',''
+    focus = '','','white','','white',''
   [[sent]]
-  	translated = '➚'
-  	normal = '','','white','','white',''
-	  focus = '','','white','','white',''
+    translated = '➚'
+    normal = '','','white','','white',''
+    focus = '','','white','','white',''
   [[encrypted]]
-  	translated = '✓'
-	  normal = '','','light blue','','h69',''
-	  focus = '','','light blue','','h69',''
+    translated = '✓'
+    normal = '','','light blue','','h69',''
+    focus = '','','light blue','','h69',''
   [[inbox]]
-	  translated =
+    translated =
   [[signed]]
-	  translated = '✓'
-	  normal = '','','light green','','light green',''
-	  focus = '','','light green','','light green',''
+    translated = '✓'
+    normal = '','','light green','','light green',''
+    focus = '','','light green','','light green',''
   [[fyi]]
-	  translated = 'i'
-	  normal = '','','light blue','','h69',''
-	  focus = '','','light blue','','h69',''
+    translated = 'i'
+    normal = '','','light blue','','h69',''
+    focus = '','','light blue','','h69',''
   [[unread]]
-	  translated = '●'
-	  normal = '','','light blue','','h69',''
-	  focus = '','','white','','white',''
+    translated = '●'
+    normal = '','','light blue','','h69',''
+    focus = '','','white','','white',''
   [[deleted]]
     translated = '♻'
-  	normal = '','','white','','white',''
-	  focus = '','','white','','white',''
+    normal = '','','white','','white',''
+    focus = '','','white','','white',''
   [[attachment]]
     translated = '+'
-  	normal = '','','white','','white',''
-	  focus = '','','white','','white',''
+    normal = '','','white','','white',''
+    focus = '','','white','','white',''
 	[[spam]]
-  	normal = '','','light red','','h196',''
-	  focus = '','','light red','','h196',''
+    normal = '','','light red','','h196',''
+    focus = '','','light red','','h196',''
   [[lists]]
     translated =
-  	normal = '','','white','','h145',''
-	  focus = '','','white','','h145',''
+    normal = '','','white','','h145',''
+    focus = '','','white','','h145',''
   [[lists/e2e180baf855ac797ef407fc7]]
     translated = lists/python
   [[lists/9735795484d2e4c204da82a29]]
@@ -149,12 +149,12 @@ m = compose
     translated = list/redis
   [[cron]]
     translated = '⏲'
-  	normal = '','','white','','white',''
-	  focus = '','','white','','white',''
+    normal = '','','white','','white',''
+    focus = '','','white','','white',''
   [[events]]
     translated = '⏲'
-  	normal = '','','white','','white',''
-	  focus = '','','white','','white',''
-	[[archive]]
-  	normal = '','','white','','white',''
-	  focus = '','','white','','white',''
+    normal = '','','white','','white',''
+    focus = '','','white','','white',''
+  [[archive]]
+    normal = '','','white','','white',''
+    focus = '','','white','','white',''
