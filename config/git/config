@@ -19,7 +19,7 @@
 	untracked = cyan
 
 [core]
-	excludefile = ~/.gitignore
+	excludefile = ~/.config/git/ignore
 	whitespace = fix, -indent-with-non-tab,trailing-space,cr-at-eol
 	autocrlf = input
 
@@ -51,7 +51,7 @@
 	apple-pick = !sh -c 'git rev-list --reverse "$@" | xargs -n1 git cherry-pick' -
 
 	format-patch = -M -C
-	todo = grep -n -E '(FIXME|TODO)[:]? '
+	todo = grep -n -E '(FIXME|TODO|XXX)[:]? '
 
 [sendemail]
 	smtpencryption = tls
