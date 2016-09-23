@@ -36,7 +36,7 @@ set server = system.im
 
 # Set 'ignore_self_presence' to 1 if you do not want to see your own
 # presence in your roster (default: 0).
-set ignore_self_presence = 1
+set ignore_self_presence = 0
 
 # SSL/TLS options:
 # TLS is now regarded as the default encryption for connecting to jabber.
@@ -549,7 +549,7 @@ alias work     = status notavail Working
 alias q        = quit
 
 # Set use_mouse to 1 to map mouse buttons like keycodes.
-set use_mouse = 1
+set use_mouse = 0
 
 # Key bindings
 # Alt-i: show object information

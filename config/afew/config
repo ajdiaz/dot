@@ -40,5 +40,9 @@ query = folder:connectical.com/Sent
 tags = +sent;-unread;-inbox;-new
 
 [Filter.6]
-query = from:@pythonweekly.com
-tag = +list/python
+query = from:@meetup.com
+tags = +events
+
+#[Filter.7]
+#query = from:redis-db@googlegroups.com OR subject:[redis-db] OR from:redisweekly@redsmin.com
+#tags = +lists/redis

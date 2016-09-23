@@ -40,7 +40,7 @@ timestamp_format = %Y-%m-%d %H:%M
         draft_box = maildir:///home/ajdiaz/.mail/connectical.com/Draft
         sent_tags = sent,
         sendmail_command = msmtp --account=connectical.com -t
-		    signature = ~/.signature
+		    signature = ~/.signature/connectical.com.txt
 		    gpg_key = 77619F2382A850A8
 		    sign_by_default = True
 
@@ -57,7 +57,7 @@ timestamp_format = %Y-%m-%d %H:%M
         draft_box = maildir:///home/ajdiaz/.mail/ajdiaz.me/Draft
         sent_tags = sent,
         sendmail_command = msmtp --account=ajdiaz.me -t
-		    signature = ~/.signature
+		    signature = ~/.signature/ajdiaz.me.txt
 		    gpg_key = 5369AA4171B5139C
 		    sign_by_default = True
 
@@ -146,13 +146,11 @@ m = compose
   [[lists/b6635e37e35fa5eff0c2a947a]]
     translated = lists/devops
   [[lists/9d976d2d2f980dfd645881aea]]
-    translated = list/redis
+    translated = lists/redis
   [[cron]]
-    translated = '⏲'
     normal = '','','white','','white',''
     focus = '','','white','','white',''
   [[events]]
-    translated = '⏲'
     normal = '','','white','','white',''
     focus = '','','white','','white',''
   [[archive]]
