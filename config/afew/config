@@ -1,18 +1,5 @@
 # vim:ft=cfg
 
-[SpamFilter]
-spam_tag = spam
-
-[InboxFilter]
-tags = +unread;+inbox
-
-[MailMover]
-folders = ajdiaz.me/INBOX ajdiaz.me/Spam ajdiaz.me/Spam/Undecided connectical.com/INBOX
-ajdiaz.me/INBOX = 'tag:sent':ajdiaz.me/Sent tag:cron':ajdiaz.me/Cron 'tag:spam':ajdiaz.me/Spam/ReSpam 'tag:ham':ajdiaz.me/Spam/ReHam 'NOT ( tag:inbox OR tag:unread OR tag:flagged ) AND date:..30days':ajdiaz.me/Archive
-ajdiaz.me/Spam = 'tag:spam':ajdiaz.me/Spam/ReSpam 'tag:ham':ajdiaz.me/Spam/ReHam
-ajdiaz.me/Spam/Undecided = 'tag:spam':ajdiaz.me/Spam/ReSpam 'tag:ham':ajdiaz.me/Spam/ReHam
-connectical.com/INBOX = 'tag:deleted':connectical.com/Trash 'tag:spam':connectical.com/Spam 'tag:flagged':connectical.com/Starred
-
 [KillThreadsFilter]
 [ListMailsFilter]
 
@@ -43,6 +30,20 @@ tags = +sent;-unread;-inbox;-new
 query = from:@meetup.com
 tags = +events
 
-#[Filter.7]
-#query = from:redis-db@googlegroups.com OR subject:[redis-db] OR from:redisweekly@redsmin.com
-#tags = +lists/redis
+[Filter.7]
+query = from:@linkedin.com
+tags = +linkedin
+
+[SpamFilter]
+spam_tag = spam
+
+[InboxFilter]
+tags = +unread;+inbox
+
+
+[MailMover]
+folders = ajdiaz.me/INBOX ajdiaz.me/Spam ajdiaz.me/Spam/Undecided connectical.com/INBOX
+ajdiaz.me/INBOX = 'tag:sent':ajdiaz.me/Sent tag:cron':ajdiaz.me/Cron 'tag:spam':ajdiaz.me/Spam/ReSpam 'tag:ham':ajdiaz.me/Spam/ReHam 'NOT ( tag:inbox OR tag:unread OR tag:flagged ) AND date:..30days':ajdiaz.me/Archive
+ajdiaz.me/Spam = 'tag:spam':ajdiaz.me/Spam/ReSpam 'tag:ham':ajdiaz.me/Spam/ReHam
+ajdiaz.me/Spam/Undecided = 'tag:spam':ajdiaz.me/Spam/ReSpam 'tag:ham':ajdiaz.me/Spam/ReHam
+connectical.com/INBOX = 'tag:deleted':connectical.com/Trash 'tag:spam':connectical.com/Spam 'tag:flagged':connectical.com/Starred

@@ -21,7 +21,7 @@ def pre_global_exit(**kwargs):
         logging.info('goodbye!')
 
 
-def pre_global_refresh(**kwargs):
-    logging.info('Syncing mail with offlineimap')
-
-    subprocess.call(["offlineimap"], stdout=devnull, stderr=devnull)
+# def pre_global_refresh(**kwargs):
+#     logging.info('Syncing mail with offlineimap')
+#
+#     subprocess.call(["offlineimap"], stdout=devnull, stderr=devnull)

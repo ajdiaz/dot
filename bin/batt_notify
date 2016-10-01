@@ -1,0 +1,27 @@
+#! /bin/bash
+
+warn=30
+crit=15
+message_title="🔋  Low Battery!"
+command="sudo systemctl suspend"
+
+batt="BAT0"
+full="$(</sys/class/power_supply/${batt}/charge_full)"
+curr="$(</sys/class/power_supply/${batt}/charge_now)"
+percent="$((curr*100/full))"
+state="$(</sys/class/power_supply/${batt}/status)"
+
+case "$state" in
+  Discharging)
+    if [ $percent -lt $crit ]; then
+      notify-send -u critical "${message_title}"
+      sleep 5
+      $command
+    elif [ $percent -lt $warn ]; then
+      notify-send -u normal -t 5 "${message_title}"
+      xbacklight -time 500 -steps 30 -set 2
+      touch ~/.cache/batt-notify
+    elif [ -r ~/.cache/batt-notify ]; then
+      rm -f ~/.cache/batt-notify
+    fi
+esac
