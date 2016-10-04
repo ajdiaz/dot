@@ -35,5 +35,4 @@ update_links () {
   done
 }
 
-update_links $PWD
-true
+update_links "$PWD" || true
