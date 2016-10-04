@@ -89,6 +89,10 @@ m = compose
   [[thread]]
     s = toggletags unread
     f = fold *
+    d = tooggletags deleted
+    D = pipeto 'gpg --use-agent -d | less'
+    V = pipeto 'gpg --use-agent --verify'
+    R = reply --list=False
 
   [[envelope]]
     E = toggleencrypt

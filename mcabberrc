@@ -28,8 +28,8 @@ set server = system.im
 # If you don't know what a resource is, do not set it.
 # Set disable_random_resource to 1 if you don't want mcabber to add a random
 # suffix to the resource name.
-#set resource = mcabber
-#set disable_random_resource = 0
+set resource = argo
+set disable_random_resource = 1
 
 #set priority = 3
 #set priority_away = 0

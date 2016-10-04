@@ -64,6 +64,16 @@ Host *
     ControlPath ~/.ssh/master-%r@%h:%p
     ControlMaster auto
     StrictHostKeyChecking no
+    UseRoaming no
+    # Chacha20-poly1305 is preferred over AES-GCM because the SSH protocol
+    # does not encrypt message sizes when GCM (or EtM) is in use. This
+    # allows some traffic analysis even without decrypting the data.
+    Ciphers chacha20-poly1305@openssh.com,aes256-gcm@openssh.com,aes128-gcm@openssh.com,aes256-ctr,aes192-ctr,aes128-ctr
+    MACs hmac-sha2-512-etm@openssh.com,hmac-sha2-256-etm@openssh.com,hmac-ripemd160-etm@openssh.com,umac-128-etm@openssh.com,hmac-sha2-512,hmac-sha2-256,hmac-ripemd160,umac-128@openssh.com
+    HostKeyAlgorithms ssh-ed25519-cert-v01@openssh.com,ssh-rsa-cert-v01@openssh.com,ssh-ed25519,ssh-rsa
+
+Host *.onion
+    ProxyCommand socat - SOCKS4A:localhost:%h:%p,socksport=9050
 
 Host heroku.com
     IdentityFile ~/.ssh/id_rsa.bitbucket
@@ -73,6 +83,9 @@ Host bitbucket.org
 
 Host git.ajdiaz.me
     IdentityFile ~/.ssh/id_rsa.bitbucket
+
+#Host gitlab.com
+#    IdentityFile ~/.ssh/id_rsa.wiin
 
 Host *+*
     ProxyCommand ssh $(echo %h | sed 's/+[^+]*$//;s/\([^+%%]*\)%%\([^+]*\)$/\2 -l \1/;s/:/ -p /') nc -w1 $(echo %h | sed 's/^.*+//;/:/!s/$/ %p/;s/:/ /')

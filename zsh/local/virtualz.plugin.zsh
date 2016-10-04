@@ -7,7 +7,7 @@
 # Distributed under terms of the GPLv3 license.
 #
 
-: ${VIRTUALZ_HOME:=${HOME}/env}
+: ${VIRTUALZ_HOME:=${HOME}/.local/share/vz}
 
 typeset -gA _virtualz_cmd
 

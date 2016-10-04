@@ -1,7 +1,7 @@
 #! /bin/zsh
 # Distributed under terms of the GPLv3 license.
 
-: ${LOADENV_HOME:=${HOME}/sys/env}
+: ${LOADENV_HOME:=${HOME}/.local/share/ez}
 
 typeset -gA _loadenv_cmd
 
@@ -28,24 +28,18 @@ _loadenv-activate () {
 		return 1
 	fi
 
-	local venv_path="${LOADENV_HOME}/${1}.env"
-	if [[ ! -r ${venv_path} ]] ; then
-		echo "The loadenv '$1' does not exist." 1>&2
-		return 2
-	fi
-
 	# If a loadenv is in use, deactivate it first
 	if [[ ${LOADENV_ENV:+set} = set ]] ; then
 		_loadenv-deactivate
 	fi
 
-	LOADENV_ENV_NAME=$1
-	LOADENV_ENV=${venv_path}
+	LOADENV_ENV_NAME="$1"
+	LOADENV_ENV="${LOADENV_HOME}"
 
 	while read line
 	do
 	  eval "export $line"
-  done < ${venv_path}
+  done < <(PASSWORD_STORE_DIR="${LOADENV_ENV}" pass show "$1")
 }
 
 _loadenv_cmd[deactivate]='Deactivate the active loadenv'
@@ -55,17 +49,11 @@ _loadenv-deactivate () {
 		return 1
 	fi
 
-	local venv_path="${LOADENV_ENV}"
-	if [[ ! -r ${venv_path} ]] ; then
-		echo "The loadenv '$1' does not exist." 1>&2
-		return 2
-	fi
-
 	while read line
 	do
-	  IFS='=' read key val <<< "$line"
+	  IFS='=' read key _ <<< "$line"
 	  eval unset "$key"
-  done < ${venv_path}
+  done < <(PASSWORD_STORE_DIR="${LOADENV_HOME}" pass show "$LOADENV_ENV_NAME")
 
 	unset LOADENV_ENV LOADENV_ENV_NAME
 }
@@ -81,30 +69,20 @@ _loadenv-rm () {
 		return 2
 	fi
 
-	local venv_path="${LOADENV_HOME}/${1}.env"
-	if [[ ! -d ${venv_path} ]] ; then
-		echo "The loadenv '$1' does not exist." 1>&2
-		return 3
-	fi
-
-	rm -rf "${venv_path}"
+	PASSWORD_STORE_DIR="${LOADENV_HOME}" pass rm "$1"
 }
 
 _loadenv_cmd[ls]='List available loadenvs'
 _loadenv-ls () {
 	if [[ -d ${LOADENV_HOME} ]] ; then
-		pushd -q "${LOADENV_HOME}"
-		for item in *.env ; do
-			echo "${item%.env}"
-		done
-		popd -q
+	  PASSWORD_STORE_DIR="${LOADENV_HOME}" pass ls
 	fi
 }
 
 _loadenv_cmd[help]='Show usage information'
 _loadenv-help () {
 	cat <<-EOF
-	Usage: loadenv <command> [<args>]
+	Usage: ez <command> [<args>]
 
 	Available commands:
 
