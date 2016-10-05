@@ -182,6 +182,10 @@ if [ -d "${HOME}/.local/bin" ] ; then
 	PATH="${PATH}:${HOME}/.local/bin"
 fi
 
+if [ -d "${HOME}/sys/bin" ] ; then
+	PATH="${PATH}:${HOME}/sys/bin"
+fi
+
 # Optional binaries in PATH (prepend)
 for _path in ${HOME}/.gem/ruby/*/bin; do
     [ "${_path//\*/}" = "${_path}" ] && PATH="${_path}:${PATH}"
