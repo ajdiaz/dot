@@ -22,6 +22,8 @@ if [ ! -f /usr/share/terminfo/${TERM:0:1}/${TERM} ]; then
   export TERM="xterm-256color"
 fi
 
+export SSH_AUTH_SOCK="${SSH_AUTH_SOCK:-/run/user/$UID/gnupg/S.gpg-agent.ssh}"
+
 # Bind Ctrl-Left and Ctrl-Right key sequences, and AvPag/RePag for history
 bindkey "^[[1;5C" forward-word
 bindkey "^[[1;5D" backward-word
