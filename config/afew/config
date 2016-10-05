@@ -19,7 +19,7 @@ query = folder:connectical.com/Trash
 tags = +deleted;-inbox;-unread;-new
 
 [Filter.4]
-query = folder:connectical.com/Starred
+query = folder:connectical.com/Flagged
 tags = +flagged
 
 [Filter.5]
@@ -46,4 +46,4 @@ folders = ajdiaz.me/INBOX ajdiaz.me/Spam ajdiaz.me/Spam/Undecided connectical.co
 ajdiaz.me/INBOX = 'tag:sent':ajdiaz.me/Sent tag:cron':ajdiaz.me/Cron 'tag:spam':ajdiaz.me/Spam/ReSpam 'tag:ham':ajdiaz.me/Spam/ReHam 'NOT ( tag:inbox OR tag:unread OR tag:flagged ) AND date:..30days':ajdiaz.me/Archive
 ajdiaz.me/Spam = 'tag:spam':ajdiaz.me/Spam/ReSpam 'tag:ham':ajdiaz.me/Spam/ReHam
 ajdiaz.me/Spam/Undecided = 'tag:spam':ajdiaz.me/Spam/ReSpam 'tag:ham':ajdiaz.me/Spam/ReHam
-connectical.com/INBOX = 'tag:deleted':connectical.com/Trash 'tag:spam':connectical.com/Spam 'tag:flagged':connectical.com/Starred
+connectical.com/INBOX = 'tag:deleted':connectical.com/Trash 'tag:spam':connectical.com/Spam 'tag:flagged':connectical.com/Flagged
