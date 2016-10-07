@@ -1,6 +1,6 @@
 #! /bin/bash
 
-INTERVAL=180
+INTERVAL=120
 
 declare -a unread=( $(notmuch search --output=files tag:unread) )
 declare -a new=()
