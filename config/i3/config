@@ -70,8 +70,8 @@ bindsym $mod+Shift+Up move up
 bindsym $mod+Shift+Right move right
 
 # brightness keys
-bindsym XF86MonBrightnessUp exec xbacklight -inc 20
-bindsym XF86MonBrightnessDown exec xbacklight -dec 20
+bindsym XF86MonBrightnessUp exec xbacklight -inc 5
+bindsym XF86MonBrightnessDown exec xbacklight -dec 5
 
 # volume keys
 bindsym XF86AudioRaiseVolume exec pactl -- set-sink-volume 1 +5%
@@ -105,7 +105,7 @@ bindsym $mod+x exec i3lock -c 000000 -f
 bindsym $mod+a focus parent
 
 # focus the child container
-#bindsym $mod+d focus child
+bindsym $mod+b focus child
 
 # switch to workspace
 bindsym $mod+1 workspace 1
