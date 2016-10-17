@@ -91,6 +91,7 @@
 
 [diff]
 	algorithm = patience
+	renameLimit = 10000
 
 [rerere]
     enabled = true

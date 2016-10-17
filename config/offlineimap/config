@@ -2,6 +2,7 @@
 [general]
 accounts = ajdiaz.me, connectical.com
 pythonfile = ~/.config/offlineimap/pass_helper.py
+fsync = False
 
 [Account ajdiaz.me]
 localrepository  = ajdiaz.me-local

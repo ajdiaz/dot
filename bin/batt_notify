@@ -23,7 +23,9 @@ case "$state" in
         xbacklight -time 500 -steps 30 -set 5
         touch ~/.cache/batt-notify
       fi
-    elif [ -r ~/.cache/batt-notify ]; then
+    fi;;
+    *)
+    if [ -r ~/.cache/batt-notify ]; then
       rm -f ~/.cache/batt-notify
-    fi
+    fi;;
 esac

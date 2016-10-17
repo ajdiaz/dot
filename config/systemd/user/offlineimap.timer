@@ -4,7 +4,7 @@
 Description=OfflineIMAP Quicksync timer
 
 [Timer]
-OnCalendar=*:0/2
+OnCalendar=*:0/10
 Unit=offlineimap.service
 
 [Install]
