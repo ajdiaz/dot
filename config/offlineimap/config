@@ -18,11 +18,11 @@ sep = /
 [Repository ajdiaz.me-remote]
 type = IMAP
 ssl  = yes
-sslcacertfile  = ~/.config/offlineimap/certs/mail.gandi.net.chain.crt
-remotehost     = mail.gandi.net
+sslcacertfile  = /etc/ssl/cert.pem
+remotehost     = mail.ajdiaz.me
 remoteport     = 993
-remoteusereval = get_username("mail.gandi.net")
-remotepasseval = get_password("mail.gandi.net")
+remoteusereval = get_username("mail.ajdiaz.me")
+remotepasseval = get_password("mail.ajdiaz.me")
 #createfolders  = True
 
 [Account connectical.com]
