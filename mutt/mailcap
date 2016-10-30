@@ -1,0 +1,5 @@
+application/octet-stream ; echo %s "can be anything..." ; copiousoutput
+text/html ; /usr/bin/elinks -dump %s ; nametemplate=%s.html ; copiousoutput
+Text/Html ; /usr/bin/elinks -dump %s ; nametemplate=%s.html ; copiousoutput
+application/pdf ; /usr/bin/zathura %s ; copiousoutput
+application/postscript ; /usr/bin/zathura %s ; copiousoutput

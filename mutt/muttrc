@@ -1,0 +1,94 @@
+# vim: ft=muttrc
+# Configuration file for neomutt (not working with standard mutt!)
+
+set folder           = ~/.mail
+set alias_file       = ~/.mutt/aliases       # where to store aliases
+set header_cache     = ~/.mutt/cache/headers # where to store headers
+set message_cachedir = ~/.mutt/cache/bodies  # where to store bodies
+set certificate_file = ~/.mutt/certificates  # where to store certs
+set mailcap_path     = ~/.mutt/mailcap       # entries for filetypes
+set tmpdir           = ~/.mutt/temp          # where to keep temp files
+set signature        = ~/.signature          # my signature file
+
+set wait_key   = no      # shut up, mutt
+set mbox_type  = Maildir # mailbox type
+set timeout    = 3       # idle time before scanning
+set mail_check = 0       # minimum time between scans
+set delete               # don't ask, just do
+set quit                 # don't ask, just do!!
+set beep_new             # bell on new mails
+set pipe_decode          # strip headers and eval mimes when piping
+set thorough_search      # strip headers and eval mimes before searching
+set edit_headers         # I want to edit the message headers.
+set sleep_time = 0
+
+# command to perform addrlookup using notmuch
+set query_command = "notmuch-addrlookup --mutt '%s'"
+bind editor <Tab> complete-query
+unset help
+unset move               # gmail does that
+unset mark_old           # read/new is good enough for me
+unset confirmappend      # don't ask, just do!
+
+# status char format for %r in status_formats, in this order:
+# nochanges,changes,read-only,append-ondly
+set status_chars  = "IURA"
+set status_format = " %r  %f %> %m ◢ %u:%d "
+
+message-hook '!(~g|~G) ~b"^-----BEGIN\ PGP\ (SIGNED\ )?MESSAGE"' "exec check-traditional-pgp"
+
+set index_format = "%Z  %D  %-20.20F  %s"
+set date_format  = "%Y-%m-%d"              # date format display using ISO based date
+set sort = threads                         # use threads base sort like gmail
+set sort_aux = reverse-last-date-received  # last date in thrad is last mail, like gmail
+set uncollapse_jump                        # don't collapse on an unread message
+set sort_re                                # thread based on regex
+set narrow_tree                            # save some spaces making tree narrow
+
+# regexp to use find Re: emails
+set reply_regexp = "^(([Rr][Ee]?(\[[0-9]+\])?: *)?(\[[^]]+\] *)?)*"
+
+set pager_index_lines = 8 # number of index lines to show
+set pager_context     = 4  # number of context lines to show
+set pager_stop             # don't go to next message automatically
+set menu_scroll            # scroll in menus
+set pager_format = " %Z  %-20.20n: %s  %> %P ◢ %C: %m "
+set tilde                  # show tildes like in vim
+unset markers              # no ugly plus signs
+
+# regextp to find quotations >...
+set quote_regexp = "^( {0,4}[>|:#%]| {0,4}[a-z0-9]+[>|]+)+"
+
+# prefer text/plain emails
+alternative_order text/plain text/enriched text/html
+
+ignore *   # ignore all headers
+# show only these headers
+unignore from: to: cc: bcc: date: list-unsubscribe subject:
+unhdr_order * # some distros order things by default
+# use this order for headers
+hdr_order from: to: cc: bcc: date: list-unsubscribe subject:
+
+set crypt_use_gpgme = yes
+set pgp_autosign = yes
+
+folder-hook connectical.com/*  source ~/.mutt/accounts/connectical.com
+folder-hook ajdiaz.me/*        source ~/.mutt/accounts/ajdiaz.me
+
+source ~/.mutt/accounts/connectical.com
+source ~/.mutt/accounts/ajdiaz.me
+source ~/.mutt/colors
+
+set nm_default_uri = "notmuch://$HOME/.mail"
+set nm_query_type  = messages
+set nm_record      = no
+set nm_record_tags = "sent"
+
+macro index ,1 "<change-vfolder>connectical.com/INBOX<enter>" "change accounts"
+macro index ,2 "<change-vfolder>ajdiaz.me/INBOX<enter>" "change accounts"
+
+# To avoid fast typing errors
+macro index ,q "<quit>"
+
+# Some autoview orders
+auto_view text/html

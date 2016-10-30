@@ -1,6 +1,10 @@
 # Ignore single file backups
 *~
 
+# Ignore mutt stuff
+mutt/cache
+mutt/temp
+
 # Ignore python stuff
 *.pyc
 *.pyo

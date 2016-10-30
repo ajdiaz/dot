@@ -1,0 +1,75 @@
+# vim: ft=muttrc
+
+# mono
+mono index bold ~N
+mono index bold ~F
+mono index bold ~T
+mono index bold ~D
+
+# headers
+color hdrdefault color30    color233 
+color header	color132    color233    '^date:'
+color header	color153    color233    '^(to|cc|bcc):'
+color header	color120    color233    '^from:'
+color header	color178    color233    '^subject:'
+color header    color31     color233    '^user-agent:'
+color header	color29     color233    '^reply-to:'
+
+# usual stuff
+color normal white black # plain text
+color quoted white black
+color attachment color238 black
+color status color144 color238 # status bar is yellow *on color238*
+color signature color240 black
+color indicator white color238
+color tilde color238 black # ~'s after message body# Message status
+
+color status color238 color38 "^ [IURA] "
+color status color238 color38 " [[:digit:]]+ ◢ .*:.* $"
+color index color196 black ~F
+color index color88 black ~D
+color index color65 black ~g
+color index color69 black ~G
+color index brightyellow black ~N # New
+
+color error color7 color196 # errors yell at you in red
+color message color7 color96 # informational messages
+color markers color160 black
+color search brightgreen black # hilite search patterns in the pager
+color tree color250 black # thread tree in index menu is magenta
+color underline yellow black
+
+# Color URLs
+color body color69 black "(http|https|ftp|news|telnet|finger)://[^ \">\t\r\n]*"
+color body color69 black "mailto:[-a-z_0-9.]+@[-a-z_0-9.]+"
+color body color69 black "news:[^ \">\t\r\n]*"
+
+# email addresses
+color body color69 black "[-a-z_0-9.%$]+@[-a-z_0-9.]+\\.[-a-z][-a-z]+"
+
+# Various smilies and the like
+color body brightyellow black " [;:]-*[)>(<|]" # :-) etc...
+color body brightwhite black "(^|[[:space:]])\\*[^[:space:]]+\\*([[:space:]]|$)" # *Bold* text.
+color body brightwhite black "(^|[[:space:]])_[^[:space:]]+_([[:space:]]|$)" # _Underlined_ text.
+color body brightyellow black "(^|[[:space:]])/[^[:space:]]+/([[:space:]]|$)" # /Italic/ text.
+
+# GPGME Stuff
+color body           color47  default "Good signature from"
+color attach_headers color47  default "Good signature from"
+
+color body           color196  default "Problem signature from"
+color attach_headers color196  default "Problem signature from"
+color body           color196  default ".BAD. signature from"
+color attach_headers color196  default ".BAD. signature from"
+
+color body           brightyellow  default "WARNING:"
+color attach_headers brightyellow  default "WARNING:"
+
+color body           brightyellow  default "Warning:"
+color attach_headers brightyellow  default "Warning:"
+
+# Quotations
+color quoted    color242  default
+color quoted1   color240  default
+color quoted2   color238  default
+color quoted3   color236  default

@@ -1,0 +1,28 @@
+# vim: ft=muttrc
+
+virtual-mailboxes "ajdiaz.me/INBOX" \
+  "notmuch://?query=tag:inbox and folder:ajdiaz.me/INBOX"
+
+virtual-mailboxes "ajdiaz.me/Sent" \
+  "notmuch://?query=folder:ajdiaz.me/Sent"
+
+virtual-mailboxes "ajdiaz.me/Trash" \
+  "notmuch://?query=folder:ajdiaz.me/Trash"
+
+virtual-mailboxes "ajdiaz.me/Flagged" \
+  "notmuch://?query=folder:ajdiaz.me/INBOX and tag:flagged"
+
+
+set virtual_spoolfile = yes
+set postponed  = +ajdiaz.me/Draft
+set trash      = +ajdiaz.me/Trash
+set record     = +ajdiaz.me/Sent
+set nomove
+set realname   = "Andrés J. Díaz"
+set from       = "ajdiaz@ajdiaz.me"
+set sendmail   = "/usr/bin/msmtp -a ajdiaz.me"
+#alternates ajdiaz@connectical.com
+
+macro index ,s "<change-vfolder>ajdiaz.me/Sent<enter>" 
+macro index ,d "<change-vfolder>ajdiaz.me/Trash<enter>" 
+macro index ,f "<change-vfolder>ajdiaz.me/Flagged<enter>" 
