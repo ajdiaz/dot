@@ -53,7 +53,7 @@ volume master {
 }
 
 run_watch VPN {
-        pidfile = "/run/openvpn@socialpoint.pid"
+        pidfile = "/run/openvpn-client@socialpoint.pid"
         format = " 🔒 "
         format_down = " 🔓 "
 }

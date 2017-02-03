@@ -14,13 +14,14 @@ virtual-mailboxes "ajdiaz.me/Flagged" \
 
 
 set virtual_spoolfile = yes
-set postponed  = +ajdiaz.me/Draft
-set trash      = +ajdiaz.me/Trash
-set record     = +ajdiaz.me/Sent
+set postponed   = +ajdiaz.me/Draft
+set trash       = +ajdiaz.me/Trash
+set record      = +ajdiaz.me/Sent
 set nomove
-set realname   = "Andrés J. Díaz"
-set from       = "ajdiaz@ajdiaz.me"
-set sendmail   = "/usr/bin/msmtp -a ajdiaz.me"
+set realname    = "Andrés J. Díaz"
+set from        = "ajdiaz@ajdiaz.me"
+set sendmail    = "/usr/bin/msmtp -a ajdiaz.me"
+set pgp_sign_as = 0x5369AA4171B5139C
 #alternates ajdiaz@connectical.com
 
 macro index ,s "<change-vfolder>ajdiaz.me/Sent<enter>" 
