@@ -10,6 +10,9 @@ set print static-members off
 set print elements 4096
 set disassembly-flavor intel
 set prompt [38;5;226m▸▸▸[0;0m 
+set pagination off
+set target-async on
+set non-stop on
 
 catch syscall ptrace
   commands 1
@@ -23,4 +26,3 @@ end
 document dis
   Disassembles code around the current instruction pointer ($rip)
 end
-
