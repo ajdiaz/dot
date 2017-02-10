@@ -67,6 +67,12 @@ set undolevels=1000         " How many undos
 set undoreload=10000        " number of lines to save for undo
 set colorcolumn=80          " Put color column in column 80
 
+if &diff
+    nmap 1 :diffg LO<C-M>
+    nmap 2 :diffg BA<C-M>
+    nmap 3 :diffg RE<C-M>
+    nmap ZZ :wqa<C-M>
+endif
 
 if has("mouse")
 	"set mouse=a
