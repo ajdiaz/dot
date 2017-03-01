@@ -67,6 +67,8 @@ set undolevels=1000         " How many undos
 set undoreload=10000        " number of lines to save for undo
 set colorcolumn=80          " Put color column in column 80
 
+set pastetoggle=@p
+
 if &diff
     nmap 1 :diffg LO<C-M>
     nmap 2 :diffg BA<C-M>
@@ -294,6 +296,7 @@ autocmd FileType objc setlocal expandtab cinoptions+=(0
 autocmd FileType cpp setlocal expandtab cinoptions+=(0
 autocmd FileType c setlocal expandtab cinoptions+=(0
 autocmd FileType d setlocal expandtab cinoptions+=(0
+autocmd FileType text,markdown NeoCompleteLock
 
 " Jump to the last edited position in the file being loaded (if available)
 " in the ~/.viminfo file, I really love this =)
