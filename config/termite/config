@@ -20,7 +20,7 @@ transparency = 0.0
 cursor_blink = off
 
 # "block", "underline" or "ibeam"
-cursor_shape = underline
+cursor_shape = block
 
 # $BROWSER is used by default
 #browser = firefox
@@ -35,3 +35,5 @@ cursor_shape = underline
 [colors]
 background = #000000
 foreground = #ffffff
+cursor = #aaaaaa
+cursor_foreground = #333333
