@@ -30,7 +30,7 @@ cursor_shape = block
 #word_chars = -A-Za-z0-9,./?%&#:_=+@~
 
 # set size hints for the window
-#size_hints = false
+size_hints = true
 
 [colors]
 background = #000000
