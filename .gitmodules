@@ -101,3 +101,6 @@
 [submodule "vim/bundle/vim-nftables"]
 	path = vim/bundle/vim-nftables
 	url = https://github.com/nfnty/vim-nftables.git
+[submodule "vim/bundle/iptables-vim"]
+	path = vim/bundle/iptables-vim
+	url = https://github.com/eiginn/iptables-vim.git
