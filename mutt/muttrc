@@ -75,8 +75,8 @@ set pgp_autosign = yes
 folder-hook connectical.com/*  source ~/.mutt/accounts/connectical.com
 folder-hook ajdiaz.me/*        source ~/.mutt/accounts/ajdiaz.me
 
-source ~/.mutt/accounts/connectical.com
 source ~/.mutt/accounts/ajdiaz.me
+source ~/.mutt/accounts/connectical.com
 source ~/.mutt/colors
 
 set nm_default_uri = "notmuch://$HOME/.mail"
