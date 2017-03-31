@@ -34,7 +34,7 @@
 	df = diff
 	dfs = diff --staged
 	h = log --graph --date=iso --pretty=format:'%Cgreen%h%Creset %C(69)%ad%Creset | %s%Cgreen%d%Creset %C(yellow)[%an]%Creset'
-	ha = log --graph --date=iso --all --pretty=format:'%Cgreen%h%Creset %C(69)%ad%Creset | %s%Cgreen%d%Creset %C(yellow)[%an]%Creset'
+	ha = log --graph --date=iso --all --pretty=format:'%Cgreen%h%Creset %C(69)%ad%Creset %C(190)%G?%Creset | %s%Cgreen%d%Creset %C(yellow)[%an]%Creset'
 	hist = log --pretty=format:"%h %ad | %s%d [%an]" --graph --date=short
 	pr = pull --rebase
 	st = status
