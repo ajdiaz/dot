@@ -15,7 +15,7 @@ class Solarized(ColorScheme):
     progress_bar_color = 33
 
     def use(self, context):
-        fg, bg, attr = default_colors
+        fg, bg, attr = default, default, normal
 
         if context.reset:
             return default_colors
@@ -30,7 +30,7 @@ class Solarized(ColorScheme):
                 fg = 235
                 bg = 160
             if context.border:
-                fg = default
+                fg = 244
             if context.media:
                 if context.image:
                     fg = 136
@@ -84,26 +84,27 @@ class Solarized(ColorScheme):
                     fg = magenta
 
         elif context.in_titlebar:
-            attr |= bold
+            bg = 238
             if context.hostname:
-                fg = context.bad and 16 or 255
-                if context.bad:
-                    bg = 166
+                fg = context.bad and 196 or 7
             elif context.directory:
-                fg = 33
+                fg = 69
             elif context.tab:
-                fg = context.good and 47 or 33
-                bg = 239
+                fg = context.good and 69 or 7
+                if not context.good:
+                    attr |= bold
             elif context.link:
                 fg = cyan
 
         elif context.in_statusbar:
+            bg = 238
+            if context.infostring:
+                fg = 77
             if context.permissions:
                 if context.good:
-                    fg = 93
+                    fg = 78
                 elif context.bad:
-                    fg = 160
-                    bg = 235
+                    fg = 197
             if context.marked:
                 attr |= bold | reverse
                 fg = 237
