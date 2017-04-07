@@ -126,7 +126,8 @@ class Solarized(ColorScheme):
                 fg = 93
 
             if context.selected:
-                attr |= reverse
+                fg = white
+                bg = 69
 
             if context.loaded:
                 if context.selected:

@@ -8,8 +8,8 @@ set message_cachedir = ~/.mutt/cache/bodies  # where to store bodies
 set certificate_file = ~/.mutt/certificates  # where to store certs
 set mailcap_path     = ~/.mutt/mailcap       # entries for filetypes
 set tmpdir           = ~/.mutt/temp          # where to keep temp files
-set signature        = ~/.signature          # my signature file
-
+set signature        = ~/.signature/ajdiaz.me.txt          # my signature file
+set sig_dashes = no
 set wait_key   = no      # shut up, mutt
 set mbox_type  = Maildir # mailbox type
 set timeout    = 3       # idle time before scanning
