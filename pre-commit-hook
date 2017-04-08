@@ -25,14 +25,19 @@ update_links () {
             echo "[done] updated link: ${home_dot}"
         fi
     else
-        if [ -r "${home_dot}" ]; then
-            echo "[keep] ${home_dot}: is regular file"
-    	else
-            ln -s "$dot" "${home_dot}" && \
-            echo "[done] updated link: ${home_dot}"
-        fi		
+      if [ -r "${home_dot}" ] && ${noforce:-true}; then
+        echo "[keep] ${home_dot}: is regular file"
+      else
+        rm -rf "${home_dot}"
+        ln -sf "$dot" "${home_dot}" && \
+          echo "[done] updated link: ${home_dot}"
+      fi		
     fi
   done
 }
+
+case "$1" in
+  --force) noforce=false ;;
+esac
 
 update_links "$PWD" || true
