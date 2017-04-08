@@ -1,14 +1,14 @@
 # vim: ft=muttrc
 # Configuration file for neomutt (not working with standard mutt!)
 
-set folder           = ~/.mail
+set folder           = ~/sys/mail
 set alias_file       = ~/.mutt/aliases       # where to store aliases
 set header_cache     = ~/.mutt/cache/headers # where to store headers
 set message_cachedir = ~/.mutt/cache/bodies  # where to store bodies
 set certificate_file = ~/.mutt/certificates  # where to store certs
 set mailcap_path     = ~/.mutt/mailcap       # entries for filetypes
 set tmpdir           = ~/.mutt/temp          # where to keep temp files
-set signature        = ~/.signature/ajdiaz.me.txt          # my signature file
+set signature        = ~/.mutt/signature     # my signature file
 set sig_dashes = no
 set wait_key   = no      # shut up, mutt
 set mbox_type  = Maildir # mailbox type
@@ -79,7 +79,7 @@ source ~/.mutt/accounts/ajdiaz.me
 source ~/.mutt/accounts/connectical.com
 source ~/.mutt/colors
 
-set nm_default_uri = "notmuch://$HOME/.mail"
+set nm_default_uri = "notmuch://$HOME/sys/mail"
 set nm_query_type  = messages
 set nm_record      = no
 set nm_record_tags = "sent"
