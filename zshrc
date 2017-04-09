@@ -162,6 +162,7 @@ case "$(uname)" in
     alias -- ps='ps axf' ;;
 esac
 
+alias -- qb='qutebrowser'
 alias -- ag='ack'
 alias -- '-'='cd -'
 alias -- gdb='gdb -q'
