@@ -64,3 +64,7 @@ config/ranger/bookmarks
 config/ranger/tagged
 config/ranger/history
 
+# qutebrowser
+config/qutebrowser/bookmarks
+config/qutebrowser/quickmarks
+config/qutebrowser/qsettings
