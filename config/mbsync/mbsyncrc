@@ -1,0 +1,21 @@
+SyncState *
+Sync All
+Expunge Both
+Create Both
+
+IMAPStore ajdiaz-remote
+  Host mail.ajdiaz.me
+  User ajdiaz
+  PassCmd "pass mail.ajdiaz.me"
+  SSLType IMAPS
+  CertificateFile /etc/ssl/cert.pem
+
+MaildirStore ajdiaz-local
+  Path ~/sys/mail/ajdiaz.me/
+  Inbox ~/sys/mail/ajdiaz.me/INBOX
+  Trash ~/sys/mail/ajdiaz.me/Trash
+
+Channel ajdiaz
+  Master :ajdiaz-remote:
+  Slave :ajdiaz-local:
+  Patterns *

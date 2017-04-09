@@ -1,0 +1,10 @@
+[Unit]
+Description=Maildir synchronization timer
+
+[Timer]
+OnCalendar=*:0/15
+Persistent=true
+Unit=mbsync.service
+
+[Install]
+WantedBy=timers.taget

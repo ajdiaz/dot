@@ -1,0 +1,12 @@
+_dat () {
+  local -a dat_commands
+  for cmd in ${(k)_dat_cmd[@]} ; do
+    dat_commands=( "${dat_commands[@]}" "${cmd}:${_dat_cmd[${cmd}]}" )
+  done
+
+  _arguments \
+    "1: :{_describe 'command' dat_commands}" \
+    '*:: :->args'
+}
+
+compdef _dat dat

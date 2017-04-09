@@ -1,0 +1,18 @@
+#! /bin/bash
+
+notmuch new
+
+# tag by source
+notmuch tag +cron  -- tag:new and from:@ajdiaz.me and from:cron
+
+# tag lists by source address
+notmuch tag +list +list/devops -- tag:new and subject:"Devops Weekly #"
+
+# tag by source folder
+notmuch tag +sent -new     -- tag:new and folder:ajdiaz.me/Sent
+notmuch tag +deleted -new  -- tag:new and folder:ajdiaz.me/Trash
+notmuch tag +flagged -new  -- tag:new and folder:ajdiaz.me/Flagged
+notmuch tag +spam -new     -- tag:new and folder:ajdiaz.me/Spam
+
+# tag inbox
+notmuch tag +inbox +unread -new -- tag:new

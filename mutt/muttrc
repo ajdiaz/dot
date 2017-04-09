@@ -26,7 +26,6 @@ set sleep_time = 0
 set query_command = "notmuch-addrlookup --mutt '%s'"
 bind editor <Tab> complete-query
 unset help
-unset move               # gmail does that
 unset mark_old           # read/new is good enough for me
 unset confirmappend      # don't ask, just do!
 
@@ -76,7 +75,6 @@ folder-hook connectical.com/*  source ~/.mutt/accounts/connectical.com
 folder-hook ajdiaz.me/*        source ~/.mutt/accounts/ajdiaz.me
 
 source ~/.mutt/accounts/ajdiaz.me
-source ~/.mutt/accounts/connectical.com
 source ~/.mutt/colors
 
 set nm_default_uri = "notmuch://$HOME/sys/mail"
@@ -84,8 +82,8 @@ set nm_query_type  = messages
 set nm_record      = no
 set nm_record_tags = "sent"
 
-macro index ,1 "<change-vfolder>connectical.com/INBOX<enter>" "change accounts"
-macro index ,2 "<change-vfolder>ajdiaz.me/INBOX<enter>" "change accounts"
+bind index D purge-message
+macro index ,1 "<change-vfolder>ajdiaz.me/INBOX<enter>" "change accounts"
 
 # To avoid fast typing errors
 macro index ,q "<quit>"
