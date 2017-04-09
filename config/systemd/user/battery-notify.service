@@ -1,0 +1,6 @@
+[Unit]
+Description=Battery Notifier
+
+[Service]
+Type=oneshot
+ExecStart=/bin/bash -c "/home/ajdiaz/.config/i3/battery-notify"

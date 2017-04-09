@@ -167,6 +167,7 @@ alias -- ag='ack'
 alias -- '-'='cd -'
 alias -- gdb='gdb -q'
 alias -- pager='pager -R'
+alias -- mutt="mutt && ~/.config/mbsync/mail-notify"
 alias -- sprunge="curl -F 'sprunge=<-' http://sprunge.us"
 alias -- ipecho='curl ipecho.net/plain; echo'
 alias -- list="sudo systemctl list-units"

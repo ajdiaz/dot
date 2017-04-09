@@ -2,7 +2,6 @@
 
 warn=30
 crit=15
-message_title="🔋  Low Battery!"
 command="sudo systemctl suspend"
 
 batt="BAT0"
@@ -15,11 +14,14 @@ case "$state" in
   Discharging)
     if [ $percent -lt $crit ]; then
       notify-send -u critical "${message_title}"
+      i3-nagbar -m "  Battery is critical and the system will be suspended." \
+        -t error -f 'pango:DejaVu Sans Mono 6'
       sleep 5
       $command
     elif [ $percent -lt $warn ]; then
       if [ ! -r ~/.cache/batt-notify ]; then
-        notify-send -u normal -t 5 "${message_title}"
+        i3-nagbar -m "  Battery level is lower than ${warn}%." \
+                  -t warning -f 'pango:DejaVu Sans Mono 6'
         xbacklight -time 500 -steps 30 -set 5
         touch ~/.cache/batt-notify
       fi
