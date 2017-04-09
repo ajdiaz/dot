@@ -7,4 +7,4 @@ Persistent=true
 Unit=mbsync.service
 
 [Install]
-WantedBy=timers.taget
+WantedBy=timers.target

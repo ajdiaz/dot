@@ -1,12 +1,13 @@
 #! /bin/bash
 
-notmuch new
+notmuch new >/dev/null 2>&1
 
 # tag by source
 notmuch tag +cron  -- tag:new and from:@ajdiaz.me and from:cron
 
-# tag lists by source address
-notmuch tag +list +list/devops -- tag:new and subject:"Devops Weekly #"
+# tag mailing lists
+notmuch tag +list +list/devops        -- tag:new and subject:"Devops Weekly #"
+notmuch tag +list +list/arch-security -- to:"arch-security@archlinux.org"
 
 # tag by source folder
 notmuch tag +sent -new     -- tag:new and folder:ajdiaz.me/Sent
