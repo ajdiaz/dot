@@ -13,7 +13,7 @@ IMAPStore ajdiaz-remote
 MaildirStore ajdiaz-local
   Path ~/sys/mail/ajdiaz.me/
   Inbox ~/sys/mail/ajdiaz.me/INBOX
-  Trash ~/sys/mail/ajdiaz.me/Trash
+  Trash Trash
 
 Channel ajdiaz
   Master :ajdiaz-remote:
