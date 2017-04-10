@@ -17,6 +17,7 @@ config/systemd/user/default.target.wants
 weechat/sec.conf
 weechat/logs
 weechat/*.log
+weechat/*.cache
 weechat/xfer
 weechat/script/plugins.xml.gz
 

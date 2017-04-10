@@ -1,1 +1,0 @@
-../weechat_otr.py
