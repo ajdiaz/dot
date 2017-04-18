@@ -164,6 +164,7 @@ esac
 
 alias -- qb='qutebrowser'
 alias -- ag='ack'
+alias -- vm='sudo machinectl'
 alias -- '-'='cd -'
 alias -- gdb='gdb -q'
 alias -- pager='pager -R'

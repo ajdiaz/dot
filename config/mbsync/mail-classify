@@ -3,7 +3,8 @@
 notmuch new >/dev/null 2>&1
 
 # tag by source
-notmuch tag +cron  -- tag:new and from:@ajdiaz.me and from:cron
+notmuch tag +cron      -- tag:new and from:@ajdiaz.me and from:cron
+notmuch tag +wordpress -- tag:new and from:comment-reply@wordpress.com
 
 # tag mailing lists
 notmuch tag +list +list/devops        -- tag:new and subject:"Devops Weekly #"

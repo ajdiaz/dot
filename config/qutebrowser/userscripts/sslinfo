@@ -1,0 +1,18 @@
+#! /bin/bash
+
+domain="${QUTE_URL#*://}"; domain="${domain%%/*}"
+
+case "$QUTE_URL" in
+  https://*) port=443;;
+  http://*)
+    port="${domain##*:}"
+    if [[ "$port" = "$domain" ]]; then
+      port=80
+    fi
+    ;;
+  *)
+    exit 0;;
+esac
+
+openssl s_client -showcerts -status -connect "${domain}:$port" < /dev/null > "$QUTE_TEXT" 2>&1
+echo "open -t file://$QUTE_TEXT" >> $QUTE_FIFO

@@ -22,6 +22,7 @@ order += "battery 0"
 order += "load"
 order += "volume master"
 order += "path_exists mail"
+order += "path_exists chat"
 order += "tztime local"
 
 wireless _first_ {
@@ -72,5 +73,12 @@ path_exists mail {
         path = "/home/ajdiaz/sys/mail/.new"
         format = "  "
         format_down = "  "
+        color_bad = '#339966'
+}
+
+path_exists chat {
+        path = "/home/ajdiaz/.weechat/highlights.txt"
+        format = "  "
+        format_down = "  "
         color_bad = '#339966'
 }

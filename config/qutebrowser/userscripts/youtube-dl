@@ -1,0 +1,6 @@
+#! /bin/bash
+
+(
+  cd ~/get
+  youtube-dl "$QUTE_URL"
+)

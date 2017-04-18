@@ -20,6 +20,8 @@ weechat/*.log
 weechat/*.cache
 weechat/xfer
 weechat/script/plugins.xml.gz
+weechat/active_buffer.txt
+weechat/highlights.txt
 
 # GnuPG stuff
 gnupg/*.gpg
