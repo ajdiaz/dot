@@ -49,7 +49,7 @@ volume master {
 }
 
 run_watch VPN {
-        pidfile = "/run/openvpn-client@ajdiaz.pid"
+        pidfile = "/run/openvpn-client.pid"
         format = "  "
         format_down = "  "
 }
