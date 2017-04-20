@@ -1,0 +1,29 @@
+set font "DejaVu Sans Mono 14"
+
+set default-bg "#002b36"
+set statusbar-bg "#073642"
+set statusbar-fg "#93a1a1"
+set index-bg "#002b36"
+set index-fg "#93a1a1"
+set index-active-bg "#268bd2"
+set index-active-fg "#eee8d5"
+set recolor-darkcolor "#657b83"
+set recolor-lightcolor "#fdf6e3"
+
+set adjust-open best-fit
+set guioptions s
+set n-completion-items 10
+set show-scrollbars false
+set window-title-basename true
+set statusbar-basename true
+set statusbar-v-padding 10
+set statusbar-h-padding 4
+set page-padding 10
+set pages-per-row 1
+set scroll-page-aware true
+set scroll-wrap true
+set scroll-full-overlap 0.1
+set zoom-min 5
+set zoom-max 1000
+set zoom-step 5
+set selection-clipboard primary

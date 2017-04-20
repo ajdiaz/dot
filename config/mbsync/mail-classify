@@ -5,10 +5,12 @@ notmuch new >/dev/null 2>&1
 # tag by source
 notmuch tag +cron      -- tag:new and from:@ajdiaz.me and from:cron
 notmuch tag +wordpress -- tag:new and from:comment-reply@wordpress.com
+notmuch tag +alert     -- tag:new and from:alert@uptimerobot.com
 
 # tag mailing lists
 notmuch tag +list +list/devops        -- tag:new and subject:"Devops Weekly #"
 notmuch tag +list +list/arch-security -- to:"arch-security@archlinux.org"
+notmuch tag +list +list/qutebrowser   -- to:"@lists.qutebrowser.org"
 
 # tag by source folder
 notmuch tag +sent -new     -- tag:new and folder:ajdiaz.me/Sent
