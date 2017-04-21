@@ -162,6 +162,7 @@ case "$(uname)" in
     alias -- ps='ps axf' ;;
 esac
 
+alias -- o='xdg-open'
 alias -- qb='qutebrowser'
 alias -- ag='ack'
 alias -- vm='sudo machinectl'
