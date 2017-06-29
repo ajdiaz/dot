@@ -69,6 +69,8 @@ set colorcolumn=80          " Put color column in column 80
 
 set pastetoggle=@p
 
+command Suw w !sudo tee %
+
 if &diff
     nmap 1 :diffg LO<C-M>
     nmap 2 :diffg BA<C-M>
