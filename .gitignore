@@ -42,6 +42,7 @@ gnupg/sshcontrol
 vim/.netrwhist
 vim/bundle/.neobundle
 vim/bundle/NeoBundle.lock
+vim/spell
 
 # Environ stuff
 env
