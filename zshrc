@@ -144,10 +144,10 @@ fi
 
 PROMPT=$'%{%F{200}%}${LOADENV_ENV_NAME:+$LOADENV_ENV_NAME }%{%b%f%}'
 PROMPT+=$'%{%F{180}%}${VIRTUAL_ENV:+${VIRTUAL_ENV##*/} }%{%b%f%}'
-PROMPT+=$'%B%{%(!.$fg[red].$fg[green])%}%m%b%f '
+PROMPT+=$'%B%{%(!.$fg[red].%{%F{255}%})%}${SHOWHOST:+%m }%b%f'
 PROMPT+=$'${vcs_info_msg_0_}'
 PROMPT+=$'%{%F{39}%}%B%1~ %b%f'
-PROMPT+=$'%(?.%{%F{39}%}.%B%{$fg[red]%})%# %b%f'
+PROMPT+=$'%(?.%{%F{68}%}.%B%{$fg[red]%})%(!.#.$) %b%f'
 
 unset FMT_BRANCH FMT_ACTION
 
