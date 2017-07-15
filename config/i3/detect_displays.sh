@@ -12,14 +12,15 @@ declare -A POS
 POS=([X]=0 [Y]=0)
 
 find_mode() {
-  echo $(${XRANDR} |grep ${1} -A1|awk '{FS="[ x]"} /^\s/{printf("WIDTH=%s\nHEIGHT=%s", $4,$5)}')
+  echo $(${XRANDR} |grep ${1} -A1|awk '{FS="[ x]"} /^\s/{printf("WIDTH=%s\nHEIGHT=%s\n", $4,$5)}')
 }
 
 xrandr_params_for() {
   if [ "${2}" == 'connected' ]
   then
-    if [ "${1:0:4}" == 'HDMI' ]; then
+    if [ "${1:0:3}" == 'DP1' ]; then
       eval $(find_mode ${1})  #sets ${WIDTH} and ${HEIGHT}
+      find_mode $1
       MODE="${WIDTH}x${HEIGHT}"
       local scale="--scale 2x2 --mode ${MODE}"
     elif [ "${1:0:3}" == "eDP" ]; then
@@ -38,7 +39,6 @@ xrandr_params_for() {
 for VOUT in ${!VOUTS[*]}
 do
   xrandr_params_for ${VOUT} ${VOUTS[${VOUT}]}
-  feh --bg-scale /home/ajdiaz/img/bg/montains-bw.png
 done
 
 ${CMD}
