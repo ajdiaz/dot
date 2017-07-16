@@ -142,7 +142,8 @@ if [[ ${TERM} = screen* ]] ; then
 	}
 fi
 
-PROMPT=$'%{%F{200}%}${LOADENV_ENV_NAME:+$LOADENV_ENV_NAME }%{%b%f%}'
+PROMPT=$'%{%F{228}%}${VM_NAME:+$VM_NAME }%{%b%f%}'
+PROMPT+=$'%{%F{200}%}${LOADENV_ENV_NAME:+$LOADENV_ENV_NAME }%{%b%f%}'
 PROMPT+=$'%{%F{180}%}${VIRTUAL_ENV:+${VIRTUAL_ENV##*/} }%{%b%f%}'
 PROMPT+=$'%B%{%(!.$fg[red].%{%F{255}%})%}${SHOWHOST:+%m }%b%f'
 PROMPT+=$'${vcs_info_msg_0_}'
@@ -165,7 +166,6 @@ esac
 alias -- o='xdg-open'
 alias -- qb='qutebrowser'
 alias -- ag='ack'
-alias -- vm='sudo machinectl'
 alias -- '-'='cd -'
 alias -- gdb='gdb -q'
 alias -- pager='pager -R'
