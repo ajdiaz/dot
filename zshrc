@@ -142,6 +142,10 @@ if [[ ${TERM} = screen* ]] ; then
 	}
 fi
 
+if [[ "$SSH_CONNECTION" ]]; then
+  SHOWHOST=true
+fi
+
 PROMPT=$'%{%F{228}%}${VM_NAME:+$VM_NAME }%{%b%f%}'
 PROMPT+=$'%{%F{200}%}${LOADENV_ENV_NAME:+$LOADENV_ENV_NAME }%{%b%f%}'
 PROMPT+=$'%{%F{180}%}${VIRTUAL_ENV:+${VIRTUAL_ENV##*/} }%{%b%f%}'
