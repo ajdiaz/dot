@@ -4,7 +4,7 @@
 # Distributed under terms of the GPLv3 license.
 
 
-: ${SC_HOME:=${HOME}/doc/sc}
+: ${SC_HOME:=${HOME}/dat/sc}
 
 typeset -gA _sc_cmd
 
