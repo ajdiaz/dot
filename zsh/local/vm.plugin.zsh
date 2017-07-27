@@ -29,9 +29,12 @@ vm () {
 _vm_cmd[new]='Starting vm'
 _vm-new () {
   local image=/
+  local bind_home=("--bind" "${HOME}")
 
   while [[ "$1" ]] && [[ "${1:0:2}" == "--" ]]; do
     case "$1" in
+      --no-bind-home)
+        bind_home=(); shift;;
       --image*)
           image="/var/lib/machines/${1#*=}";
           if [[ "${1#*=}" == "$1" ]]; then
@@ -67,7 +70,7 @@ _vm-new () {
     systemd-nspawn \
       -M "vm-$name" -E VM_NAME="vm-$name" -xb -D "${image}" \
       --bind /var/cache/pacman/pkg/ \
-      --bind "$HOME"
+      "${bind_home[@]}"
 }
 
 _vm_cmd[ls]='List vms'

@@ -22,7 +22,7 @@ _vm () {
 
   case ${words[1]} in
     new)
-      local -a vm_list=( "--image" )
+      local -a vm_list=( "--image" "--no-bind-home" )
       _arguments "1: :{_describe 'vm' vm_list}"
       ;;
     sh|rm)
