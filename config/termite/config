@@ -35,5 +35,5 @@ size_hints = true
 [colors]
 background = #000000
 foreground = #ffffff
-cursor = #aaaaaa
-cursor_foreground = #333333
+cursor = #aa0033
+cursor_foreground = #aaaaaa

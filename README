@@ -14,3 +14,15 @@ The `config' directory has special treatment, and is never copied to home
 directory or linked, instead the inside directories are linked into
 ~/.config directory, which must be exists before.
 
+ZSH Helpers
+===========
+
+There are a number of useful helpers for zsh, in particular the following
+ones:
+
+- vz: create and manage python virtualenvs (`vz help` for more info)
+- sc: create and manage script console records (`sc help` for more info)
+- vm: create and manage ephemeral containers of the current system.
+- vmi: convert vm containers in images to persistent changes
+- iam: manage multiple identities in the same HOME, replacing files if
+       necessary.

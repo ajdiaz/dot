@@ -475,9 +475,9 @@ map <leader>rtag yitvatp<CR>
 " tabs configuration
 execute "set <M-t>=\et"
 
-nmap <M-t> :tabnew<CR>
-nmap <M-Left> :tabprevious<CR>
-nmap <M-Right> :tabnext<CR>
+nmap <M-t> :Explore<CR>
+nmap <M-Left> :bp<CR>
+nmap <M-Right> :bn<CR>
 
 runtime! macros/matchit.vim
 
