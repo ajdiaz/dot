@@ -246,6 +246,7 @@ export PASSWORD_STORE_DIR=~/sys/pass
 
 # iam configuration
 export IAM_HOME=~/sys/iam
+iam reload
 
 # pidstat colors
 export S_COLORS=auto
