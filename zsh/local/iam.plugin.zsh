@@ -223,6 +223,9 @@ _iam-reload ()
   if [[ -r "${IAM_HOME}/.previous" ]]; then
     IAM_ID_NAME="$(<"${IAM_HOME}/.active")"
     IAM_ID="${IAM_HOME}/${IAM_ID_NAME}"
+  else
+    unset IAM_ID_NAME
+    unset IAM_ID
   fi
 }
 
@@ -241,4 +244,4 @@ _iam-help () {
 }
 
 readonly _iam_cmd
-iam reload
+precmd_functions+=(_iam-reload)
