@@ -172,6 +172,14 @@ bar {
         font pango:DejaVu Sans Mono 6
         status_command i3status
         tray_output primary
+
+        separator_symbol "|"
+        colors {
+          separator #333333
+          focused_workspace  #285577 #285577 #ffffff
+          active_workspace   #5f676a #5f676a #ffffff
+          inactive_workspace #000000 #000000 #888888
+        }
 }
 
 # floating windows
