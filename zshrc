@@ -169,7 +169,6 @@ case "$(uname)" in
 esac
 
 alias -- o='xdg-open'
-alias -- qb='qutebrowser'
 alias -- ag='ack'
 alias -- '-'='cd -'
 alias -- gdb='gdb -q'
