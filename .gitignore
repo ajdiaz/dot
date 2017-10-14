@@ -72,3 +72,4 @@ config/ranger/history
 config/qutebrowser/bookmarks
 config/qutebrowser/quickmarks
 config/qutebrowser/qsettings
+config/qutebrowser/autoconfig.yml
