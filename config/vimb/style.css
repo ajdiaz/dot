@@ -1,0 +1,13 @@
+._hintLabel {
+    text-transform: uppercase !important;
+    background-color: #e0e070 !important;
+    font-size: .9em !important;
+    color: #000 !important;
+    opacity: 0.4;
+}
+._hintElem._hintFocus {
+    color: #f0f070 !important;
+}
+._hintElem._hintFocus img {
+    opacity: 1;
+}
