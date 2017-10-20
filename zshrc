@@ -171,6 +171,7 @@ esac
 alias -- o='xdg-open'
 alias -- ag='ack'
 alias -- '-'='cd -'
+alias -- cal='task calendar'
 alias -- gdb='gdb -q'
 alias -- pager='pager -R'
 alias -- mutt="mutt && ~/.config/mbsync/mail-notify"

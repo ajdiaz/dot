@@ -30,9 +30,11 @@ include /usr/share/doc/task/rc/dark-gray-blue-256.theme
 #include /usr/share/doc/task/rc/no-color.theme
 
 color.completed=gray6 # override color for completed tasks
+color.calendar.holiday=color15 on rgb500
+
 
 # include holidays
-include /usr/share/doc/task/rc/holidays.es-ES.rc
+include ~/.local/share/task/holidays.conf
 
 color=on # enable color
 calendar.holidays=full # show holidays in calendar

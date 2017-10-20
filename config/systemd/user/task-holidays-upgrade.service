@@ -1,0 +1,7 @@
+[Unit]
+Description=Get holidays from task calendar
+After=network.target network-online.target dbus.socket
+
+[Service]
+Type=oneshot
+ExecStart=/home/ajdiaz/sys/bin/task-holidays-upgrade barcelona
