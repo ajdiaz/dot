@@ -46,7 +46,9 @@ _dat-push () {
     read -r _dat_remote < .dat.conf
   fi
 
-  rclone sync -u . "${_dat_remote}"
+  # Experimental TPS parameters. Works in practice and avoid
+  # 408 errors related with timeouts.
+  rclone --tpslimit 23 --tpslimit-burst 1 sync -u . "${_dat_remote}"
 }
 
 _dat_cmd[help]='Show usage information'
