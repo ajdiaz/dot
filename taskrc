@@ -38,9 +38,11 @@ include ~/.local/share/task/holidays.conf
 
 color=on # enable color
 calendar.holidays=full # show holidays in calendar
+calendar.details=full
 search.case.sensitive=no # case insensitive search
-default.command=next
+default.command=next -event
 list.all.projects=yes
+weekstart=Monday
 summary.all.projects=yes
 
 include ~/.local/share/task/taskd.conf

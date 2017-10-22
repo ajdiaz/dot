@@ -17,6 +17,7 @@ notmuch tag +sent -new     -- tag:new and folder:ajdiaz.me/Sent
 notmuch tag +deleted -new  -- tag:new and folder:ajdiaz.me/Trash
 notmuch tag +flagged -new  -- tag:new and folder:ajdiaz.me/Flagged
 notmuch tag +spam -new     -- tag:new and folder:ajdiaz.me/Spam
+notmuch tag +archive -new  -- tag:new and folder:ajdiaz.me/Archive
 
 # tag inbox
 notmuch tag +inbox +unread -new -- tag:new
