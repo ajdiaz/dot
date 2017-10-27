@@ -9,6 +9,7 @@ nnoremap ii gF
 nnoremap ss :set scripts!\|no! r<CR>
 nnoremap sc :set stylesheet!<CR><Esc>
 nnoremap <C-W> :q<CR>
+nnoremap q :q<CR>
 
 inoremap <C-E> <C-T>
 
