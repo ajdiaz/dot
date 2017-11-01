@@ -11,6 +11,7 @@ notmuch tag +alert     -- tag:new and from:alert@uptimerobot.com
 notmuch tag +list +list/devops        -- tag:new and subject:"Devops Weekly #"
 notmuch tag +list +list/arch-security -- to:"arch-security@archlinux.org"
 notmuch tag +list +list/qutebrowser   -- to:"@lists.qutebrowser.org"
+notmuch tag +list +list/sks-devel     -- to:"sks-devel@nongnu.org"
 
 # tag by source folder
 notmuch tag +sent -new     -- tag:new and folder:ajdiaz.me/Sent
