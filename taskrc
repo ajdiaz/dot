@@ -44,6 +44,7 @@ default.command=next -event
 list.all.projects=yes
 weekstart=Monday
 summary.all.projects=yes
+report.next.columns=id,start.age,entry.age,depends,priority,project,tags,recur,scheduled.countdown,due.relative,until.remaining,description.count,urgency
 urgency.uda.priority.L.coefficient=-2
 urgency.uda.priority.H.coefficient=2
 color.uda.priority.L=gray6 on black
