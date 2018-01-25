@@ -182,7 +182,6 @@ bar {
 }
 
 # floating windows
-for_window [class="Gimp"] floating enable
 for_window [class="Skype"] floating enable
 for_window [class="VirtualBox"] floating enable
 for_window [class="Vimb"] move container to workspace 10
