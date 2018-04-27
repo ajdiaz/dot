@@ -183,7 +183,7 @@ alias -- start="sudo systemctl start"
 alias -- stop="sudo systemctl stop"
 alias -- restart="sudo systemctl restart"
 alias -- reload="sudo systemctl reload"
-alias -- dot-upgrade="cd ~/src/dot && git pr && cd -"
+alias -- dot-upgrade="cd ~/sys/dot && git pr && cd -"
 alias -- history="history -i"
 
 # Local binaries directory
