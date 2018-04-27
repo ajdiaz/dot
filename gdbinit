@@ -20,17 +20,17 @@ set print vtbl on
 set print frame-arguments all
 set print static-members on
 set print elements 4096
-set disassembly-flavor intel
+#set disassembly-flavor intel
 set prompt > 
 set pagination off
 set target-async on
 set non-stop on
 
-catch syscall ptrace
-  commands 1
-  set ($eax) = 0
-  continue
-end
+#catch syscall ptrace
+#  commands 1
+#  set ($eax) = 0
+#  continue
+#end
 
 define dis
   disassemble $rip-16,+48
