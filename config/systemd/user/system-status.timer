@@ -1,0 +1,9 @@
+[Unit]
+Description=System Status
+
+[Timer]
+OnCalendar=*:0/60
+Unit=system-status.service
+
+[Install]
+WantedBy=default.target
