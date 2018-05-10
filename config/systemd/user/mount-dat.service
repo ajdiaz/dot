@@ -1,0 +1,12 @@
+[Unit]
+Description=Mount home dat
+After=network-online.target
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/rclone mount --allow-non-empty --retries 5 crypt:dat/ /home/ajdiaz/dat/
+ExecStop=/usr/bin/fusermount -uz /home/ajdiaz/dat/
+
+[Install]
+Wants=network-online.target
+WantedBy=default.target
