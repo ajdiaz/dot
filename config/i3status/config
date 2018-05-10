@@ -72,7 +72,7 @@ path_exists mail {
 
 path_exists system {
         path = "/home/ajdiaz/tmp/.failed"
-        format_down = " "
+        format_down = ""
         color_bad = '#339966'
         format = ""
         color_good = '#b30000'
