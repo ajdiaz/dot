@@ -136,6 +136,8 @@ bindsym $mod+Shift+c reload
 bindsym $mod+Shift+r restart
 # exit i3 (logs you out of your X session)
 bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
+# take a screenshot
+bindsym --release Print exec "scrot -s -c '/home/ajdiaz/tmp/screenshot_%Y-%m-%d_%H:%M:%S.png'"
 
 # goto last urgent window
 bindsym $mod+g [urgent=latest] focus
