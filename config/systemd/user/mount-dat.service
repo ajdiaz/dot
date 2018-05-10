@@ -8,5 +8,4 @@ ExecStart=/usr/bin/rclone mount --allow-non-empty --retries 5 crypt:dat/ /home/a
 ExecStop=/usr/bin/fusermount -uz /home/ajdiaz/dat/
 
 [Install]
-Wants=network-online.target
 WantedBy=default.target

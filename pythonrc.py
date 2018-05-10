@@ -49,6 +49,8 @@ def info(type, value, tb):
         pdb.post_mortem(tb)  # more modern
     else:
         sys.__excepthook__(type, value, tb)
+
+
 sys.excepthook = info
 
 # Historic
@@ -70,13 +72,12 @@ try:
     atexit.register(save_history)
 
     del atexit, readline, rlcompleter
-
-except:
+except BaseException:
     pass
 
 # Fancy inline editor
 EDITOR = os.environ.get('EDITOR', 'vi')
-EDIT_CMD = '\e'
+EDIT_CMD = '\e'  # noqa
 RAW_CMD = '!'
 DIR_CMD = '@'
 HELP_CMD = '?'
@@ -118,6 +119,8 @@ class EditableBufferInteractiveConsole(InteractiveConsole):
 
         return line
 
-c = EditableBufferInteractiveConsole(locals=locals())
-c.interact(banner='')
-sys.exit(0)
+
+if __name__ == "__main__":
+    c = EditableBufferInteractiveConsole(locals=locals())
+    c.interact(banner='')
+    sys.exit(0)
