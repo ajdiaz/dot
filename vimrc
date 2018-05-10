@@ -262,7 +262,7 @@ let g:airline#extensions#tabline#fnamemod = ':t'
 let g:airline#extensions#tabline#buffer_min_count = 2
 
 " Plugin: GitGutter
-let g:gitgutter_sign_column_always = 1
+set signcolumn=yes
 nmap gh <Plug>GitGutterNextHunk
 nmap gH <Plug>GitGutterPrevHunk
 nmap gs <Plug>GitGutterStageHunk

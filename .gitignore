@@ -60,6 +60,7 @@ ssh/id_*
 ssh/known_hosts*
 ssh/.known_hosts*
 ssh/master-*
+ssh/google_*
 
 # todo.txt
 todo/*.txt
