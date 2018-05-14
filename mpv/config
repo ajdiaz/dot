@@ -10,5 +10,5 @@ osd-font="Open Sans"
 sub-font="Open Sans"
 sub-ass-hinting=native
 screenshot-format=png
-vo=vaapi,opengl,xv,wayland,sdl,x11
+vo=vaapi,gpu,xv,wayland,sdl,x11
 hwdec=auto
