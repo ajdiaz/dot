@@ -15,6 +15,7 @@ config/systemd/user/default.target.wants
 
 # weechat stuff
 weechat/sec.conf
+weechat/weechat.pwd
 weechat/logs
 weechat/ssl
 weechat/*.log
