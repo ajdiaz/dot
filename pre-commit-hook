@@ -8,7 +8,7 @@
 update_links () {
   for dot in $1/*; do
     case "${dot##*/}" in
-      pre-commit-hook|README) continue;;
+      pre-commit-hook|README|remove-module) continue;;
       config)
         mkdir -p ~/.config
         update_links "$1/config" "config/"

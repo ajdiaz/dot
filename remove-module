@@ -1,0 +1,10 @@
+#! /bin/bash
+
+submodule="$1"
+
+git submodule deinit "$submodule"
+git config -f .gitmodules --remove-section "$submodule"
+git config -f ../.git/modules/dot/config --remove-section "$submodule"
+rm -rf ../.git/modules/dot/modules/"$submodule"
+git rm --cached "$submodule"
+rm -rf ./"$submodule"

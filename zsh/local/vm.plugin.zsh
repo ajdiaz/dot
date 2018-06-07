@@ -54,7 +54,7 @@ _vm-new () {
       esac
   done
 
-  if ! [[ -d "${image}" ]]; then
+  if ! sudo test -d "${image}"; then
     echo "unknown image ${image}" 1>&2
     return 1
   fi
