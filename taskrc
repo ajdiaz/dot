@@ -36,6 +36,7 @@ color.calendar.holiday=color15 on rgb500
 # include holidays
 include ~/.local/share/task/holidays.conf
 
+hooks=on # enable hooks
 color=on # enable color
 calendar.holidays=full # show holidays in calendar
 calendar.details=full
