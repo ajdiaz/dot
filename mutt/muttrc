@@ -81,11 +81,21 @@ set nm_query_type  = messages
 set nm_record      = no
 set nm_record_tags = "sent"
 
+set sidebar_width = 35
+set sidebar_visible = no
+set sidebar_format = '%B%* %N'
+
+macro index ,l "<enter-command>toggle sidebar_visible<enter><refresh>"
+
 bind index D purge-message
+bind pager D purge-message
 macro index ,1 "<change-vfolder>ajdiaz.me/INBOX<enter>" "change accounts"
+macro index ,x \
+  "<tag-pattern>N<enter><tag-prefix><clear-flag>N<untag-pattern><enter>" \
+  "mark all new as read"
 
 # To avoid fast typing errors
-macro index ,q "<quit>"
+macro generic ,q "<quit>"
 
 # Some autoview orders
 auto_view text/html
