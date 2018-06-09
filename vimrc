@@ -69,6 +69,7 @@ set undoreload=10000        " number of lines to save for undo
 set colorcolumn=80          " Put color column in column 80
 set pastetoggle=<F2>        " Key to enter in paste mode
 set synmaxcol=300           " Disable syntax in large files
+set updatetime=500          " Decrease the default time to update status
 
 command Suw w !sudo tee %
 
@@ -196,6 +197,46 @@ let g:syntastic_objcpp_compiler = 'clang++'
 let g:syntastic_objcpp_compiler_options = ' -std=c++11y -stdlib=libc++ -fobjc '
 let g:syntastic_objcpp_check_header=1
 let g:syntastic_objcpp_auto_refresh_includes=1
+
+" Plugin: vim-go
+let g:go_list_type = "quickfix"
+let g:go_fmt_command = "goimports"
+let g:go_fmt_fail_silently = 1
+let g:go_fmt_autosave = 1
+let g:syntastic_go_checkers = ['gofmt', 'go']
+let g:syntastic_mode_map = { 'mode': 'active', 'passive_filetypes': ['go'] }
+let g:go_list_type = "quickfix"
+let g:go_highlight_build_constraints = 1
+let g:go_highlight_functions = 1
+let g:go_highlight_methods = 1
+let g:go_highlight_operators = 1
+let g:go_highlight_types = 1
+let g:go_highlight_fields = 1
+let g:go_highlight_extra_types = 1
+let g:go_highlight_generate_tags = 1
+let g:go_term_enabled = 1
+let g:go_autodetect_gopath = 0
+let g:go_metalinter_deadline = '20s'
+let g:go_metalinter_enabled = [
+            \ 'golint', 'vetshadow', 'errcheck', 'ineffassign',
+            \ 'vet', 'goimports', 'defercheck', 'aligncheck',
+            \ 'dupl', 'gofmt', 'varcheck', 'gocyclo', 'testify',
+            \ 'structcheck', 'deadcode' ]
+
+autocmd Filetype go command! -bang A call go#alternate#Switch(<bang>0, 'edit')
+autocmd FileType go nmap <Leader>i <Plug>(go-info)
+autocmd FileType go nmap <Leader>r :<C-U>GoRun<CR>
+autocmd FileType go nmap <leader>co :GoCoverageToggle<CR>
+autocmd FileType go nmap <leader>m :call <SID>GoBuildAgnostic()<CR>
+
+function s:GoBuildAgnostic()
+    let l:file = expand('%')
+    if l:file =~# '^\f\+_test\.go$'
+        call go#cmd#Test(0, 1)
+    elseif l:file =~# '^\f\+\.go$'
+        call go#cmd#Build(0)
+    endif
+endfunction
 
 " Plugin: Airline
 let g:airline_powerline_fonts = 0
@@ -432,6 +473,9 @@ nnoremap N :bnext<CR>
 
 " Exit swiftly
 map __ ZZ
+
+" build map
+nmap <leader>b :make<CR>
 
 " remove xml/sgml tags
 map <leader>rtag yitvatp<CR>

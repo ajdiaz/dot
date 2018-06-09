@@ -251,3 +251,7 @@ iam reload
 # pidstat colors
 export S_COLORS=auto
 export S_COLORS_SGR="H=31;1:I=0;37:M=1;35:N=0;1:Z=37;0"
+
+# go path variables, not happy setting this here
+export GOPATH=~/var/go
+export PATH="$PATH:$GOPATH/bin"
