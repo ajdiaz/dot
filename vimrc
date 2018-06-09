@@ -81,7 +81,7 @@ if &diff
 endif
 
 if has("mouse")
-  "set mouse=a
+  set mouse=a
   if has("mouse_sgr")
     set ttymouse=sgr
   endif
@@ -93,9 +93,25 @@ if has("linebreak")
 endif
 
 if has("folding")
-  set foldminlines=5      " Don't fold stuff with less lines
-  "set foldmethod=syntax  " Use syntax-aware folding
-  set nofoldenable        " Don't enable folding by default
+  set foldminlines=2      " Don't fold stuff with less lines
+  set foldmethod=syntax   " Use syntax-aware folding
+  set foldtext=FoldText() " Use custom fold text
+  set fillchars=fold:\    " No fill folding
+
+  augroup vimrc
+    autocmd ColorScheme * highlight Folded ctermbg=none ctermfg=242
+  augroup end
+
+  function! FoldText()
+      let line = getline(v:foldstart)
+      return "▶ ".line
+  endfunction
+
+  " Commodity here, I'll never understand why zO and zC apply only to the
+  " current cursor having za and zi
+  nmap <leader>zO zR
+  nmap <leader>zC zM
+
 endif
 
 if has("wildmenu")
@@ -103,6 +119,10 @@ if has("wildmenu")
   set wildchar=<TAB>      " Navigate wildmenu with tabs
   set wildmode=list       " Show list when more than one match
   set wildignore=*.o,*.cm[ioax],*.ppu,*.core,*~,core,#*#,*pyc,__pycache__
+endif
+
+if has("terminal")
+  au BufWinEnter * if &buftype == 'terminal' | setlocal bufhidden=hide | endif
 endif
 
 " Plugin: templates
@@ -283,15 +303,6 @@ map g/ <Plug>(incsearch-stay)
 
 " End of configuration for (most) plug-ins
 
-if has("folding")
-  map , zj
-  "map m zk
-  map - za
-  map _ zA
-  "map ; zi
-  "map <CR> za
-  "map <C-v> zA
-endif
 
 " Tune defaults for some particular file types.
 autocmd FileType javascript setlocal expandtab
