@@ -28,6 +28,7 @@
 	br = branch -vvv
 	ci = commit
 	ca = commit -a
+	cam = commit -a -m
 	cia = commit --amend
 	co = checkout
 	cp = cherry-pick
