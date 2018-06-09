@@ -177,16 +177,11 @@ let g:gundo_preview_bottom = 1
 " Plugin: clang_complete
 let g:clang_complete_macros = 1
 
-" Plugin: tabular
-noremap <silent> <leader>t: :Tabularize /:<CR>
-noremap <silent> <leader>t= :Tabularize /=<CR>
-noremap <silent> <leader>t, :Tabularize /,<CR>
-noremap <silent> <leader>t{ :Tabularize /{<CR>
-noremap <silent> <leader>t" :Tabularize /"<CR>
-noremap <silent> <leader>t' :Tabularize /'<CR>
-noremap <silent> <leader>t[ :Tabularize /[<CR>
-noremap <silent> <leader>t/ :Tabularize ///<CR>
-noremap <silent> <leader>t\| :Tabularize /\|<CR>
+" Plugin: vim-easy-align
+nmap <leader>t<space> <Plug>(EasyAlign)ii*<space>
+nmap <leader>t= <Plug>(EasyAlign)ii*=
+nmap <leader>t: <Plug>(EasyAlign)ii*:
+nmap <leader>t\| <Plug>(EasyAlign)ii*\|
 
 " Plugin: Syntastic
 let g:syntastic_check_on_open = 1
