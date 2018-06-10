@@ -99,3 +99,6 @@
 
 [credential]
     helper = cache
+
+[include]
+    path = ~/.config/git/user
