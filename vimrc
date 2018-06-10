@@ -94,6 +94,7 @@ endif
 
 if has("folding")
   set foldminlines=2      " Don't fold stuff with less lines
+  set foldnestmax=1       " Only one level nested
   set foldmethod=syntax   " Use syntax-aware folding
   set foldtext=FoldText() " Use custom fold text
   set fillchars=fold:\    " No fill folding
