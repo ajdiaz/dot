@@ -303,7 +303,9 @@ map g/ <Plug>(incsearch-stay)
 autocmd FileType javascript setlocal expandtab
 autocmd FileType *html,xml setlocal matchpairs+=<:>
 autocmd FileType xhtml,xml let xml_use_xhtml=1
-autocmd FileType python setlocal expandtab tabstop=4 shiftwidth=4
+autocmd FileType python
+            \ setlocal foldmethod=indent foldnestmax=2 |
+            \ setlocal expandtab tabstop=4 shiftwidth=4
 autocmd FileType lua setlocal expandtab shiftwidth=2 tabstop=2
 autocmd FileType rst setlocal expandtab tabstop=2 shiftwidth=2
 autocmd FileType objc setlocal expandtab cinoptions+=(0
