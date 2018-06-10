@@ -122,3 +122,9 @@
 [submodule "vim/bundle/vim-minisnip"]
 	path = vim/bundle/vim-minisnip
 	url = https://github.com/KeyboardFire/vim-minisnip.git
+[submodule "vim/bundle/VimCompletesMe"]
+	path = vim/bundle/VimCompletesMe
+	url = https://github.com/ajh17/VimCompletesMe.git
+[submodule "vim/bundle/python-mode"]
+	path = vim/bundle/python-mode
+	url = https://github.com/python-mode/python-mode.git

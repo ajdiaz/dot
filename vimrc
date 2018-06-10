@@ -16,7 +16,6 @@ map <S-B> <Plug>CamelCaseMotion_b
 map <S-E> <Plug>CamelCaseMotion_e
 
 let mapleader=','
-let g:using_neocomplete = 1
 execute pathogen#infect()
 
 set path+=**                 " Recursive path search
@@ -136,47 +135,14 @@ let g:vim_json_syntax_conceal = 0
 " Plugin: XML
 let g:xml_syntax_folding = 1
 
-" Plugin: NeoComplete
-function! s:completion_check_bs()
-  let col = col('.') - 1
-  return !col || getline('.')[col - 1] =~ '\s'
-endfunction
-
-if g:using_neocomplete
-  let g:neocomplete#enable_at_startup = 1
-  let g:neocomplete#enable_smart_case = 1
-  let g:neocomplete#auto_completion_start_length = 3
-  inoremap <expr><C-g> neocomplete#undo_completion()
-  inoremap <expr><C-l> neocomplete#complete_common_string()
-  inoremap <expr><C-h> neocomplete#smart_close_popup()."\<C-h>"
-  inoremap <expr><BS>  neocomplete#smart_close_popup()."\<C-h>"
-  inoremap <expr><C-y> neocomplete#close_popup()
-  inoremap <expr><C-e> neocomplete#cancel_popup()
-  inoremap <expr><Space> pumvisible() ? neocomplete#close_popup()."\<Space>" : "\<Space>"
-
-  "inoremap <expr><TAB> pumvisible() ? "\<C-n>" : "\<TAB>"
-  inoremap <expr><TAB> pumvisible() ? "\<C-n>" :
-        \ <SID>completion_check_bs() ? "\<TAB>" :
-        \ neocomplete#start_manual_complete()
-  inoremap <silent><CR> <C-R>=<SID>neocomplete_do_cr()<CR>
-  function! s:neocomplete_do_cr()
-    "return neocomplete#close_popup()."\<CR>"
-    return pumvisible() ? neocomplete#close_popup() : "\<CR>"
-  endfunction
-else
-  " Simple autocompletion with <TAB>, uses Omni Completion if available.
-  inoremap <expr><TAB> pumvisible() ? "\<C-n>" :
-        \ <SID>completion_check_bs() ? "\<TAB>" :
-        \ &omnifunc == "" ? "\<C-p>" : "\<C-x><C-o><C-p>"
-endif
-
 " Plugin: gundo
 nnoremap <leader>gu :GundoToggle<CR>
 let g:gundo_right = 1
 let g:gundo_preview_bottom = 1
 
-" Plugin: clang_complete
-let g:clang_complete_macros = 1
+" Plugin: VimCompletesMe
+let b:vcm_tab_complete = "omni"
+set omnifunc=syntaxcomplete#Complete
 
 " Plugin: vim-easy-align
 nmap <leader>t<space> <Plug>(EasyAlign)ii*<space>
@@ -314,7 +280,8 @@ autocmd FileType objc setlocal expandtab cinoptions+=(0
 autocmd FileType cpp setlocal expandtab cinoptions+=(0
 autocmd FileType c setlocal expandtab cinoptions+=(0
 autocmd FileType d setlocal expandtab cinoptions+=(0
-autocmd FileType text,markdown NeoCompleteLock
+autocmd FileType text,markdown setlocal complete+=k |
+      \ let b:vcm_tab_complete = 'dict'
 
 " Jump to the last edited position in the file being loaded (if available)
 " in the ~/.viminfo file, I really love this =)
