@@ -14,11 +14,11 @@ notmuch tag +list +list/qutebrowser   -- to:"@lists.qutebrowser.org"
 notmuch tag +list +list/sks-devel     -- to:"sks-devel@nongnu.org"
 
 # tag by source folder
-notmuch tag +sent -new     -- tag:new and folder:ajdiaz.me/Sent
-notmuch tag +deleted -new  -- tag:new and folder:ajdiaz.me/Trash
-notmuch tag +flagged -new  -- tag:new and folder:ajdiaz.me/Flagged
-notmuch tag +spam -new     -- tag:new and folder:ajdiaz.me/Spam
-notmuch tag +archive -new  -- tag:new and folder:ajdiaz.me/Archive
+notmuch tag +sent -new -inbox    -- tag:new and folder:ajdiaz.me/Sent
+notmuch tag +deleted -new -inbox -- tag:new and folder:ajdiaz.me/Trash
+notmuch tag +flagged -new -inbox -- tag:new and folder:ajdiaz.me/Flagged
+notmuch tag +spam -new -inbox    -- tag:new and folder:ajdiaz.me/Spam
+notmuch tag +archive -new -inbox -- tag:new and folder:ajdiaz.me/Archive
 
 # tag inbox
 notmuch tag +inbox +unread -new -- tag:new
