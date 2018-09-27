@@ -70,8 +70,6 @@ set pastetoggle=<F2>        " Key to enter in paste mode
 set synmaxcol=300           " Disable syntax in large files
 set updatetime=500          " Decrease the default time to update status
 
-command Suw w !sudo tee %
-
 if &diff
     nmap 1 :diffg LO<C-M>
     nmap 2 :diffg BA<C-M>
@@ -408,6 +406,9 @@ endif
 command! -nargs=0 -bang Q q<bang>
 command! -bang W write<bang>
 command! -nargs=0 -bang Wq wq<bang>
+
+" Sudo write commodity
+command! W w !sudo tee "%" >/dev/null
 
 " Saves current position, executes the given expression using :execute
 " and sets the cursor in the saved position, so the user thinks cursor

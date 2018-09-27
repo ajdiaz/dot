@@ -1,5 +1,6 @@
 set font "DejaVu Sans Mono 14"
 
+set database "sqlite"
 set default-bg "#002b36"
 set statusbar-bg "#073642"
 set statusbar-fg "#93a1a1"

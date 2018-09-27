@@ -176,15 +176,9 @@ alias -- gdb='gdb -q'
 alias -- pager='pager -R'
 alias -- mutt="neomutt && ~/.config/mbsync/mail-notify"
 alias -- sprunge="curl -F 'sprunge=<-' http://sprunge.us"
-alias -- ipecho='curl ipecho.net/plain; echo'
-alias -- list="sudo systemctl list-units"
-alias -- status="sudo systemctl status"
-alias -- start="sudo systemctl start"
-alias -- stop="sudo systemctl stop"
-alias -- restart="sudo systemctl restart"
-alias -- reload="sudo systemctl reload"
-alias -- dot-upgrade="cd ~/sys/dot && git pr && cd -"
 alias -- history="history -i"
+alias -- myip="dig +short myip.opendns.com @resolver1.opendns.com"
+alias -- map="xargs -n1"
 
 # Local binaries directory
 if [ -d "${HOME}/.local/bin" ] ; then
