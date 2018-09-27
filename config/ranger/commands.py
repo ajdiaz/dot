@@ -81,6 +81,7 @@
 # of ranger.
 # ===================================================================
 
+import re
 from ranger.api.commands import *
 
 class alias(Command):
