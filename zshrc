@@ -148,7 +148,7 @@ fi
 
 PROMPT=$'%{%F{228}%}${VM_NAME:+$VM_NAME }%{%b%f%}'
 PROMPT+=$'%{%F{190}%}${IAM_ID_NAME:+$IAM_ID_NAME }%{%b%f%}'
-PROMPT+=$'%{%F{176}%}${KNS_CONTEXT:+$KNS_CONTEXT/}${KNS_NAMESPACE:+$KNS_NAMESPACE }%{%b%f%}'
+PROMPT+=$'%{%F{176}%}${KNS_PATH }%{%b%f%}'
 PROMPT+=$'%{%F{180}%}${VIRTUAL_ENV:+${VIRTUAL_ENV##*/} }%{%b%f%}'
 PROMPT+=$'%B%{%(!.$fg[red].%{%F{255}%})%}${SHOWHOST:+%m }%b%f'
 PROMPT+=$'${vcs_info_msg_0_}'

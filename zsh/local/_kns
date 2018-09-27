@@ -4,6 +4,7 @@ declare -a _kns_namespaces=()
 
 _kns () {
   local -a kns_commands
+  local -a kns_context=( $(kns ls) )
   for cmd in ${(k)_kns_cmd[@]} ; do
     kns_commands=( "${kns_commands[@]}" "${cmd}:${_kns_cmd[${cmd}]}" )
   done
@@ -17,10 +18,13 @@ _kns () {
 
   case ${words[1]} in
     activate | rm)
-      if [[ "${words[2]}" ]]; then
-        KNS_CONTEXT="${words[2]}"
+      if [[ -n "${words[2]}" ]] &&
+         [[ "${kns_context[(r)${words[2]}]}" == "${words[2]}" ]]; then
 
-        if [[ "${#_kns_namespaces[@]}" -eq 0 ]]; then
+        if [[ "$KNS_CONTEXT" != "${words[2]}" ]]; then
+          KNS_CONTEXT="${words[2]}"
+
+          echo -n "Retrieving namespaces..."
           _kns_namespaces=(
             $(kubectl get namespaces \
                 -o go-template \
@@ -29,7 +33,6 @@ _kns () {
         fi
         _arguments "2: :{_describe 'kns' _kns_namespaces}"
       else
-        local -a kns_context=( $(kns ls) )
         _arguments "1: :{_describe 'kns' kns_context}"
       fi
       ;;

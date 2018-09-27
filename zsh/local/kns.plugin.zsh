@@ -45,6 +45,7 @@ _kns-activate () {
 
 	KNS_CONTEXT="$1"
 	KNS_NAMESPACE="${2:-default}"
+	KNS_PATH="${KNS_CONTEXT}${KNS_NAMESPACE:+/$KNS_NAMESPACE}"
 }
 
 _kns_cmd[new]='Create new kubernetes config file'
@@ -63,7 +64,7 @@ _kns-new () {
 
 _kns_cmd[deactivate]='Deactivate the current context/namspace'
 _kns-deactivate () {
-	unset KNS_CONTEXT KNS_NAMESPACE
+	unset KNS_CONTEXT KNS_NAMESPACE KNS_PATH
   _kns_namespaces=()
 }
 
