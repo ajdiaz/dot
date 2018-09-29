@@ -30,9 +30,15 @@ _vm_cmd[new]='Starting vm'
 _vm-new () {
   local image=/
   local bind_home=("--bind" "${HOME}")
+  local opts=()
 
   while [[ "$1" ]] && [[ "${1:0:2}" == "--" ]]; do
     case "$1" in
+      --allow-docker)
+        opts+=("--bind" "/sys/fs/cgroup")
+        opts+=("--capability" "all")
+        opts+=("--system-call-filter" "add_key keyctl")
+        shift;;
       --no-bind-home)
         bind_home=(); shift;;
       --image*)
@@ -66,16 +72,18 @@ _vm-new () {
     name="$1"
   fi
 
-  sudo systemd-run --unit="vm-$name" \
+  sudo systemd-run -E SYSTEMD_NSPAWN_USE_CGNS=0 --unit="vm-$name" \
     systemd-nspawn \
-      -M "vm-$name" -E VM_NAME="vm-$name" -xb -D "${image}" \
+      -M "vm-$name" -n -xb \
+      -E VM_NAME="vm-$name" \
+      -D "${image}" \
       --bind /var/cache/pacman/pkg/ \
-      "${bind_home[@]}"
+      "${bind_home[@]}" "${opts[@]}"
 }
 
 _vm_cmd[ls]='List vms'
 _vm-ls () {
-  sudo machinectl --no-pager --no-legend list |
+  sudo machinectl --no-pager --full --no-legend list |
   while read -r a _; do echo "$a"; done
 }
 
@@ -94,7 +102,7 @@ _vm_cmd[sh]='Run command inside vm or open a shell'
 _vm-sh () {
 	if [[ $# -lt 1 ]] ; then
     echo "VM id is required" 1>&2
-    exit 2
+    return 2
   else
     local vmid="$1"; shift
 
