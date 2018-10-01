@@ -16,6 +16,7 @@ general {
 }
 
 order += "wireless _first_"
+order += "ethernet _first_"
 order += "run_watch VPN"
 order += "battery 0"
 order += "load"
@@ -27,6 +28,11 @@ order += "tztime local"
 wireless _first_ {
         format_up = "   %essid:%quality "
         format_down = "   "
+}
+
+ethernet _first_ {
+        format_up = "  "
+        format_down = "  "
 }
 
 battery 0 {
