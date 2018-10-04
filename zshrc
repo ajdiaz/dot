@@ -171,14 +171,12 @@ esac
 alias -- o='xdg-open'
 alias -- ag='ack'
 alias -- '-'='cd -'
-alias -- cal='task calendar'
-alias -- gdb='gdb -q'
 alias -- pager='pager -R'
-alias -- mutt="neomutt && ~/.config/mbsync/mail-notify"
-alias -- sprunge="curl -F 'sprunge=<-' http://sprunge.us"
 alias -- history="history -i"
-alias -- myip="dig +short myip.opendns.com @resolver1.opendns.com"
 alias -- map="xargs -n1"
+alias -- tailf="tail -f"
+alias -- inv="tr ' ' '\n--\n' | tac | tr '\n--\n' ' ' | sed -e 's:[ ]$::'"
+alias -- typeof="file -b --mime-type"
 
 # Local binaries directory
 if [ -d "${HOME}/.local/bin" ] ; then
