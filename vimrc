@@ -90,7 +90,7 @@ if has("linebreak")
 endif
 
 if has("folding")
-  set foldminlines=2      " Don't fold stuff with less lines
+  set foldminlines=5      " Don't fold stuff with less lines
   set foldnestmax=1       " Only one level nested
   set foldmethod=syntax   " Use syntax-aware folding
   set foldtext=FoldText() " Use custom fold text
@@ -109,6 +109,7 @@ if has("folding")
   " current cursor having za and zi
   nmap <leader>zO zR
   nmap <leader>zC zM
+  nmap ff za
 
 endif
 
@@ -209,6 +210,8 @@ autocmd FileType go nmap <Leader>i <Plug>(go-info)
 autocmd FileType go nmap <Leader>r :<C-U>GoRun<CR>
 autocmd FileType go nmap <leader>co :GoCoverageToggle<CR>
 autocmd FileType go nmap <leader>m :call <SID>GoBuildAgnostic()<CR>
+autocmd FileType go nmap <leader>def :GoDef<CR>
+autocmd FileType go nmap <leader>imp :GoImports<CR>
 
 function s:GoBuildAgnostic()
     let l:file = expand('%')
