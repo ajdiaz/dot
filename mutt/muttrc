@@ -89,6 +89,7 @@ macro index ,l "<enter-command>toggle sidebar_visible<enter><refresh>"
 
 bind index D purge-message
 bind pager D purge-message
+macro pager L <pipe-entry>'urlview'<enter> 'Follow links with urlview'
 macro index ,1 "<change-vfolder>ajdiaz.me/INBOX<enter>" "change accounts"
 macro index ,x \
   "<tag-pattern>N<enter><tag-prefix><clear-flag>N<untag-pattern><enter>" \

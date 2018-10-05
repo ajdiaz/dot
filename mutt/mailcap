@@ -1,5 +1,5 @@
 application/octet-stream ; echo %s "can be anything..." ; copiousoutput
-text/html ; /usr/bin/w3m -dump %s ; nametemplate=%s.html ; copiousoutput
-Text/Html ; /usr/bin/w3m -dump %s ; nametemplate=%s.html ; copiousoutput
+text/html; lynx -display_charset=utf-8 -dump %s; nametemplate=%s.html; copiousoutput
+Text/Html; lynx -display_charset=utf-8 -dump %s; nametemplate=%s.html; copiousoutput
 application/pdf ; /usr/bin/zathura %s ; copiousoutput
 application/postscript ; /usr/bin/zathura %s ; copiousoutput
