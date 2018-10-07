@@ -8,6 +8,7 @@ syntax match goNiceOperator "<=\ze[^<]" conceal cchar=≤
 syntax match goNiceOperator ">=\ze[^>]" conceal cchar=≥
 syntax match goNiceOperator "=\@<!===\@!" conceal cchar=≡
 syntax match goNiceOperator "!=" conceal cchar=≠
+syntax match goNiceOperator ":=" conceal cchar=≔
 
 syntax match goNiceKeyword "math.Pi" conceal cchar=π
 

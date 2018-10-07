@@ -30,6 +30,10 @@ if hash curl 2>/dev/null; then
   }
 fi
 
+if hash python 2>/dev/null; then
+  alias serve='python -m SimpleHTTPServer 8000'
+fi
+
 if hash wget 2>/dev/null; then
   function mirror
   {
@@ -55,4 +59,14 @@ fi
 
 if hash tcpdump 2>/dev/null; then
   alias httpdump="sudo tcpdump -n -s 0 -w - | grep -a -o -E \"Host\: .*|GET \/.*\""
+fi
+
+if hash make 2>/dev/null; then
+  function make {
+    if [[ "${@[(r)-*]}" ]] || [[ -r Makefile ]] || [[ "$PWD" = / ]]; then
+      command make "$@"
+    else
+      ( cd ..; make "$@"; )
+    fi
+  }
 fi

@@ -29,7 +29,7 @@
 	ci = commit
 	ca = commit -a
 	cam = commit -a -m
-	cia = commit --amend
+	cia = commit -a --amend --no-edit
 	co = checkout
 	cp = cherry-pick
 	df = diff

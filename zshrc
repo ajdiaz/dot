@@ -177,6 +177,8 @@ alias -- map="xargs -n1"
 alias -- tailf="tail -f"
 alias -- inv="tr ' ' '\n--\n' | tac | tr '\n--\n' ' ' | sed -e 's:[ ]$::'"
 alias -- typeof="file -b --mime-type"
+alias -- xc='xclip -selectiion clipboard'
+alias -- pls='sudo $(fc -n -l -1)'
 
 # Local binaries directory
 if [ -d "${HOME}/.local/bin" ] ; then

@@ -66,7 +66,7 @@ set undodir=$HOME/.vim/undo " where to save undo histories
 set undolevels=1000         " How many undos
 set undoreload=10000        " number of lines to save for undo
 set colorcolumn=80          " Put color column in column 80
-set pastetoggle=<F2>        " Key to enter in paste mode
+set pastetoggle=<C-@>       " Key to enter in paste mode
 set synmaxcol=300           " Disable syntax in large files
 set updatetime=500          " Decrease the default time to update status
 
@@ -212,6 +212,7 @@ autocmd FileType go nmap <leader>co :GoCoverageToggle<CR>
 autocmd FileType go nmap <leader>m :call <SID>GoBuildAgnostic()<CR>
 autocmd FileType go nmap <leader>def :GoDef<CR>
 autocmd FileType go nmap <leader>imp :GoImports<CR>
+autocmd FileType go nmap <leader>vet :GoVet<CR>
 
 function s:GoBuildAgnostic()
     let l:file = expand('%')
@@ -440,9 +441,34 @@ let g:netrw_list_hide=netrw_gitignore#Hide()
 let g:netrw_list_hide.=',\(^\|\s\s\)\zs\.\S\+'
 map <leader>e :Explore<cr>
 
+autocmd FileType netrw map f %
+
 " Find and bufer bindings
 map <leader>f :find<space>
 map <leader>q :bw!<cr>
+
+" Terminal features
+if has('terminal')
+    let g:terminal_command=''
+    function! ToggleTerminal()
+        let bufferNum = bufnr('Terminal')
+        if bufferNum == -1 || bufloaded(bufferNum) != 1
+            execute 'rightbelow term ++close ++rows=12 ++kill=term '.g:terminal_command
+            file Terminal
+        else
+            let windowNum = bufwinnr(bufferNum)
+            if windowNum == -1
+                execute 'rightbelow sbuffer '.bufferNum
+            else
+                execute windowNum.'wincmd w'
+                hide 
+            endif
+        endif
+    endfunction
+    command! -nargs=0 ToggleTerminal call ToggleTerminal()
+    tnoremap <silent> <ESC> <C-w>:ToggleTerminal<CR>
+    nnoremap <silent> <leader>tt :ToggleTerminal<CR>
+endif
 
 " Move visual block
 vnoremap J :m '>+1<CR>gv=gv
@@ -467,6 +493,7 @@ execute "set <M-t>=\et"
 " buffer commodites
 nmap <M-Left> :bp<CR>
 nmap <M-Right> :bn<CR>
+nmap <leader>c :bd<CR>
 
 runtime! macros/matchit.vim
 

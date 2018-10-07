@@ -100,6 +100,13 @@ _iam-add () {
 		return 2
 	fi
 
+	if [[ -d "$2" ]]; then
+	  for item in "$2"/* "$2"/.*; do
+	    [[ -e "$item" ]] && _iam-add "$1" "$item"
+	  done
+    return
+  fi
+
 	if [[ "${IAM_GPGKEY}" ]]; then
     local gpgoptions=( "--default-key" "${IAM_GPGKEY}" )
   else
