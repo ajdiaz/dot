@@ -24,12 +24,13 @@ _kns () {
         if [[ "$KNS_CONTEXT" != "${words[2]}" ]]; then
           KNS_CONTEXT="${words[2]}"
 
-          echo -n "Retrieving namespaces..."
+          echo -n "..."
           _kns_namespaces=(
             $(kubectl get namespaces \
                 -o go-template \
                 --template '{{range .items}}{{.metadata.name}} {{end}}')
           )
+          echo -n "\b\b\b"
         fi
         _arguments "2: :{_describe 'kns' _kns_namespaces}"
       else

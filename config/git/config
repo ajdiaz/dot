@@ -14,9 +14,12 @@
 	whitespace = red reverse
 
 [color "status"]
-	added = yellow
-	changed = green
-  untracked = cyan
+	header = "#999999"
+	added = "#99cc99"
+	changed = "#f2777a"
+	untracked = "#ffcc66"
+	branch = bold "#6699cc"
+	nobranch = bold ul blink "#f99157"
 
 [core]
 	excludefile = ~/.config/git/ignore

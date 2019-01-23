@@ -105,17 +105,55 @@ zstyle ':completion:*:kill:*' force-list always
 
 
 FMT_BRANCH="%{$fg[cyan]%}%b%u%c%{$fg[default]%}" # e.g. master¹²
+FMT_BRANCH+="%{$fg[yellow]%}%m%{$fg[default]%}"  # e.g. ⤵
 FMT_ACTION="·%{$fg[green]%}%a%{$fg[default]%}"   # e.g. (rebase)
 
 autoload -Uz vcs_info
 zstyle ':vcs_info:*' enable git hg bzr svn
 zstyle ':vcs_info:bzr:prompt:*' use-simple true
 zstyle ':vcs_info:*:prompt:*' check-for-changes true
-zstyle ':vcs_info:*:prompt:*' unstagedstr   "%B%{$fg[cyan]%}¹%{$fg[default]%}%b"
-zstyle ':vcs_info:*:prompt:*' stagedstr     "%B%{$fg[cyan]%}²%{$fg[default]%}%b"
+zstyle ':vcs_info:*:prompt:*' unstagedstr   "%B%{$fg[cyan]%}ᴹ%{$fg[default]%}%b"
+zstyle ':vcs_info:*:prompt:*' stagedstr     "%B%{$fg[cyan]%}ᴬ%{$fg[default]%}%b"
 zstyle ':vcs_info:*:prompt:*' actionformats "${FMT_BRANCH}${FMT_ACTION} "
 zstyle ':vcs_info:*:prompt:*' formats       "${FMT_BRANCH} "
 zstyle ':vcs_info:*:prompt:*' nvcsformats   ""
+
+function +vi-git-st() {
+    local ahead behind remote
+
+    # Are we on a remote-tracking branch?
+    remote=${$(git rev-parse --verify ${hook_com[branch]}@{upstream} \
+        --symbolic-full-name 2>/dev/null)/refs\/remotes\/}
+
+    if [[ -n ${remote} ]] ; then
+        # for git prior to 1.7
+        # ahead=$(git rev-list origin/${hook_com[branch]}..HEAD | wc -l)
+        read -r ahead < <(
+          git rev-list ${hook_com[branch]}@{upstream}..HEAD 2>/dev/null
+        )
+
+        read -r behind < <(
+          git rev-list HEAD..${hook_com[branch]}@{upstream} 2>/dev/null
+        )
+
+        local symbol="${behind:+⤵}${ahead:+⤴}"
+
+        hook_com[misc]="${hook_com[misc]}${symbol}"
+    fi
+
+    if [[ $(git rev-parse --is-inside-work-tree 2> /dev/null) == 'true' ]] && \
+        git status --porcelain | grep '??' &> /dev/null ; then
+        # This will show the marker if there are any untracked files in repo.
+        # If instead you want to show the marker only if there are untracked
+        # files in $PWD, use:
+        #[[ -n $(git ls-files --others --exclude-standard) ]] ; then
+        hook_com[staged]+="%B%{$fg[cyan]%}ᵀ%{$fg[default]%}%b"
+    fi
+
+}
+
+zstyle ':vcs_info:git*+set-message:*' hooks git-st
+
 
 case ${TERM} in
 	screen | xterm* | gnome-terminal)
@@ -188,6 +226,10 @@ fi
 
 if [ -d "${HOME}/sys/bin" ] ; then
 	PATH="${PATH}:${HOME}/sys/bin"
+fi
+
+if [ -d "${HOME}/bin" ] ; then
+	PATH="${PATH}:${HOME}/bin"
 fi
 
 # Optional binaries in PATH (prepend)
