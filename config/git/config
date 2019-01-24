@@ -25,6 +25,7 @@
 	excludefile = ~/.config/git/ignore
 	whitespace = fix, -indent-with-non-tab,trailing-space,cr-at-eol
 	autocrlf = input
+	mode = progress
 
 [alias]
 	f = fetch --all -v
@@ -58,14 +59,21 @@
 	todo = grep -n -E '(FIXME|TODO|XXX)[:]? '
 
 [sendemail]
-	smtpencryption = tls
-	smtpserver = smtp.gmail.com
-	smtpuser = ajdiaz@connectical.com
 	smtpserverport = 587
 	chainreplyto = false
+	annotate = true
+	assume8bitEncoding = utf-8
 
 [format]
 	numbered = auto
+	signoff = true
+	coverletter = auto
+
+[url "git@github.com:"]
+	insteadOf = gh:
+
+[url "git@gitlab.com:"]
+	insteadOf = gl:
 
 [merge]
 	stat = true
@@ -107,4 +115,10 @@
     path = ~/.config/git/user
 
 [submodule]
-   fetchJobs = 4
+	fetchJobs = 4
+
+[tag]
+	sort = version:refname
+
+[receive]
+	denyCurrentBranch = warn
