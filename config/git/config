@@ -2,16 +2,19 @@
 	ui     = auto
 
 [color "branch"]
-	current = yellow reverse
-	local = yellow
-	remote = green
+	current = bold white
+	local = bold "#6699cc"
+	remote = "#ffcc66"
+	upstream = "#ffcc66"
+	plain = "#999999"
 
 [color "diff"]
-	meta = yellow bold
-	frag = magenta bold
+	meta = white bold
+	frag = "#ffcc66"
 	old  = red bold
 	new  = green bold
 	whitespace = red reverse
+	context = "#999999"
 
 [color "status"]
 	header = "#999999"
@@ -26,10 +29,12 @@
 	whitespace = fix, -indent-with-non-tab,trailing-space,cr-at-eol
 	autocrlf = input
 	mode = progress
+	editor = vim
 
 [alias]
 	f = fetch --all -v
-	br = branch -vvv
+	r = remote
+	br = branch -v -a
 	ci = commit
 	ca = commit -a
 	cam = commit -a -m
@@ -51,6 +56,7 @@
 	export = !"git archive --prefix=$(basename $PWD)/ --format="tar.gz" $(git symbolic-ref --short HEAD) -o"
 	save = stash save
 	load = !"f() { git stash apply stash^{/$*}; }; f"
+	split = !"f() { git subtree split -P "${1%/}" -b "WIP-split-branch"&& git co "WIP-split-branch"; }; f"
 
 	# apple-pick taken from http://joeshaw.org/2010/06/22/667
 	apple-pick = !sh -c 'git rev-list --reverse "$@" | xargs -n1 git cherry-pick' -
@@ -63,6 +69,10 @@
 	chainreplyto = false
 	annotate = true
 	assume8bitEncoding = utf-8
+	smtpuser =
+	smtpserver = "/usr/bin/msmtp"
+	smtpencryption = tls
+	confirm = auto
 
 [format]
 	numbered = auto
@@ -77,11 +87,11 @@
 
 [merge]
 	stat = true
-  tool = vimdiff
-  conflictstyle = diff3
+	tool = vimdiff
+	conflictstyle = diff3
 
 [mergetool]
-  prompt = false
+	prompt = false
 
 [pack]
 	threads = 1
@@ -106,13 +116,13 @@
 	renameLimit = 10000
 
 [rerere]
-    enabled = true
+	enabled = true
 
 [credential]
-    helper = cache
+	helper = cache
 
 [include]
-    path = ~/.config/git/user
+	  path = ~/.config/git/user
 
 [submodule]
 	fetchJobs = 4
