@@ -23,7 +23,9 @@ set edit_headers         # I want to edit the message headers.
 set sleep_time = 0
 
 # command to perform addrlookup using notmuch
-set query_command = "notmuch-addrlookup --mutt '%s'"
+set query_command = "notmuch address '%s'"
+set query_format = "%4c %t %-70.70a %-70.70n %?e?(%e)?"
+
 bind editor <Tab> complete-query
 unset help
 unset mark_old           # read/new is good enough for me
