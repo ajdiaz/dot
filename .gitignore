@@ -10,6 +10,11 @@ mutt/temp
 *.pyo
 __pycache__
 
+# newsboat stuff
+config/newsboat/cache.db
+config/newsboat/history.*
+config/newsboat/urls
+
 # systemd stuff
 config/systemd/user/default.target.wants
 

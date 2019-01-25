@@ -1,0 +1,42 @@
+# Settings.
+article-sort-order date-asc
+download-path ~/tmp/newsboat
+download-retries 3
+download-timeout 15
+keep-articles-days 360
+mark-as-read-on-hover yes
+always-display-description yes
+refresh-on-startup yes
+reload-threads 10
+cleanup-on-quit yes
+show-keymap-hint no
+text-width 80
+download-full-page yes
+
+# Formats
+datetime-format "%Y-%m-%d"
+feedlist-format "%n%S %u: %t"
+articlelist-format "%f %D%?a? (%a)?: %t"
+feedlist-title-format "Feeds (%u/%t)"
+itemview-title-format "Article “%T” (%F)"
+articlelist-title-format "Feed “%T” (%U)"
+
+# External programs.
+browser lynx
+player mpv
+
+# Vim-like keybindings.
+bind-key k up
+bind-key j down
+bind-key ^B pageup
+bind-key ^F pagedown
+bind-key d delete-article
+
+# Colors.
+color listnormal        color244 black
+color listnormal_unread white black
+color listfocus         white color237
+color listfocus_unread  white color237 bold
+color info              color39 black
+color background        white black
+color article           white black
