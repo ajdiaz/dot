@@ -1,0 +1,16 @@
+#! /bin/bash
+
+query ()
+{
+  notmuch address "$*"
+  pass show notes/contacts 2>/dev/null | grep -i -E ".*${*}.*"
+}
+
+filter ()
+{
+  grep -v -e '@linkedin.com' -e '@meetup.com' -e '@mastodon.' \
+          -e '@aur.archlinux.org' -e 'no-reply@' -e 'dontreply@' \
+          -e 'donotreply@' -e 'notify@' -e '@mg.gitlab.com'
+}
+
+echo; query "$*" | sort -f | uniq -i | filter
