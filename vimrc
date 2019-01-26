@@ -259,6 +259,7 @@ nmap gH <Plug>GitGutterPrevHunk
 nmap gs <Plug>GitGutterStageHunk
 nmap gR <Plug>GitGutterRevertHunk
 nmap gd <Plug>GitGutterPreviewHunk
+nmap gc /^<<<<<<<<cr>
 
 " Plugin: incsearch
 let g:incsearch#consistent_n_direction = 1
