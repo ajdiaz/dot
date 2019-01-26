@@ -65,10 +65,10 @@ alternative_order text/plain text/enriched text/html
 
 ignore *   # ignore all headers
 # show only these headers
-unignore from: to: cc: bcc: date: list-unsubscribe subject: tags
+unignore from: to: cc: bcc: date: list-unsubscribe: subject: tags:
 unhdr_order * # some distros order things by default
 # use this order for headers
-hdr_order from: to: cc: bcc: date: list-unsubscribe subject: tags
+hdr_order from: to: cc: bcc: date: list-unsubscribe: subject: tags:
 
 set crypt_use_gpgme = yes
 set pgp_autosign = yes
