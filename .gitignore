@@ -42,6 +42,7 @@ gnupg/openpgp-revocs.d
 gnupg/gpa*
 gnupg/reader*
 gnupg/*.bak
+gnupg/*.db
 # I do not use ssh protocol for GPG right now.
 gnupg/sshcontrol
 

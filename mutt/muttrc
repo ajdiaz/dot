@@ -53,7 +53,7 @@ set pager_index_lines = 8 # number of index lines to show
 set pager_context     = 4  # number of context lines to show
 set pager_stop             # don't go to next message automatically
 set menu_scroll            # scroll in menus
-set pager_format = " %Z  %-20.20n: %s  %> %P ◢ %C: %m "
+set pager_format = " %Z  %-20.20n: %s  %> %[!%Y-%m-%d %H:%M %Z] — %P ◢ %C: %m "
 set tilde                  # show tildes like in vim
 unset markers              # no ugly plus signs
 
@@ -83,6 +83,7 @@ set nm_query_type  = messages
 set nm_record      = no
 set nm_record_tags = "sent"
 
+set wrap = 78
 set sidebar_width = 35
 set sidebar_visible = no
 set sidebar_format = '%B%* %N'
@@ -99,6 +100,8 @@ macro index ,x \
 
 # To avoid fast typing errors
 macro generic ,q "<quit>"
+
+macro attach ,dm "<pipe-entry> unzip-mem -p | ~/.mutt/dmarc-analysis | less -R <enter>"
 
 # Some autoview orders
 auto_view text/html
