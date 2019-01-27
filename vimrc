@@ -43,6 +43,7 @@ set formatoptions+=cqron1    " Some useful formatting options
 set showmatch                " Show matching parens
 set textwidth=76             " Text is 76 columns wide
 set backspace=2              " Backspace always useable in insert mode
+set number                   " Enable numbers of line
 set fileformats=unix,mac,dos " Allows automatic line-end detection.
 set conceallevel=0           " Show some hidden elements, like quotes in json
 set completeopt-=preview
@@ -222,6 +223,10 @@ function s:GoBuildAgnostic()
         call go#cmd#Build(0)
     endif
 endfunction
+
+" Handle number of lines in text plain files.
+autocmd FileType text,markdown,rst set nonu
+autocmd BufRead,BufNewFile README,CHANGELOG,LICENSE,COPYING set nonu
 
 " Plugin: Airline
 let g:airline_powerline_fonts = 0

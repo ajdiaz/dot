@@ -26,6 +26,7 @@
 
 [core]
 	excludefile = ~/.config/git/ignore
+	attributesfile = ~/.config/git/attributes
 	whitespace = fix, -indent-with-non-tab,trailing-space,cr-at-eol
 	autocrlf = input
 	mode = progress
@@ -114,6 +115,9 @@
 [diff]
 	algorithm = patience
 	renameLimit = 10000
+
+[diff "json"]
+	textconv = python -m json.tool
 
 [rerere]
 	enabled = true
