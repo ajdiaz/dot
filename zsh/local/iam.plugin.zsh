@@ -4,7 +4,6 @@
 IAM_HOME="${IAM_HOME:-${HOME}/.local/share/iam}"
 IAM_GPGKEY= # use by default
 
-
 typeset -gA _iam_cmd
 
 _iam_gpg_e ()
@@ -12,10 +11,17 @@ _iam_gpg_e ()
   local gpgopts=( "${GPGOPTIONS[@]}" )
 
   if [[ "$IAM_GPGKEY" ]]; then
-    gpgopts+=( "--default-key" "${IAM_GPGKEY}" )
+    gpgopts+=( "--recipient" "${IAM_GPGKEY}" "--local-user" "${IAM_GPGKEY}" )
+  else
+    local gpg_key="$(<${IAM_HOME}/${IAM_ID_NAME}.gpg-id)"
+    gpgopts+=( 
+      "--recipient" "${gpg_key}"
+      "--local-user" "${gpg_key}"
+    )
   fi
 
-  gpg --quiet --no-verbose --encrypt --armor ${gpgopts[@]} -o "$2" "$1"
+  gpg --batch --no-tty --quiet --no-verbose \
+    --encrypt --armor ${gpgopts[@]} -o "$2" "$1"
 }
 
 _iam_gpg_d ()
@@ -23,7 +29,9 @@ _iam_gpg_d ()
   local gpgopts=( "${GPGOPTIONS[@]}" )
 
   if [[ "$IAM_GPGKEY" ]]; then
-    gpgopts+=( "--default-key" "${IAM_GPGKEY}" )
+    gpgopts+=( "--local-user" "${IAM_GPGKEY}" )
+  else
+    gpgopts+=( "--local-user" "$(<${IAM_HOME}/${IAM_ID_NAME}.gpg-id)" )
   fi
 
   gpg --quiet --no-verbose --decrypt ${gpgopts[@]} "$1" > "$2"
@@ -107,17 +115,11 @@ _iam-add () {
     return
   fi
 
-	if [[ "${IAM_GPGKEY}" ]]; then
-    local gpgoptions=( "--default-key" "${IAM_GPGKEY}" )
-  else
-    local gpgoptions=()
-  fi
-
   local p="$(realpath "$2")"
   local p="${iam_path}${p#${HOME}}"
 
   mkdir -p "${p%/*}"
-  _iam_gpg_e "$(realpath "$2")" "${p}"
+  IAM_ID_NAME="$1" _iam_gpg_e "$(realpath "$2")" "${p}"
 }
 
 _iam_cmd[deactivate]='Deactivate the active virtual id'
@@ -176,9 +178,17 @@ _iam-new () {
 		return 1
 	fi
 
-	local iam_name=$1
+	local iam_name="$1"
 	local iam_path="${IAM_HOME}/${iam_name}"
 	mkdir -p "${iam_path}"
+  echo "${2:-$(gpgconf --list-options gpg |
+               awk -F: '$1 == "default-key" {print $10}' |
+               cut -d '"' -f2)}" > "${IAM_HOME}/${iam_name}.gpg-id"
+
+  if [[ "${iam_name:0:1}" != "." ]]; then
+    _iam-git add "${iam_name}.gpg-id"
+    _iam-git commit -a -m"Add new virtual id: ${iam_name}"
+  fi
 }
 
 _iam_cmd[rm]='Delete a virtual id'
