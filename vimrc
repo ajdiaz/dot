@@ -318,8 +318,9 @@ autocmd BufNewFile,BufRead Tupfile,*.tup setf tup
 " Use Enter key to navigate help links.
 autocmd FileType help nmap <buffer> <Return> <C-]>
 
-" Ensure NeoMutt files are threated as mail
+" Ensure NeoMutt files are threated as mail and set cursor in right place
 au BufNewFile,BufRead {neo,}mutt{ng,}-*-\w\+,{neo,}mutt[[:alnum:]_-]\\\{6\} setf mail
+au BufNewFile,BufRead,BufReadPost {neo,}mutt{ng,}-*-\w\+,{neo,}mutt[[:alnum:]_-]\\\{6\} execute "normal! gg2j"
 
 " When under xterm and compatible terminals, use titles if available and
 " change cursor color depending on active mode.
