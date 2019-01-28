@@ -101,7 +101,8 @@ macro index ,x \
 # To avoid fast typing errors
 macro generic ,q "<quit>"
 
-macro attach ,dm "<pipe-entry>unzip-mem -p | ~/.mutt/dmarc-analysis | less -R <enter>"
+# Analyze DMARC zip reports easily
+macro attach ,dm '<shell-escape>rm -rf /tmp/.mutt-tmp/; mkdir /tmp/.mutt-tmp/<enter><save-entry>/tmp/.mutt-tmp/<enter>y<enter><shell-escape>cd /tmp/.mutt-tmp && 7z x *.zip && rm -f *.zip && ~/.mutt/dmarc-analysis | less -R<enter>'
 
 # Some macros to search and expands threads with notmuch
 macro index ,l \
