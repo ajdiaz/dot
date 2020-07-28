@@ -135,3 +135,38 @@ _vm-help () {
 }
 
 readonly _vm_cmd
+_vm () {
+  __get_available_machines () {
+    machinectl --no-pager --no-legend list | {
+      while read -r a b
+      do
+        echo $a
+      done
+    }
+  }
+
+ local -a vm_commands
+  for cmd in ${(k)_vm_cmd[@]} ; do
+    vm_commands=( "${vm_commands[@]}" "${cmd}:${_vm_cmd[${cmd}]}" )
+  done
+
+  typeset -A opt_args
+  local state
+
+  _arguments \
+    "1: :{_describe 'command' vm_commands}" \
+    '*:: :->args'
+
+  case ${words[1]} in
+    new)
+      local -a vm_list=( "--image" "--no-bind-home" )
+      _arguments "1: :{_describe 'vm' vm_list}"
+      ;;
+    sh|rm)
+      local -a vm_list=( $(__get_available_machines) )
+      _arguments "1: :{_describe 'vm' vm_list}"
+      ;;
+  esac
+}
+
+compdef _vm vm

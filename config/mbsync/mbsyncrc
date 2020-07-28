@@ -4,15 +4,15 @@ Expunge Both
 Create Both
 
 IMAPStore ajdiaz-remote
-  Host mail.ajdiaz.me
-  User ajdiaz
-  PassCmd "pass mail.ajdiaz.me"
+  Host mail.gandi.net
+  User ajdiaz@ajdiaz.me
+  PassCmd "pass gandi.net"
   SSLType IMAPS
   CertificateFile /etc/ssl/cert.pem
 
 MaildirStore ajdiaz-local
-  Path ~/sys/mail/ajdiaz.me/
-  Inbox ~/sys/mail/ajdiaz.me/INBOX
+  Path ~/sys/var/mail/ajdiaz.me/
+  Inbox ~/sys/var/mail/ajdiaz.me/INBOX
   Trash Trash
   SubFolders Legacy
 

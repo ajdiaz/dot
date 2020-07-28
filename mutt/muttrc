@@ -1,7 +1,7 @@
 # vim: ft=muttrc
 # Configuration file for neomutt (not working with standard mutt!)
 
-set folder           = ~/sys/mail
+set folder           = ~/sys/var/mail
 set alias_file       = ~/.mutt/aliases       # where to store aliases
 set header_cache     = ~/.mutt/cache/headers # where to store headers
 set message_cachedir = ~/.mutt/cache/bodies  # where to store bodies
@@ -79,7 +79,7 @@ folder-hook ajdiaz.me/*        source ~/.mutt/accounts/ajdiaz.me
 source ~/.mutt/accounts/ajdiaz.me
 source ~/.mutt/colors
 
-set nm_default_uri = "notmuch://$HOME/sys/mail"
+set nm_default_uri = "notmuch://$HOME/sys/var/mail"
 set nm_query_type  = messages
 set nm_record      = no
 set nm_record_tags = "sent"

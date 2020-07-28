@@ -12,7 +12,7 @@
 #
 
 [database]
-path=/home/ajdiaz/sys/mail/
+path=/home/ajdiaz/sys/var/mail/
 
 # User configuration
 #

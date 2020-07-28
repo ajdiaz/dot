@@ -1,22 +1,20 @@
 # The following lines were added by compinstall
 zstyle :compinstall filename '/home/ajdiaz/.zshrc'
-
-autoload -Uz compinit
-compinit
+fpath+=( ~/.zsh/local )
+autoload -Uz compinit promptinit; compinit promptinit
 
 # End of lines added by compinstall
 # Lines configured by zsh-newuser-install
 HISTFILE=~/.histfile
 HISTSIZE=1000
 SAVEHIST=${HISTSIZE}
-setopt appendhistory
+setopt appendhistory extendedglob
 unsetopt beep nomatch
 bindkey -e
 # End of lines configured by zsh-newuser-install
 
 # Initialize colors.
-autoload -U colors
-colors
+autoload -U colors; colors
 
 if [ ! -f /usr/share/terminfo/${TERM:0:1}/${TERM} ]; then
   export TERM="xterm-256color"
@@ -50,11 +48,21 @@ bindkey "^[[3~" delete-char
 
 # Set a bunch of options :-)
 setopt prompt_subst pushd_silent auto_param_slash auto_list \
-	     list_rows_first hist_reduce_blanks chase_dots \
-	     pushd_ignore_dups auto_param_keys hist_ignore_all_dups \
-	     mark_dirs complete_in_word cdablevars interactive_comments \
-	     print_eight_bit always_last_prompt
-unsetopt menu_complete auto_menu list_ambiguous pushd_to_home
+  hist_reduce_blanks auto_remove_slash chase_dots \
+  pushd_ignore_dups auto_param_keys \
+  mark_dirs cdablevars interactive_comments glob_complete \
+  print_eight_bit always_to_end glob no_warn_create_global \
+  hash_list_all hash_cmds hash_dirs hash_executables_only \
+  auto_continue check_jobs complete_in_word rc_quotes
+
+# Correct things, but not too aggressively for certain commands
+setopt correct
+alias ':'='nocorrect :'
+alias mv='nocorrect mv'
+alias man='nocorrect man'
+alias sudo='nocorrect sudo '
+alias exec='nocorrect exec'
+alias mkdir='nocorrect mkdir'
 
 # Use completion cache
 [[ -d ~/.zsh/cache ]] && mkdir -p ~/.zsh/cache
@@ -96,6 +104,10 @@ fi
 zstyle ':completion:*' squeeze-slashes true
 zstyle ':completion:*' list-prompt "%BMatch %m (%p)%b"
 zstyle ':completion:*' menu yes=long select=long interactive
+zstyle ':completion:*' insert-tab pending=1
+zstyle ':completion:*' accept-exact-dirs true
+zstyle ':completion:*' accept-exact '*(N)'
+zstyle ':completion:*' special-dirs ..
 zstyle ':completion:*:processes' command 'ps -au$USER -o pid,user,args'
 zstyle ':completion:*:processes-names' command 'ps -au$USER -o command'
 zstyle ':completion:*:*:(^rm):*:*files' ignored-patterns '*?.o' '*?.c~' '*?.old' '*?.pro'
@@ -154,11 +166,17 @@ function +vi-git-st() {
 
 zstyle ':vcs_info:git*+set-message:*' hooks git-st
 
+autoload -U url-quote-magic
+zstyle ':urlglobber' url-other-schema ftp git gopher http https magnet
+zstyle ':url-quote-magic:*' url-metas '*?[]^(|)~#='  # dropped { }
+
+PRECMD_ACTIONS=()
 
 case ${TERM} in
 	screen | xterm* | gnome-terminal)
 		function precmd {
 			vcs_info 'prompt'
+			for x in "${PRECMD_ACTIONS[@]}"; do "$x"; done
 			print -Pn "\e]0;%n@%m: %~\a"
 			[[ ${TERM} = screen* ]] && echo -ne "\ek$(hostname):${PWD##*/}\e\\"
 		}
@@ -169,6 +187,7 @@ case ${TERM} in
 	*)
 		function precmd {
 			vcs_info 'prompt'
+			for x in "${PRECMD_ACTIONS[@]}"; do "$x"; done
 		}
 	;;
 esac
@@ -186,7 +205,7 @@ fi
 
 PROMPT=$'%{%F{228}%}${VM_NAME:+$VM_NAME }%{%b%f%}'
 PROMPT+=$'%{%F{190}%}${IAM_ID_NAME:+$IAM_ID_NAME }%{%b%f%}'
-PROMPT+=$'%{%F{176}%}${KNS_PATH:+$KNS_PATH }%{%b%f%}'
+PROMPT+=$'%{%F{176}%}${K8S_CLUSTER:+$K8S_CLUSTER/}${K8S_NAMESPACE:+$K8S_NAMESPACE }%{%b%f%}'
 PROMPT+=$'%{%F{180}%}${VIRTUAL_ENV:+${VIRTUAL_ENV##*/} }%{%b%f%}'
 PROMPT+=$'%B%{%(!.$fg[red].%{%F{255}%})%}${SHOWHOST:+%m }%b%f'
 PROMPT+=$'${vcs_info_msg_0_}'
@@ -198,14 +217,6 @@ unset FMT_BRANCH FMT_ACTION
 # Aliases
 alias -- 'pd'=pushd
 alias -- '..'='cd ..'
-
-case "$(uname)" in
-  Linux)
-    alias -- ls='ls --color=auto'
-    alias -- ll='ls --color=auto -l'
-    alias -- ps='ps axf' ;;
-esac
-
 alias -- o='xdg-open'
 alias -- ag='ack'
 alias -- '-'='cd -'
@@ -215,17 +226,22 @@ alias -- map="xargs -n1"
 alias -- tailf="tail -f"
 alias -- inv="tr ' ' '\n--\n' | tac | tr '\n--\n' ' ' | sed -e 's:[ ]$::'"
 alias -- typeof="file -b --mime-type"
-alias -- xc='xclip -selectiion clipboard'
 alias -- pls='sudo $(fc -n -l -1)'
-alias -- ipcalc='ipcalc -n'
+alias -- sortv='sort --short-version'
+alias -- psa='ps auxf'
+alias -- s=sudo
+alias -- p=vimpager
+
+case "$(uname)" in
+  Linux)
+    alias -- ls='ls --color=auto'
+    alias -- ll='ls --color=auto -l'
+    alias -- ps='ps axf' ;;
+esac
 
 # Local binaries directory
 if [ -d "${HOME}/.local/bin" ] ; then
 	PATH="${PATH}:${HOME}/.local/bin"
-fi
-
-if [ -d "${HOME}/sys/bin" ] ; then
-	PATH="${PATH}:${HOME}/sys/bin"
 fi
 
 if [ -d "${HOME}/bin" ] ; then
@@ -233,7 +249,7 @@ if [ -d "${HOME}/bin" ] ; then
 fi
 
 # Optional binaries in PATH (prepend)
-for _path in ${HOME}/.gem/ruby/*/bin; do
+for _path in ${HOME}/.gem/ruby/*/bin ${KREW_ROOT:-$HOME/.krew}/bin:$PATH; do
     [ "${_path//\*/}" = "${_path}" ] && PATH="${_path}:${PATH}"
 done
 
@@ -247,19 +263,14 @@ if [ -x /usr/bin/vim ] ; then
 fi
 
 # Load some local files
-for local in "${HOME}/.zsh/local/"*; do
-	[ "$local" != "${HOME}/.zsh/local/*" ] && source "$local"
+for local in "${HOME}/.zsh/local/"*.zsh; do
+	[ "$local" != "${HOME}/.zsh/local/*.zsh" ] && source "$local"
 done
 
 # Unset some vars
 unset _path local
 # Mark exports
 export PATH
-
-# Python startup file
-if [ -r "${HOME}/.pythonrc.py" ] ; then
-	export PYTHONSTARTUP="${HOME}/.pythonrc.py"
-fi
 
 # TERMCAP codes
 # vb      flash     emit visual bell
@@ -279,7 +290,7 @@ export LESS_TERMCAP_us=$'\e[38;5;71m'
 export LESS_TERMCAP_ue=$'\e[0;0m'
 
 # pass configuration
-export PASSWORD_STORE_DIR=~/sys/pass
+export PASSWORD_STORE_DIR=~/sys/var/vault
 
 # iam configuration
 export IAM_HOME=~/sys/iam

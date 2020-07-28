@@ -1,16 +1,11 @@
 #! /bin/bash
 
-SYS_MAIL_DIR=~/sys/mail
-
-count_unread_mails ()
-{
-  local -a unread=( $(notmuch search --output=files tag:unread) )
-  echo "${#unread[@]}"
-}
-
-count="$(count_unread_mails)"
-if [[ "$count" -gt 0 ]]; then
-  echo "$count" > "${SYS_MAIL_DIR}/.new"
-else
-  rm -f "${SYS_MAIL_DIR}/.new"
-fi
+notmuch search --format json tag:new |
+  jq -r '.[] | .authors + "|" + .subject' |
+  (
+    IFS='|'
+    while read -r authors subject; do
+      [[ ${#subject} -gt 20 ]] && subject="${subject:0:20}…"
+      notify-send -u low  "  ${subject}" "    <i>$authors</i>"
+    done
+  )

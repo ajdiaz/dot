@@ -1,5 +1,5 @@
 " Thing: ajdiaz's Vim configuration file. This one is important!
-" Author: Andrés J. Díaz <ajdiaz@connectical.com>,
+" Author: Andrés J. Díaz <ajdiaz@ajdiaz.me>,
 "         Adrian Perez de Castro <aperez@igalia.com>
 " License: Distributed under terms of the MIT license
 
@@ -157,8 +157,8 @@ let g:syntastic_error_symbol = '✗'
 let g:syntastic_warning_symbol = '⚠'
 let g:syntastic_style_error_symbol = '🚨'
 let g:syntastic_style_warning_symbol = '🚨'
-"let g:syntastic_always_populate_loc_list = 1
-"let g:syntastic_python_pylint_args = '--indent-string="    "'
+
+let g:syntastic_yaml_checkers = ['yamllint']
 
 let g:syntastic_c_compiler = 'clang'
 let g:syntastic_c_compiler_options = ' -std=gnu99'
@@ -223,10 +223,6 @@ function s:GoBuildAgnostic()
         call go#cmd#Build(0)
     endif
 endfunction
-
-" Handle number of lines in text plain files.
-autocmd FileType text,markdown,rst set nonu
-autocmd BufRead,BufNewFile README,CHANGELOG,LICENSE,COPYING set nonu
 
 " Plugin: Airline
 let g:airline_powerline_fonts = 0
@@ -304,6 +300,11 @@ autocmd BufEnter *.pot
 
 " Set Python mode for Twisted Application Configuration (.tac) fiels.
 autocmd BufReadPost,BufNewFile *.tac setf python
+
+" Set autocmd for yaml files
+autocmd BufReadPost *.yaml,*.yml
+        \ setlocal ft=yaml foldmethod=indent sw=2 ts=2 sts=2 et
+        \ list listchars=tab:▷\ \,trail:⌴,nbsp:· tw=120
 
 " Add the `a' format option (autoreflow) to plain text files.
 autocmd BufReadPost,BufNewFile *.txt,*README*,*TODO*,*HACKING*,*[Rr]eadme*,*[Tt]odo*
@@ -419,7 +420,7 @@ command! -bang W write<bang>
 command! -nargs=0 -bang Wq wq<bang>
 
 " Sudo write commodity
-command! W w !sudo tee "%" >/dev/null
+command! WW :execute 'silent! write !sudo tee % >/dev/null' <bar> edit!
 
 " Saves current position, executes the given expression using :execute
 " and sets the cursor in the saved position, so the user thinks cursor
@@ -473,7 +474,6 @@ if has('terminal')
         endif
     endfunction
     command! -nargs=0 ToggleTerminal call ToggleTerminal()
-    tnoremap <silent> <ESC> <C-w>:ToggleTerminal<CR>
     nnoremap <silent> <leader>tt :ToggleTerminal<CR>
 endif
 
@@ -502,6 +502,21 @@ nmap <M-Left> :bp<CR>
 nmap <M-Right> :bn<CR>
 nmap <leader>c :bd<CR>
 
+" Handle Helm files
+function HelmSyntax()
+  set filetype=yaml
+  unlet b:current_syntax
+  syn include @yamlGoTextTmpl syntax/gotexttmpl.vim
+  let b:current_syntax = "yaml"
+  syn region goTextTmpl start=/{{/ end=/}}/ contains=@gotplLiteral,gotplControl,gotplFunctions,gotplVariable,goTplIdentifier containedin=ALLBUT,goTextTmpl keepend
+  hi def link goTextTmpl PreProc
+endfunction
+augroup helm_syntax
+  autocmd!
+  autocmd BufRead,BufNewFile templates/*.yaml,templates/*.tpl call HelmSyntax()
+augroup END
+
+highlight NonText ctermfg=242
 runtime! macros/matchit.vim
 
 " vim:ts=4:sw=4:fenc=utf-8

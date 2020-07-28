@@ -1,18 +1,14 @@
 # i3status configuration file.
 # see "man i3status" for documentation.
 
-# It is important that this file is edited as UTF-8.
-# The following line should contain a sharp s:
-# ß
-# If the above line is not correctly displayed, fix your editor first!
-
 general {
         colors = true
         interval = 10
         output_format = i3bar
-        color_good = '#339966'
+        markup = 'pango'
+        color_bad = '#339966'
         color_degraded = '#339966'
-        color_bad = '#b30000'
+        color_good = '#888888'
 }
 
 order += "wireless _first_"
@@ -21,7 +17,6 @@ order += "run_watch VPN"
 order += "battery 0"
 order += "load"
 order += "volume master"
-order += "path_exists mail"
 order += "path_exists system"
 order += "tztime local"
 
@@ -31,55 +26,51 @@ wireless _first_ {
 }
 
 ethernet _first_ {
-        format_up = "  "
-        format_down = "  "
+        format_up = " <span foreground='#888888'></span> "
+        format_down = " <span foreground='#888888'></span> "
+}
+
+
+run_watch VPN {
+        pidfile = "/run/openvpn-client.pid"
+        format = " <span foreground='#888888'></span> "
+        format_down = " <span foreground='#888888'></span> "
 }
 
 battery 0 {
-        format = " %remaining %status %percentage "
+        format = " <span foreground='#888888'>%status %percentage</span> "
         integer_battery_capacity = true
         hide_seconds = true
         last_full_capacity = true
         status_chr = " "
-        status_bat = " "
-        status_full = " "
+        status_full = " "
+        status_bat = " "
+}
+
+load {
+        format = " <span foreground='#888888'>  %1min</span> "
 }
 
 volume master {
-        format = "   %volume "
-        format_muted = "   %volume "
+        format = " <span foreground='#888888'>  %volume</span> "
+        format_muted = " <span foreground='#888888'>  %volume</span> "
         device = "default"
         mixer = "Master"
         mixer_idx = 0
         color_degraded = '#b30000'
 }
 
-
-run_watch VPN {
-        pidfile = "/run/openvpn-client.pid"
-        format = "  "
-        format_down = "  "
-}
-
-tztime local {
-        format = " %Y-%m-%d %H:%M "
-}
-
-load {
-        format = "   %1min "
-}
-
-path_exists mail {
-        path = "/home/ajdiaz/sys/mail/.new"
-        format = "  "
-        format_down = "  "
-        color_bad = '#339966'
-}
-
 path_exists system {
         path = "/home/ajdiaz/tmp/.failed"
         format_down = ""
-        color_bad = '#339966'
         format = ""
-        color_good = '#b30000'
+        color_bad = '#888888'
+        color_good = '#339966'
 }
+
+tztime local {
+        format = " <span foreground='#888888'>%time</span> "
+        format_time = "%Y-%m-%d %H:%M"
+}
+
+

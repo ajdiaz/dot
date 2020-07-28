@@ -13,15 +13,15 @@ state="$(</sys/class/power_supply/${batt}/status)"
 case "$state" in
   Discharging)
     if [ $percent -lt $crit ]; then
-      notify-send -u critical "${message_title}"
-      i3-nagbar -m "  Battery is critical and the system will be suspended." \
-        -t error -f 'pango:DejaVu Sans Mono 6'
-      sleep 5
-      $command
+      notify-send -u critical "   battery level critical" "suspending in 30s..."
+      sleep 30
+      state="$(</sys/class/power_supply/${batt}/status)"
+      if [[ "$state" = "Discharging" ]]; then
+        $command
+      fi
     elif [ $percent -lt $warn ]; then
       if [ ! -r ~/.cache/batt-notify ]; then
-        i3-nagbar -m "  Battery level is lower than ${warn}%." \
-                  -t warning -f 'pango:DejaVu Sans Mono 6'
+        notify-send -u normal "   battery level low" "adjusting brithness..."
         xbacklight -time 500 -steps 30 -set 5
         touch ~/.cache/batt-notify
       fi

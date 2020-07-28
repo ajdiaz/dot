@@ -1,9 +1,0 @@
-[Unit]
-Description=Holidays creation for tasks timer
-
-[Timer]
-OnCalendar=*-10-12 10:00:00
-Unit=task-holidays-upgrade.service
-
-[Install]
-WantedBy=default.target

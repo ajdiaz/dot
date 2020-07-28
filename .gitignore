@@ -57,6 +57,7 @@ env
 
 # Cache files
 zsh/cache*
+*.zwc
 
 # SSH stuff
 ssh/authorized_keys*

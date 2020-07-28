@@ -74,3 +74,47 @@ _vmi-help () {
 }
 
 readonly _vmi_cmd
+_vmi () {
+  __get_available_machines () {
+    machinectl --no-pager --no-legend list | {
+      while read -r a b
+      do
+        echo $a
+      done
+    }
+  }
+
+  __get_available_images () {
+   machinectl --no-pager --no-legend list-images | {
+      while read -r a _
+      do
+        echo $a
+      done
+    }
+  }
+
+ local -a vmi_commands
+  for cmd in ${(k)_vmi_cmd[@]} ; do
+    vmi_commands=( "${vmi_commands[@]}" "${cmd}:${_vmi_cmd[${cmd}]}" )
+  done
+
+  typeset -A opt_args
+  local state
+
+  _arguments \
+    "1: :{_describe 'command' vmi_commands}" \
+    '*:: :->args'
+
+  case ${words[1]} in
+    new)
+      local -a vmi_list=( $(__get_available_machines) )
+      _arguments "1: :{_describe 'vmi' vmi_list}"
+      ;;
+    rm)
+      local -a vmi_list=( $(__get_available_images) )
+      _arguments "1: :{_describe 'vmi' vmi_list}"
+      ;;
+  esac
+}
+
+compdef _vmi vmi

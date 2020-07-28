@@ -56,12 +56,12 @@ Host *
     # connection has died
     KeepAlive yes
     ServerAliveInterval 300
-    ServerAliveCountMax 3
+    ServerAliveCountMax 30
     # Allow local and proxy commands
     PermitLocalCommand yes
     # Set up control sockets so multiple ssh/scp/sftp sessions can share one
     # connection
-    ControlPath ~/.ssh/master-%r@%h:%p
+    ControlPath ~/.ssh/C%r@%h:%p
     ControlMaster auto
     StrictHostKeyChecking no
     UseRoaming no
@@ -75,18 +75,6 @@ Host *
 
 Host *.onion
     ProxyCommand socat - SOCKS4A:localhost:%h:%p,socksport=9050
-
-Host heroku.com
-    IdentityFile ~/.ssh/id_rsa.bitbucket
-
-Host bitbucket.org
-    IdentityFile ~/.ssh/id_rsa.bitbucket
-
-Host git.ajdiaz.me
-    IdentityFile ~/.ssh/id_ed25519
-
-Host gitlab.ajdiaz.me
-    IdentityFile ~/.ssh/id_ed25519
 
 Host *+*
     ProxyCommand ssh $(echo %h | sed 's/+[^+]*$//;s/\([^+%%]*\)%%\([^+]*\)$/\2 -l \1/;s/:/ -p /') nc -w1 $(echo %h | sed 's/^.*+//;/:/!s/$/ %p/;s/:/ /')
