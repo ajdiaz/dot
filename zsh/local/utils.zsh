@@ -11,7 +11,7 @@ if hash gdb 2>/dev/null; then
 fi
 
 if hash neomutt 2>/dev/null; then
-  alias -- mutt="neomutt && ~/.config/mbsync/mail-notify"
+  alias -- mutt="neomutt"
 fi
 
 if hash dig 2>/dev/null; then
