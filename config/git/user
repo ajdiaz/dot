@@ -1,8 +1,7 @@
 [commit]
-  gpgsign = true
-  template = ~/.config/git/commit-template
+	gpgsign = true
 
 [user]
-  name = Andrés J. Díaz
-  email = ajdiaz@ajdiaz.me
-  signingkey = 5369AA4171B5139C
+	name = Andrés J. Díaz
+	email = ajdiaz@ajdiaz.me
+	signingkey = 5369AA4171B5139C

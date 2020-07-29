@@ -18,6 +18,10 @@ virtual-mailboxes "ajdiaz.me/Archive" \
 virtual-mailboxes "ajdiaz.me/Spam" \
   "notmuch://?query=folder:ajdiaz.me/Spam"
 
+virtual-mailboxes "ajdiaz.me/List" \
+  "notmuch://?query=folder:ajdiaz.me/INBOX and tag:list"
+
+
 
 set virtual_spoolfile = yes
 set postponed   = +ajdiaz.me/Draft
@@ -35,6 +39,7 @@ macro index ,T "<change-vfolder>ajdiaz.me/Trash<enter>"
 macro index ,f "<change-vfolder>ajdiaz.me/Flagged<enter>"
 macro index ,a "<change-vfolder>ajdiaz.me/Archive<enter>"
 macro index ,S "<change-vfolder>ajdiaz.me/Spam<enter>"
+macro index ,L "<change-vfolder>ajdiaz.me/List<enter>"
 macro index ,D "<change-vfolder>ajdiaz.me/Draft<enter>"
 macro index A "<save-message>=ajdiaz.me/Archive<enter>"
 macro pager A "<save-message>=ajdiaz.me/Archive<enter>"

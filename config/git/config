@@ -39,10 +39,10 @@
 	br = branch -v -a
 	brd = branch -D
 	bra = branch -v -a
-	ci = commit
-	ca = commit -a
-	cam = commit -a -m
-	cia = commit -a --amend --no-edit
+	ci = commit -s
+	ca = commit -s -a
+	cam = commit -s -a -m
+	cia = commit -s -a --amend --no-edit
 	co = checkout
 	cp = cherry-pick
 	df = diff
