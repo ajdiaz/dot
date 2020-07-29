@@ -1,5 +1,6 @@
 [commit]
   gpgsign = true
+  template = ~/.config/git/commit-template
 
 [user]
   name = Andrés J. Díaz
