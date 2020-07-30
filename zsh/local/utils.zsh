@@ -106,6 +106,7 @@ fi
 if hash systemctl 2>/dev/null; then
   alias -- s=systemctl
   alias -- us='systemctl --user'
+  alias -- usm='systemctl --user start mbsync'
 fi
 
 if [[ -r /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh ]]; then
