@@ -109,6 +109,10 @@ if hash systemctl 2>/dev/null; then
   alias -- usm='systemctl --user start mbsync'
 fi
 
+if hash rclone 2>/dev/null; then
+  alias -- bsync="rclone $HOME/sys/var/backup crypt:/backup/$(hostname)"
+fi
+
 if [[ -r /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh ]]; then
   source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
