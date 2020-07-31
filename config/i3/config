@@ -130,6 +130,9 @@ bindsym $mod+Shift+0 move container to workspace 10
 # move workspaces to other screen
 bindsym $mod+m move workspace to output left
 
+# switch to night mode
+bindsym $mod+n exec "~/.config/i3/night-mode-switch"
+
 # reload the configuration file
 bindsym $mod+Shift+c reload
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
