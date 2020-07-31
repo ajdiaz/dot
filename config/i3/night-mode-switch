@@ -1,0 +1,24 @@
+#! /bin/bash
+
+main ()
+{
+  device=
+  xrandr --verbose | while read -r output state _; do
+    if [[ "$state" == "connected" ]]; then
+      device="$output"
+    elif [[ "$output" == "Gamma:" ]]; then
+      case "$state" in
+        1.0:1.0:1.0) 
+          echo we are in normal mode, switching to night
+          xrandr --output "$device" --gamma "1:0.7:0.4" --brightness 0.8
+          ;;
+        *)
+          echo we are in night mode, switching to normal
+          xrandr --output "$device" --gamma "1:1:1" --brightness 1
+          ;;
+      esac
+    fi
+  done
+}
+
+main
