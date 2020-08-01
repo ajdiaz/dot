@@ -230,7 +230,7 @@ alias -- pls='sudo $(fc -n -l -1)'
 alias -- sortv='sort --short-version'
 alias -- psa='ps auxf'
 alias -- s=sudo
-alias -- p=vimpager
+alias -- vp=vimpager
 
 case "$(uname)" in
   Linux)

@@ -95,6 +95,10 @@ if hash kubectl 2>/dev/null; then
   alias -- kexit="unset KUBECONFIG K8S_CLUSTER K8S_NAMESPACE"
 fi
 
+if hash podman 2>/dev/null; then
+  alias -- p=podman
+fi
+
 if hash systemctl 2>/dev/null; then
   alias -- s=systemctl
   alias -- us='systemctl --user'
