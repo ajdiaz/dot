@@ -260,7 +260,6 @@ _iam-help () {
 	echo
 }
 
-readonly _iam_cmd
 precmd_functions+=(_iam-reload)
 _iam () {
  local -a iam_commands

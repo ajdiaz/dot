@@ -231,6 +231,7 @@ alias -- sortv='sort --short-version'
 alias -- psa='ps auxf'
 alias -- s=sudo
 alias -- vp=vimpager
+alias -- rr='source ~/.zshrc'
 
 case "$(uname)" in
   Linux)

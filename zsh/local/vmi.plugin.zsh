@@ -73,7 +73,6 @@ _vmi-help () {
 	EOF
 }
 
-readonly _vmi_cmd
 _vmi () {
   __get_available_machines () {
     machinectl --no-pager --no-legend list | {

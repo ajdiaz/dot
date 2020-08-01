@@ -134,7 +134,6 @@ _vm-help () {
 	EOF
 }
 
-readonly _vm_cmd
 _vm () {
   __get_available_machines () {
     machinectl --no-pager --no-legend list | {

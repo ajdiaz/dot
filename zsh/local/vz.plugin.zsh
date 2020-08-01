@@ -159,7 +159,6 @@ _virtualz-help () {
 	echo
 }
 
-readonly _virtualz_cmd
 _vz () {
   local -a vz_commands
   for cmd in ${(k)_virtualz_cmd[@]} ; do

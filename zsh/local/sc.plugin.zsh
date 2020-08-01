@@ -94,7 +94,6 @@ _sc-help () {
 	echo
 }
 
-readonly _sc_cmd
 _sc () {
   local -a sc_commands
   for cmd in ${(k)_sc_cmd[@]} ; do
