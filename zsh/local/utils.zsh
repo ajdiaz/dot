@@ -90,14 +90,6 @@ if hash xclip 2>/dev/null; then
   alias xc='xclip -selection clipboard'
 fi
 
-if hash buildah 2>/dev/null; then
-  alias buildah="sudo -E buildah"
-fi
-
-if hash podman 2>/dev/null; then
-  alias podman="sudo -E podman"
-fi
-
 if hash kubectl 2>/dev/null; then
   alias -- k=kubectl
   alias -- kexit="unset KUBECONFIG K8S_CLUSTER K8S_NAMESPACE"
