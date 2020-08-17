@@ -6,7 +6,7 @@ Create Both
 IMAPStore ajdiaz-remote
   Host mail.gandi.net
   User ajdiaz@ajdiaz.me
-  PassCmd "pass gandi.net"
+  PassCmd "pass user/ajdiaz/gandi.net"
   SSLType IMAPS
   CertificateFile /etc/ssl/cert.pem
 
