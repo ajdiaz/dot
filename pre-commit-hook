@@ -6,7 +6,7 @@
 # To enable this hook, rename this file to "pre-commit".
 
 update_links () {
-  for dot in $1/*; do
+  for dot in "$1"/*; do
     case "${dot##*/}" in
       pre-commit-hook|README|remove-module) continue;;
       config)
