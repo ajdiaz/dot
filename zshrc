@@ -1,11 +1,11 @@
 # The following lines were added by compinstall
 zstyle :compinstall filename '/home/ajdiaz/.zshrc'
-fpath+=( ~/.zsh/local )
+[[ "$EUID" -ne 0 ]] && fpath+=( ~/.zsh/local )
 autoload -Uz compinit promptinit; compinit promptinit
 
 # End of lines added by compinstall
 # Lines configured by zsh-newuser-install
-HISTFILE=~/.histfile
+HISTFILE=~/.cache/histfile
 HISTSIZE=1000
 SAVEHIST=${HISTSIZE}
 setopt appendhistory extendedglob
@@ -204,34 +204,34 @@ if [[ "$SSH_CONNECTION" ]]; then
 fi
 
 PROMPT=$'%{%F{228}%}${VM_NAME:+$VM_NAME }%{%b%f%}'
-PROMPT+=$'%{%F{190}%}${IAM_ID_NAME:+$IAM_ID_NAME }%{%b%f%}'
+PROMPT+=$'%{%F{$IAM_COLOR}%}${IAM_ID_NAME:+▌ }%{%b%f%}'
 PROMPT+=$'%{%F{176}%}${K8S_CLUSTER:+$K8S_CLUSTER/}${K8S_NAMESPACE:+$K8S_NAMESPACE }%{%b%f%}'
 PROMPT+=$'%{%F{180}%}${VIRTUAL_ENV:+${VIRTUAL_ENV##*/} }%{%b%f%}'
 PROMPT+=$'%B%{%(!.$fg[red].%{%F{255}%})%}${SHOWHOST:+%m }%b%f'
 PROMPT+=$'${vcs_info_msg_0_}'
 PROMPT+=$'%{%F{39}%}%B%1~ %b%f'
-PROMPT+=$'%(?.%{%F{68}%}.%B%{$fg[red]%})%(!.#.$) %b%f'
+PROMPT+=$'%(?.%{%F{39}%}.%B%{$fg[red]%})%(!.#.$) %b%f'
 
 unset FMT_BRANCH FMT_ACTION
 
+PROMPT_EOL_MARK='%{%F{238}%}⮨%f'
+
 # Aliases
-alias -- 'pd'=pushd
 alias -- '..'='cd ..'
-alias -- o='xdg-open'
-alias -- ag='ack'
 alias -- '-'='cd -'
-alias -- pager='pager -R'
-alias -- history="history -i"
-alias -- map="xargs -n1"
-alias -- tailf="tail -f"
-alias -- inv="tr ' ' '\n--\n' | tac | tr '\n--\n' ' ' | sed -e 's:[ ]$::'"
-alias -- typeof="file -b --mime-type"
-alias -- pls='sudo $(fc -n -l -1)'
-alias -- sortv='sort --short-version'
-alias -- psa='ps auxf'
-alias -- s=sudo
-alias -- vp=vimpager
+alias -- o='xdg-open'
+alias -- h="history -i"
+alias -- pd='pushd'
+alias -- ag='ack'
 alias -- rr='source ~/.zshrc'
+alias -- pls='sudo $(fc -n -l -1)'
+alias -- map="xargs -n1"
+alias -- psa='ps auxf'
+alias -- inv="tr ' ' '\n--\n' | tac | tr '\n--\n' ' ' | sed -e 's:[ ]$::'"
+alias -- pager='pager -R'
+alias -- tailf="tail -f"
+alias -- sortv='sort --short-version'
+alias -- typeof="file -b --mime-type"
 
 case "$(uname)" in
   Linux)

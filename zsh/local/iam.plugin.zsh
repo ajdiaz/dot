@@ -74,6 +74,12 @@ _iam-activate () {
 	IAM_ID_NAME=$1
 	IAM_ID=${iam_path}
 
+	if [[ -r "${IAM_HOME}/$1.color" ]]; then
+    IAM_COLOR="$(< "${IAM_HOME}/$1.color")"
+  else
+    IAM_COLOR="$(( (RANDOM % 130) + 100 ))"
+  fi
+
   _iam-new ".previous"
 
   local dpath hpath fname
@@ -168,7 +174,7 @@ _iam-deactivate () {
   rm -rf "$iam_path"
   rm -ff "${IAM_HOME}/.active"
 
-	unset IAM_ID IAM_ID_NAME
+	unset IAM_ID IAM_ID_NAME IAM_COLOR
 }
 
 _iam_cmd[new]='Create a new virtual id'
@@ -186,7 +192,9 @@ _iam-new () {
                cut -d '"' -f2)}" > "${IAM_HOME}/${iam_name}.gpg-id"
 
   if [[ "${iam_name:0:1}" != "." ]]; then
+    echo "${3:-$(( (RANDOM % 130) + 100 ))}" > "${IAM_HOME}/${iam_name}.color"
     _iam-git add "${iam_name}.gpg-id"
+    _iam-git add "${iam_name}.color"
     _iam-git commit -a -m"Add new virtual id: ${iam_name}"
   fi
 }

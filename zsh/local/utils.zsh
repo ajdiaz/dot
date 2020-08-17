@@ -19,10 +19,15 @@ if hash dig 2>/dev/null; then
 fi
 
 if hash curl 2>/dev/null; then
-  alias -- sprunge="curl -F 'sprunge=<-' http://sprunge.us"
-  alias hcurl="curl -L -v -D - -o /dev/null"
-  alias jcurl='curl -H "Accept: application/json" -H a"Content-type: application/json"'
-  alias curl-time="curl -o /dev/null -s -w 'total: %{time_total} seconds \nsize: %{size_download} bytes \ndnslookup: %{time_namelookup} seconds \nconnect: %{time_connect} seconds \nappconnect: %{time_appconnect} seconds \nredirect: %{time_redirect} seconds \npretransfer: %{time_pretransfer} seconds \nstarttransfer: %{time_starttransfer} seconds \ndownloadspeed: %{speed_download} byte/sec \nuploadspeed: %{speed_upload} byte/sec \n'"
+  alias -- hcurl="curl -L -v -D - -o /dev/null"
+  alias -- jcurl='curl -H "Accept: application/json" -H a"Content-type: application/json"'
+  alias -- tcurl="curl -o /dev/null -s -w 'total: %{time_total} seconds \nsize: %{size_download} bytes \ndnslookup: %{time_namelookup} seconds \nconnect: %{time_connect} seconds \nappconnect: %{time_appconnect} seconds \nredirect: %{time_redirect} seconds \npretransfer: %{time_pretransfer} seconds \nstarttransfer: %{time_starttransfer} seconds \ndownloadspeed: %{speed_download} byte/sec \nuploadspeed: %{speed_upload} byte/sec \n'"
+  alias -- pcurl="curl -F 'f:1=<-' ix.io"
+  function scurl {
+    ( curl -qSs "https://v.gd/create.php?format=simple&url=$1" && echo; ) \
+    | tee /dev/tty \
+    | xclip -selection clipboard
+  }
 fi
 
 if hash python 2>/dev/null; then
@@ -69,13 +74,20 @@ if hash make 2>/dev/null; then
   }
 fi
 
+if hash nvim 2>/dev/null; then
+  alias -- vim=nvim
+  alias -- vi=nvim
+  alias -- v=nvim
+fi
+
 if hash trm 2>/dev/null; then
-  alias rm=trm
+  alias -- rm=trm
 fi
 
 if hash vimcat 2>/dev/null; then
-  alias vcat=vimcat
-  alias c=vimcat
+  alias -- vcat=vimcat
+  alias -- vp=vimpager  # actually vimcat is part of vimpager package
+  alias -- c=vimcat
 fi
 
 if hash ssh 2>/dev/null; then
@@ -134,5 +146,12 @@ if [[ -r /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.
   ZSH_HIGHLIGHT_STYLES[back-double-quoted-argument]=fg=33
   ZSH_HIGHLIGHT_STYLES[assign]=fg=yellow,bold
   ZSH_HIGHLIGHT_STYLES[command-substitution-quoted]=fg=33
+fi
 
+if [[ -r /usr/share/fzf/completion.zsh ]]; then
+  source /usr/share/fzf/completion.zsh
+fi
+
+if [[ -r /usr/share/fzf/key-bindings.zsh ]]; then
+  source /usr/share/fzf/key-bindings.zsh
 fi
