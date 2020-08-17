@@ -1,0 +1,6 @@
+[Unit]
+Description=Taskwarrior Notifier
+
+[Service]
+Type=oneshot
+ExecStart=/bin/bash -c "task +events export | python /home/ajdiaz/.task/task-notify.py"
