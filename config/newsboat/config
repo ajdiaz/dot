@@ -1,6 +1,7 @@
 # Settings.
+auto-reload yes
 article-sort-order date-asc
-download-path ~/tmp/newsboat
+download-path ~/tmp/get
 download-retries 3
 download-timeout 15
 keep-articles-days 360
@@ -15,15 +16,15 @@ download-full-page yes
 
 # Formats
 datetime-format "%Y-%m-%d"
-feedlist-format "%n%S %u: %t"
-articlelist-format "%f %D%?a? (%a)?: %t"
-feedlist-title-format "Feeds (%u/%t)"
+feedlist-format " %n%S ➜ %6u:  %t"
+articlelist-format "%f  %D%?a?  (%a)? -- %t"
+feedlist-title-format "🌐 Feeds (%u/%t)"
 itemview-title-format "Article “%T” (%F)"
-articlelist-title-format "Feed “%T” (%U)"
+articlelist-title-format "➜ Feed “%T” (%U)"
 
 # External programs.
-browser lynx
-player mpv
+browser xdg-open
+player xdg-open
 
 # Vim-like keybindings.
 bind-key k up
@@ -33,8 +34,8 @@ bind-key ^F pagedown
 bind-key d delete-article
 
 # Colors.
-color listnormal        color244 black
-color listnormal_unread white black
+color listnormal        color250 black
+color listnormal_unread yellow black
 color listfocus         white color237
 color listfocus_unread  white color237 bold
 color info              color39 black
