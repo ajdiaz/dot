@@ -4,6 +4,8 @@
 # Ignore mutt stuff
 mutt/cache
 mutt/temp
+config/neomutt/cache
+config/neomutt/temp
 
 # Ignore python stuff
 *.pyc

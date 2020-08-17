@@ -19,13 +19,13 @@ color header	color29     color233    '^reply-to:'
 color normal white black # plain text
 color quoted white black
 color attachment color238 black
-color status color144 color238 # status bar is yellow *on color238*
+color status color248 color235 # status bar is yellow *on color238*
 color signature color240 black
 color indicator white color238
 color tilde color238 black # ~'s after message body# Message status
 
-color status color238 color38 "^ [IURA] "
-color status color238 color38 " [[:digit:]]+ ◢ .*:.* $"
+color status brightcolor248 color236 "^ ([^[:space:]]+) "
+color status brightcolor248 color236 "  [[:digit:]]+:[[:digit:]]+  $"
 color index color196 black ~F
 color index color88 black ~D
 color index color65 black ~g

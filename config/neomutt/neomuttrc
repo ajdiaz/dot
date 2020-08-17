@@ -2,13 +2,13 @@
 # Configuration file for neomutt (not working with standard mutt!)
 
 set folder           = ~/sys/var/mail
-set alias_file       = ~/.mutt/aliases       # where to store aliases
-set header_cache     = ~/.mutt/cache/headers # where to store headers
-set message_cachedir = ~/.mutt/cache/bodies  # where to store bodies
-set certificate_file = ~/.mutt/certificates  # where to store certs
-set mailcap_path     = ~/.mutt/mailcap       # entries for filetypes
-set tmpdir           = ~/.mutt/temp          # where to keep temp files
-set signature        = ~/.mutt/signature     # my signature file
+set alias_file       = ~/.config/neomutt/aliases       # where to store aliases
+set header_cache     = ~/.config/neomutt/cache/headers # where to store headers
+set message_cachedir = ~/.config/neomutt/cache/bodies  # where to store bodies
+set certificate_file = ~/.config/neomutt/certificates  # where to store certs
+set mailcap_path     = ~/.config/neomutt/mailcap       # entries for filetypes
+set tmpdir           = ~/.config/neomutt/temp          # where to keep temp
+set signature        = ~/.config/neomutt/signature     # my signature file
 set sig_dashes = no      # no predend dashes
 set sig_on_top = yes     # put signature before quoted
 set wait_key   = no      # shut up, mutt
@@ -24,7 +24,7 @@ set edit_headers         # I want to edit the message headers.
 set sleep_time = 0
 
 # command to perform addrlookup using notmuch
-set query_command = "/home/ajdiaz/.mutt/abq '%s'"
+set query_command = "/home/ajdiaz/.config/neomutt/abq '%s'"
 set query_format = "%4c %t %-70.70a %-70.70n %?e?(%e)?"
 
 bind editor <Tab> complete-query
@@ -34,8 +34,8 @@ unset confirmappend      # don't ask, just do!
 
 # status char format for %r in status_formats, in this order:
 # nochanges,changes,read-only,append-ondly
-set status_chars  = "IURA"
-set status_format = " %r  %f %> %m ◢ %u:%d "
+set status_chars  = " +RA"
+set status_format = " %f %r %>   %u:%d  "
 
 message-hook '!(~g|~G) ~b"^-----BEGIN\ PGP\ (SIGNED\ )?MESSAGE"' "exec check-traditional-pgp"
 
@@ -66,18 +66,18 @@ alternative_order text/plain text/enriched text/html
 
 ignore *   # ignore all headers
 # show only these headers
-unignore from: to: cc: bcc: date: list-unsubscribe: subject: tags:
+unignore from: to: cc: bcc: date: subject: x-mailing-list: Tags
 unhdr_order * # some distros order things by default
 # use this order for headers
-hdr_order from: to: cc: bcc: date: list-unsubscribe: subject: tags:
+hdr_order from: to: cc: bcc: date: subject: x-mailing-list: Tags
 
 set crypt_use_gpgme = yes
-set pgp_autosign = yes
+set crypt_autosign = yes
 
-folder-hook ajdiaz.me/*        source ~/.mutt/accounts/ajdiaz.me
+folder-hook ajdiaz.me/*        source ~/.config/neomutt/accounts/ajdiaz.me
 
-source ~/.mutt/accounts/ajdiaz.me
-source ~/.mutt/colors
+source ~/.config/neomutt/accounts/ajdiaz.me
+source ~/.config/neomutt/colors
 
 set nm_default_uri = "notmuch://$HOME/sys/var/mail"
 set nm_query_type  = messages
@@ -85,11 +85,11 @@ set nm_record      = no
 set nm_record_tags = "sent"
 
 set wrap = 78
-set sidebar_width = 35
+set sidebar_width = 20
 set sidebar_visible = no
 set sidebar_format = '%B%* %N'
 
-macro index ,l "<enter-command>toggle sidebar_visible<enter><refresh>"
+macro index ,< "<enter-command>toggle sidebar_visible<enter><refresh>"
 
 bind index D purge-message
 bind pager D purge-message
