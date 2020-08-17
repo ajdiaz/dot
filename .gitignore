@@ -24,6 +24,7 @@ config/systemd/user/default.target.wants
 weechat/sec.conf
 weechat/weechat.pwd
 weechat/logs
+weechat/matrix
 weechat/ssl
 weechat/*.log
 weechat/*.cache

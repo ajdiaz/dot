@@ -1,0 +1,14 @@
+[Unit]
+Description=A WeeChat client and relay service using Tmux
+After=network.target
+
+[Service]
+Type=forking
+RemainAfterExit=yes
+ExecStartPre=-/bin/bash "$HOME/.weechat/generate_sec.conf.sh"
+ExecStart=/usr/bin/tmux -L weechat new -d -s weechat weechat
+ExecStop=/usr/bin/tmux -L weechat kill-session -t weechat
+ExecStopPost=/bin/rm -f ~/.weechat/sec.conf
+
+[Install]
+WantedBy=default.target
