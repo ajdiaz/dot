@@ -133,6 +133,9 @@ bindsym $mod+m move workspace to output left
 # switch to night mode
 bindsym $mod+n exec "~/.config/i3/night-mode-switch"
 
+# color inverse
+bindsym $mod+i exec "xcalib -i -a"
+
 # reload the configuration file
 bindsym $mod+Shift+c reload
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)

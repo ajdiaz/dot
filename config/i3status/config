@@ -21,8 +21,8 @@ order += "path_exists system"
 order += "tztime local"
 
 wireless _first_ {
-        format_up = "   %essid:%quality "
-        format_down = "   "
+        format_up = " <span foreground='#888888'>  %essid:%quality</span> "
+        format_down = " <span foreground='#888888'> </span> "
 }
 
 ethernet _first_ {
@@ -32,7 +32,7 @@ ethernet _first_ {
 
 
 run_watch VPN {
-        pidfile = "/run/openvpn-client.pid"
+        pidfile = "/run/tinc.vpn.fr.fr0gra0.up"
         format = " <span foreground='#888888'></span> "
         format_down = " <span foreground='#888888'></span> "
 }
