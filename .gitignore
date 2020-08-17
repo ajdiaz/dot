@@ -94,3 +94,6 @@ config/qutebrowser/autoconfig.yml
 config/vimb/*
 !config/vimb/config
 !config/vimb/style.css
+
+# gtk stuff
+config/gtk-3.0/custom-papers
