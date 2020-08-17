@@ -53,6 +53,9 @@ vim/.netrwhist
 vim/bundle/.neobundle
 vim/bundle/NeoBundle.lock
 vim/spell
+config/nvim/.netrwhist
+config/nvim/spell
+config/nvim/user.vim
 
 # Environ stuff
 env
