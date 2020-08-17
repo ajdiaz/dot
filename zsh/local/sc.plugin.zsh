@@ -4,7 +4,7 @@
 # Distributed under terms of the GPLv3 license.
 
 
-: ${SC_HOME:=${HOME}/dat/sc}
+: ${SC_HOME:=${HOME}/var/demo}
 
 typeset -gA _sc_cmd
 
@@ -37,8 +37,8 @@ _sc-rec () {
 	  echo 'Record name already exists.' 1>&2
 	  return 1
 	else
-	  mkdir -p "${rec_path}/$1"
-    script --timing "${rec_path}/$1/timing" "${rec_path}/$1/content"
+	  mkdir -p "${rec_path}"
+    script -e -a -T "${rec_path}/timing" -B "${rec_path}/content"
   fi
 }
 
@@ -49,12 +49,10 @@ _sc-play () {
 		return 1
 	fi
 
-	local rec_path="${SC_HOME}/$1"
-
   if [[ -d "${SC_HOME}/$1" ]]; then
     echo "======================================="
-    scriptreplay --timing "${SC_HOME}/$1/timig" \
-                 --typescript "${SC_HOME}/$1/content" ${2:+-d "$2"}
+    scriptreplay -T "${SC_HOME}/$1/timing" \
+                 -B "${SC_HOME}/$1/content" ${2:+-d "$2"}
     echo "======================================="
   else
     echo 'Record not found.' 1>&2
