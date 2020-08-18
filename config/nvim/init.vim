@@ -95,17 +95,16 @@ if has('terminal')
 endif
 " }}}
 " block: explorer/netrw {{{
-if has('netrw')
-  let g:netrw_liststyle=3
-  let g:netrw_banner=0
-  let g:netrw_browse_split=1
-  let g:netrw_altv=1
-  let g:netrw_list_hide=netrw_gitignore#Hide()
-  let g:netrw_list_hide.=',\(^\|\s\s\)\zs\.\S\+'
+let g:netrw_liststyle=3
+let g:netrw_banner=0
+let g:netrw_browse_split=4
+let g:netrw_winsize = 25
+let g:netrw_altv = 1
+let g:netrw_list_hide=netrw_gitignore#Hide()
+let g:netrw_list_hide.=',\(^\|\s\s\)\zs\.\S\+'
 
-  map <leader>e :Explore<cr>
-  autocmd FileType netrw map f %
-endif
+nmap <leader>t :Vexplore<cr>
+autocmd FileType netrw map f %
 
 " }}}
 " block: colorscheme and color tunes {{{
@@ -185,7 +184,7 @@ endif
 
 " }}}
 " plugin: vim-fugitive {{{
-    autocmd vimrc FileType dirvish call FugitiveDetect(@%)
+autocmd vimrc FileType dirvish call FugitiveDetect(@%)
 if HavePlugin('vim-fugitive')
   nmap <leader>gs :G<cr>
   nmap <leader>gb :GBlame<cr>
@@ -270,7 +269,6 @@ if HavePlugin('ale')
 	endif
 endif
 " }}}
-
 " }}}
 " block: key mappings {{{
 command! -nargs=0 -bang Q q<bang>
@@ -285,6 +283,7 @@ map <Space> /
 map __ ZZ
 nmap <leader>w :Windows<cr>
 nmap <leader>b :Buffers<cr>
+nmap <leader>q :close<cr>
 nmap <C-j> <C-b>
 nmap <C-k> <C-f>
 inoremap <C-c> <Esc>
