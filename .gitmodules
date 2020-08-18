@@ -26,3 +26,7 @@
 	path = config/nvim/pack/plugins/start/vim-template
 	url = git@github.com:aperezdc/vim-template.git
 	branch = master
+[submodule "config/nvim/pack/plugins/start/vim-gitgutter"]
+	path = config/nvim/pack/plugins/start/vim-gitgutter
+	url = git@github.com:airblade/vim-gitgutter.git
+	branch = master
