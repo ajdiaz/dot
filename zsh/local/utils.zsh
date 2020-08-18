@@ -121,6 +121,16 @@ if hash rclone 2>/dev/null; then
   alias -- bsync="rclone sync $HOME/sys/var/backup crypt:/backup/$(hostname)"
 fi
 
+if hash weechat 2>/dev/null; then
+  weechat () {
+    if systemctl --user is-active weechat >/dev/null; then
+      tmux -L weechat at
+    else
+      command weechat "$@"
+    fi
+  }
+fi
+
 if [[ -r /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh ]]; then
   source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
