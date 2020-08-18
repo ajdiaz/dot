@@ -2,6 +2,12 @@
 # (c) 2017 Andrés J. Díaz
 # Distributed under terms of the GPLv3 license.
 
+m () {
+  sudo mount -tauto "-ouid=$UID" "$1" ~/mnt
+}
+
+alias -- um="sudo umount ~/mnt"
+
 if hash task 2>/dev/null; then
   alias -- cal='task calendar'
 fi
