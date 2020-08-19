@@ -16,9 +16,9 @@ download-full-page yes
 
 # Formats
 datetime-format "%Y-%m-%d"
-feedlist-format " ├─ %2U %n%S ➜  %t"
+feedlist-format " ├─ %2U: %n%S ➜  %t"
 articlelist-format " ├─ %D %?a?%-10a ?%f ➜  %t"
-feedlist-title-format " Feeds (%u/%t)"
+feedlist-title-format "   Feeds (%u/%t)"
 itemview-title-format "  %T"
 articlelist-title-format " ➜  %T"
 
@@ -34,18 +34,21 @@ bind-key ^F pagedown
 bind-key d delete-article
 
 # Colors.
-color listnormal        white black
-color listnormal_unread white black bold
-color listfocus         white color246
-color listfocus_unread  white color246 bold
+color listnormal        white default
+color listnormal_unread white default bold
+color listfocus         white color240
+color listfocus_unread  white color240 bold
 color info              white color235 bold
 color background        white black
 color article           white black
 color end-of-text-marker color246 black
 
 # Highlight
-highlight article "^(Feed|Title|Author|Link|Date):" color39 default
-highlight article "https?://[^ ]+" color39 default
-highlight articlelist "@[^ ]+" color106 default
-highlight articlelist " [0-9][0-9][0-9][0-9]-[0-9][0-9]-[0-9][0-9] " color39 default
-highlight articlelist "https?://[^ ]+" color39 default
+highlight article "^(Feed|Title|Author|Link|Date):" color39
+highlight article "https?://[^ ]+" color39
+highlight articlelist "@[^ ]+" color192
+highlight articlelist " [0-9][0-9][0-9][0-9]-[0-9][0-9]-[0-9][0-9] " color36
+highlight articlelist "https?://[^ ]+" color39
+highlight feedlist " [0-9]?[0-9]: " color192
+highlight feedlist " ├─ " white default bold
+highlight articlelist " ├─ " white default bold
