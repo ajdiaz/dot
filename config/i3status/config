@@ -61,7 +61,7 @@ volume master {
 }
 
 path_exists system {
-        path = "/home/ajdiaz/tmp/.failed"
+        path = "/home/ajdiaz/tmp/get/.failed"
         format_down = ""
         format = ""
         color_bad = '#888888'

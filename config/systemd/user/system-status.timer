@@ -2,8 +2,9 @@
 Description=System Status
 
 [Timer]
-OnCalendar=*:0/60
+OnCalendar=hourly
 Unit=system-status.service
+RandomizedDelaySec=60
 
 [Install]
 WantedBy=default.target

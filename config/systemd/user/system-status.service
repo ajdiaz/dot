@@ -3,4 +3,4 @@ Description=System Status
 
 [Service]
 Type=oneshot
-ExecStart=/bin/bash -c "systemctl --failed | grep -q '0 loaded' && systemctl --user --failed | grep -q '0 loaded' && rm -f /home/ajdiaz/tmp/.failed || touch /home/ajdiaz/tmp/.failed"
+ExecStart=/bin/bash -c "systemctl --failed | grep -q '0 loaded' && systemctl --user --failed | grep -q '0 loaded' && rm -f /home/ajdiaz/tmp/get/.failed || touch /home/ajdiaz/tmp/get/.failed"
