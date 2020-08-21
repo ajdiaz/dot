@@ -9,5 +9,3 @@ ExecStart=/usr/bin/mbsync -Xa -c /home/ajdiaz/.config/mbsync/mbsyncrc
 ExecStartPost=/bin/bash -c "/home/ajdiaz/.config/mbsync/mail-classify"
 ExecStartPost=/bin/bash -c "/home/ajdiaz/.config/mbsync/mail-notify"
 TimeoutStartSec=1min30s
-StandardOutput=syslog
-StandardError=syslog
