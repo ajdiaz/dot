@@ -222,7 +222,9 @@ if HavePlugin('ale')
 	nmap <silent> <Leader>D  <Plug>(ale_go_to_definition)
 	nmap <silent> <Leader>r  <Plug>(ale_find_references)
 	nmap <silent> <Leader>x  <Plug>(ale_fix)
-
+	
+" }}}
+" plugin: vim-lining {{{
 	if HavePlugin('vim-lining')
 		function s:linting_done()
 			let buffer = bufnr('')
@@ -268,6 +270,10 @@ if HavePlugin('ale')
 		autocmd vimrc User ALEFixPost    call lining#refresh()
 	endif
 endif
+" }}}
+" plugin vim-commentary {{{
+vmap <leader>cc gc
+nmap <leader>cc gcc
 " }}}
 " }}}
 " block: key mappings {{{
