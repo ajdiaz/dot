@@ -7,7 +7,7 @@ general {
         output_format = i3bar
         markup = 'pango'
         color_bad = '#339966'
-        color_degraded = '#339966'
+        color_degraded = '#ff8888'
         color_good = '#888888'
 }
 
@@ -45,6 +45,8 @@ battery 0 {
         status_chr = " "
         status_full = " "
         status_bat = " "
+        threshold_type = percentage
+        low_threshold = 30
 }
 
 load {
@@ -53,7 +55,7 @@ load {
 
 volume master {
         format = " <span foreground='#888888'>  %volume</span> "
-        format_muted = " <span foreground='#888888'>  %volume</span> "
+        format_muted = " <span foreground='#ff8888'>  off</span> "
         device = "default"
         mixer = "Master"
         mixer_idx = 0
