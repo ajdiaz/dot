@@ -236,7 +236,7 @@ alias -- typeof="file -b --mime-type"
 case "$(uname)" in
   Linux)
     alias -- ls='ls --color=auto'
-    alias -- ll='ls --color=auto -l'
+    alias -- ll='ls --color=auto -lh'
     alias -- ps='ps axf' ;;
 esac
 
