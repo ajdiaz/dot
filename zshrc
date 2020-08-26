@@ -60,7 +60,7 @@ setopt correct
 alias ':'='nocorrect :'
 alias mv='nocorrect mv'
 alias man='nocorrect man'
-alias sudo='nocorrect sudo '
+alias sudo=$'nocorrect sudo\t'
 alias exec='nocorrect exec'
 alias mkdir='nocorrect mkdir'
 
