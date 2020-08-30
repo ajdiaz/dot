@@ -24,5 +24,7 @@
 	"timeupdate": false,
 	"devel": false,
 	"cleanAfter": false,
-	"gitclone": true
+	"gitclone": true,
+	"cleanmenu": false,
+	"diffmenu": false
 }
