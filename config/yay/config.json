@@ -11,6 +11,7 @@
 	"answerclean": "",
 	"answeredit": "",
 	"answerupgrade": "",
+	"answerdiff": "",
 	"gitbin": "git",
 	"gpgbin": "gpg",
 	"gpgflags": "",
