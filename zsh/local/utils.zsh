@@ -8,6 +8,10 @@ m () {
 
 alias -- um="sudo umount ~/mnt"
 
+if hash buku 2>/dev/null; then
+  alias -- b='buku --suggest'
+fi
+
 if hash task 2>/dev/null; then
   alias -- cal='task calendar'
 fi
