@@ -1,0 +1,3 @@
+#! /bin/sh
+
+exec buku --suggest -a "$1" read-later >/dev/null 2>&1
