@@ -121,6 +121,13 @@ if hash podman 2>/dev/null; then
   alias -- p=podman
 fi
 
+if hash fzf 2>/dev/null; then
+  function search_doc {
+    cd ~/doc && local d="$(fzf)" && [[ -r "$d" ]] && c "$d"
+  }
+  bindkey -s '^N' $'search_doc\n'
+fi
+
 if hash systemctl 2>/dev/null; then
   alias -- s=systemctl
   alias -- us='systemctl --user'
