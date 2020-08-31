@@ -10,7 +10,7 @@ function ks {
     local cl="$1"
   else
     local ns="$1"
-    local cl="${KUBECONFIG#config+}" && local cl="${cl%%+*}"
+    local cl="${KUBECONFIG#*/config+}" && local cl="${cl%%+*}"
   fi
 
   [[ -z "$cl" ]] && echo "err: missing cluster." >&2 && return 2
