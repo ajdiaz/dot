@@ -1,0 +1,9 @@
+[Unit]
+Description=MPV service
+After=network.target
+
+[Service]
+Type=simple
+ExecStartPre=/bin/rm -f /run/user/1000/mpv-service
+ExecStart=/usr/bin/mpv --no-video --shuffle /home/ajdiaz/var/media/music/ --pause --input-ipc-server=/run/user/1000/mpv-service
+TimeoutStartSec=1min30s

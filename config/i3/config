@@ -77,6 +77,11 @@ bindsym XF86AudioRaiseVolume exec pactl -- set-sink-volume 0 +5%
 bindsym XF86AudioLowerVolume exec pactl -- set-sink-volume 0 -5%
 bindsym XF86AudioMute exec pactl -- set-sink-mute 0 toggle
 
+# media keys
+bindsym XF86AudioPlay exec /bin/bash -c 'echo "cycle pause" | socat - /run/user/1000/mpv-service'
+bindsym XF86AudioNext exec /bin/bash -c 'echo "playlist-next" | socat - /run/user/1000/mpv-service'
+bindsym XF86AudioPrev exec /bin/bash -c 'echo "playlist-prev" | socat - /run/user/1000/mpv-service'
+
 # split in horizontal orientation
 bindsym $mod+h split h
 
@@ -192,12 +197,17 @@ bar {
         }
 }
 
+# colors
+# class                 border  backgr. text    indicator child_border
+client.focused          #000000 #333333 #ffffff #333333 #333333
+client.focused_inactive #000000 #000000 #dadada #000000 #000000
+client.unfocused        #000000 #000000 #dadada #000000 #000000
 
 # floating windows
 for_window [class="Skype"] floating enable
 for_window [class="VirtualBox"] floating enable
 for_window [class="Vimb"] move container to workspace 10
-for_window [class=".*"] border pixel 0
+for_window [class=".*"] border pixel 1
 
 exec --no-startup-id xrdb -merge /home/ajdiaz/.Xresources
 exec --no-startup-id xsetroot -solid black
