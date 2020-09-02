@@ -22,7 +22,7 @@ vm () {
 	if typeset -fz "${fname}" ; then
 		"${fname}" "$@"
 	else
-	  sudo machinectl --no-pager "$@"
+	  doas machinectl --no-pager "$@"
 	fi
 }
 
@@ -60,7 +60,7 @@ _vm-new () {
       esac
   done
 
-  if ! sudo test -d "${image}"; then
+  if ! doas test -d "${image}"; then
     echo "unknown image ${image}" 1>&2
     return 1
   fi
@@ -72,7 +72,7 @@ _vm-new () {
     name="$1"
   fi
 
-  sudo systemd-run -E SYSTEMD_NSPAWN_USE_CGNS=0 --unit="vm-$name" \
+  doas systemd-run -E SYSTEMD_NSPAWN_USE_CGNS=0 --unit="vm-$name" \
     systemd-nspawn \
       -M "vm-$name" -n -xb \
       -E VM_NAME="vm-$name" \
@@ -83,7 +83,7 @@ _vm-new () {
 
 _vm_cmd[ls]='List vms'
 _vm-ls () {
-  sudo machinectl --no-pager --full --no-legend list |
+  doas machinectl --no-pager --full --no-legend list |
   while read -r a _; do echo "$a"; done
 }
 
@@ -94,7 +94,7 @@ _vm-rm () {
     return 2
   else
     local vmid="$1"; shift
-    sudo machinectl --no-pager stop "$vmid"
+    doas machinectl --no-pager stop "$vmid"
 	fi
 }
 
@@ -110,7 +110,7 @@ _vm-sh () {
       set -- "$SHELL"
     fi
 
-    sudo machinectl --no-pager \
+    doas machinectl --no-pager \
       -E TERM="$TERM" \
       -E VM_NAME="$vmid" \
       shell "$LOGNAME@$vmid" "$@"

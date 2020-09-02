@@ -18,7 +18,7 @@ vmi () {
 	if typeset -fz "${fname}" ; then
 		"${fname}" "$@"
 	else
-	  sudo machinectl --no-pager "$@"
+	  doas machinectl --no-pager "$@"
 	fi
 }
 
@@ -37,12 +37,12 @@ _vmi-new () {
   fi
   local vmid="$1" name="$2"
   rootdir="$(__get_root_dir "$1")"
-  sudo btrfs subvolume snapshot "$rootdir" "/var/lib/machines/$2"
+  doas btrfs subvolume snapshot "$rootdir" "/var/lib/machines/$2"
 }
 
 _vmi_cmd[ls]='List vm images'
 _vmi-ls () {
-  sudo machinectl --no-pager --no-legend list-images |
+  doas machinectl --no-pager --no-legend list-images |
   while read -r a _; do echo "$a"; done
 }
 
@@ -52,7 +52,7 @@ _vmi-rm () {
     echo "VM image name is required" 1>&2
     return 2
   else
-    sudo btrfs subvolume delete "/var/lib/machines/$1"
+    doas btrfs subvolume delete "/var/lib/machines/$1"
 	fi
 }
 

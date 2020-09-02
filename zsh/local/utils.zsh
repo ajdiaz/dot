@@ -3,10 +3,10 @@
 # Distributed under terms of the GPLv3 license.
 
 m () {
-  sudo mount -tauto "-ouid=$UID" "$1" ~/mnt
+  doas mount -tauto "-ouid=$UID" "$1" ~/mnt
 }
 
-alias -- um="sudo umount ~/mnt"
+alias -- um="doas umount ~/mnt"
 
 if hash buku 2>/dev/null; then
   alias -- b='buku --suggest'
@@ -63,9 +63,9 @@ if hash wget 2>/dev/null; then
 fi
 
 if hash tcpdump 2>/dev/null; then
-  alias httpdump="sudo tcpdump -n -s 0 -w - | grep -a -o -E \"Host\: .*|GET \/.*\""
+  alias httpdump="doas tcpdump -n -s 0 -w - | grep -a -o -E \"Host\: .*|GET \/.*\""
   function netdump {
-    sudo tcpdump -nnA -s0 "$@" | sed \
+    doas tcpdump -nnA -s0 "$@" | sed \
       -e "s/\(^[0-9][0-9]:[0-9][0-9]:[0-9][0-9].[^ ]*\)/[38;5;33m\1[0m/g" \
       -e "s/[ ]IP[ ]\([0-9]*\.[0-9]*\.[0-9]*\.[0-9]*\)\.\([^ ]*\)/ IP [15;1m\1:\2[0m/g" \
       -e "s/[ ]>[ ]\([0-9]*\.[0-9]*\.[0-9]*\.[0-9]*\)\.\([^:]*\)/ → [15;1m\1:\2[0m/g " \
