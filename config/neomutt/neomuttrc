@@ -3,11 +3,11 @@
 
 set folder           = ~/sys/var/mail
 set alias_file       = ~/.config/neomutt/aliases       # where to store aliases
-set header_cache     = ~/.config/neomutt/cache/headers # where to store headers
-set message_cachedir = ~/.config/neomutt/cache/bodies  # where to store bodies
+set header_cache     = ~/.cache/neomutt/headers        # where to store headers
+set message_cachedir = ~/.cache/neomutt/bodies         # where to store bodies
 set certificate_file = ~/.config/neomutt/certificates  # where to store certs
 set mailcap_path     = ~/.config/neomutt/mailcap       # entries for filetypes
-set tmpdir           = ~/.config/neomutt/temp          # where to keep temp
+set tmpdir           = ~/.cache/neomutt/               # where to keep temp
 set signature        = ~/.config/neomutt/signature     # my signature file
 set sig_dashes = no      # no predend dashes
 set sig_on_top = yes     # put signature before quoted
@@ -85,11 +85,19 @@ set nm_record      = no
 set nm_record_tags = "sent"
 
 set wrap = 78
-set sidebar_width = 20
+set sidebar_width = 25
 set sidebar_visible = no
-set sidebar_format = '%B%* %N'
+set sidebar_format = '%B%?F? [%F]?%* %?N?%N/?%S'
+set sidebar_short_path = yes
+set sidebar_component_depth = 2
+set sidebar_delim_chars = '/.'
+set sidebar_folder_indent = yes
+set sidebar_indent_string = '  '
+bind index,pager \Cp sidebar-prev
+bind index,pager \Cn sidebar-next
+bind index,pager \Co sidebar-open
 
-macro index ,< "<enter-command>toggle sidebar_visible<enter><refresh>"
+macro index ,t "<enter-command>toggle sidebar_visible<enter><refresh>"
 
 bind index D purge-message
 bind pager D purge-message

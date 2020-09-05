@@ -73,3 +73,13 @@ color quoted    color242  default
 color quoted1   color240  default
 color quoted2   color238  default
 color quoted3   color236  default
+
+# Sidebar
+color sidebar_indicator black color250
+color sidebar_highlight brightwhite default
+color sidebar_divider color236 default
+color sidebar_flagged red black
+color sidebar_new brightyellow black
+color sidebar_ordinary color250 default
+color sidebar_spoolfile color250 default
+color sidebar_unread color111 default
