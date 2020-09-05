@@ -95,13 +95,15 @@ if has('terminal')
 endif
 " }}}
 " block: explorer/netrw {{{
-let g:netrw_liststyle=3
-let g:netrw_banner=0
-let g:netrw_browse_split=2
+let g:netrw_liststyle = 3
+let g:netrw_banner = 0
+let g:netrw_browse_split = 4
 let g:netrw_winsize = 25
 let g:netrw_altv = 1
+let g:netrw_alto = 1
 let g:netrw_list_hide=netrw_gitignore#Hide()
 let g:netrw_list_hide.=',\(^\|\s\s\)\zs\.\S\+'
+let g:nertw_preview = 1
 
 nmap <leader>t :Vexplore<cr>
 autocmd FileType netrw map f %
@@ -287,8 +289,8 @@ map <C-t> <C-]>
 map <C-p> :pop<cr>
 map <Space> /
 map __ ZZ
-nmap <leader>w :Windows<cr>
-nmap <leader>b :Buffers<cr>
+nmap <leader>B :buffers<cr>buffer<space>
+nmap <leader>b :buffers<cr>
 nmap <leader>q :close<cr>
 nmap <C-j> <C-b>
 nmap <C-k> <C-f>
@@ -298,8 +300,8 @@ nnoremap <C-Right> w
 nnoremap <C-q> :wq!<cr>
 
 " buffer movements
-nnoremap H :bprevious<CR>
-nnoremap L :bnext<CR>
+nnoremap <S-Left> :bprevious<CR>
+nnoremap <S-Right> :bnext<CR>
 
 nnoremap <expr> n 'Nn'[v:searchforward]
 nnoremap <expr> N 'nN'[v:searchforward]
@@ -362,5 +364,12 @@ if filereadable(expand('~/.vim/user.vim'))
   source ~/.vim/user.vim
 endif
 runtime! macros/matchit.vim
+
+" buffer access with 1gb, 2gb, etc.
+let c = 1
+while c <= 99
+  execute "nnoremap " . c . "gb :" . c . "b\<CR>"
+  let c += 1
+endwhile
 " vim:fdm=marker:foldenable:
 " }}}
