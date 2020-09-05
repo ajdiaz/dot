@@ -4,9 +4,11 @@ lastcommand = nil
 function string.shellescape(str)
    return "'"..string.gsub(str, "'", "'\"'\"'").."'"
 end
-function do_notify(a,b)
-   local command = ("notify-send -a mpv -- %s %s"):format(("🎜  "..a):shellescape(), 
-                                                          b:shellescape())
+function do_notify(a,b,c)
+    local command = ("notify-send -a mpv -- %s %s"):format(
+      ("🎜  "..a):shellescape(),
+      b:shellescape()
+   )
    if command ~= lastcommand then
       os.execute(command)
       lastcommand = command
@@ -17,8 +19,9 @@ function notify_current_track()
    if data then
       local artist = (data["ARTIST"] or data["artist"] or " ")
       local title = (data["TITLE"] or data["title"] or " ")
-      if artist..title~="  " then
-         do_notify(artist, title)
+      local album = (data["ALBUM"] or data["album"] or " ")
+      if artist..title..album~="  " then
+         do_notify(artist, title, album)
          return
       end
    end
