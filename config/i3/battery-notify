@@ -22,7 +22,7 @@ case "$state" in
     elif [ $percent -lt $warn ]; then
       if [ ! -r ~/.cache/batt-notify ]; then
         notify-send -u normal "   battery level low" "adjusting brithness..."
-        xbacklight -time 500 -steps 30 -set 5
+        light -S 10
         touch ~/.cache/batt-notify
       fi
     fi;;
