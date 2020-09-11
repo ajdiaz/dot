@@ -90,9 +90,9 @@ if &term =~# '^screen' || &term =~# '^tmux' || &term ==# 'linux'
     set t_Co=16
 endif
 
-if has('terminal')
-  au BufWinEnter * if &buftype == 'terminal' | setlocal bufhidden=hide | endif
-endif
+" use esc to exit in term window
+tnoremap <Esc> <C-\><C-n><C-w><Up>
+au BufWinEnter * if &buftype == 'terminal' | setlocal bufhidden=hide | endif
 " }}}
 " block: explorer/netrw {{{
 let g:netrw_liststyle = 3
