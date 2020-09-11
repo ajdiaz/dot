@@ -67,7 +67,7 @@ path_exists system {
         format_down = ""
         format = ""
         color_bad = '#888888'
-        color_good = '#339966'
+        color_good = '#b30000'
 }
 
 tztime local {
