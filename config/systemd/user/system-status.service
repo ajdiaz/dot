@@ -1,5 +1,6 @@
 [Unit]
 Description=System Status
+After=network.target network-online.target dbus.socket
 
 [Service]
 Type=oneshot
