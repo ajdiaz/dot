@@ -259,7 +259,9 @@ for _path in /opt/*/sbin /opt/*/bin /opt/*/usr/bin /opt/*/usr/sbin /opt/*/usr/lo
 done
 
 # Some EDITOR preferences
-if [ -x /usr/bin/vim ] ; then
+if [ -x /usr/bin/nvim ] ; then
+	export EDITOR='/usr/bin/nvim'
+elif [ -x /usr/bin/vim ]; then
 	export EDITOR='/usr/bin/vim'
 fi
 
