@@ -85,14 +85,16 @@ endfor
 unlet mapmode
 
 if &term =~# '^screen' || &term =~# '^tmux' || &term ==# 'linux'
-    set t_ts=k
-    set t_fs=\
-    set t_Co=16
+  set t_ts=k
+  set t_fs=\
+  set t_Co=16
 endif
 
 " use esc to exit in term window
 tnoremap <Esc> <C-\><C-n><C-w><Up>
-au BufWinEnter * if &buftype == 'terminal' | setlocal bufhidden=hide | endif
+if has('nvim')
+  au TermOpen * startinsert
+endif
 " }}}
 " block: explorer/netrw {{{
 let g:netrw_liststyle = 3
