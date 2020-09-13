@@ -54,6 +54,7 @@
 	hh = !"f() { git h2 \"$@\" | awk 'BEGIN {FS=OFS=\"  \"} {gsub(/\\//, \"⋰\", $1); gsub(/\\\\/, \"⋱\", $1); gsub(/\\|/, \"│\", $1); gsub(/\\*/, \"🞙\", $1)} 1' | less -R; }; f"
 	hist = log --pretty=format:"%h %ad | %s%d [%an]" --graph --date=short
 	pr = pull --rebase
+	pall = !"git remote | xargs -L1 git push --verbose --all"
 	st = status -s
 	sm = submodule
 	smu = submodule update --remote --recursive
