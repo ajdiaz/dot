@@ -35,14 +35,11 @@ set pgp_sign_as = 0x5369AA4171B5139C
 #alternates ajdiaz@connectical.com
 
 macro index ,i "<change-vfolder>INBOX<enter>"
-macro index ,S "<change-vfolder>Sent<enter>"
+macro index ,s "<change-vfolder>Sent<enter>"
 macro index ,T "<change-vfolder>Trash<enter>"
 macro index ,f "<change-vfolder>Flagged<enter>"
 macro index ,a "<change-vfolder>Archive<enter>"
-macro index ,s "<change-vfolder>Spam<enter>"
-macro index ,L "<change-vfolder>List<enter>"
+macro index ,S "<change-vfolder>Spam<enter>"
 macro index ,D "<change-vfolder>Draft<enter>"
-macro index A "<save-message>=ajdiaz.me/Archive<enter>"
-macro pager A "<save-message>=ajdiaz.me/Archive<enter>"
-macro index I "<save-message>=ajdiaz.me/INBOX<enter>"
-macro pager I "<save-message>=ajdiaz.me/INBOX<enter>"
+macro index,pager a "<save-message>=ajdiaz.me/Archive<enter>"
+macro index,pager i "<save-message>=ajdiaz.me/INBOX<enter>"

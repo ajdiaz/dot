@@ -33,7 +33,6 @@ path=/home/ajdiaz/sys/var/mail/
 [user]
 name=Andrés J. Díaz
 primary_email=ajdiaz@ajdiaz.me
-other_email=ajdiaz@connectical.com
 
 # Configuration for "notmuch new"
 #
