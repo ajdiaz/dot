@@ -97,3 +97,9 @@ config/vimb/*
 
 # gtk stuff
 config/gtk-3.0/custom-papers
+
+# task stuff
+task/*.data
+task/*.pem
+task/taskd.conf
+

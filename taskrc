@@ -11,7 +11,7 @@
 # Use the command 'task show' to see all defaults and overrides
 
 # Files
-data.location=~/.local/share/task
+data.location=~/.task
 
 # Color theme (uncomment one to use)
 #include /usr/share/doc/task/rc/light-16.theme
@@ -29,9 +29,9 @@ include /usr/share/doc/task/rc/dark-gray-blue-256.theme
 #include /usr/share/doc/task/rc/solarized-light-256.theme
 #include /usr/share/doc/task/rc/no-color.theme
 
+color.active=color0 on rgb035
 color.completed=gray6 # override color for completed tasks
 color.calendar.holiday=color15 on rgb500
-
 
 # include holidays
 include /usr/share/doc/task/rc/holidays.es-ES.rc
@@ -48,11 +48,15 @@ summary.all.projects=yes
 report.next.columns=id,start.age,entry.age,depends,priority,project,tags,recur,scheduled.countdown,due.relative,until.remaining,description.count,urgency
 urgency.uda.priority.L.coefficient=-2
 urgency.uda.priority.H.coefficient=2
-color.uda.priority.L=gray6 on black
+color.uda.priority.L=gray9 on black
 color.uda.priority.H=rgb500
 
 uda.notified.type=numeric
 uda.notified.label=Notified
 uda.notified.default=0
 
-include ~/.local/share/task/taskd.conf
+uda.totalactivetime.type=duration
+uda.totalactivetime.label=Total active time
+uda.totalactivetime.values=''
+
+include ~/.task/taskd.conf
