@@ -143,7 +143,7 @@ au BufNewFile,BufRead {neo,}mutt{ng,}-*-\w\+,{neo,}mutt[[:alnum:]_-]\\\{6\}
   \ setf mail
 au BufNewFile,BufRead,BufReadPost
   \ {neo,}mutt{ng,}-*-\w\+,{neo,}mutt[[:alnum:]_-]\\\{6\}
-  \ execute "normal! gg2j"
+  \ execute "normal! gg6ji\n"
 
 function! HelmSyntax()
   set filetype=yaml
@@ -362,8 +362,8 @@ inoremap <silent><expr> <S-Tab>
 
 " }}}
 " block: misc stuff and modeline {{{
-if filereadable(expand('~/.vim/user.vim'))
-  source ~/.vim/user.vim
+if filereadable(expand('~/.config/nvim/user.vim'))
+  source ~/.config/nvim/user.vim
 endif
 runtime! macros/matchit.vim
 
