@@ -7,9 +7,7 @@ import json
 import xml.etree.ElementTree
 
 OWN_IPS = {
-    '164.132.194.157',
-    '2001:41d0:401:3000::5c2c',
-    '37.187.20.240',
+    '37.187.20.240',       # a10c5b04501180534a6d.ajdiaz.me.
     '2001:41d0:a:14f0::1'
 }
 
