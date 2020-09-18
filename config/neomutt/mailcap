@@ -1,5 +1,7 @@
-application/octet-stream ; echo %s "can be anything..." ; copiousoutput
+application/octet-stream ; /usr/bin/hexdump -C %s ; copiousoutput
 text/html; lynx -display_charset=utf-8 -dump %s; nametemplate=%s.html; copiousoutput
 Text/Html; lynx -display_charset=utf-8 -dump %s; nametemplate=%s.html; copiousoutput
 application/pdf ; /usr/bin/zathura %s ; copiousoutput
 application/postscript ; /usr/bin/zathura %s ; copiousoutput
+application/pgp-keys; /usr/bin/gpg --import < %s; copiousoutput
+image/*; /usr/bin/feh -. %s

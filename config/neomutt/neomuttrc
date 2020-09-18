@@ -39,13 +39,24 @@ set status_format = " %f %r %>   %u:%d  "
 
 message-hook '!(~g|~G) ~b"^-----BEGIN\ PGP\ (SIGNED\ )?MESSAGE"' "exec check-traditional-pgp"
 
-set index_format = "%Z  %D  %-20.20F  %s"
+set index_format = "%D %-1GF%-1GS%-1GE%-1GA %-35n   %-s"
 set date_format  = "%Y-%m-%d"              # date format display using ISO based date
 set sort = threads                         # use threads base sort like gmail
 set sort_aux = reverse-last-date-received  # last date in thrad is last mail, like gmail
 set uncollapse_jump                        # don't collapse on an unread message
 set sort_re                                # thread based on regex
 set narrow_tree                            # save some spaces making tree narrow
+
+tag-transforms "attachment" " " \
+               "encrypted"  " " \
+               "signed"     " " \
+               "flagged"    " "
+
+tag-formats "attachment" "GA" \
+            "encrypted"  "GE" \
+            "signed"     "GS" \
+            "flagged"    "GF"
+
 
 # regexp to use find Re: emails
 set reply_regexp = "^(([Rr][Ee]?(\[[0-9]+\])?: *)?(\[[^]]+\] *)?)*"
@@ -84,8 +95,8 @@ set nm_query_type  = messages
 set nm_record      = no
 set nm_record_tags = "sent"
 
-set wrap = 78
-set sidebar_width = 25
+set wrap = 80
+set sidebar_width = 18
 set sidebar_visible = no
 set sidebar_format = '%D%?F? [%F]?%* %?N?%N/?%S'
 set sidebar_short_path = yes
@@ -93,6 +104,7 @@ set sidebar_component_depth = 2
 set sidebar_delim_chars = '/.'
 set sidebar_folder_indent = yes
 set sidebar_indent_string = '  '
+set sidebar_divider_char = '▐'
 bind index,pager \Cp sidebar-prev
 bind index,pager \Cn sidebar-next
 bind index,pager \Co sidebar-open
@@ -111,7 +123,8 @@ macro index ,x \
 macro generic ,q "<quit>"
 
 # Analyze DMARC zip reports easily
-macro attach ,dm '<shell-escape>rm -rf /tmp/.mutt-tmp/; mkdir /tmp/.mutt-tmp/<enter><save-entry>/tmp/.mutt-tmp/<enter>y<enter><shell-escape>cd /tmp/.mutt-tmp && 7z x *.zip && rm -f *.zip && ~/.mutt/dmarc-analysis | less -R<enter>'
+macro attach ,dm \
+  '<shell-escape>rm -rf /tmp/.mutt-tmp/; mkdir /tmp/.mutt-tmp/<enter><save-entry>/tmp/.mutt-tmp/<enter>y<enter><shell-escape>cd /tmp/.mutt-tmp && 7z x *.zip && rm -f *.zip && ~/.config/neomutt/dmarc-analysis | less -R<enter>'
 
 # Some macros to search and expands threads with notmuch
 macro index ,l \

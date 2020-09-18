@@ -21,16 +21,23 @@ color quoted white black
 color attachment color238 black
 color status color248 color235 # status bar is yellow *on color238*
 color signature color240 black
-color indicator white color238
+color indicator default color238
 color tilde color238 black # ~'s after message body# Message status
 
 color status brightcolor248 color236 "^ ([^[:space:]]+) "
 color status brightcolor248 color236 "  [[:digit:]]+:[[:digit:]]+  $"
 color index color196 black ~F
+color index color196 black "~Y flagged"
 color index color88 black ~D
-color index color65 black ~g
-color index color69 black ~G
-color index brightyellow black ~N # New
+color index color88 black "~Y deleted"
+color index color84 black ~g
+color index color84 black "~Y signed"
+color index color81 black ~G
+color index color81 black "~Y encrypted"
+color index brightyellow black ~N
+color index brightyellow black "~Y new"
+color index color130 black "~Y spam"
+color index color132 black "~Y archive"
 
 color error color7 color196 # errors yell at you in red
 color message color7 color96 # informational messages
@@ -75,8 +82,8 @@ color quoted2   color238  default
 color quoted3   color236  default
 
 # Sidebar
-color sidebar_indicator black color250
-color sidebar_highlight brightwhite default
+color sidebar_indicator brightwhite default
+color sidebar_highlight white color236
 color sidebar_divider color236 default
 color sidebar_flagged red black
 color sidebar_new brightyellow black
