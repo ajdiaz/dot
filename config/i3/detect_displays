@@ -31,7 +31,7 @@ xrandr_params_for() {
       WIDTH="3840"
     fi
     CMD="${CMD} --output ${1}  ${scale} --pos ${POS[X]}x${POS[Y]}"
-    POS[X]=$((POS[X]+${WIDTH%%x*}))
+    #POS[X]=$((POS[X]+${WIDTH%%x*}))
     return 0
   else
     CMD="${CMD} --output ${1} --off"
