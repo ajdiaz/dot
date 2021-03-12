@@ -4,7 +4,7 @@ export K8S_CLUSTER=
 export K8S_NAMESPACE=
 
 
-function ks {
+function kgo {
   if [[ "$2" ]]; then
     local ns="$2"
     local cl="$1"
@@ -37,7 +37,7 @@ function ks {
   export K8S_NAMESPACE="$ns"
 }
 
-_ks () {
+_kgo () {
 
   local i cluster=
 
@@ -65,4 +65,4 @@ _ks () {
     "2: :{_describe 'namespace' __ns}"
 }
 
-compdef _ks ks
+compdef _kgo kgo
