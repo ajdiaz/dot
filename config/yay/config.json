@@ -20,6 +20,8 @@
 	"gitflags": "",
 	"requestsplitn": 150,
 	"sortmode": 0,
+	"sudobin": "doas",
+	"sudoargs": "",
 	"sudoloop": false,
 	"timeupdate": false,
 	"devel": false,
