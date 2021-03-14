@@ -113,7 +113,8 @@ if hash xclip 2>/dev/null; then
 fi
 
 if hash kubectl 2>/dev/null; then
-  alias -- k=kubectl
+  alias -- k='kubectl'
+  alias -- ks='kubectl -n kube-system'
   alias -- kexit="unset KUBECONFIG K8S_CLUSTER K8S_NAMESPACE"
 fi
 
