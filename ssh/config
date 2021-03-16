@@ -64,7 +64,6 @@ Host *
     ControlPath ~/.ssh/C%r@%h:%p
     ControlMaster auto
     StrictHostKeyChecking no
-    UseRoaming no
     # Chacha20-poly1305 is preferred over AES-GCM because the SSH protocol
     # does not encrypt message sizes when GCM (or EtM) is in use. This
     # allows some traffic analysis even without decrypting the data.
