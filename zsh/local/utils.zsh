@@ -115,6 +115,8 @@ fi
 if hash kubectl 2>/dev/null; then
   alias -- k='kubectl'
   alias -- ks='kubectl -n kube-system'
+  alias -- kan='kubectl --all-namespaces'
+  alias -- kev='kubectl get events --sort-by=.lastTimestamp --all-namespaces'
   alias -- kexit="unset KUBECONFIG K8S_CLUSTER K8S_NAMESPACE"
 fi
 
