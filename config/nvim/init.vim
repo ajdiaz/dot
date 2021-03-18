@@ -33,7 +33,7 @@ set showmode ruler showcmd showmatch number shortmess+=c updatetime=500
 set scrolloff=6 sidescrolloff=2
 set nowrap whichwrap+=[,],<,>
 set formatoptions+=cqron1 fileformats=unix,mac,dos
-set textwidth=78 colorcolumn=80 synmaxcol=300 conceallevel=0
+set textwidth=140 colorcolumn=80 synmaxcol=300 conceallevel=0
 "set completeopt=menu,longest "
 set secure nofsync nobackup
 set diffopt+=iwhite tags=tags;/
