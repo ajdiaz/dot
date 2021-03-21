@@ -62,7 +62,7 @@ alias mv='nocorrect mv'
 alias man='nocorrect man'
 alias sudo=$'nocorrect sudo\t'
 alias exec='nocorrect exec'
-alias mkdir='nocorrect mkdir'
+alias mkdir='nocorrect mkdir -p'
 
 # Use completion cache
 [[ -d ~/.zsh/cache ]] && mkdir -p ~/.zsh/cache
