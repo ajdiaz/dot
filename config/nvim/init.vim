@@ -2,6 +2,7 @@
 set nocompatible
 
 let g:ale_completion_enabled = 1
+let g:ale_completion_autoimport = 1
 let g:loaded_2html_plugin = 1
 let g:loaded_getscriptPlugin = 1
 let g:loaded_logipat = 1
@@ -200,17 +201,21 @@ endif
 " plugin: ale  {{{
 if HavePlugin('ale')
   let g:ale_linters = {
-        \ 'rust': ['rls'],
+        \ 'rust': ['analyzer', 'cargo'],
         \ 'python': ['pyls'],
         \ 'go': ['gopls'],
+        \ 'c': ['clangd', 'clang', 'gcc'],
         \ }
 
   let g:ale_fixers = {
-        \ 'rust': ['rustfmt'],
+        \ 'rust': ['rustfmt', 'remove_trailing_lines', 'trim_whitespace'],
+        \ 'go': ['gofmt', 'remove_trailing_lines', 'trim_whitespace'],
+        \ 'c': ['remove_trailing_lines', 'trim_whitespace'],
         \ }
 
-	set completeopt=menu,menuone,noselect,noinsert
+  set completeopt=menu,menuone,noselect,noinsert
   let g:ale_fix_on_save = 1
+  let g:ale_hover_to_floating_preview = 1
 
   " emoji looks better with noto sans
   let g:ale_sign_error = '⛔'
@@ -226,7 +231,7 @@ if HavePlugin('ale')
 	nmap <silent> <Leader>D  <Plug>(ale_go_to_definition)
 	nmap <silent> <Leader>r  <Plug>(ale_find_references)
 	nmap <silent> <Leader>x  <Plug>(ale_fix)
-	
+
 " }}}
 " plugin: vim-lining {{{
 	if HavePlugin('vim-lining')
