@@ -95,7 +95,7 @@ set nm_query_type  = messages
 set nm_record      = no
 set nm_record_tags = "sent"
 
-set wrap = 80
+set wrap = 140
 set sidebar_width = 18
 set sidebar_visible = no
 set sidebar_format = '%D%?F? [%F]?%* %?N?%N/?%S'
