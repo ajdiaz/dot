@@ -8,6 +8,10 @@ m () {
 
 alias -- um="doas umount ~/mnt"
 
+if hash git 2>/dev/null; then
+  alias -- g='git'
+fi
+
 if hash buku 2>/dev/null; then
   alias -- b='buku --suggest'
 fi
