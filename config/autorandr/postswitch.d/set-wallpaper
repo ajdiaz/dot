@@ -1,0 +1,2 @@
+#! /bin/sh
+exec feh --bg-scale ~/sys/var/pics/desktop/mountains-bw.png

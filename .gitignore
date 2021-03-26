@@ -104,3 +104,6 @@ task/*.data
 task/*.pem
 task/taskd.conf
 
+# autorandr stuff
+config/autorandr
+!config/autorandr/postswitch.d

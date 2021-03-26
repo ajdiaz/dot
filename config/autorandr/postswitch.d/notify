@@ -1,0 +1,3 @@
+#! /bin/sh
+exec notify-send "  Screen attached" \
+  "Using profile ${AUTORANDR_CURRENT_PROFILE}"

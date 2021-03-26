@@ -69,9 +69,6 @@ bindsym $mod+Shift+Right move right
 bindsym XF86MonBrightnessUp exec light -A 10
 bindsym XF86MonBrightnessDown exec light -U 10
 
-# display key
-bindcode 74 exec ~/.config/i3/detect_displays
-
 # volume keys
 bindsym XF86AudioRaiseVolume exec pactl -- set-sink-volume 0 +5%
 bindsym XF86AudioLowerVolume exec pactl -- set-sink-volume 0 -5%
@@ -136,7 +133,7 @@ bindsym $mod+Shift+9 move container to workspace 9
 bindsym $mod+Shift+0 move container to workspace 10
 
 # move workspaces to other screen
-bindsym $mod+m move workspace to output left
+bindsym $mod+m move workspace to output up
 
 # switch to night mode
 bindsym $mod+n exec "~/.config/i3/night-mode-switch"
@@ -204,17 +201,11 @@ client.focused_inactive #000000 #000000 #dadada #000000 #000000
 client.unfocused        #000000 #000000 #dadada #000000 #000000
 
 # floating windows
-for_window [class="Skype"] floating enable
-for_window [class="VirtualBox"] floating enable
-for_window [class="Vimb"] move container to workspace 10
 for_window [class=".*"] border pixel 1
 
 exec --no-startup-id xrdb -merge /home/ajdiaz/.Xresources
 exec --no-startup-id xsetroot -solid black
-exec --no-startup-id xrandr --dpi 192
-exec --no-startup-id srandrd /home/ajdiaz/.config/i3/detect_displays.sh
 exec --no-startup-id dunst
-#exec --no-startup-id /usr/lib/gnome-settings-daemon/gnome-settings-daemon
 exec --no-startup-id gpg-agent --homedir /home/ajdiaz/.gnupg --daemon --enable-ssh-support
 exec --no-startup-id feh --bg-scale /home/ajdiaz/sys/var/pics/desktop/mountains-bw.png
 exec /usr/bin/setxkbmap es,gr -option grp:alt_caps_toggle,grp_led:scroll
