@@ -1,0 +1,93 @@
+#! /bin/python
+
+import re
+import os
+import sys
+import email
+import subprocess
+from email.utils import parseaddr
+
+
+HEADERS = ["X-Mailing-List", "List-ID", "From"]
+
+
+def read_config(fname=None):
+    ret = {}
+    if not fname:
+        fname = "{}.config".format(sys.argv[0])
+    with open("{}.config".format(sys.argv[0])) as f:
+        for line in f:
+            pattern, path = line.strip('\r').strip('\n').split("\t")
+            ret[re.compile(pattern)] = path
+    return ret
+
+
+def get_path(config, msg):
+    for expr in config:
+        for hdr in HEADERS:
+            if expr.match(msg.get(hdr, '')):
+                return config[expr]
+    raise KeyError("Not find suitable path")
+
+
+def get_branch_name(msg):
+    branch = parseaddr(msg.get('In-Reply-To', ''))[1]
+    if branch == '':
+        branch = parseaddr(msg.get('Message-ID', ''))[1]
+    if branch == '':
+        branch = parseaddr(msg.get('From', ''))[1]
+    if branch == '':
+        raise ValueError("Cannot find a way to get branch name")
+
+    return "patch/{}".format(
+        branch
+    ).replace("|", "").replace("<", "").replace(">", "")
+
+
+def dispatch_git(path, branch, payload, charset):
+    if charset is None:
+        charset = 'ascii'
+
+    cmd = subprocess.Popen(
+        # "git -C '{path}' branch '{branch}';  "
+        # "git -C '{path}' checkout '{branch}' && "
+        # "git -C '{path}' am -s".format(
+        #     path=path, branch=branch
+        # ),
+        "cat",
+        shell=True,
+        stdin=subprocess.PIPE,
+    )
+
+    cmd.stdin.write(bytes(payload, charset))
+    sys.exit(cmd.returncode)
+
+
+def main():
+    config = read_config(os.environ.get('APPLY_GIT_PATH_CONFIG', None))
+    msg = email.message_from_file(sys.stdin)
+    path = os.path.expanduser(get_path(config, msg))
+    branch = get_branch_name(msg)
+
+    if msg.is_multipart():
+        for part in msg.walk():
+            if part.get_content_type() in ['text/plain', 'text/x-diff']:
+                dispatch_git(
+                    path,
+                    branch,
+                    part.get_payload(),
+                    part.get_charset()
+                )
+    else:
+        dispatch_git(path, branch, msg.as_string(),
+                     msg.get_content_charset())
+
+    return 0
+
+
+if __name__ == '__main__':
+    try:
+        sys.exit(main())
+    except Exception as e:
+        sys.stderr.write(str(e) + "\n")
+        sys.exit(1)

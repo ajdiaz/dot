@@ -6,6 +6,7 @@ mutt/cache
 mutt/temp
 config/neomutt/cache
 config/neomutt/temp
+config/neomutt/apply-git-patch.config
 
 # Ignore python stuff
 *.pyc

@@ -138,5 +138,9 @@ macro index ,h \
   <enter-command>set pipe_decode=\$my_old_pipe_decode wait_key=\$my_old_wait_key<enter>" \
     "notmuch: reconstruct thread"
 
+# remap p key to patch, because who needs today print emails?
+macro index p "<enter-command>unset pipe_decode wait_key<enter><pipe-message>/usr/bin/env ~/.config/neomutt/apply-git-patch<enter>"
+macro index p "<enter-command>unset pipe_decode wait_key<enter><pipe-message>/usr/bin/env ~/.config/neomutt/apply-git-patch<enter>"
+
 # Some autoview orders
 auto_view text/html
