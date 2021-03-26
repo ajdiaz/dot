@@ -96,7 +96,7 @@ set nm_record      = no
 set nm_record_tags = "sent"
 
 set wrap = 140
-set sidebar_width = 18
+set sidebar_width = 20
 set sidebar_visible = no
 set sidebar_format = '%D%?F? [%F]?%* %?N?%N/?%S'
 set sidebar_short_path = yes
@@ -109,7 +109,7 @@ bind index,pager \Cp sidebar-prev
 bind index,pager \Cn sidebar-next
 bind index,pager \Co sidebar-open
 
-macro index ,t "<enter-command>toggle sidebar_visible<enter><refresh>"
+macro index ,T "<enter-command>toggle sidebar_visible<enter><refresh>"
 
 bind index D purge-message
 bind pager D purge-message
