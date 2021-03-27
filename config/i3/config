@@ -184,7 +184,7 @@ bindsym $mod+r mode "resize"
 bar {
         status_command i3status
         tray_output primary
-        workspace_min_width 30
+        workspace_min_width 35
 
         separator_symbol "|"
         colors {
@@ -204,7 +204,7 @@ client.unfocused        #000000 #000000 #dadada #000000 #000000
 # floating windows
 for_window [class=".*"] border pixel 1
 
-exec --no-startup-id xrdb -merge /home/ajdiaz/.Xresources
+#exec --no-startup-id xrdb -merge /home/ajdiaz/.Xresources
 exec --no-startup-id xsetroot -solid black
 exec --no-startup-id dunst
 exec --no-startup-id gpg-agent --homedir /home/ajdiaz/.gnupg --daemon --enable-ssh-support
