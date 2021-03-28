@@ -43,6 +43,7 @@ set timeout timeoutlen=1000
 set ttimeout ttimeoutlen=10
 set splitbelow splitright
 set encoding=utf-8
+set hidden
 
 if executable('ack')
   set grepprg=ack\ --noheading\ --nocolor\ --nobreak
@@ -71,6 +72,17 @@ endif
 if has('title')
   set title
 endif
+" }}}
+" block: buffer helpers {{{
+function! s:quitiflast()
+  bdelete
+  let bufcnt = len(filter(range(1, bufnr('$')), 'buflisted(v:val)'))
+  echo bufcnt
+  if bufcnt == 1 && expand('%') == ''
+    quit
+  endif
+endfunction
+command! Bd :call s:quitiflast()
 " }}}
 " block: terminal/tmux helpers {{{
 for mapmode in ['n', 'vnore', 'i', 'c', 'l', 't']
@@ -165,7 +177,9 @@ augroup END
 " plugin vim-buftabline {{{
 if HavePlugin('vim-buftabline')
   let g:buftabline_show = 1
+  let g:buftabline_indicators = 1
 endif
+
 " }}}}
 " plugin fzf {{{
 if HavePlugin('fzf')
@@ -303,7 +317,7 @@ map <Space> /
 map __ ZZ
 nmap <leader>B :buffers<cr>buffer<space>
 nmap <leader>b :buffers<cr>
-nmap <leader>q :bd<cr>
+nmap q :Bd<cr>
 nmap <C-j> <C-b>
 nmap <C-k> <C-f>
 nmap <C-l> <end>
@@ -316,18 +330,18 @@ nnoremap <C-q> :wq!<cr>
 " buffer movements
 map <leader>bn :bnext<cr>
 map <leader>bp :bprevious<cr>
-map <leader>bd :bd<cr>
-nnoremap <S-Left> :bprevious<CR>
-nnoremap <S-Right> :bnext<CR>
+map <leader>bd :Bd<cr>
+nnoremap <M-Left> :bprevious<CR>
+nnoremap <M-Right> :bnext<CR>
 
 nnoremap <expr> n 'Nn'[v:searchforward]
 nnoremap <expr> N 'nN'[v:searchforward]
 
 " window movements
-nnoremap <silent> <M-Left>  <C-w><C-h>
-nnoremap <silent> <M-Down>  <C-w><C-j>
-nnoremap <silent> <M-Up>    <C-w><C-k>
-nnoremap <silent> <M-Right> <C-w><C-l>
+nnoremap <silent> <S-Left>  <C-w><C-h>
+nnoremap <silent> <S-Down>  <C-w><C-j>
+nnoremap <silent> <S-Up>    <C-w><C-k>
+nnoremap <silent> <S-Right> <C-w><C-l>
 
 " manually re-format a paragraph of text
 nnoremap <silent> Q gwip
