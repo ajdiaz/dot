@@ -162,6 +162,11 @@ augroup END
 
 " }}}
 " block: configure plugins {{{
+" plugin vim-buftabline {{{
+if HavePlugin('vim-buftabline')
+  let g:buftabline_show = 1
+endif
+" }}}}
 " plugin fzf {{{
 if HavePlugin('fzf')
   let g:fzf_colors =
@@ -298,15 +303,20 @@ map <Space> /
 map __ ZZ
 nmap <leader>B :buffers<cr>buffer<space>
 nmap <leader>b :buffers<cr>
-nmap <leader>q :close<cr>
+nmap <leader>q :bd<cr>
 nmap <C-j> <C-b>
 nmap <C-k> <C-f>
+nmap <C-l> <end>
+nmap <C-h> <home>
 inoremap <C-c> <Esc>
 nnoremap <C-Left>  b
 nnoremap <C-Right> w
 nnoremap <C-q> :wq!<cr>
 
 " buffer movements
+map <leader>bn :bnext<cr>
+map <leader>bp :bprevious<cr>
+map <leader>bd :bd<cr>
 nnoremap <S-Left> :bprevious<CR>
 nnoremap <S-Right> :bnext<CR>
 
@@ -371,7 +381,6 @@ if filereadable(expand('~/.config/nvim/user.vim'))
   source ~/.config/nvim/user.vim
 endif
 runtime! macros/matchit.vim
-
 " buffer access with 1gb, 2gb, etc.
 let c = 1
 while c <= 99

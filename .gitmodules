@@ -38,3 +38,6 @@
 	path = config/nvim/pack/plugins/start/split-term.vim
 	url = git@github.com:vimlab/split-term.vim.git
 	branch = master
+[submodule "config/nvim/pack/plugins/start/vim-buftabline"]
+	path = config/nvim/pack/plugins/start/vim-buftabline
+	url = git@github.com:ap/vim-buftabline.git
