@@ -318,8 +318,8 @@ map __ ZZ
 nmap <leader>B :buffers<cr>buffer<space>
 nmap <leader>b :buffers<cr>
 nmap q :Bd<cr>
-nmap <C-j> <C-b>
-nmap <C-k> <C-f>
+nmap <C-j> <C-f>
+nmap <C-k> <C-b>
 nmap <C-l> <end>
 nmap <C-h> <home>
 inoremap <C-c> <Esc>
