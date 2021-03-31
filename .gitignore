@@ -13,6 +13,9 @@ config/neomutt/apply-git-patch.config
 *.pyo
 __pycache__
 
+# gdb stuff
+.gdb_history
+
 # newsboat stuff
 config/newsboat/cache.db
 config/newsboat/history.*
