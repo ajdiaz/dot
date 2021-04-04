@@ -287,7 +287,7 @@ export PATH
 export LESS_TERMCAP_mb=$'\e[48;5;196m\e[38;5;190m'
 export LESS_TERMCAP_md=$'\e[1m\e[38;5;75m'
 export LESS_TERMCAP_me=$'\e[0;0m'
-export LESS_TERMCAP_so=$'\e[48;5;235m\e[38;5;242m'
+export LESS_TERMCAP_so=$'\e[48;5;11m\e[38;5;0m'
 export LESS_TERMCAP_se=$'\e[0;0m'
 export LESS_TERMCAP_us=$'\e[38;5;71m'
 export LESS_TERMCAP_ue=$'\e[0;0m'
