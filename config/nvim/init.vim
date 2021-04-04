@@ -1,8 +1,6 @@
 " block: preload setting {{{
 set nocompatible
 
-let g:ale_completion_enabled = 1
-let g:ale_completion_autoimport = 1
 let g:loaded_2html_plugin = 1
 let g:loaded_getscriptPlugin = 1
 let g:loaded_logipat = 1
@@ -30,12 +28,11 @@ set path+=**
 set tabstop=2 shiftwidth=2 expandtab
 set copyindent clipboard=unnamedplus
 set incsearch smartcase ignorecase noinfercase nohlsearch
-set showmode ruler showcmd showmatch number shortmess+=c updatetime=500
-set scrolloff=6 sidescrolloff=2
+set showmode ruler showcmd showmatch shortmess+=c updatetime=500
+set scrolloff=6 sidescrolloff=2 number relativenumber
 set nowrap whichwrap+=[,],<,>
 set formatoptions+=cqron1 fileformats=unix,mac,dos
 set textwidth=140 colorcolumn=80 synmaxcol=300 conceallevel=0
-"set completeopt=menu,longest "
 set secure nofsync nobackup
 set diffopt+=iwhite tags=tags;/
 set undofile undodir=~/.cache/nvim/undo undolevels=1000 undoreload=10000
@@ -43,6 +40,8 @@ set timeout timeoutlen=1000
 set ttimeout ttimeoutlen=10
 set splitbelow splitright
 set encoding=utf-8
+set completeopt=menuone,noselect,noinsert
+set completeopt-=preview
 set hidden
 
 if executable('ack')
@@ -179,8 +178,7 @@ if HavePlugin('vim-buftabline')
   let g:buftabline_show = 1
   let g:buftabline_indicators = 1
 endif
-
-" }}}}
+" }}}
 " plugin fzf {{{
 if HavePlugin('fzf')
   let g:fzf_colors =
@@ -199,13 +197,11 @@ if HavePlugin('fzf')
     \ 'header':  ['fg', 'Comment'] }
 endif
 map <leader>ff :FZF<cr>
-
 " }}}
 " plugin fzf.vim {{{
 if HavePlugin('fzf.vim')
   map <leader>fc :Commits<cr>
 endif
-
 " }}}
 " plugin: vim-fugitive {{{
 autocmd vimrc FileType dirvish call FugitiveDetect(@%)
@@ -217,91 +213,143 @@ if HavePlugin('vim-fugitive')
   nmap <leader>g0 :diffget //3<cr>
 endif
 " }}}
-" plugin: ale  {{{
-if HavePlugin('ale')
-  let g:ale_linters = {
-        \ 'rust': ['analyzer', 'cargo'],
-        \ 'python': ['pyls'],
-        \ 'go': ['gopls'],
-        \ 'c': ['clangd', 'clang', 'gcc'],
-        \ }
-
-  let g:ale_fixers = {
-        \ 'rust': ['rustfmt', 'remove_trailing_lines', 'trim_whitespace'],
-        \ 'go': ['gofmt', 'remove_trailing_lines', 'trim_whitespace'],
-        \ 'c': ['remove_trailing_lines', 'trim_whitespace'],
-        \ }
-
-  set completeopt=menu,menuone,noselect,noinsert
-  let g:ale_fix_on_save = 1
-  let g:ale_hover_to_floating_preview = 1
-
-  " emoji looks better with noto sans
-  let g:ale_sign_error = '⛔'
-  let g:ale_sign_warning = '⚠️'
-
-  highlight ALEErrorSign ctermbg=234
-  highlight ALEWarningSign ctermbg=234
-
-  nmap <silent> <C-k>      <Plug>(ale_previous_wrap)
-	nmap <silent> <C-j>      <Plug>(ale_next_wrap)
-	nmap <silent> <Leader>d  <Plug>(ale_detail)
-	nmap <silent> <Leader>h  <Plug>(ale_hover)
-	nmap <silent> <Leader>D  <Plug>(ale_go_to_definition)
-	nmap <silent> <Leader>r  <Plug>(ale_find_references)
-	nmap <silent> <Leader>x  <Plug>(ale_fix)
-
-" }}}
-" plugin: vim-lining {{{
-	if HavePlugin('vim-lining')
-		function s:linting_done()
-			let buffer = bufnr('')
-			return get(g:, 'ale_enabled')
-						\ && getbufvar(buffer, 'ale_linted', 0)
-						\ && !ale#engine#IsCheckingBuffer(buffer)
-		endfunction
-
-		let s:ale_lining_warnings_item = {}
-		function s:ale_lining_warnings_item.format(item, active)
-			if a:active && s:linting_done()
-				let counts = ale#statusline#Count(bufnr(''))
-				let warnings = counts.total - counts.error - counts.style_error
-				if warnings > 0
-					return warnings
-				endif
-			endif
-			return ''
-		endfunction
-		call lining#right(s:ale_lining_warnings_item, 'Warn')
-
-		let s:ale_lining_errors_item = {}
-		function s:ale_lining_errors_item.format(item, active)
-			if a:active && s:linting_done()
-				let counts = ale#statusline#Count(bufnr(''))
-				let errors = counts.error + counts.style_error
-				if errors > 0
-					return errors
-				endif
-			endif
-			return ''
-		endfunction
-		call lining#right(s:ale_lining_errors_item, 'Error')
-
-		let s:ale_status_item = {}
-		function s:ale_status_item.format(item, active)
-			return (a:active && ale#engine#IsCheckingBuffer(bufnr(''))) ? 'linting' : ''
-		endfunction
-		call lining#right(s:ale_status_item)
-
-		autocmd vimrc User ALEJobStarted call lining#refresh()
-		autocmd vimrc User ALELintPost   call lining#refresh()
-		autocmd vimrc User ALEFixPost    call lining#refresh()
-	endif
-endif
-" }}}
 " plugin vim-commentary {{{
 vmap <leader>cc gc
 nmap <leader>cc gcc
+" }}}
+" plugin vim-lsp {{{
+if HavePlugin('vim-lsp')
+  function! s:on_lsp_buffer_enabled() abort
+    setlocal omnifunc=lsp#complete
+    setlocal signcolumn=yes
+  endfunction
+
+  augroup lsp_install
+    au!
+    autocmd User lsp_buffer_enabled call s:on_lsp_buffer_enabled()
+    autocmd BufWritePre <buffer> LspDocumentFormatSync
+  augroup END
+
+  if HavePlugin('vim-lining')
+    let s:lsp_lining_warnings_item = {}
+    function s:lsp_lining_warnings_item.format(item, active)
+      if a:active
+        let warnings = lsp#get_buffer_diagnostics_counts()['warning']
+        if warnings > 0
+          return warnings
+        endif
+      endif
+      return ''
+    endfunction
+    call lining#right(s:lsp_lining_warnings_item, 'Warn')
+
+    let s:lsp_lining_errors_item = {}
+    function s:lsp_lining_errors_item.format(item, active)
+      if a:active
+        let errors = lsp#get_buffer_diagnostics_counts()['error']
+        if errors > 0
+          return errors
+        endif
+      endif
+      return ''
+    endfunction
+    call lining#right(s:lsp_lining_errors_item, 'Error')
+  endif
+
+  let g:lsp_diagnostics_echo_cursor = 1
+  let g:lsp_diagnostics_signs_insert_mode_enabled = 1
+  let g:lsp_diagnostics_virtual_text_enabled = 0
+  let g:lsp_ultisnips_integration = 1
+
+	let g:lsp_diagnostics_signs_error = {'text': '⛔'}
+	let g:lsp_diagnostics_signs_warning = {'text': '⚠️ '}
+	let g:lsp_diagnostics_signs_hint = {'text': '💡'}
+	let g:lsp_diagnostics_signs_information = {'text': 'ℹ️ '}
+	let g:lsp_document_code_action_signs_hint = {'text': '🔧'}
+
+  highlight LspErrorText ctermbg=none
+  highlight LspWarningText ctermbg=none
+  highlight LspHintText ctermbg=none
+  highlight LspInformationText ctermbg=none
+  highlight LspCodeActionText ctermbg=none
+
+  nmap <leader>d <plug>(lsp-definition)
+  nmap <leader>D <plug>(lsp-declaration)
+  nmap <leader>h <plug>(lsp-hover)
+  nmap <leader>r <plug>(lsp-rename)
+  nmap <leader>R <plug>(lsp-references)
+  nmap <leader>n <plug>(lsp-next-diagnostic)
+
+  if executable('clangd')
+    augroup vim_lsp_cpp
+      autocmd!
+      autocmd User lsp_setup call lsp#register_server({
+            \ 'name': 'clangd',
+            \ 'cmd': {server_info->['clangd']},
+            \ 'whitelist': ['c', 'cpp', 'objc', 'objcpp', 'cc'],
+            \ })
+    augroup end
+  endif
+
+  if executable('pyls')
+    augroup vim_lsp_python
+      autocmd!
+      autocmd User lsp_setup call lsp#register_server({
+            \ 'name': 'pyls',
+            \ 'cmd': {server_info->['pyls']},
+            \ 'allowlist': ['python'],
+            \ 'workspace_config': {'pyls': {'plugins': {'pydocstyle': {'enabled': v:true}},
+            \ }}
+            \})
+    augroup end
+  endif
+
+  if executable('yaml-language-server')
+    augroup vim_lsp_yaml
+      autocmd!
+      autocmd User lsp_setup call lsp#register_server({
+            \ 'name': 'yamlls',
+            \ 'cmd': ['yaml-language-server', '--stdio'],
+            \ 'allowlist': ['yaml'],
+            \ 'workspace_config': {'yaml': {'schemas': {
+            \     'kubernetes': ['/**k8s**', '/**kubernetes**']
+            \  }},
+            \ }})
+    augroup end
+  endif
+
+  if executable('gopls')
+    augroup vim_lsp_gopls
+      autocmd!
+      autocmd User lsp_setup call lsp#register_server({
+            \ 'name': 'gopls',
+            \ 'cmd': {server_info->['gopls']},
+            \ 'allowlist': ['go'],
+            \ })
+    augroup end
+  endif
+
+  if executable('rls')
+    augroup vim_lsp_rls
+      autocmd!
+      autocmd User lsp_setup call lsp#register_server({
+            \ 'name': 'rls',
+            \ 'cmd': {server_info->['rls']},
+            \ 'root_uri':{server_info->lsp#utils#path_to_uri(
+            \     lsp#utils#find_nearest_parent_file_directory(
+            \       lsp#utils#get_buffer_path(),
+            \       ['Cargo.toml']
+            \  ))},
+            \ 'allowlist': ['rust'],
+            \ })
+    augroup end
+  endif
+endif
+" }}}
+" plugin: ultisnips {{{
+if HavePlugin('ultisnips')
+  let g:UltiSnipsExpandTrigger="<s-tab>"
+endif
 " }}}
 " }}}
 " block: key mappings {{{
@@ -365,30 +413,19 @@ function! s:check_backspace() abort
 endfunction
 
 function! s:trigger_completion() abort
-	if &omnifunc !=# ''
-		let b:complete_p = 0
+  if s:check_backspace()
+    return "\<Tab>"
+  elseif &omnifunc !=# ''
 		return "\<C-x>\<C-o>"
 	elseif &completefunc !=# ''
-		let b:complete_p = 1
 		return "\<C-x>\<C-u>"
 	else
-		let b:complete_p = 1
 		return "\<C-x>\<C-p>"
 	endif
 endfunction
 
 inoremap <silent><expr> <Tab>
-			\ pumvisible() ? (get(b:, 'complete_p', 1) ? "\<C-p>" : "\<C-n>") :
-			\ <sid>check_backspace() ? "\<Tab>" :
-			\ "\<C-p>"
-inoremap <silent><expr> <C-Space>
-			\ <sid>trigger_completion()
-inoremap <silent><expr> <CR>
-			\ pumvisible() ? "\<C-y>" : "\<CR>"
-
-inoremap <silent><expr> <S-Tab>
-			\ pumvisible() ? "\<C-n>" : "\<C-h>"
-
+      \ pumvisible() ? "\<C-n>" : <sid>trigger_completion()
 " }}}
 " block: misc stuff and modeline {{{
 if filereadable(expand('~/.config/nvim/user.vim'))
