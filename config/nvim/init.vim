@@ -171,6 +171,30 @@ augroup helm_syntax
   autocmd BufRead,BufNewFile templates/*.yaml,templates/*.tpl call HelmSyntax()
 augroup END
 
+function! MarkdownSyntax()
+  syn match    customHeader1     "^# .*$"
+  syn match    customHeader2     "^## .*$"
+  syn match    customHeader3     "^### .*$"
+  syn match    customHeader4     "^#### .*$"
+  syn match    customHeader5     "^##### .*$"
+
+  highlight customHeader1 ctermbg=105 ctermfg=white
+  highlight customHeader2 ctermfg=105
+  highlight customHeader3 ctermfg=71
+  highlight customHeader4 ctermfg=172
+  highlight customHeader5 ctermfg=246
+
+  highlight mkdCode ctermfg=245
+  highlight mkdCodeDelimiter ctermfg=245
+
+  set conceallevel=2
+endfunction
+
+augroup markdown_syntax
+  autocmd!
+  autocmd FileType markdown call MarkdownSyntax()
+augroup END
+
 " }}}
 " block: configure plugins {{{
 " plugin vim-buftabline {{{
