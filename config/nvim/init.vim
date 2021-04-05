@@ -227,7 +227,7 @@ if HavePlugin('fzf.vim')
   map <leader>fc :Commits<cr>
 endif
 " }}}
-" plugin: vim-fugitive {{{
+" plugin vim-fugitive {{{
 autocmd vimrc FileType dirvish call FugitiveDetect(@%)
 if HavePlugin('vim-fugitive')
   nmap <leader>gs :G<cr>
@@ -336,7 +336,10 @@ if HavePlugin('vim-lsp')
             \ 'cmd': ['yaml-language-server', '--stdio'],
             \ 'allowlist': ['yaml'],
             \ 'workspace_config': {'yaml': {'schemas': {
-            \     'kubernetes': ['/**k8s**', '/**kubernetes**']
+            \     'https://raw.githubusercontent.com/yannh/kubernetes-json-schema/master/master-standalone-strict/all.json': ['/**k8s**', '/**kubernetes**'],
+            \     'https://json.schemastore.org/helmfile.json': ['/**Chart.y*ml', '/**charts/**.y*ml'],
+            \     'https://json.schemastore.org/github-action.json': ['/.github/actions/*.y*ml'],
+            \     'https://json.schemastore.org/gitlab-ci.json': ['/.gitlab-ci.y*ml'],
             \  }},
             \ }})
     augroup end
