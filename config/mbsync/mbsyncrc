@@ -17,6 +17,6 @@ MaildirStore ajdiaz-local
   SubFolders Legacy
 
 Channel ajdiaz
-  Master :ajdiaz-remote:
-  Slave :ajdiaz-local:
+  Far :ajdiaz-remote:
+  Near :ajdiaz-local:
   Patterns *
