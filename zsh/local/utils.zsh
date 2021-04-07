@@ -117,11 +117,19 @@ if hash xclip 2>/dev/null; then
 fi
 
 if hash kubectl 2>/dev/null; then
+  kubectl () {
+    command kubectl "$@"; local ret=$?
+    [[ $ret -eq 0 ]] && eval "$(command kubectl completion zsh)"
+    return $ret
+  }
+
   alias -- k='kubectl'
   alias -- ks='kubectl -n kube-system'
   alias -- kan='kubectl --all-namespaces'
   alias -- kev='kubectl get events --sort-by=.lastTimestamp --all-namespaces'
   alias -- kexit="unset KUBECONFIG K8S_CLUSTER K8S_NAMESPACE"
+
+  eval "$(command kubectl completion zsh)"
 fi
 
 if hash podman 2>/dev/null; then
