@@ -356,24 +356,22 @@ if HavePlugin('vim-lsp')
     augroup end
   endif
 
-  if executable('rls')
-    augroup vim_lsp_rls
+  if executable('bash-language-server')
+    augroup vim_lsp_bash
       autocmd!
       autocmd User lsp_setup call lsp#register_server({
-            \ 'name': 'rls',
-            \ 'cmd': {server_info->['rls']},
-            \ 'root_uri':{server_info->lsp#utils#path_to_uri(
-            \     lsp#utils#find_nearest_parent_file_directory(
-            \       lsp#utils#get_buffer_path(),
-            \       ['Cargo.toml']
-            \  ))},
-            \ 'allowlist': ['rust'],
+            \ 'name': 'bash-language-server',
+            \ 'cmd': {server_info->[&shell, &shellcmdflag, 'bash-language-server start']},
+            \ 'config': {
+            \   'refresh_pattern': '\\([a-zA-Z0-9_-]\\+\\|\\k\\+\\)$'
+            \ },
+            \ 'allowlist': ['sh'],
             \ })
     augroup end
   endif
 endif
 " }}}
-" plugin: ultisnips {{{
+" plugin ultisnips {{{
 if HavePlugin('ultisnips')
   let g:UltiSnipsExpandTrigger="<s-tab>"
 endif
