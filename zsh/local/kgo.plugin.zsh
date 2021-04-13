@@ -13,7 +13,10 @@ function kgo {
     local cl="${KUBECONFIG#*/config+}" && local cl="${cl%%+*}"
   fi
 
-  [[ -z "$cl" ]] && echo "err: missing cluster." >&2 && return 2
+  if [[ -z "$cl" ]]; then
+    unset KUBECONFIG K8S_CLUSTER K8S_NAMESPACE
+    return 0
+  fi
 
   cfg="${HOME}/.kube/config+${cl}+${ns}"
 
