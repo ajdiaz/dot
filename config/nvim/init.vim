@@ -6,6 +6,8 @@ let g:loaded_getscriptPlugin = 1
 let g:loaded_logipat = 1
 let g:loaded_vimballPlugin = 1
 
+let g:ale_disable_lsp = 1
+
 augroup vimrc
 	autocmd!
 augroup END
@@ -39,6 +41,7 @@ set undofile undodir=~/.cache/nvim/undo undolevels=1000 undoreload=10000
 set timeout timeoutlen=1000
 set ttimeout ttimeoutlen=10
 set splitbelow splitright
+set signcolumn=yes
 set encoding=utf-8
 set completeopt=menuone,noselect,noinsert
 set completeopt-=preview
@@ -245,7 +248,6 @@ nmap <leader>cc gcc
 if HavePlugin('vim-lsp')
   function! s:on_lsp_buffer_enabled() abort
     setlocal omnifunc=lsp#complete
-    setlocal signcolumn=yes
   endfunction
 
   augroup lsp_install
@@ -356,24 +358,79 @@ if HavePlugin('vim-lsp')
     augroup end
   endif
 
-  if executable('bash-language-server')
-    augroup vim_lsp_bash
-      autocmd!
-      autocmd User lsp_setup call lsp#register_server({
-            \ 'name': 'bash-language-server',
-            \ 'cmd': {server_info->[&shell, &shellcmdflag, 'bash-language-server start']},
-            \ 'config': {
-            \   'refresh_pattern': '\\([a-zA-Z0-9_-]\\+\\|\\k\\+\\)$'
-            \ },
-            \ 'allowlist': ['sh'],
-            \ })
-    augroup end
-  endif
 endif
 " }}}
 " plugin ultisnips {{{
 if HavePlugin('ultisnips')
   let g:UltiSnipsExpandTrigger="<s-tab>"
+endif
+" }}}
+" plugin: ale  {{{
+if HavePlugin('ale')
+  let g:ale_linters = {
+        \ 'sh': ['shellcheck'],
+        \ 'html': ['tidy'],
+        \ }
+  let g:ale_linters_explicit = 1
+  let g:ale_fixers = {
+        \ 'rust': ['rustfmt', 'remove_trailing_lines', 'trim_whitespace'],
+        \ 'go': ['gofmt', 'remove_trailing_lines', 'trim_whitespace'],
+        \ 'c': ['remove_trailing_lines', 'trim_whitespace'],
+        \ }
+
+  let g:ale_fix_on_save = 1
+
+  " emoji looks better with noto sans
+  let g:ale_sign_error = '⛔'
+  let g:ale_sign_warning = '⚠️'
+
+  highlight ALEErrorSign ctermbg=234
+  highlight ALEWarningSign ctermbg=234
+
+	if HavePlugin('vim-lining')
+		function s:linting_done()
+			let buffer = bufnr('')
+			return get(g:, 'ale_enabled')
+						\ && getbufvar(buffer, 'ale_linted', 0)
+						\ && !ale#engine#IsCheckingBuffer(buffer)
+		endfunction
+
+		let s:ale_lining_warnings_item = {}
+		function s:ale_lining_warnings_item.format(item, active)
+			if a:active && s:linting_done()
+				let counts = ale#statusline#Count(bufnr(''))
+				let warnings = counts.total - counts.error - counts.style_error
+				if warnings > 0
+					return warnings
+				endif
+			endif
+			return ''
+		endfunction
+		call lining#right(s:ale_lining_warnings_item, 'Warn')
+
+		let s:ale_lining_errors_item = {}
+		function s:ale_lining_errors_item.format(item, active)
+			if a:active && s:linting_done()
+				let counts = ale#statusline#Count(bufnr(''))
+				let errors = counts.error + counts.style_error
+				if errors > 0
+					return errors
+				endif
+			endif
+			return ''
+		endfunction
+		call lining#right(s:ale_lining_errors_item, 'Error')
+
+		let s:ale_status_item = {}
+		function s:ale_status_item.format(item, active)
+			return (a:active && ale#engine#IsCheckingBuffer(bufnr(''))) ? 'linting' : ''
+		endfunction
+		call lining#right(s:ale_status_item)
+
+		autocmd vimrc User ALEJobStarted call lining#refresh()
+		autocmd vimrc User ALELintPost   call lining#refresh()
+		autocmd vimrc User ALEFixPost    call lining#refresh()
+  endif
 endif
 " }}}
 " }}}
@@ -419,6 +476,7 @@ nnoremap <silent> <S-Right> <C-w><C-l>
 " manually re-format a paragraph of text
 nnoremap <silent> Q gwip
 vnoremap <silent> Q :norm qwip<cr>
+
 
 " make . work with visually selected lines
 vnoremap . :norm .<cr>
