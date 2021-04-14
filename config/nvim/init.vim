@@ -250,12 +250,6 @@ if HavePlugin('vim-lsp')
     setlocal omnifunc=lsp#complete
   endfunction
 
-  augroup lsp_install
-    au!
-    autocmd User lsp_buffer_enabled call s:on_lsp_buffer_enabled()
-    autocmd BufWritePre <buffer> LspDocumentFormatSync
-  augroup END
-
   if HavePlugin('vim-lining')
     let s:lsp_lining_warnings_item = {}
     function s:lsp_lining_warnings_item.format(item, active)
