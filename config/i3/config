@@ -139,7 +139,7 @@ bindsym $mod+m move workspace to output left
 bindsym $mod+n exec "~/.config/i3/night-mode-switch"
 
 # color inverse
-bindsym $mod+i exec "xcalib -i -a"
+bindsym $mod+i exec "~/.config/i3/inverse-mode-switch"
 
 # reload the configuration file
 bindsym $mod+Shift+c reload
@@ -201,8 +201,7 @@ client.focused          #000000 #333333 #ffffff #333333 #333333
 client.focused_inactive #000000 #000000 #dadada #000000 #000000
 client.unfocused        #000000 #000000 #dadada #000000 #000000
 
-# floating windows
-for_window [class=".*"] border pixel 4
+default_border pixel 4
 
 exec --no-startup-id xrdb /home/ajdiaz/.Xresources
 exec --no-startup-id xsetroot -solid black

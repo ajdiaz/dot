@@ -10,7 +10,7 @@ main ()
       case "$state" in
         1.0:1.0:1.0) 
           echo we are in normal mode, switching to night
-          xrandr --output "$device" --gamma "1:0.7:0.4" --brightness 0.8
+          xrandr --output "$device" --gamma "1:0.6:0.6" --brightness 0.6
           ;;
         *)
           echo we are in night mode, switching to normal

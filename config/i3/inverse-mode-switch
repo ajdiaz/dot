@@ -1,0 +1,13 @@
+#! /bin/bash
+
+main ()
+{
+  local i=0
+  xrandr | grep '[ ]connected' | while read -r _; do
+    xcalib -a -i -o "$i" &
+    ((i++))
+  done
+  wait
+}
+
+main
