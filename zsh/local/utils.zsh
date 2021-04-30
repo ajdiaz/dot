@@ -162,6 +162,12 @@ if hash weechat 2>/dev/null; then
   }
 fi
 
+if hash openssl 2>/dev/null; then
+  ppwgen () {
+    </dev/urandom tr -dc A-Za-z0-9'!@#$%'|head -c${1:-12};echo
+  }
+fi
+
 if [[ -r /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh ]]; then
   source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
