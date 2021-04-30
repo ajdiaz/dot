@@ -17,9 +17,9 @@ end
 function notify_current_track()
    data = mp.get_property_native("metadata")
    if data then
-      local artist = (data["ARTIST"] or data["artist"] or " ")
-      local title = (data["TITLE"] or data["title"] or " ")
-      local album = (data["ALBUM"] or data["album"] or " ")
+      local artist = (data["ARTIST"] or data["artist"] or data["Artist"] or " ")
+      local title = (data["TITLE"] or data["title"] or data["Title"] or " ")
+      local album = (data["ALBUM"] or data["album"] or data["Album"] or " ")
       if artist..title..album~="  " then
          do_notify(artist, title, album)
          return
