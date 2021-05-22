@@ -49,6 +49,10 @@
 #    GSSAPIAuthentication yes
 #    GSSAPIDelegateCredentials no
 
+# Include other configs in ~/.ssh
+Include ~/.ssh/*_config
+
+# Generic config
 Host *
     # Use local keys on remote machines via agent forwarding
     ForwardAgent yes
@@ -81,4 +85,3 @@ Host *+*
 Host aur aur.archlinux.org
     User aur
     Hostname aur.archlinux.org
-

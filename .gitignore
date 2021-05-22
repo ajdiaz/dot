@@ -79,6 +79,7 @@ ssh/known_hosts*
 ssh/.known_hosts*
 ssh/master-*
 ssh/google_*
+ssh/*_config
 
 # todo.txt
 todo/*.txt
