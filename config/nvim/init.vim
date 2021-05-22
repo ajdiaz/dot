@@ -160,6 +160,8 @@ au BufNewFile,BufRead,BufReadPost
   \ {neo,}mutt{ng,}-*-\w\+,{neo,}mutt[[:alnum:]_-]\\\{6\}
   \ execute "normal! gg6ji\n"
 
+autocmd FileType text,markdown,rst,nroff,mail setlocal spell
+
 function! HelmSyntax()
   set filetype=yaml
   unlet b:current_syntax
@@ -299,6 +301,7 @@ if HavePlugin('vim-lsp')
   nmap <leader>r <plug>(lsp-rename)
   nmap <leader>R <plug>(lsp-references)
   nmap <leader>n <plug>(lsp-next-diagnostic)
+  nmap <leader>A <plug>(lsp-code-action)
 
   if executable('clangd')
     augroup vim_lsp_cpp
@@ -426,6 +429,16 @@ if HavePlugin('ale')
 		autocmd vimrc User ALEFixPost    call lining#refresh()
   endif
 endif
+" }}}
+" plugin: vim-grammarous {{{
+let g:grammarous#default_comments_only_filetypes = {
+            \ '*': 1, 'help': 0, 'markdown': 0, 'rst':0,
+            \ 'text':0, 'nroff': 0, 'mail': 0
+            \ }
+let g:grammarous#use_vim_spelllang = 1
+let g:grammarous#languagetool_cmd = '/usr/bin/languagetool'
+nmap <leader>G :GrammarousCheck<cr>
+
 " }}}
 " }}}
 " block: key mappings {{{
