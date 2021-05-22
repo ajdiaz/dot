@@ -53,3 +53,6 @@
 [submodule "config/nvim/pack/plugins/start/vim-lsp-ultisnips"]
 	path = config/nvim/pack/plugins/start/vim-lsp-ultisnips
 	url = git@github.com:thomasfaingnaert/vim-lsp-ultisnips.git
+[submodule "config/nvim/pack/plugins/start/vim-grammarous"]
+	path = config/nvim/pack/plugins/start/vim-grammarous
+	url = git@github.com:rhysd/vim-grammarous.git
