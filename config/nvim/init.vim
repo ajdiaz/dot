@@ -459,6 +459,7 @@ nmap <C-j> <C-f>
 nmap <C-k> <C-b>
 nmap <C-l> <end>
 nmap <C-h> <home>
+nmap <leader>mm :make<cr><cr>
 inoremap <C-c> <Esc>
 nnoremap <C-Left>  b
 nnoremap <C-Right> w
