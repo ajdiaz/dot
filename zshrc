@@ -45,6 +45,7 @@ bindkey "^[[F"  end-of-line
 bindkey "^E"    end-of-line
 bindkey "[4~" end-of-line
 bindkey "^[[3~" delete-char
+bindkey "^[#"   pound-insert
 
 # Set a bunch of options :-)
 setopt prompt_subst pushd_silent auto_param_slash auto_list \

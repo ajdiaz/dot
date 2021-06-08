@@ -148,10 +148,6 @@ if hash systemctl 2>/dev/null; then
   alias -- usm='systemctl --user start mbsync'
 fi
 
-if hash rclone 2>/dev/null; then
-  alias -- bsync="rclone sync $HOME/sys/var/backup crypt:/backup/$(hostname)"
-fi
-
 if hash weechat 2>/dev/null; then
   weechat () {
     if systemctl --user is-active weechat >/dev/null; then
