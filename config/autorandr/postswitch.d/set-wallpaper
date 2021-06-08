@@ -1,2 +1,2 @@
 #! /bin/sh
-exec feh --bg-scale ~/sys/var/pics/desktop/mountains-bw.png
+exec feh --bg-scale ~/sys/var/pics/desktop/light-bw.jpg
