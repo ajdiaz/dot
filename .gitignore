@@ -30,12 +30,14 @@ weechat/weechat.pwd
 weechat/logs
 weechat/matrix
 weechat/ssl
+weechat/message.*
 weechat/*.log
 weechat/*.cache
 weechat/xfer
 weechat/script/plugins.xml.gz
 weechat/active_buffer.txt
 weechat/highlights.txt
+weechat/cert
 
 # GnuPG stuff
 gnupg/*.gpg
