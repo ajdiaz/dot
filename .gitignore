@@ -86,6 +86,9 @@ ssh/*_config
 # todo.txt
 todo/*.txt
 
+# mpv playlist
+config/mpv/playlist
+
 # ranger stuff
 config/ranger/bookmarks
 config/ranger/tagged
