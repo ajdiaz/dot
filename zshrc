@@ -267,8 +267,8 @@ elif [ -x /usr/bin/vim ]; then
 fi
 
 # Load some local files
-for local in "${HOME}/.zsh/local/"*.zsh; do
-	[ "$local" != "${HOME}/.zsh/local/*.zsh" ] && source "$local"
+for local in "${HOME}/.zsh/local/"*.zsh "${HOME}/.zsh/user/"*.zsh; do
+	[ "${local##*/}" != "*.zsh" ] && source "$local"
 done
 
 # Unset some vars
