@@ -1,6 +1,6 @@
 # The following lines were added by compinstall
 zstyle :compinstall filename '/home/ajdiaz/.zshrc'
-[[ "$EUID" -ne 0 ]] && fpath+=( ~/.zsh/local )
+[[ "$EUID" -ne 0 ]] && fpath+=( ~/.zsh/local ~/.zsh/user )
 autoload -Uz compinit promptinit; compinit promptinit
 
 # End of lines added by compinstall
