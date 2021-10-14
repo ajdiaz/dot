@@ -8,6 +8,9 @@ config/neomutt/cache
 config/neomutt/temp
 config/neomutt/apply-git-patch.config
 
+# Ignore git stuff
+config/git/user
+
 # Ignore python stuff
 *.pyc
 *.pyo
