@@ -1,6 +1,7 @@
 [Unit]
 Description=Maildir synchronization service
 After=network.target network-online.target dbus.socket
+ConditionPathExists=/usr/bin/mbsync
 
 [Service]
 Type=oneshot
