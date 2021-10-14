@@ -1,5 +1,6 @@
 [Unit]
 Description=Taskwarrior Notifier
+ConditionPathExists=/usr/bin/task
 
 [Service]
 Type=oneshot

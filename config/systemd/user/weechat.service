@@ -1,6 +1,8 @@
 [Unit]
 Description=A WeeChat client and relay service using Tmux
 After=network.target
+ConditionPathExists=/usr/bin/weechat
+ConditionPathExists=/usr/bin/tmux
 
 [Service]
 Type=forking

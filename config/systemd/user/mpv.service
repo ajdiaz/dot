@@ -1,6 +1,7 @@
 [Unit]
 Description=MPV service
 After=network.target
+ConditionPathExists=/usr/bin/mpv
 
 [Service]
 Type=simple
