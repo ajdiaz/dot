@@ -70,9 +70,10 @@ config/nvim/user.vim
 # Environ stuff
 env
 
-# Cache files
+# ZSH stuff
 zsh/cache*
 *.zwc
+zsh/user
 
 # SSH stuff
 ssh/authorized_keys*
