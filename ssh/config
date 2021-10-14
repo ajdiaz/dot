@@ -65,7 +65,7 @@ Host *
     PermitLocalCommand yes
     # Set up control sockets so multiple ssh/scp/sftp sessions can share one
     # connection
-    ControlPath ~/.ssh/C%r@%h:%p
+    ControlPath ~/.ssh/control/%C
     ControlMaster auto
     StrictHostKeyChecking no
     # Chacha20-poly1305 is preferred over AES-GCM because the SSH protocol
