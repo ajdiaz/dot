@@ -208,4 +208,5 @@ exec --no-startup-id xsetroot -solid black
 exec --no-startup-id feh --bg-scale /home/ajdiaz/sys/var/pics/desktop/mountains-bw.png
 exec --no-startup-id dunst
 exec --no-startup-id gpg-agent --homedir /home/ajdiaz/.gnupg --daemon --enable-ssh-support
+exec --no-startup-id xcompmgr -c -l0 -t0 -r0 -o.00
 exec /usr/bin/setxkbmap es,gr -option grp:alt_caps_toggle,grp_led:scroll
