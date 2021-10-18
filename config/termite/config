@@ -1,5 +1,5 @@
 [options]
-font = Anonymous Pro 14
+font = Iosevka Term SS05 Extended 14
 resize_grip = false
 scroll_on_output = false
 scroll_on_keystroke = true
