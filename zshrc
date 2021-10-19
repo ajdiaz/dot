@@ -223,7 +223,6 @@ alias -- '-'='cd -'
 alias -- o='xdg-open'
 alias -- h="history -i"
 alias -- pd='pushd'
-alias -- ag='ack'
 alias -- rr='source ~/.zshrc'
 alias -- pls='doas $(fc -n -l -1)'
 alias -- map="xargs -n1"

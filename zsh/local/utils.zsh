@@ -32,6 +32,10 @@ if hash dig 2>/dev/null; then
   alias -- myip="dig +short myip.opendns.com @resolver1.opendns.com"
 fi
 
+if hash rg 2>/dev/null; then
+  export RIPGREP_CONFIG_PATH=~/.config/rgrc
+fi
+
 if hash curl 2>/dev/null; then
   alias -- hcurl="curl -L -v -D - -o /dev/null"
   alias -- jcurl='curl -H "Accept: application/json" -H a"Content-type: application/json"'

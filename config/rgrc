@@ -1,0 +1,8 @@
+--smart-case
+--follow
+
+--pretty
+--colors=match:fg:255,255,0
+--colors=line:fg:255,0,255
+--colors=path:fg:0,95,255
+
