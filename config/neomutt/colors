@@ -88,5 +88,4 @@ color sidebar_divider color236 default
 color sidebar_flagged red black
 color sidebar_new brightyellow black
 color sidebar_ordinary color250 default
-color sidebar_spoolfile color250 default
 color sidebar_unread color111 default
