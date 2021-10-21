@@ -54,7 +54,7 @@ if hash python 2>/dev/null; then
     export PYTHONSTARTUP="${HOME}/.pythonrc.py"
   fi
 
-  alias serve='python3 -m http.server'
+  alias serve='python3 -m http.server --directory'
 fi
 
 if hash wget 2>/dev/null; then
