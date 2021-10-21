@@ -25,7 +25,7 @@ itemview-title-format "  %T"
 articlelist-title-format " ➜  %T"
 
 # External programs.
-browser xdg-open
+browser "firefox -P default"
 player xdg-open
 
 # Vim-like keybindings.
