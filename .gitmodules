@@ -41,18 +41,6 @@
 [submodule "config/nvim/pack/plugins/start/vim-buftabline"]
 	path = config/nvim/pack/plugins/start/vim-buftabline
 	url = git@github.com:ap/vim-buftabline.git
-[submodule "config/nvim/pack/plugins/start/ultisnips"]
-	path = config/nvim/pack/plugins/start/ultisnips
-	url = git@github.com:SirVer/ultisnips.git
-[submodule "config/nvim/pack/plugins/start/vim-lsp"]
-	path = config/nvim/pack/plugins/start/vim-lsp
-	url = git@github.com:prabirshrestha/vim-lsp.git
-[submodule "config/nvim/pack/plugins/start/vim-lsp-snippets"]
-	path = config/nvim/pack/plugins/start/vim-lsp-snippets
-	url = git@github.com:thomasfaingnaert/vim-lsp-snippets.git
-[submodule "config/nvim/pack/plugins/start/vim-lsp-ultisnips"]
-	path = config/nvim/pack/plugins/start/vim-lsp-ultisnips
-	url = git@github.com:thomasfaingnaert/vim-lsp-ultisnips.git
 [submodule "config/nvim/pack/plugins/start/vim-grammarous"]
 	path = config/nvim/pack/plugins/start/vim-grammarous
 	url = git@github.com:rhysd/vim-grammarous.git
