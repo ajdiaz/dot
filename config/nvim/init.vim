@@ -13,9 +13,23 @@ augroup vimrc
 augroup END
 " }}}
 " block: load/unload plugins {{{
+if has('nvim')
+  packadd nvim-lspconfig
+  packadd lsp-status.nvim
+  packadd nvim-cmp
+  packadd cmp-nvim-lsp
+  packadd cmp_luasnip
+  packadd LuaSnip
+else
+  packadd vim-lsp
+  packadd vim-lsp-snippets
+  packadd vim-lsp-ultisnips
+  packadd ultisnips
+endif
 packloadall!
 function! HavePlugin(name)
-  return &runtimepath =~ ('pack/plugins/start/' . a:name)
+  let plist = filter(split(execute(':scriptname'), "\n"), 'v:val =~? "/' . a:name . '/"')
+  return len(plist) > 0
 endfunction
 " }}}
 " block: create missing dirs {{{
@@ -128,8 +142,7 @@ autocmd FileType netrw map f %
 " }}}
 " block: colorscheme and color tunes {{{
 syntax on
-
-if HavePlugin('vim-elrond')
+if index(getcompletion('', 'color'), 'elrond') > -1
   colors elrond
   highlight EndOfBuffer ctermfg=236
   highlight SpecialKey ctermfg=196
@@ -201,6 +214,27 @@ augroup markdown_syntax
 augroup END
 
 " }}}
+" block: autocompletion {{{
+function! s:check_backspace() abort
+	let l:column = col('.') - 1
+	return !l:column || getline('.')[l:column - 1] =~# '\s'
+endfunction
+
+function! s:trigger_completion() abort
+  if s:check_backspace()
+    return "\<Tab>"
+  elseif &omnifunc !=# ''
+		return "\<C-x>\<C-o>"
+	elseif &completefunc !=# ''
+		return "\<C-x>\<C-u>"
+	else
+		return "\<C-x>\<C-p>"
+	endif
+endfunction
+
+inoremap <silent><expr> <Tab>
+      \ pumvisible() ? "\<C-n>" : <sid>trigger_completion()
+"}}}
 " block: configure plugins {{{
 " plugin vim-buftabline {{{
 if HavePlugin('vim-buftabline')
@@ -251,32 +285,11 @@ if HavePlugin('vim-lsp')
   function! s:on_lsp_buffer_enabled() abort
     setlocal omnifunc=lsp#complete
   endfunction
-
-  if HavePlugin('vim-lining')
-    let s:lsp_lining_warnings_item = {}
-    function s:lsp_lining_warnings_item.format(item, active)
-      if a:active
-        let warnings = lsp#get_buffer_diagnostics_counts()['warning']
-        if warnings > 0
-          return warnings
-        endif
-      endif
-      return ''
-    endfunction
-    call lining#right(s:lsp_lining_warnings_item, 'Warn')
-
-    let s:lsp_lining_errors_item = {}
-    function s:lsp_lining_errors_item.format(item, active)
-      if a:active
-        let errors = lsp#get_buffer_diagnostics_counts()['error']
-        if errors > 0
-          return errors
-        endif
-      endif
-      return ''
-    endfunction
-    call lining#right(s:lsp_lining_errors_item, 'Error')
-  endif
+  
+  augroup lsp_install
+      au!
+      autocmd User lsp_buffer_enabled call s:on_lsp_buffer_enabled()
+  augroup END
 
   let g:lsp_diagnostics_echo_cursor = 1
   let g:lsp_diagnostics_signs_insert_mode_enabled = 1
@@ -303,7 +316,44 @@ if HavePlugin('vim-lsp')
   nmap <leader>n <plug>(lsp-next-diagnostic)
   nmap <leader>A <plug>(lsp-code-action)
 
-  if executable('clangd')
+  if HavePlugin('vim-lining') " {{{{
+    let s:lsp_lining_warnings_item = {}
+    function s:lsp_lining_warnings_item.format(item, active)
+      if a:active
+        let warnings = lsp#get_buffer_diagnostics_counts()['warning']
+        if warnings > 0
+          return warnings
+        endif
+      endif
+      return ''
+    endfunction
+    call lining#right(s:lsp_lining_warnings_item, 'Warn')
+
+    let s:lsp_lining_errors_item = {}
+    function s:lsp_lining_errors_item.format(item, active)
+      if a:active
+        let errors = lsp#get_buffer_diagnostics_counts()['error']
+        if errors > 0
+          return errors
+        endif
+      endif
+      return ''
+    endfunction
+    call lining#right(s:lsp_lining_errors_item, 'Error')
+  endif " }}}}
+  if HavePlugin('vim-lsp-ultisnips') && HavePlugin('ultisnips') " {{{{
+    let g:UltiSnipsExpandTrigger="<c-j>"
+    let g:UltiSnipsJumpForwardTrigger="<tab>"
+    let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
+
+    if has('conceal')
+      set conceallevel=2 concealcursor=niv
+    endif
+
+    set completeopt+=menuone
+  endif " }}}}
+
+  if executable('clangd') " {{{{
     augroup vim_lsp_cpp
       autocmd!
       autocmd User lsp_setup call lsp#register_server({
@@ -312,9 +362,8 @@ if HavePlugin('vim-lsp')
             \ 'whitelist': ['c', 'cpp', 'objc', 'objcpp', 'cc'],
             \ })
     augroup end
-  endif
-
-  if executable('pyls')
+  endif " }}}}
+  if executable('pyls') " {{{{
     augroup vim_lsp_python
       autocmd!
       autocmd User lsp_setup call lsp#register_server({
@@ -325,9 +374,8 @@ if HavePlugin('vim-lsp')
             \ }}
             \})
     augroup end
-  endif
-
-  if executable('yaml-language-server')
+  endif " }}}}
+  if executable('yaml-language-server') " {{{{
     augroup vim_lsp_yaml
       autocmd!
       autocmd User lsp_setup call lsp#register_server({
@@ -342,9 +390,8 @@ if HavePlugin('vim-lsp')
             \  }},
             \ }})
     augroup end
-  endif
-
-  if executable('gopls')
+  endif " }}}}
+  if executable('gopls') " {{{{
     augroup vim_lsp_gopls
       autocmd!
       autocmd User lsp_setup call lsp#register_server({
@@ -352,17 +399,57 @@ if HavePlugin('vim-lsp')
             \ 'cmd': {server_info->['gopls']},
             \ 'allowlist': ['go'],
             \ })
+      autocmd Filetype zig setlocal omnifunc=lsp#complete
     augroup end
-  endif
+  endif " }}}}
+  if executable('zls') " {{{{
+    augroup vim_lsp_zls
+      autocmd!
+      autocmd User lsp_setup call lsp#register_server({
+            \ 'name': 'zls',
+            \ 'cmd': {server_info->['zls']},
+            \ 'allowlist': ['zig'],
+            \ })
+    augroup end
+  endif " }}}}
 
 endif
 " }}}
-" plugin ultisnips {{{
-if HavePlugin('ultisnips')
-  let g:UltiSnipsExpandTrigger="<s-tab>"
+" plugin nvim-lspconfig {{{
+if HavePlugin('nvim-lspconfig')
+  luafile ~/.config/nvim/nvim-lsp.lua
+
+  nmap <leader>d <cmd>lua vim.lsp.buf.definition()<cr>
+  nmap <leader>D <cmd>lua vim.lsp.buf.declaration()<cr>
+  nmap <leader>h <cmd>lua vim.lsp.buf.hover()<cr>
+  nmap <leader>r <cmd>lua vim.lsp.buf.rename()<cr>
+  nmap <leader>R <cmd>lua vim.lsp.buf.references()<cr>
+  nmap <leader>n <cmd>lua vim.lsp.diagnostic.goto_next()<cr>
+  nmap <leader>A <cmd>lua vim.lsp.buf.code_action()<cr>
+
+  if HavePlugin('vim-lining') " {{{
+    let s:lsp_lining_warnings_item = {}
+    function s:lsp_lining_warnings_item.format(item, active)
+      if a:active && luaeval('#vim.lsp.buf_get_clients() > 0')
+        return luaeval("require('lsp-status').diagnostics().warnings")
+      endif
+      return ''
+    endfunction
+    call lining#right(s:lsp_lining_warnings_item, 'Warn')
+
+    let s:lsp_lining_errors_item = {}
+    function s:lsp_lining_errors_item.format(item, active)
+      if a:active && luaeval('#vim.lsp.buf_get_clients() > 0')
+        return luaeval("require('lsp-status').diagnostics().errors")
+      endif
+      return ''
+    endfunction
+    call lining#right(s:lsp_lining_errors_item, 'Error')
+  endif " }}}
+
 endif
 " }}}
-" plugin: ale  {{{
+" plugin ale  {{{
 if HavePlugin('ale')
   let g:ale_linters = {
         \ 'sh': ['shellcheck'],
@@ -430,15 +517,16 @@ if HavePlugin('ale')
   endif
 endif
 " }}}
-" plugin: vim-grammarous {{{
-let g:grammarous#default_comments_only_filetypes = {
-            \ '*': 1, 'help': 0, 'markdown': 0, 'rst':0,
-            \ 'text':0, 'nroff': 0, 'mail': 0
-            \ }
-let g:grammarous#use_vim_spelllang = 1
-let g:grammarous#languagetool_cmd = '/usr/bin/languagetool'
-nmap <leader>G :GrammarousCheck<cr>
-
+" plugin vim-grammarous {{{
+if HavePlugin('vim-grammarous')
+  let g:grammarous#default_comments_only_filetypes = {
+              \ '*': 1, 'help': 0, 'markdown': 0, 'rst':0,
+              \ 'text':0, 'nroff': 0, 'mail': 0
+              \ }
+  let g:grammarous#use_vim_spelllang = 1
+  let g:grammarous#languagetool_cmd = '/usr/bin/languagetool'
+  nmap <leader>G :GrammarousCheck<cr>
+endif
 " }}}
 " }}}
 " block: key mappings {{{
@@ -497,26 +585,6 @@ nnoremap <silent> <leader>- :match none<cr>
 nnoremap <S-Up>   <C-x>
 nnoremap <S-Down> <C-a>
 
-" tab-completion helper
-function! s:check_backspace() abort
-	let l:column = col('.') - 1
-	return !l:column || getline('.')[l:column - 1] =~# '\s'
-endfunction
-
-function! s:trigger_completion() abort
-  if s:check_backspace()
-    return "\<Tab>"
-  elseif &omnifunc !=# ''
-		return "\<C-x>\<C-o>"
-	elseif &completefunc !=# ''
-		return "\<C-x>\<C-u>"
-	else
-		return "\<C-x>\<C-p>"
-	endif
-endfunction
-
-inoremap <silent><expr> <Tab>
-      \ pumvisible() ? "\<C-n>" : <sid>trigger_completion()
 " }}}
 " block: misc stuff and modeline {{{
 if filereadable(expand('~/.config/nvim/user.vim'))

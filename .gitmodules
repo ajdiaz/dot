@@ -44,3 +44,33 @@
 [submodule "config/nvim/pack/plugins/start/vim-grammarous"]
 	path = config/nvim/pack/plugins/start/vim-grammarous
 	url = git@github.com:rhysd/vim-grammarous.git
+[submodule "config/nvim/pack/plugins/opt/cmp_luasnip"]
+	path = config/nvim/pack/plugins/opt/cmp_luasnip
+	url = https://github.com/saadparwaiz1/cmp_luasnip.git
+[submodule "config/nvim/pack/plugins/opt/cmp-nvim-lsp"]
+	path = config/nvim/pack/plugins/opt/cmp-nvim-lsp
+	url = https://github.com/hrsh7th/cmp-nvim-lsp.git
+[submodule "config/nvim/pack/plugins/opt/lsp-status.nvim"]
+	path = config/nvim/pack/plugins/opt/lsp-status.nvim
+	url = https://github.com/nvim-lua/lsp-status.nvim.git
+[submodule "config/nvim/pack/plugins/opt/LuaSnip"]
+	path = config/nvim/pack/plugins/opt/LuaSnip
+	url = https://github.com/L3MON4D3/LuaSnip.git
+[submodule "config/nvim/pack/plugins/opt/nvim-cmp"]
+	path = config/nvim/pack/plugins/opt/nvim-cmp
+	url = https://github.com/hrsh7th/nvim-cmp.git
+[submodule "config/nvim/pack/plugins/opt/nvim-lspconfig"]
+	path = config/nvim/pack/plugins/opt/nvim-lspconfig
+	url = https://github.com/neovim/nvim-lspconfig.git
+[submodule "config/nvim/pack/plugins/opt/ultisnips"]
+	path = config/nvim/pack/plugins/opt/ultisnips
+	url = https://github.com/SirVer/ultisnips.git
+[submodule "config/nvim/pack/plugins/opt/vim-lsp"]
+	path = config/nvim/pack/plugins/opt/vim-lsp
+	url = https://github.com/prabirshrestha/vim-lsp.git
+[submodule "config/nvim/pack/plugins/opt/vim-lsp-snippets"]
+	path = config/nvim/pack/plugins/opt/vim-lsp-snippets
+	url = https://github.com/thomasfaingnaert/vim-lsp-snippets.git
+[submodule "config/nvim/pack/plugins/opt/vim-lsp-ultisnips"]
+	path = config/nvim/pack/plugins/opt/vim-lsp-ultisnips
+	url = https://github.com/thomasfaingnaert/vim-lsp-ultisnips.git
