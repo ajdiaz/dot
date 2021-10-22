@@ -1,45 +1,29 @@
 # vim: ft=muttrc
 
-virtual-mailboxes "INBOX" \
-  "notmuch://?query=folder:ajdiaz.me/INBOX"
+macro index ,, noop
+macro index ,i "<change-folder>=INBOX<enter>"
+macro index ,S "<change-folder>=Sent<enter>"
+macro index ,t "<change-folder>=Trash<enter>"
+macro index ,f "<change-folder>=Flagged<enter>"
+macro index ,a "<change-folder>=Archive<enter>"
+macro index ,j "<change-folder>=Junk<enter>"
+macro index ,D "<change-folder>=Draft<enter>"
+macro index,pager a "<save-message>=Archive<enter>"
+macro index,pager i "<save-message>=INBOX<enter>"
+macro index,pager s "<save-message>=Junk<enter>"
 
-virtual-mailboxes "Sent" \
-  "notmuch://?query=folder:ajdiaz.me/Sent"
+set folder    = ~/sys/var/mail/ajdiaz.me
+set spoolfile = +INBOX
+set postponed = +Draft
+set record    = +Sent
+set trash     = +Trash
 
-virtual-mailboxes "Trash" \
-  "notmuch://?query=folder:ajdiaz.me/Trash"
+mailboxes =INBOX
+mailboxes =Archive
+mailboxes =Trash
+mailboxes =Junk
 
-virtual-mailboxes "Flagged" \
-  "notmuch://?query=tag:flagged"
-
-virtual-mailboxes "Archive" \
-  "notmuch://?query=folder:ajdiaz.me/Archive"
-
-virtual-mailboxes "Spam" \
-  "notmuch://?query=folder:ajdiaz.me/Junk"
-
-virtual-mailboxes "Draft" \
-  "notmuch://?query=folder:ajdiaz.me/Draft"
-
-virtual-mailboxes "List" \
-  "notmuch://?query=tag:list"
-
-set virtual_spoolfile = yes
-set postponed   = +ajdiaz.me/Draft
-set trash       = +ajdiaz.me/Trash
-set record      = +ajdiaz.me/Sent
 set realname    = "Andrés J. Díaz"
 set from        = "ajdiaz@ajdiaz.me"
 set sendmail    = "/usr/bin/msmtp -a ajdiaz.me"
-set pgp_sign_as = 0x5369AA4171B5139C
-
-macro index ,i "<change-vfolder>INBOX<enter>"
-macro index ,S "<change-vfolder>Sent<enter>"
-macro index ,t "<change-vfolder>Trash<enter>"
-macro index ,f "<change-vfolder>Flagged<enter>"
-macro index ,a "<change-vfolder>Archive<enter>"
-macro index ,s "<change-vfolder>Spam<enter>"
-macro index ,D "<change-vfolder>Draft<enter>"
-macro index,pager a "<save-message>=ajdiaz.me/Archive<enter>"
-macro index,pager i "<save-message>=ajdiaz.me/INBOX<enter>"
-macro index,pager s "<save-message>=ajdiaz.me/Junk<enter>"
+set pgp_sign_as = 0x021D2DCF8575C18B
