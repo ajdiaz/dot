@@ -20,7 +20,9 @@ bookmark-autopilot yes
 datetime-format "%Y-%m-%d"
 feedlist-format " ├─ %2U: %n%S ➜  %t"
 articlelist-format " ├─ %D %?a?%-10a ?%f ➜  %t"
+selecttag-format " ├─ %T (%u)"
 feedlist-title-format "   Feeds (%u/%t)"
+selecttag-title-format "   Tags"
 itemview-title-format "  %T"
 articlelist-title-format " ➜  %T"
 
