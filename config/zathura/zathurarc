@@ -24,9 +24,8 @@ set recolor "true"
 set recolor-keephue "true"
 
 set adjust-open width
-set guioptions s
+set guioptions sv
 set n-completion-items 10
-set show-scrollbars true
 set window-title-basename true
 set statusbar-basename true
 set statusbar-v-padding 10
