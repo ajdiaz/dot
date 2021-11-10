@@ -40,7 +40,7 @@ bind-key b bookmark
 
 # Colors.
 color listnormal        white default
-color listnormal_unread white default bold
+color listnormal_unread green default
 color listfocus         white color240
 color listfocus_unread  white color240 bold
 color info              white color235 bold
