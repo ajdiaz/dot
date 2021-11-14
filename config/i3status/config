@@ -71,8 +71,7 @@ path_exists system {
 }
 
 tztime local {
-        format = " <span foreground='#888888'>%time</span> "
-        format_time = "%Y-%m-%d %H:%M"
+        format = " <span foreground='#888888'>%Y-%m-%d %H:%M</span> "
 }
 
 
