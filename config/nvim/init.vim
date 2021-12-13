@@ -138,7 +138,26 @@ augroup AutoDeleteNetrwHiddenBuffers
 augroup end
 
 nmap <leader>t :Lexplore<cr>
-autocmd FileType netrw map f %
+autocmd FileType netrw f %
+
+autocmd filetype netrw call Netrw_mappings()
+function! Netrw_mappings()
+  noremap <buffer>% :call CreateInPreview()<cr>
+endfunction
+
+function! CreateInPreview()
+  let l:filename = b:netrw_curdir . '/' . input("please enter filename: ")
+  let bnr = bufwinnr(l:filename)
+  if bnr > 0
+    :exe bnr . "wincmd w"
+  else
+    if win_gotoid(win_getid(2))
+      silent execute 'badd ' . l:filename
+    else
+      silent execute 'split ' . l:filename
+    endif
+  endif
+endfunction
 " }}}
 " block: colorscheme and color tunes {{{
 syntax on
@@ -269,11 +288,14 @@ endif
 " plugin vim-fugitive {{{
 autocmd vimrc FileType dirvish call FugitiveDetect(@%)
 if HavePlugin('vim-fugitive')
-  nmap <leader>gs :G<cr>
-  nmap <leader>gb :GBlame<cr>
-  nmap <leader>gl :0Glog<cr>
-  nmap <leader>g1 :diffget //2<cr>
-  nmap <leader>g0 :diffget //3<cr>
+  nmap gs :G<cr>
+  nmap gb :GBlame<cr>
+  nmap gl :0Glog<cr>
+  nmap gd1 d2o
+  nmap gd2 d3o
+  nmap gm :Gvdiffsplit!<cr>
+  nmap gn ]c
+  nmap gp [c
 endif
 " }}}
 " plugin vim-commentary {{{

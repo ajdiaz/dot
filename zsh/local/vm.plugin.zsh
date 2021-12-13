@@ -34,6 +34,7 @@ _vm-new () {
 
   while [[ "$1" ]] && [[ "${1:0:2}" == "--" ]]; do
     case "$1" in
+      --port) opts+=("--port" "$2"); shift 2;;
       --allow-docker)
         opts+=("--bind" "/sys/fs/cgroup")
         opts+=("--capability" "all")
@@ -83,8 +84,8 @@ _vm-new () {
 
 _vm_cmd[ls]='List vms'
 _vm-ls () {
-  doas machinectl --no-pager --full --no-legend list |
-  while read -r a _; do echo "$a"; done
+  doas machinectl --no-pager --full --no-legend list | cut -d' ' -f1 |
+    grep -v '^$'
 }
 
 _vm_cmd[rm]='Remove vm'
