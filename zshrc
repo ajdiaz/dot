@@ -205,7 +205,7 @@ if [[ "$SSH_CONNECTION" ]]; then
 fi
 
 PROMPT=$'%{%F{228}%}${VM_NAME:+$VM_NAME }%{%b%f%}'
-PROMPT+=$'%{%F{$IAM_COLOR}%}${IAM_ID_NAME:+▌ }%{%b%f%}'
+PROMPT+=$'%{%F{$IAM_COLOR}%}${IAM_ID_NAME:+█ }%{%b%f%}'
 PROMPT+=$'%{%F{176}%}${K8S_CLUSTER:+$K8S_CLUSTER/}${K8S_NAMESPACE:+$K8S_NAMESPACE }%{%b%f%}'
 PROMPT+=$'%{%F{180}%}${VIRTUAL_ENV:+${VIRTUAL_ENV##*/} }%{%b%f%}'
 PROMPT+=$'%B%{%(!.$fg[red].%{%F{255}%})%}${SHOWHOST:+%m }%b%f'

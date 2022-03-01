@@ -248,9 +248,15 @@ _iam-reload ()
   if [[ -r "${IAM_HOME}/.previous" ]]; then
     IAM_ID_NAME="$(<"${IAM_HOME}/.active")"
     IAM_ID="${IAM_HOME}/${IAM_ID_NAME}"
+    if [[ -r "${IAM_HOME}/${IAM_ID_NAME}.color" ]]; then
+      IAM_COLOR="$(< "${IAM_HOME}/${IAM_ID_NAME}.color")"
+    else
+      IAM_COLOR="$(( (RANDOM % 130) + 100 ))"
+    fi
   else
     unset IAM_ID_NAME
     unset IAM_ID
+    unset IAM_COLOR
   fi
 }
 
