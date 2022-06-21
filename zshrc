@@ -182,7 +182,7 @@ case ${TERM} in
 			[[ ${TERM} = screen* ]] && echo -ne "\ek$(hostname):${PWD##*/}\e\\"
 		}
         function preexec () {
-            print -Pn "\e]0;$1\a"
+            print -Pn "\e]0;${~1:gs/%/%%}\a"
         }
 	;;
 	*)
