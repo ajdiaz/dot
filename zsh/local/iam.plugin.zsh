@@ -34,7 +34,7 @@ _iam_gpg_d ()
     gpgopts+=( "--local-user" "$(<${IAM_HOME}/${IAM_ID_NAME}.gpg-id)" )
   fi
 
-  gpg --quiet --no-verbose --decrypt ${gpgopts[@]} "$1" > "$2"
+  gpg --quiet --no-verbose --decrypt ${gpgopts[@]} "$1"
 }
 
 iam () {
@@ -73,11 +73,18 @@ _iam-activate () {
 
 	IAM_ID_NAME=$1
 	IAM_ID=${iam_path}
+	IAM_ALIAS="🭬"
 
 	if [[ -r "${IAM_HOME}/$1.color" ]]; then
     IAM_COLOR="$(< "${IAM_HOME}/$1.color")"
   else
-    IAM_COLOR="$(( (RANDOM % 130) + 100 ))"
+    IAM_COLOR="$(( RANDOM % 130 + 100 ))"
+  fi
+
+	if [[ -r "${IAM_HOME}/$1.alias" ]]; then
+    IAM_ALIAS="$(< "${IAM_HOME}/$1.alias")"
+  else
+    IAM_ALIAS="🭬"
   fi
 
   _iam-new ".previous"
@@ -95,10 +102,48 @@ _iam-activate () {
 
       # replace file for new one
       [[ -d "$dpath" ]] || mkdir -p "$dpath"
-      _iam_gpg_d "$fname" "$hpath"
+      _iam_gpg_d "$fname" > "$hpath"
     done < <(find "${iam_path}" -type f)
   }
   echo "${IAM_ID_NAME}" > "${IAM_HOME}/.active"
+}
+
+_iam_cmd[migrate]='Migrate iam repo from gpg id to another'
+_iam-migrate () {
+  local f oldid newp
+	if [[ $# -ne 2 ]] ; then
+		echo 'No virtual id specified or new gpg key id missing' 1>&2
+		return 1
+	fi
+
+	if [[ ${IAM_ID_NAME} = $1 ]] ; then
+		echo 'Cannot migrate virtual id while in use' 1>&2
+		return 2
+	fi
+
+  oldid="$IAM_ID_NAME"
+  IAM_ID_NAME="$1"
+  mkdir -p "${IAM_HOME}/$1-migration"
+  for f in "${IAM_HOME}/$1"/**/**; do
+    if [[ -f "$f" ]]; then
+      newp="${f#${IAM_HOME}/$1/}"
+      newp="${IAM_HOME}/$1-migration/${newp%/*}/${f##*/}"
+
+      echo "Migrating ${f}..."
+
+      mkdir -p "${newp%/*}"
+  	  _iam_gpg_d "$f" | IAM_GPGKEY="$2" _iam_gpg_e - "$newp"
+  	fi
+  done
+
+  rm -rf "${IAM_HOME}/$1"
+  echo "$2" > ${IAM_HOME}/$1.gpg-id
+  mv "${IAM_HOME}/$1-migration" "${IAM_HOME}/$1"
+
+  _iam-git add .
+  _iam-git commit -am "refactor: migrate $1 to key $2"
+
+  IAM_ID_NAME="$oldid"
 }
 
 _iam_cmd[add]='Add a file to the specific iam'
@@ -168,13 +213,13 @@ _iam-deactivate () {
 
     # replace file for new one
     [[ -d "$dpath" ]] || mkdir -p "$dpath"
-    _iam_gpg_d "$fname" "$hpath"
+    _iam_gpg_d "$fname" > "$hpath"
   done < <(find "${iam_path}" -type f)
 
   rm -rf "$iam_path"
   rm -ff "${IAM_HOME}/.active"
 
-	unset IAM_ID IAM_ID_NAME IAM_COLOR
+	unset IAM_ID IAM_ID_NAME IAM_COLOR IAM_ALIAS
 }
 
 _iam_cmd[new]='Create a new virtual id'
@@ -192,9 +237,11 @@ _iam-new () {
                cut -d '"' -f2)}" > "${IAM_HOME}/${iam_name}.gpg-id"
 
   if [[ "${iam_name:0:1}" != "." ]]; then
-    echo "${3:-$(( (RANDOM % 130) + 100 ))}" > "${IAM_HOME}/${iam_name}.color"
+    echo "${3:-$(( RANDOM % 130 + 100 ))}" > "${IAM_HOME}/${iam_name}.color"
+    echo "🭬" > "${IAM_HOME}/${iam_name}.alias"
     _iam-git add "${iam_name}.gpg-id"
     _iam-git add "${iam_name}.color"
+    _iam-git add "${iam_name}.alias"
     _iam-git commit -a -m"Add new virtual id: ${iam_name}"
   fi
 }
@@ -238,9 +285,7 @@ iam-cd () {
 }
 
 _iam_cmd[git]='Run git commands inside the iam home directory'
-_iam-git () {
-  ( cd "${IAM_HOME}" && git "$@"; )
-}
+_iam-git () { git -C "${IAM_HOME}" "$@"; }
 
 _iam_cmd[reload]='Reload last state of virtual ids'
 _iam-reload ()
@@ -251,12 +296,19 @@ _iam-reload ()
     if [[ -r "${IAM_HOME}/${IAM_ID_NAME}.color" ]]; then
       IAM_COLOR="$(< "${IAM_HOME}/${IAM_ID_NAME}.color")"
     else
-      IAM_COLOR="$(( (RANDOM % 130) + 100 ))"
+      IAM_COLOR="$(( RANDOM % 130 + 100 ))"
     fi
+    if [[ -r "${IAM_HOME}/${IAM_ID_NAME}.alias" ]]; then
+      IAM_ALIAS="$(< "${IAM_HOME}/${IAM_ID_NAME}.alias")"
+    else
+      IAM_ALIAS="🭬"
+    fi
+
   else
     unset IAM_ID_NAME
     unset IAM_ID
     unset IAM_COLOR
+    unset IAM_ALIAS
   fi
 }
 
