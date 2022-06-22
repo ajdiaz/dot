@@ -94,7 +94,7 @@ _virtualz-new () {
 	local venv_path="${VIRTUALZ_HOME}/${venv_name}"
 	shift
 
-	virtualenv "$@" "${venv_path}"
+	python -m venv "$@" "${venv_path}"
 	local venv_status=$?
 
 	if [[ ${venv_status} -eq 0 && -d ${venv_path} ]] ; then
@@ -130,7 +130,8 @@ _virtualz-ls () {
 	if [[ -d ${VIRTUALZ_HOME} ]] ; then
 		pushd -q "${VIRTUALZ_HOME}"
 		for item in */bin/python ; do
-			echo "${item%/bin/python}"
+			[[ "$item" != "*/bin/python" ]] &&
+				echo "${item%/bin/python}"
 		done
 		popd -q
 	fi
