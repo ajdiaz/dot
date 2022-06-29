@@ -203,9 +203,11 @@ client.unfocused        #000000 #000000 #dadada #000000 #000000
 
 default_border pixel 4
 
-exec --no-startup-id xrdb -merge /home/ajdiaz/.Xresources
-exec --no-startup-id xsetroot -solid black
-exec --no-startup-id feh --bg-scale /home/ajdiaz/sys/var/pics/desktop/mountains-bw.jpg
+exec --no-startup-id xset r rate 250 20
+
+exec_always --no-startup-id xrdb -merge /home/ajdiaz/.Xresources
+exec_always --no-startup-id xsetroot -solid black
+exec_always --no-startup-id feh --bg-scale /home/ajdiaz/sys/var/pics/desktop/mountains-bw.jpg
+exec_always /usr/bin/setxkbmap es,gr -option grp:alt_caps_toggle,grp_led:scroll
 exec --no-startup-id xcompmgr -c -l0 -t0 -r0 -o.00
 exec --no-startup-id gpg-agent --homedir /home/ajdiaz/.gnupg --daemon --enable-ssh-support
-exec /usr/bin/setxkbmap es,gr -option grp:alt_caps_toggle,grp_led:scroll
