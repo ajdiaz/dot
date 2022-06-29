@@ -412,7 +412,6 @@ if HavePlugin('vim-lsp')
             \ 'cmd': {server_info->['gopls']},
             \ 'allowlist': ['go'],
             \ })
-      autocmd Filetype zig setlocal omnifunc=lsp#complete
     augroup end
   endif " }}}}
   if executable('zls') " {{{{
@@ -423,9 +422,19 @@ if HavePlugin('vim-lsp')
             \ 'cmd': {server_info->['zls']},
             \ 'allowlist': ['zig'],
             \ })
+      autocmd Filetype zig setlocal omnifunc=lsp#complete
     augroup end
   endif " }}}}
-
+  if executable('rls') " {{{{
+    augroup vim_lsp_rls
+      autocmd!
+      autocmd User lsp_setup call lsp#register_server({
+            \ 'name': 'rls',
+            \ 'cmd': {server_info->['rls']},
+            \ 'allowlist': ['rust'],
+            \ })
+    augroup end
+  endif " }}}}
 endif
 " }}}
 " plugin nvim-lspconfig {{{
