@@ -165,6 +165,7 @@ if index(getcompletion('', 'color'), 'elrond') > -1
   colors elrond
   highlight EndOfBuffer ctermfg=236
   highlight SpecialKey ctermfg=196
+  highlight LiningWarn ctermbg=226 ctermfg=0
 else
   colors elflord
 endif
