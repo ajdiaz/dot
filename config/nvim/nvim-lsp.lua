@@ -47,10 +47,10 @@ vim.cmd [[
   hi! DiagnosticInfo ctermbg=234 ctermfg=238
   hi! DiagnosticHint ctermbg=234 ctermfg=238
 
-  hi! DiagnosticVirtualTextError ctermfg=236
-  hi! DiagnosticVirtualTextWarn ctermfg=236 cterm=italic
-  hi! DiagnosticVirtualTextInfo ctermfg=236
-  hi! DiagnosticVirtualTextHint ctermfg=236
+  hi! DiagnosticVirtualTextError ctermfg=238 cterm=italic
+  hi! DiagnosticVirtualTextWarn ctermfg=238 cterm=italic
+  hi! DiagnosticVirtualTextInfo ctermfg=238 cterm=italic
+  hi! DiagnosticVirtualTextHint ctermfg=238 cterm=italic
 ]]
 
 -- You will likely want to reduce updatetime which affects CursorHold
@@ -114,7 +114,7 @@ end
 -- Declare servers.
 lspconfig = require('lspconfig')
 
-local servers = { 'clangd', 'pylsp', 'gopls', 'zls', 'rls' }
+local servers = { 'clangd', 'pylsp', 'gopls', 'zls', 'rust_analyzer' }
 
 for _, i in ipairs(servers) do
   lspconfig[i].setup { on_attach = on_attach, capabilities = capabilities }
