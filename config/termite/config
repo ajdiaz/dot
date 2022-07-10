@@ -17,7 +17,7 @@ search_wrap = true
 transparency = 0.0
 
 # "system", "on" or "off"
-cursor_blink = off
+cursor_blink = on
 
 # "block", "underline" or "ibeam"
 cursor_shape = block
