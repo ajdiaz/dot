@@ -22,7 +22,7 @@ vim.diagnostic.config({
     format = function(diagnostic)
       if vim.api.nvim_buf_get_option(0, "commentstring") then
         return string.format(vim.api.nvim_buf_get_option(0, "commentstring"),
-          " " .. diagnostic.message .. " ")
+          " " .. diagnostic.message:gsub("[ ]+"," ") .. " ")
       else
         return diagnostic.message
       end
