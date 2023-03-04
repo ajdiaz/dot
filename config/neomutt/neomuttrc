@@ -34,12 +34,13 @@ unset confirmappend      # don't ask, just do!
 
 # status char format for %r in status_formats, in this order:
 # nochanges,changes,read-only,append-ondly
-set status_chars  = " +RA"
-set status_format = " %f %r %>   %u:%d  "
+#set status_chars  = " +RA"
+#set status_format = " %f %r %>   %u:%d  "
 
 message-hook '!(~g|~G) ~b"^-----BEGIN\ PGP\ (SIGNED\ )?MESSAGE"' "exec check-traditional-pgp"
 
-set index_format = "%D %@new@%@kind@%@crypto@%@attached@%@thread@ %-28n   %-s"
+set index_format="  %zc %zs  %zt | %-35.35L     %?M10?~(%1M) ?%-30.100s %> %?Y?%Y ? %(!%a %d %h %H:%M)  "
+#set index_format = "%zc %D %@new@%@kind@%@crypto@%@attached@%@thread@ %-28n   %-s"
 set date_format  = "%Y%m%d"              # date format display using ISO based date
 set sort = threads                         # use threads base sort like gmail
 set sort_aux = reverse-last-date-received  # last date in thrad is last mail, like gmail
@@ -47,27 +48,38 @@ set uncollapse_jump                        # don't collapse on an unread message
 set sort_re                                # thread based on regex
 set narrow_tree                            # save some spaces making tree narrow
 
+set status_chars = " "
+set status_format = " %D %?u? %u ?%?R? %R ?%?d? %d ?%?t? %t ?%?F? %F ?%?p? %p? \n  \n"
+ifdef crypt_chars set crypt_chars = " "
+set flag_chars = "r ! !- "
 
-index-format-hook kind "~D" " "
-index-format-hook kind "~P" " "
-index-format-hook kind "~f notifications@github.com" " "
-index-format-hook kind "=h 'X-Mailer: git-send-email'" " "
-index-format-hook kind "=h X-Cron" " "
+
+# set nm_query_type=threads                                   # bring in the whole thread instead of just the matched message, really useful
+# set nm_default_url = "notmuch:///$HOME/var/mail/"   # default notmuch URL
+# set nm_record_tags = "sent"                                 # default 'sent' tag
+# set virtual_spoolfile=yes                                   # allow using virtual mailboxes as spoolfile
+# virtual-mailboxes "All Mail" "notmuch://?query=tag:inbox"
+set to_chars=" "
+# index-format-hook kind "~D" " "
+# index-format-hook kind "~P" " "
+# index-format-hook kind "~f notifications@github.com" " "
+# index-format-hook kind "=h 'X-Mailer: git-send-email'" " "
+# index-format-hook kind "=h X-Cron" " "
 index-format-hook kind "=h List-ID" " "
-index-format-hook kind "~A" "  "
+# index-format-hook kind "~A" "  "
 
-index-format-hook crypto "~G" " "
-index-format-hook crypto "~g" " "
-index-format-hook crypto "~A" "  "
+# index-format-hook crypto "~G" " "
+# index-format-hook crypto "~g" " "
+# index-format-hook crypto "~A" "  "
 
-index-format-hook new "~N" " "
-index-format-hook new "~A" "  "
+# index-format-hook new "~N" " "
+# index-format-hook new "~A" "  "
 
-index-format-hook attached "~X 1-99" " "
-index-format-hook attached "~A" "  "
+# index-format-hook attached "~X 1-99" " "
+# index-format-hook attached "~A" "  "
 
-index-format-hook thread "~v" " "
-index-format-hook thread "~A" "  "
+# index-format-hook thread "~v" " "
+# index-format-hook thread "~A" "  "
 
 # regexp to use find Re: emails
 set reply_regexp = "^(([Rr][Ee]?(\[[0-9]+\])?: *)?(\[[^]]+\] *)?)*"

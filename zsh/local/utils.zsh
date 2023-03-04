@@ -194,3 +194,7 @@ fi
 if [[ -r /usr/share/fzf/key-bindings.zsh ]]; then
   source /usr/share/fzf/key-bindings.zsh
 fi
+
+if hash qt5ct 2>/dev/null; then
+  export QT_QPA_PLATFORMTHEME=qt5ct
+fi

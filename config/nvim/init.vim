@@ -191,7 +191,7 @@ au BufNewFile,BufRead {neo,}mutt{ng,}-*-\w\+,{neo,}mutt[[:alnum:]_-]\\\{6\}
   \ setf mail
 au BufNewFile,BufRead,BufReadPost
   \ {neo,}mutt{ng,}-*-\w\+,{neo,}mutt[[:alnum:]_-]\\\{6\}
-  \ execute "normal! gg6ji\n"
+  \ execute "normal! G"
 
 autocmd FileType text,markdown,rst,nroff,mail setlocal spell
 

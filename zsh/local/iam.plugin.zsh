@@ -295,12 +295,12 @@ _iam-reload ()
     IAM_ID="${IAM_HOME}/${IAM_ID_NAME}"
     if [[ -r "${IAM_HOME}/${IAM_ID_NAME}.color" ]]; then
       IAM_COLOR="$(< "${IAM_HOME}/${IAM_ID_NAME}.color")"
-    else
+    elif [[ "${IAM_ID_NAME}" != "default" ]]; then
       IAM_COLOR="$(( RANDOM % 130 + 100 ))"
     fi
     if [[ -r "${IAM_HOME}/${IAM_ID_NAME}.alias" ]]; then
       IAM_ALIAS="$(< "${IAM_HOME}/${IAM_ID_NAME}.alias")"
-    else
+    elif [[ "${IAM_ID_NAME}" != "default" ]]; then
       IAM_ALIAS="🭬"
     fi
 
