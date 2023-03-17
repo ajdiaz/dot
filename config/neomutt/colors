@@ -28,7 +28,7 @@ color status brightcolor248 color236 "^ ([^[:space:]]+) "
 color status brightcolor250 color236 "  [[:digit:]]+:[[:digit:]]+  $"
 
 color index color255       black    ~A
-color index color255       color196 ~F
+color index color196       black    ~F
 color index color196       black    ~D
 color index color40        black    ~g
 color index color40        black    ~G
